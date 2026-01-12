@@ -222,7 +222,7 @@ function Footer() {
                   </div>
                   <div>
                     <p className="text-gray-300 text-xs">Canada Phone (Secondary)</p>
-                    <p className="text-white font-medium text-sm">+1 (437) 370-1413</p>
+                    <p className="text-white font-medium text-sm">+1 (416) 700-7091</p>
                   </div>
                 </div>
                 

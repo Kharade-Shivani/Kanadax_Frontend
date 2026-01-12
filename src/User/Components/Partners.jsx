@@ -534,21 +534,7 @@ function Partners() {
                 Trusted technology partners since 2018.
               </p>
 
-              {/* Website Visit Button */}
-              <div className="flex flex-wrap gap-4 mt-6">
-                <a
-                  href={companyInfo.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold rounded-lg hover:from-red-700 hover:to-red-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 transform group"
-                >
-                  <ExternalLink className="w-5 h-5" />
-                  <span>Visit Our Website</span>
-                  <ChevronRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
-                </a>
-
-
-              </div>
+             
             </div>
 
             {/* Right Content - Award Image */}
