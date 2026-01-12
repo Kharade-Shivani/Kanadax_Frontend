@@ -30,7 +30,9 @@ const GlobalEnquiryIcon = () => {
     'Other'
   ];
 
-  // Show auto popup on page load
+  // REMOVED: Auto popup on page load
+  // Commented out or removed the useEffect that shows auto popup
+  /*
   useEffect(() => {
     const wasClosed = localStorage.getItem('autoPopupClosed');
     if (wasClosed !== 'true') {
@@ -40,6 +42,7 @@ const GlobalEnquiryIcon = () => {
       return () => clearTimeout(timer);
     }
   }, []);
+  */
 
   // Handle click outside
   useEffect(() => {
@@ -115,7 +118,7 @@ const GlobalEnquiryIcon = () => {
     }
   };
 
-  // Handle close auto popup
+  // Handle close auto popup (kept for consistency but won't be used)
   const handleCloseAutoPopup = () => {
     setShowAutoPopup(false);
     setIsAutoPopupClosed(true);
@@ -128,7 +131,7 @@ const GlobalEnquiryIcon = () => {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-2 sm:p-3 bg-black/60 backdrop-blur-sm"
       onClick={isAutoPopup ? handleCloseAutoPopup : handleCloseForm}
     >
       <motion.div
@@ -136,19 +139,19 @@ const GlobalEnquiryIcon = () => {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 50, opacity: 0 }}
         transition={{ type: "spring", damping: 25 }}
-        className="relative w-full max-w-2xl"
+        className="relative w-full max-w-sm"
         onClick={(e) => e.stopPropagation()}
         ref={formRef}
       >
-        <div className="bg-gradient-to-br from-white via-white to-red-50 rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+        <div className="bg-gradient-to-br from-white via-white to-red-50 rounded-xl shadow-xl overflow-hidden border border-gray-200 max-h-[90vh] overflow-y-auto">
           {/* Header */}
-          <div className="relative bg-gradient-to-r from-red-600 to-red-700 p-6">
+          <div className="relative bg-gradient-to-r from-red-600 to-red-700 p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-lg font-bold text-white">
                   {isAutoPopup ? 'Welcome to KANDAX!' : 'Get Your Free Consultation'}
                 </h3>
-                <p className="text-red-100 mt-1">
+                <p className="text-red-100 text-sm mt-0.5">
                   {isAutoPopup 
                     ? 'Let\'s discuss your technology needs' 
                     : 'Let\'s discuss how we can help your business grow'}
@@ -156,10 +159,10 @@ const GlobalEnquiryIcon = () => {
               </div>
               <button
                 onClick={isAutoPopup ? handleCloseAutoPopup : handleCloseForm}
-                className="text-white hover:text-gray-200 transition-colors p-2"
+                className="text-white hover:text-gray-200 transition-colors p-1"
                 disabled={isSubmitting}
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
@@ -167,10 +170,10 @@ const GlobalEnquiryIcon = () => {
           </div>
           
           {/* Form */}
-          <form onSubmit={handleSubmitEnquiry} className="p-6 md:p-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmitEnquiry} className="p-4 md:p-5">
+            <div className="grid grid-cols-1 gap-4">
               {/* Name */}
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <label className="block text-sm font-medium text-gray-700">Full Name *</label>
                 <input
                   type="text"
@@ -178,14 +181,13 @@ const GlobalEnquiryIcon = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-                  placeholder="John Smith"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
                 />
               </div>
               
               {/* Email */}
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <label className="block text-sm font-medium text-gray-700">Email *</label>
                 <input
                   type="email"
@@ -193,49 +195,46 @@ const GlobalEnquiryIcon = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-                  placeholder="john@company.com"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
                 />
               </div>
               
               {/* Company */}
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <label className="block text-sm font-medium text-gray-700">Company</label>
                 <input
                   type="text"
                   name="company"
                   value={formData.company}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-                  placeholder="Your Company"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
                 />
               </div>
               
               {/* Phone */}
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <label className="block text-sm font-medium text-gray-700">Phone</label>
                 <input
                   type="tel"
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-                  placeholder="+1 (555) 123-4567"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
                 />
               </div>
               
               {/* Service */}
-              <div className="md:col-span-2 space-y-2">
+              <div className="space-y-1">
                 <label className="block text-sm font-medium text-gray-700">Service Interest *</label>
                 <select
                   name="service"
                   value={formData.service}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
                 >
                   <option value="">Select a service</option>
@@ -246,16 +245,15 @@ const GlobalEnquiryIcon = () => {
               </div>
               
               {/* Message */}
-              <div className="md:col-span-2 space-y-2">
+              <div className="space-y-1">
                 <label className="block text-sm font-medium text-gray-700">Message *</label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
                   required
-                  rows="4"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
-                  placeholder="Tell us about your project..."
+                  rows="3"
+                  className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
                 />
               </div>
@@ -263,7 +261,7 @@ const GlobalEnquiryIcon = () => {
             
             {/* Status */}
             {submitStatus && (
-              <div className={`mt-4 p-4 rounded-lg ${submitStatus.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+              <div className={`mt-3 p-3 text-sm rounded-lg ${submitStatus.type === 'success' ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
                 {submitStatus.message}
               </div>
             )}
@@ -272,7 +270,7 @@ const GlobalEnquiryIcon = () => {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full mt-6 bg-red-600 hover:bg-red-700 text-white font-semibold py-4 rounded-lg transition-colors disabled:opacity-50"
+              className="w-full mt-4 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 text-sm rounded-lg transition-colors disabled:opacity-50"
             >
               {isSubmitting ? 'Sending...' : 'Submit Enquiry'}
             </button>
@@ -290,7 +288,6 @@ const GlobalEnquiryIcon = () => {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ delay: 2, type: "spring" }}
         onClick={handleEnquiryClick}
-        // Changed from bottom-36 to bottom-20 and right-6 to right-24 to match WhatsApp
         className="fixed bottom-20 right-24 z-[9998] w-14 h-14 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-full shadow-xl hover:shadow-2xl hover:from-red-700 hover:to-red-800 transition-all duration-300 group"
         style={{
           boxShadow: '0 8px 25px rgba(220, 38, 38, 0.4)'
@@ -313,12 +310,12 @@ const GlobalEnquiryIcon = () => {
         </div>
       </motion.button>
 
-      {/* Auto Popup */}
+      {/* Auto Popup - This will never show since we removed the useEffect that triggers it */}
       <AnimatePresence>
         {showAutoPopup && renderEnquiryForm(true)}
-      </AnimatePresence>
+      </AnimatePresence> 
 
-      {/* Manual Enquiry Form */}
+      {/* Manual Enquiry Form - Only shows when user clicks the icon */}
       <AnimatePresence>
         {showEnquiryForm && renderEnquiryForm(false)}
       </AnimatePresence>

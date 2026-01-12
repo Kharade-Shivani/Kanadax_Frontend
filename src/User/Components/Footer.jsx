@@ -198,13 +198,13 @@ function Footer() {
               <h3 className="text-base font-bold text-white mb-4 pb-2 border-b border-gray-800">Contact Info</h3>
               
               <div className="space-y-4">
-                {/* Canada Phone */}
+                {/* Canada Phone - Primary */}
                 <div className="flex items-start space-x-2">
                   <div className="w-8 h-8 rounded-lg bg-red-900/30 flex items-center justify-center flex-shrink-0">
                     <Phone className="w-4 h-4 text-red-400" />
                   </div>
                   <div>
-                    <p className="text-gray-300 text-xs">Canada Phone</p>
+                    <p className="text-gray-300 text-xs">Canada Phone (Primary)</p>
                     {loading ? (
                       <div className="h-4 w-24 bg-gray-800 animate-pulse rounded mt-1"></div>
                     ) : error ? (
@@ -212,6 +212,17 @@ function Footer() {
                     ) : (
                       <p className="text-white font-medium text-sm">{contactInfo.phone}</p>
                     )}
+                  </div>
+                </div>
+                
+                {/* Canada Phone - Secondary (Static) */}
+                <div className="flex items-start space-x-2">
+                  <div className="w-8 h-8 rounded-lg bg-red-900/30 flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-4 h-4 text-red-400" />
+                  </div>
+                  <div>
+                    <p className="text-gray-300 text-xs">Canada Phone (Secondary)</p>
+                    <p className="text-white font-medium text-sm">+1 (437) 370-1413</p>
                   </div>
                 </div>
                 
@@ -276,13 +287,13 @@ function Footer() {
         </div>
 
         {/* Bottom Bar */}
-     <div className="border-t border-gray-800 mt-8 pt-6">
-  <div className="flex justify-center items-center">
-    <div className="text-gray-300 text-sm text-center">
-      © {currentYear} KANDAX. All rights reserved.
-    </div>
-  </div>
-</div>
+        <div className="border-t border-gray-800 mt-8 pt-6">
+          <div className="flex justify-center items-center">
+            <div className="text-gray-300 text-sm text-center">
+              © {currentYear} KANDAX. All rights reserved.
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
   );

@@ -32,9 +32,10 @@ function WhatsAppIcon() {
     setShowNumberOptions(!showNumberOptions);
   };
 
-  const handleNumberClick = (isUSA) => {
-    if (isUSA) {
-      window.open("https://wa.me/18333700333", "_blank");
+  const handleNumberClick = (isCanada) => {
+    if (isCanada) {
+      window.open("https://wa.me/14167007091", "_blank"); 
+      
     } else {
       window.open("https://wa.me/919850083751", "_blank");
     }
@@ -59,22 +60,22 @@ function WhatsAppIcon() {
             </div>
           </div>
 
-          {/* USA Option */}
+          {/* Canada Option */}
           <div 
             className={`flex items-center gap-4 p-3 my-2 rounded-lg cursor-pointer transition-all duration-200 
-                       ${hoveredOption === 'usa' 
+                       ${hoveredOption === 'canada' 
                          ? 'bg-green-50 border-2 border-green-500 transform -translate-x-1 shadow-md' 
                          : 'bg-gray-50 border-2 border-transparent'}`}
             onClick={() => handleNumberClick(true)}
-            onMouseEnter={() => setHoveredOption('usa')}
+            onMouseEnter={() => setHoveredOption('canada')}
             onMouseLeave={() => setHoveredOption(null)}
           >
             <div className="text-xl w-9 h-9 flex items-center justify-center rounded-full bg-white shadow-md">
-              🇺🇸
+              🇨🇦
             </div>
             <div className="flex-1 flex flex-col">
-              <div className="font-semibold text-gray-800 text-sm mb-0.5">USA Support</div>
-              <div className="text-green-600 font-bold text-xs">+1 (833) 370-0333</div>
+              <div className="font-semibold text-gray-800 text-sm mb-0.5">Canada Support</div>
+              <div className="text-green-600 font-bold text-xs">+1 (416) 700-7091</div>
             </div>
             <div className="text-green-600 text-lg">→</div>
           </div>

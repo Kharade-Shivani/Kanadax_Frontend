@@ -359,35 +359,7 @@ const Home = () => {
             </div>
           )}
 
-          <div className="absolute bottom-4 right-4 flex items-center gap-2 z-20">
-            <button
-              onClick={toggleVideoPlay}
-              className="bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition"
-              aria-label={isVideoPlaying ? "Pause video" : "Play video"}
-            >
-              {isVideoPlaying ? (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              ) : (
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              )}
-            </button>
-
-            <button
-              onClick={toggleVideoMute}
-              className="bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition"
-              aria-label="Toggle mute"
-            >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072M12 6l-2.121 2.121m0 0A5 5 0 1015.536 15.54M12 18" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707 C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-              </svg>
-            </button>
-          </div>
+        
         </div>
       </section>
 
@@ -1172,7 +1144,7 @@ const Home = () => {
               <img 
                 src="/image.avif"
                 alt="Testimonials Background"
-                className="object-cover w-full h-full opacity-35"
+                className="object-cover w-full h-full opacity-15"
               />
               <div className="absolute inset-0 bg-black/30"></div>
             </div>
@@ -1181,10 +1153,10 @@ const Home = () => {
           <div className="relative z-10">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
               <div className="text-center mb-12 md:mb-16">
-                <h2 className="text-[30px] font-bold text-black mb-4 md:mb-6 drop-shadow-lg">
+                <h2 className="text-[30px] font-bold text-white mb-4 md:mb-6 drop-shadow-lg">
                   What Our <span className="text-red-600">Clients Say</span>
                 </h2>
-                <p className="text-[22px] text-gray-900 max-w-3xl mx-auto px-4 drop-shadow">
+                <p className="text-[22px] text-gray-200 max-w-3xl mx-auto px-4 drop-shadow">
                   KANDAX is a transformative technology partner, uniquely fusing Canadian accountability with Indian execution to own outcomes.
                 </p>
               </div>
@@ -1220,56 +1192,43 @@ const Home = () => {
                   {/* Left Column - Kandax Verified Section */}
                   <div className="flex flex-col items-center justify-center text-center">
                     <div className="mb-6 md:mb-8">
-                      <h3 className="text-2xl md:text-3xl font-bold text-black mb-2 drop-shadow">Zplus Verified</h3>
-                      <p className="text-gray-900 text-lg mb-6 drop-shadow">Top-rated IT Services Provider</p>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow">Zplus Verified</h3>
+                      <p className="text-gray-200 text-lg mb-6 drop-shadow">Top-rated IT Services Provider</p>
                       {/* Rating Display */}
-                   <div className="flex flex-col items-center mb-4">
+                    <div className="flex flex-col items-center mb-4">
   <div className="flex mb-2">
-
-    {/* 4 Full Stars */}
-    {[...Array(4)].map((_, i) => (
-      <svg
-        key={i}
-        className="w-8 h-8 md:w-10 md:h-10 text-yellow-400 drop-shadow"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-      >
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-      </svg>
-    ))}
-
-    {/* 70% Filled Star */}
-    <div className="relative w-8 h-8 md:w-10 md:h-10">
-      {/* Gray star */}
-      <svg
-        className="absolute text-gray-400 w-full h-full"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-      >
-        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-      </svg>
-
-      {/* Yellow 70% fill */}
-      <div className="absolute top-0 left-0 h-full overflow-hidden" style={{ width: "70%" }}>
-        <svg
-          className="text-yellow-400 w-full h-full"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-        >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-      </div>
-    </div>
-
+    {[...Array(5)].map((_, i) => {
+      // 4.7 rating means:
+      // - 4 full stars
+      // - 1 partial star (70% filled)
+      if (i < 4) {
+        // Full stars for first 4
+        return (
+          <svg key={i} className="w-8 h-8 md:w-10 md:h-10 text-yellow-400 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+        );
+      } else {
+        // 5th star - partial fill (70%)
+        return (
+          <div key={i} className="relative">
+            <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-300 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+            <div className="absolute top-0 left-0 overflow-hidden" style={{ width: '70%' }}>
+              <svg className="w-8 h-8 md:w-10 md:h-10 text-yellow-400 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+            </div>
+          </div>
+        );
+      }
+    })}
   </div>
-
   <div>
-    <span className="text-3xl md:text-4xl font-bold text-white drop-shadow">
-      4.7
-    </span>
+    <span className="text-3xl md:text-4xl font-bold text-white drop-shadow">4.7</span>
   </div>
 </div>
-
                     </div>
                   </div>
                   
