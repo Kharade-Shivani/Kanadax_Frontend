@@ -1,190 +1,333 @@
-import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
-function ITHelp() {
+function ITHelpDesk() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('onsite');
   const [activeService, setActiveService] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
+  const [isVisible, setIsVisible] = useState({});
+  const [stats, setStats] = useState({
+    responseTime: 0,
+    resolutionRate: 0,
+    supportCoverage: 0,
+    supportedCompanies: 0
+  });
+
+  const sectionsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('data-section-id');
+            setIsVisible(prev => ({ ...prev, [id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-50px' }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Animate stats counter
+  useEffect(() => {
+    if (!isVisible.hero) return;
+
+    const finalStats = {
+      responseTime: 15,
+      resolutionRate: 99,
+      supportCoverage: 24,
+      supportedCompanies: 50
+    };
+
+    const duration = 2000;
+    const steps = 60;
+    const interval = duration / steps;
+
+    const counters = {};
+    Object.keys(finalStats).forEach(key => {
+      counters[key] = setInterval(() => {
+        setStats(prev => {
+          const current = prev[key];
+          const target = finalStats[key];
+          const increment = (target - current) / 10;
+          return {
+            ...prev,
+            [key]: current + increment > target ? target : current + increment
+          };
+        });
+      }, interval);
+    });
+
+    setTimeout(() => {
+      Object.values(counters).forEach(clearInterval);
+      setStats(finalStats);
+    }, duration);
+
+    return () => {
+      Object.values(counters).forEach(clearInterval);
+    };
+  }, [isVisible.hero]);
 
   const itHelpServices = [
     {
       icon: "🖥️",
-      title: "Help Desk Support",
-      description: "24/7 technical support for end-users and immediate issue resolution",
-      features: ["Phone Support", "Email Support", "Chat Support", "Remote Assistance", "Ticket Management"]
+      title: t('itHelpDeskPage.services.items.0.title'),
+      description: t('itHelpDeskPage.services.items.0.description'),
+      features: [
+        t('itHelpDeskPage.services.items.0.features.0'),
+        t('itHelpDeskPage.services.items.0.features.1'),
+        t('itHelpDeskPage.services.items.0.features.2'),
+        t('itHelpDeskPage.services.items.0.features.3'),
+        t('itHelpDeskPage.services.items.0.features.4')
+      ]
     },
     {
       icon: "🔧",
-      title: "IT Infrastructure Management",
-      description: "Proactive management and maintenance of your IT infrastructure",
-      features: ["Server Management", "Network Monitoring", "Patch Management", "Performance Optimization", "Capacity Planning"]
+      title: t('itHelpDeskPage.services.items.1.title'),
+      description: t('itHelpDeskPage.services.items.1.description'),
+      features: [
+        t('itHelpDeskPage.services.items.1.features.0'),
+        t('itHelpDeskPage.services.items.1.features.1'),
+        t('itHelpDeskPage.services.items.1.features.2'),
+        t('itHelpDeskPage.services.items.1.features.3'),
+        t('itHelpDeskPage.services.items.1.features.4')
+      ]
     },
     {
       icon: "👥",
-      title: "User Account Management",
-      description: "Comprehensive user lifecycle management and access control",
-      features: ["Account Provisioning", "Access Management", "Password Resets", "Group Policy Management", "Directory Services"]
+      title: t('itHelpDeskPage.services.items.2.title'),
+      description: t('itHelpDeskPage.services.items.2.description'),
+      features: [
+        t('itHelpDeskPage.services.items.2.features.0'),
+        t('itHelpDeskPage.services.items.2.features.1'),
+        t('itHelpDeskPage.services.items.2.features.2'),
+        t('itHelpDeskPage.services.items.2.features.3'),
+        t('itHelpDeskPage.services.items.2.features.4')
+      ]
     },
     {
       icon: "📞",
-      title: "On-site Support",
-      description: "Professional on-site technical support for hardware and network issues",
-      features: ["Hardware Installation", "Network Troubleshooting", "Equipment Setup", "Cable Management", "Inventory Management"]
+      title: t('itHelpDeskPage.services.items.3.title'),
+      description: t('itHelpDeskPage.services.items.3.description'),
+      features: [
+        t('itHelpDeskPage.services.items.3.features.0'),
+        t('itHelpDeskPage.services.items.3.features.1'),
+        t('itHelpDeskPage.services.items.3.features.2'),
+        t('itHelpDeskPage.services.items.3.features.3'),
+        t('itHelpDeskPage.services.items.3.features.4')
+      ]
     },
     {
       icon: "🛡️",
-      title: "Security Support",
-      description: "Ongoing security monitoring, updates, and threat response",
-      features: ["Security Updates", "Antivirus Management", "Firewall Configuration", "Security Audits", "Incident Response"]
+      title: t('itHelpDeskPage.services.items.4.title'),
+      description: t('itHelpDeskPage.services.items.4.description'),
+      features: [
+        t('itHelpDeskPage.services.items.4.features.0'),
+        t('itHelpDeskPage.services.items.4.features.1'),
+        t('itHelpDeskPage.services.items.4.features.2'),
+        t('itHelpDeskPage.services.items.4.features.3'),
+        t('itHelpDeskPage.services.items.4.features.4')
+      ]
     },
     {
       icon: "☁️",
-      title: "Cloud Support",
-      description: "Expert support for cloud platforms and cloud-based applications",
-      features: ["Cloud Migration", "Cloud Optimization", "SaaS Management", "Cloud Security", "Cost Management"]
+      title: t('itHelpDeskPage.services.items.5.title'),
+      description: t('itHelpDeskPage.services.items.5.description'),
+      features: [
+        t('itHelpDeskPage.services.items.5.features.0'),
+        t('itHelpDeskPage.services.items.5.features.1'),
+        t('itHelpDeskPage.services.items.5.features.2'),
+        t('itHelpDeskPage.services.items.5.features.3'),
+        t('itHelpDeskPage.services.items.5.features.4')
+      ]
     },
     {
       icon: "📱",
-      title: "Mobile Device Management",
-      description: "Comprehensive support for mobile devices and BYOD policies",
-      features: ["Device Enrollment", "App Management", "Security Policies", "Remote Wipe", "Troubleshooting"]
+      title: t('itHelpDeskPage.services.items.6.title'),
+      description: t('itHelpDeskPage.services.items.6.description'),
+      features: [
+        t('itHelpDeskPage.services.items.6.features.0'),
+        t('itHelpDeskPage.services.items.6.features.1'),
+        t('itHelpDeskPage.services.items.6.features.2'),
+        t('itHelpDeskPage.services.items.6.features.3'),
+        t('itHelpDeskPage.services.items.6.features.4')
+      ]
     },
     {
       icon: "📊",
-      title: "IT Reporting & Analytics",
-      description: "Detailed reporting and analytics for IT performance and trends",
-      features: ["Service Level Reporting", "Performance Metrics", "Trend Analysis", "Budget Planning", "ROI Analysis"]
+      title: t('itHelpDeskPage.services.items.7.title'),
+      description: t('itHelpDeskPage.services.items.7.description'),
+      features: [
+        t('itHelpDeskPage.services.items.7.features.0'),
+        t('itHelpDeskPage.services.items.7.features.1'),
+        t('itHelpDeskPage.services.items.7.features.2'),
+        t('itHelpDeskPage.services.items.7.features.3'),
+        t('itHelpDeskPage.services.items.7.features.4')
+      ]
     }
   ];
 
   const supportLevels = {
     onsite: [
-      { name: "Hardware Troubleshooting", level: "Expert" },
-      { name: "Software Installation", level: "Advanced" },
-      { name: "Network Setup", level: "Expert" },
-      { name: "Printer/Device Support", level: "Advanced" },
-      { name: "Data Recovery", level: "Expert" },
-      { name: "System Diagnostics", level: "Advanced" }
+      { name: "Hardware Troubleshooting", level: t('itHelpDeskPage.expertise.levels.expert') },
+      { name: "Software Installation", level: t('itHelpDeskPage.expertise.levels.advanced') },
+      { name: "Network Setup", level: t('itHelpDeskPage.expertise.levels.expert') },
+      { name: "Printer/Device Support", level: t('itHelpDeskPage.expertise.levels.advanced') },
+      { name: "Data Recovery", level: t('itHelpDeskPage.expertise.levels.expert') },
+      { name: "System Diagnostics", level: t('itHelpDeskPage.expertise.levels.advanced') }
     ],
     remote: [
-      { name: "Remote Desktop Support", level: "Expert" },
-      { name: "VPN Configuration", level: "Advanced" },
-      { name: "Email Setup", level: "Expert" },
-      { name: "Software Troubleshooting", level: "Advanced" },
-      { name: "Security Updates", level: "Expert" },
-      { name: "Cloud Support", level: "Advanced" }
+      { name: "Remote Desktop Support", level: t('itHelpDeskPage.expertise.levels.expert') },
+      { name: "VPN Configuration", level: t('itHelpDeskPage.expertise.levels.advanced') },
+      { name: "Email Setup", level: t('itHelpDeskPage.expertise.levels.expert') },
+      { name: "Software Troubleshooting", level: t('itHelpDeskPage.expertise.levels.advanced') },
+      { name: "Security Updates", level: t('itHelpDeskPage.expertise.levels.expert') },
+      { name: "Cloud Support", level: t('itHelpDeskPage.expertise.levels.advanced') }
     ],
     network: [
-      { name: "Network Security", level: "Expert" },
-      { name: "Firewall Management", level: "Advanced" },
-      { name: "Wi-Fi Optimization", level: "Expert" },
-      { name: "Server Maintenance", level: "Advanced" },
-      { name: "Backup Solutions", level: "Expert" },
-      { name: "Disaster Recovery", level: "Advanced" }
+      { name: "Network Security", level: t('itHelpDeskPage.expertise.levels.expert') },
+      { name: "Firewall Management", level: t('itHelpDeskPage.expertise.levels.advanced') },
+      { name: "Wi-Fi Optimization", level: t('itHelpDeskPage.expertise.levels.expert') },
+      { name: "Server Maintenance", level: t('itHelpDeskPage.expertise.levels.advanced') },
+      { name: "Backup Solutions", level: t('itHelpDeskPage.expertise.levels.expert') },
+      { name: "Disaster Recovery", level: t('itHelpDeskPage.expertise.levels.advanced') }
     ]
   };
 
   const supportProjects = [
     {
       id: 1,
-      title: "Global Retail IT Support",
-      description: "Provided 24/7 IT support for 500+ retail stores across 3 continents",
-      category: "Retail Support",
-      tech: ["Point of Sale Systems", "Network Infrastructure", "Inventory Management", "Security Systems", "Mobile Devices"],
-      results: ["99.9% system uptime achieved", "Issue resolution time reduced by 70%", "Store productivity increased by 25%"]
+      title: t('itHelpDeskPage.projects.items.0.title'),
+      description: t('itHelpDeskPage.projects.items.0.description'),
+      category: t('itHelpDeskPage.projects.items.0.category'),
+      results: [
+        t('itHelpDeskPage.projects.items.0.results.0'),
+        t('itHelpDeskPage.projects.items.0.results.1'),
+        t('itHelpDeskPage.projects.items.0.results.2')
+      ]
     },
     {
       id: 2,
-      title: "Healthcare System Help Desk",
-      description: "Managed IT support for large hospital network with 10,000+ users",
-      category: "Healthcare Support",
-      tech: ["Electronic Health Records", "Medical Devices", "Telemedicine", "HIPAA Compliance", "Critical Systems"],
-      results: ["Clinical workflow uninterrupted", "IT ticket response time under 5 minutes", "Physician satisfaction 98%"]
+      title: t('itHelpDeskPage.projects.items.1.title'),
+      description: t('itHelpDeskPage.projects.items.1.description'),
+      category: t('itHelpDeskPage.projects.items.1.category'),
+      results: [
+        t('itHelpDeskPage.projects.items.1.results.0'),
+        t('itHelpDeskPage.projects.items.1.results.1'),
+        t('itHelpDeskPage.projects.items.1.results.2')
+      ]
     },
     {
       id: 3,
-      title: "Financial Trading Floor Support",
-      description: "Mission-critical IT support for high-frequency trading environment",
-      category: "Financial Support",
-      tech: ["Trading Platforms", "Market Data Feeds", "Low-latency Networks", "Security Systems", "Backup Power"],
-      results: ["Zero trading interruptions", "Millisecond response times", "Regulatory compliance maintained"]
+      title: t('itHelpDeskPage.projects.items.2.title'),
+      description: t('itHelpDeskPage.projects.items.2.description'),
+      category: t('itHelpDeskPage.projects.items.2.category'),
+      results: [
+        t('itHelpDeskPage.projects.items.2.results.0'),
+        t('itHelpDeskPage.projects.items.2.results.1'),
+        t('itHelpDeskPage.projects.items.2.results.2')
+      ]
     },
     {
       id: 4,
-      title: "Manufacturing Plant IT Support",
-      description: "Industrial IT support for automated manufacturing facilities",
-      category: "Manufacturing Support",
-      tech: ["SCADA Systems", "IoT Devices", "Robotics", "Production Lines", "Quality Control"],
-      results: ["Production efficiency increased by 30%", "Equipment downtime reduced by 80%", "Quality defects decreased by 45%"]
+      title: t('itHelpDeskPage.projects.items.3.title'),
+      description: t('itHelpDeskPage.projects.items.3.description'),
+      category: t('itHelpDeskPage.projects.items.3.category'),
+      results: [
+        t('itHelpDeskPage.projects.items.3.results.0'),
+        t('itHelpDeskPage.projects.items.3.results.1'),
+        t('itHelpDeskPage.projects.items.3.results.2')
+      ]
     },
     {
       id: 5,
-      title: "Education Technology Support",
-      description: "Comprehensive IT support for university with 50,000+ students and staff",
-      category: "Education Support",
-      tech: ["Learning Management Systems", "Campus Networks", "Research Computing", "Student Portals", "Administrative Systems"],
-      results: ["Student satisfaction 95%", "System availability 99.99%", "IT support costs reduced by 40%"]
+      title: t('itHelpDeskPage.projects.items.4.title'),
+      description: t('itHelpDeskPage.projects.items.4.description'),
+      category: t('itHelpDeskPage.projects.items.4.category'),
+      results: [
+        t('itHelpDeskPage.projects.items.4.results.0'),
+        t('itHelpDeskPage.projects.items.4.results.1'),
+        t('itHelpDeskPage.projects.items.4.results.2')
+      ]
     },
     {
       id: 6,
-      title: "Legal Firm IT Management",
-      description: "Managed IT services for international law firm with strict security requirements",
-      category: "Legal Support",
-      tech: ["Document Management", "Client Portals", "Secure Communications", "Case Management", "Compliance Systems"],
-      results: ["Client data security 100%", "Attorney productivity increased 35%", "Audit compliance simplified"]
+      title: t('itHelpDeskPage.projects.items.5.title'),
+      description: t('itHelpDeskPage.projects.items.5.description'),
+      category: t('itHelpDeskPage.projects.items.5.category'),
+      results: [
+        t('itHelpDeskPage.projects.items.5.results.0'),
+        t('itHelpDeskPage.projects.items.5.results.1'),
+        t('itHelpDeskPage.projects.items.5.results.2')
+      ]
     },
     {
       id: 7,
-      title: "Media Company Cloud Migration Support",
-      description: "Supported large media company's transition to cloud-based workflows",
-      category: "Media Support",
-      tech: ["Content Management", "Video Editing", "Digital Asset Management", "Broadcast Systems", "Streaming Platforms"],
-      results: ["Production time reduced by 50%", "Collaboration improved globally", "Content delivery accelerated"]
+      title: t('itHelpDeskPage.projects.items.6.title'),
+      description: t('itHelpDeskPage.projects.items.6.description'),
+      category: t('itHelpDeskPage.projects.items.6.category'),
+      results: [
+        t('itHelpDeskPage.projects.items.6.results.0'),
+        t('itHelpDeskPage.projects.items.6.results.1'),
+        t('itHelpDeskPage.projects.items.6.results.2')
+      ]
     },
     {
       id: 8,
-      title: "Non-profit Organization IT Modernization",
-      description: "Transformed IT support for humanitarian organization operating in challenging environments",
-      category: "Non-profit Support",
-      tech: ["Field Communications", "Data Collection", "Resource Planning", "Donor Management", "Mobile Solutions"],
-      results: ["Field operations efficiency doubled", "Aid delivery accelerated by 60%", "Administrative overhead reduced 70%"]
+      title: t('itHelpDeskPage.projects.items.7.title'),
+      description: t('itHelpDeskPage.projects.items.7.description'),
+      category: t('itHelpDeskPage.projects.items.7.category'),
+      results: [
+        t('itHelpDeskPage.projects.items.7.results.0'),
+        t('itHelpDeskPage.projects.items.7.results.1'),
+        t('itHelpDeskPage.projects.items.7.results.2')
+      ]
     }
   ];
+
   const supportProcess = [
     {
       step: "01",
-      title: "Issue Reporting",
-      description: "Multiple channels for users to report IT issues instantly",
+      title: t('itHelpDeskPage.process.steps.0.title'),
+      description: t('itHelpDeskPage.process.steps.0.description'),
       icon: "📱"
     },
     {
       step: "02",
-      title: "Ticket Creation",
-      description: "Automated ticket generation with priority assignment",
+      title: t('itHelpDeskPage.process.steps.1.title'),
+      description: t('itHelpDeskPage.process.steps.1.description'),
       icon: "🎫"
     },
     {
       step: "03",
-      title: "Immediate Response",
-      description: "First response within 15 minutes for critical issues",
+      title: t('itHelpDeskPage.process.steps.2.title'),
+      description: t('itHelpDeskPage.process.steps.2.description'),
       icon: "⚡"
     },
     {
       step: "04",
-      title: "Diagnosis & Resolution",
-      description: "Expert analysis and solution implementation",
+      title: t('itHelpDeskPage.process.steps.3.title'),
+      description: t('itHelpDeskPage.process.steps.3.description'),
       icon: "🔧"
     },
     {
       step: "05",
-      title: "Quality Check",
-      description: "Verification of solution and user satisfaction",
+      title: t('itHelpDeskPage.process.steps.4.title'),
+      description: t('itHelpDeskPage.process.steps.4.description'),
       icon: "✅"
     },
     {
       step: "06",
-      title: "Preventive Measures",
-      description: "Implement safeguards to prevent recurrence",
+      title: t('itHelpDeskPage.process.steps.5.title'),
+      description: t('itHelpDeskPage.process.steps.5.description'),
       icon: "🛡️"
     }
   ];
@@ -192,32 +335,35 @@ function ITHelp() {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
       {/* ===== HERO SECTION ===== */}
-      <section className="relative overflow-hidden py-20 md:py-32">
-        {/* Background Image with Overlay - ONLY for the section */}
+      <section 
+        className="relative overflow-hidden py-20 md:py-32"
+        ref={el => sectionsRef.current[0] = el}
+        data-section-id="hero"
+      >
+        {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="/pic1.jpg" // Your background image path
+            src="/pic1.jpg"
             alt="IT Help Desk Background"
             className="w-full h-full object-cover"
           />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-on-scroll ${isVisible.hero ? 'visible' : ''}`}>
             {/* LEFT CONTENT */}
             <div className="text-left">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="text-gray-900">
-                  24/7 IT Help Desk &
+                  {t('itHelpDeskPage.hero.title1')}
                 </span>
                 <br />
                 <span className="mt-2 inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-gray-800 to-red-800">
-                  Technical Support
+                  {t('itHelpDeskPage.hero.title2')}
                 </span>
               </h1>
               <p className="mt-6 text-xl md:text-2xl text-gray-700 max-w-3xl leading-relaxed">
-                Immediate technical support and issue resolution ensuring your business operations
-                run smoothly 24/7 with guaranteed response times and expert solutions.
+                {t('itHelpDeskPage.hero.description')}
               </p>
             </div>
 
@@ -231,60 +377,85 @@ function ITHelp() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
-            <div className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all">
-              <div className="text-red-600 mb-3 text-2xl">⚡</div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">15 Min</div>
-              <div className="text-gray-600">Response Time</div>
-            </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all">
-              <div className="text-red-600 mb-3 text-2xl">✅</div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">99%</div>
-              <div className="text-gray-600">Resolution Rate</div>
-            </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all">
-              <div className="text-red-600 mb-3 text-2xl">🔄</div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">24/7</div>
-              <div className="text-gray-600">Support Coverage</div>
-            </div>
-            <div className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all">
-              <div className="text-red-600 mb-3 text-2xl">👥</div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">50+</div>
-              <div className="text-gray-600">Supported Companies</div>
-            </div>
+          {/* STATS GRID */}
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 animate-stagger ${isVisible.hero ? 'visible' : ''}`}>
+            {[
+              { 
+                icon: "⚡", 
+                value: stats.responseTime.toFixed(0), 
+                label: t('itHelpDeskPage.stats.responseTime'), 
+                suffix: " Min" 
+              },
+              { 
+                icon: "✅", 
+                value: stats.resolutionRate.toFixed(0), 
+                label: t('itHelpDeskPage.stats.resolutionRate'), 
+                suffix: "%" 
+              },
+              { 
+                icon: "🔄", 
+                value: stats.supportCoverage.toFixed(0), 
+                label: t('itHelpDeskPage.stats.supportCoverage'), 
+                suffix: "/7" 
+              },
+              { 
+                icon: "👥", 
+                value: stats.supportedCompanies.toFixed(0), 
+                label: t('itHelpDeskPage.stats.supportedCompanies'), 
+                suffix: "+" 
+              }
+            ].map((stat, index) => (
+              <div 
+                key={index}
+                className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all"
+              >
+                <div className="text-red-600 mb-3 text-2xl">
+                  {stat.icon}
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">
+                  {stat.value}{stat.suffix}
+                </div>
+                <div className="text-gray-600">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ===== SERVICES SECTION ===== */}
-      <section id="services" className="relative py-12 md:py-16">
-        {/* Background Image with Overlay - ONLY for the section */}
+      <section 
+        id="services" 
+        className="relative py-12 md:py-16"
+        ref={el => sectionsRef.current[1] = el}
+        data-section-id="services"
+      >
         <div className="absolute inset-0 z-0">
           <img
-            src="/image.avif" // Your background image path
+            src="/image.avif"
             alt="IT Support Services Background"
             className="w-full h-full object-cover opacity-25"
           />
         </div>
 
         <div className="relative z-10">
-          <div className="text-center mb-8 md:mb-12">
+          <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.services ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Our IT Support <span className="text-red-600">Services</span>
+              {t('itHelpDeskPage.services.title')}
             </h2>
             <p className="text-gray-700 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              Comprehensive technical support solutions to keep your business running smoothly
+              {t('itHelpDeskPage.services.subtitle')}
             </p>
           </div>
 
           <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+            <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 animate-stagger ${isVisible.services ? 'visible' : ''}`}>
               {itHelpServices.map((service, index) => (
                 <div
                   key={index}
-                  className={`group relative transition-all duration-500 ease-out cursor-pointer flex flex-col ${activeService === index
-                    ? 'rounded-xl border-red-600 shadow-lg bg-white'
-                    : 'rounded-lg border-gray-200 bg-white hover:border-gray-300'
+                  className={`group relative transition-all duration-500 ease-out cursor-pointer flex flex-col ${
+                    activeService === index
+                      ? 'rounded-xl border-red-600 shadow-lg bg-white'
+                      : 'rounded-lg border-gray-200 bg-white hover:border-gray-300'
                     }`}
                   style={{
                     borderWidth: '1px',
@@ -299,7 +470,7 @@ function ITHelp() {
                   onMouseLeave={() => setActiveService(null)}
                 >
                   <div className="flex flex-col h-full">
-                    {/* Icon and Title Container - Always visible */}
+                    {/* Icon and Title Container */}
                     <div className={`flex flex-col items-center justify-center flex-1 ${activeService === index ? '' : 'h-full'
                       }`}>
                       {/* Icon */}
@@ -317,15 +488,13 @@ function ITHelp() {
                       </h3>
                     </div>
 
-                    {/* Details - Only show when this card is active */}
+                    {/* Details */}
                     {activeService === index && (
-                      <div className="animate-fadeIn mt-4">
-                        {/* Description */}
+                      <div className="mt-4">
                         <p className="text-gray-600 mb-4 text-[14px] leading-relaxed text-center">
                           {service.description}
                         </p>
 
-                        {/* Features */}
                         <ul className="space-y-2 mb-4">
                           {service.features.map((feature, i) => (
                             <li key={i} className="flex items-start text-[13px] leading-snug">
@@ -345,58 +514,49 @@ function ITHelp() {
       </section>
 
       {/* ===== EXPERTISE SECTION ===== */}
-      <section className="relative py-20">
-        {/* Background Image with Overlay - ONLY for the section */}
+      <section 
+        className="relative py-20"
+        ref={el => sectionsRef.current[2] = el}
+        data-section-id="expertise"
+      >
         <div className="absolute inset-0 z-0">
           <img
-            src="/gree.jpg" // Your background image path
+            src="/gree.jpg"
             alt="Technical Support Expertise Background"
             className="w-full h-full object-cover opacity-25"
           />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="text-center mb-16">
+          <div className={`text-center mb-16 animate-on-scroll ${isVisible.expertise ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Technical Support <span className="text-red-600">Expertise</span>
+              {t('itHelpDeskPage.expertise.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Specialized skills across all IT support domains
+              {t('itHelpDeskPage.expertise.subtitle')}
             </p>
           </div>
 
           <div className="mb-8">
-            <div className="flex flex-wrap gap-4 justify-center mb-8">
-              <button
-                onClick={() => setActiveTab('onsite')}
-                className={`px-6 py-3 rounded-lg font-medium transition ${activeTab === 'onsite'
-                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-                  }`}
-              >
-                On-site Support
-              </button>
-              <button
-                onClick={() => setActiveTab('remote')}
-                className={`px-6 py-3 rounded-lg font-medium transition ${activeTab === 'remote'
-                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-                  }`}
-              >
-                Remote Support
-              </button>
-              <button
-                onClick={() => setActiveTab('network')}
-                className={`px-6 py-3 rounded-lg font-medium transition ${activeTab === 'network'
-                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-                  }`}
-              >
-                Network & Security
-              </button>
+            <div className={`flex flex-wrap gap-4 justify-center mb-8 animate-stagger ${isVisible.expertise ? 'visible' : ''}`}>
+              {['onsite', 'remote', 'network'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-6 py-3 rounded-lg font-medium transition ${
+                    activeTab === tab
+                      ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg'
+                      : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                    }`}
+                >
+                  {tab === 'onsite' ? t('itHelpDeskPage.expertise.tabs.onsite') : 
+                   tab === 'remote' ? t('itHelpDeskPage.expertise.tabs.remote') : 
+                   t('itHelpDeskPage.expertise.tabs.network')}
+                </button>
+              ))}
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 animate-stagger ${isVisible.expertise ? 'visible' : ''}`}>
               {supportLevels[activeTab].map((tech, index) => (
                 <div
                   key={index}
@@ -405,8 +565,8 @@ function ITHelp() {
                   <div className="text-lg font-bold text-gray-900 mb-2">
                     {tech.name}
                   </div>
-                  <div className={`text-sm font-medium ${tech.level === 'Expert' ? 'text-green-600' :
-                    tech.level === 'Advanced' ? 'text-blue-600' :
+                  <div className={`text-sm font-medium ${tech.level === t('itHelpDeskPage.expertise.levels.expert') ? 'text-green-600' :
+                    tech.level === t('itHelpDeskPage.expertise.levels.advanced') ? 'text-blue-600' :
                       'text-amber-600'
                     }`}>
                     {tech.level}
@@ -418,28 +578,31 @@ function ITHelp() {
         </div>
       </section>
 
-      {/* ===== SUPPORT PROCESS SECTION ===== */}
-      <section className="relative py-20">
-        {/* Background Image with Overlay - ONLY for the section */}
+      {/* ===== PROCESS SECTION ===== */}
+      <section 
+        className="relative py-20"
+        ref={el => sectionsRef.current[3] = el}
+        data-section-id="process"
+      >
         <div className="absolute inset-0 z-0">
           <img
-            src="/image.avif" // Your background image path
+            src="/image.avif"
             alt="Support Process Background"
             className="w-full h-full object-cover opacity-25"
           />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <div className="text-center mb-16">
+          <div className={`text-center mb-16 animate-on-scroll ${isVisible.process ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Our Support <span className="text-red-600">Process</span>
+              {t('itHelpDeskPage.process.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Efficient workflow ensuring rapid issue resolution and maximum uptime
+              {t('itHelpDeskPage.process.subtitle')}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-stagger ${isVisible.process ? 'visible' : ''}`}>
             {supportProcess.map((step, index) => (
               <div
                 key={index}
@@ -461,24 +624,28 @@ function ITHelp() {
         </div>
       </section>
 
-      {/* ===== CASE STUDIES SECTION ===== */}
-      <section className="relative py-12 md:py-16" id="projects">
-        {/* Background Image with Overlay - ONLY for the section */}
+      {/* ===== PROJECTS SECTION ===== */}
+      <section 
+        className="relative py-12 md:py-16" 
+        id="projects"
+        ref={el => sectionsRef.current[4] = el}
+        data-section-id="projects"
+      >
         <div className="absolute inset-0 z-0">
           <img
-            src="/green.avif" // Your background image path
+            src="/green.avif"
             alt="Support Success Stories Background"
             className="w-full h-full object-cover"
           />
         </div>
 
         <div className="relative z-10">
-          <div className="text-center mb-8 md:mb-12">
+          <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.projects ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Support <span className="text-red-600">Success Stories</span>
+              {t('itHelpDeskPage.projects.title')}
             </h2>
             <p className="text-gray-700 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              Real-world examples of our IT support making a difference
+              {t('itHelpDeskPage.projects.subtitle')}
             </p>
           </div>
 
@@ -504,7 +671,7 @@ function ITHelp() {
                   onMouseLeave={() => setActiveProject(null)}
                 >
                   <div className="flex flex-col h-full">
-                    {/* Main Content Container - Always visible */}
+                    {/* Main Content Container */}
                     <div className={`flex flex-col items-center justify-center flex-1 ${activeProject === project.id ? '' : 'h-full'
                       }`}>
                       {/* Category Badge */}
@@ -524,32 +691,16 @@ function ITHelp() {
                       </h3>
                     </div>
 
-                    {/* Details - Only show when this card is active */}
+                    {/* Details */}
                     {activeProject === project.id && (
-                      <div className="animate-fadeIn mt-4">
-                        {/* Description */}
+                      <div className="mt-4">
                         <p className="text-gray-600 mb-4 text-[14px] leading-relaxed">
                           {project.description}
                         </p>
 
-                        {/* Support Areas */}
-                        <div className="mb-4">
-                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Support Areas:</h4>
-                          <div className="flex flex-wrap gap-1.5">
-                            {project.tech.map((tech, idx) => (
-                              <span
-                                key={idx}
-                                className="bg-gray-50 px-2 py-0.5 rounded text-xs text-gray-700 border border-gray-200"
-                              >
-                                {tech}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-
                         {/* Achievements */}
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Achievements:</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">{t('itHelpDeskPage.projects.results')}</h4>
                           <ul className="space-y-2">
                             {project.results.map((result, idx) => (
                               <li key={idx} className="flex items-start text-gray-700 text-[12px] leading-snug">
@@ -580,16 +731,23 @@ function ITHelp() {
           </div>
         </div>
       </section>
-      {/* ===== 10. FINAL CTA ===== */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-gray-900 to-black text-white">
+
+      {/* ===== FINAL CTA ===== */}
+      <section 
+        className="py-12 md:py-20 bg-gradient-to-br from-gray-900 to-black text-white"
+        ref={el => sectionsRef.current[5] = el}
+        data-section-id="cta"
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-          <h2 className="text-[30px] font-bold mb-4 md:mb-6">
-            Technology Is Everywhere. <span className="text-red-400">Ownership Is Rare</span>.
+          <h2 className={`text-[30px] font-bold mb-4 md:mb-6 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            {t('itHelpDeskPage.cta.title1')}{" "}
+            <span className="text-red-400">{t('itHelpDeskPage.cta.title2')}</span>
           </h2>
-          <p className="text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4">
-            Partner with a team that stays accountable from start to scale.
+          <p className={`text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            {t('itHelpDeskPage.cta.description')}
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8">
+          
+          <div className={`flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
             <a
               href="/contact"
               className="group inline-flex items-center justify-center gap-2
@@ -601,9 +759,7 @@ function ITHelp() {
                hover:bg-red-700
                transition-all duration-300"
             >
-              Let’s Talk
-
-              {/* Arrow appears on hover */}
+              {t('itHelpDeskPage.cta.button')}
               <svg
                 className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
                  group-hover:opacity-100 group-hover:translate-x-0
@@ -622,17 +778,60 @@ function ITHelp() {
             </a>
           </div>
 
-
-
-
-
-          <p className="mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0">
-            No bots. No runaround. Just real conversations with accountable partners.
+          <p className={`mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            {t('itHelpDeskPage.cta.subtext')}
           </p>
         </div>
       </section>
+
+      {/* Animation Styles */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .animate-stagger > * {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+        .animate-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+        .animate-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+        .animate-stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+        .animate-stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+        .animate-stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+        .animate-stagger.visible > *:nth-child(7) { transition-delay: 0.7s; }
+        .animate-stagger.visible > *:nth-child(8) { transition-delay: 0.8s; }
+        
+        .animate-stagger.visible > * {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease-out;
+        }
+      `}</style>
     </div>
   );
 }
 
-export default ITHelp;
+export default ITHelpDesk;

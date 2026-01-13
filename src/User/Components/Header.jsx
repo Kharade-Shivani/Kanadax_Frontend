@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { 
   Menu, 
   Headphones,
@@ -35,17 +36,39 @@ import {
   Linkedin,
   Instagram,
   Youtube,
-  Handshake
+  Handshake,
+  Languages
 } from 'lucide-react';
 
 function Header() {
+  const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [languageDropdown, setLanguageDropdown] = useState(false);
   const location = useLocation();
   const dropdownRef = useRef(null);
   const timeoutRef = useRef(null);
+  const languageRef = useRef(null);
+
+  // Get current language
+  const currentLanguage = i18n.language || 'en';
+
+  // Change language function - NO RTL changes
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    setLanguageDropdown(false);
+    // Keep direction LTR always
+    document.documentElement.dir = 'ltr';
+    document.documentElement.lang = lng;
+  };
+
+  // Set initial direction to LTR
+  useEffect(() => {
+    document.documentElement.dir = 'ltr';
+    document.documentElement.lang = currentLanguage;
+  }, [currentLanguage]);
   
   // Handle screen size detection
   useEffect(() => {
@@ -76,6 +99,9 @@ function Header() {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setActiveDropdown(null);
+      }
+      if (languageRef.current && !languageRef.current.contains(event.target)) {
+        setLanguageDropdown(false);
       }
     };
 
@@ -111,122 +137,123 @@ function Header() {
   useEffect(() => {
     setIsMenuOpen(false);
     setActiveDropdown(null);
+    setLanguageDropdown(false);
   }, [location.pathname]);
 
   // Navigation items
   const navItems = [
     { 
-      label: 'Home', 
+      label: t('header.home'),
       path: '/',
       dropdown: false,
       icon: HomeIcon
     },
     { 
-      label: 'About Us', 
+      label: t('header.about'),
       path: '/about',
       dropdown: false,
       icon: Users
     },
     { 
-      label: 'Services', 
+      label: t('header.services'),
       path: '#',
       dropdown: true,
       icon: Briefcase,
       items: [
         { 
           icon: Sparkles, 
-          label: 'Generative AI Solutions', 
-          description: 'Content generation & creative AI tools',
+          label: t('header.servicesDropdown.generativeAI.label'),
+          description: t('header.servicesDropdown.generativeAI.description'),
           path: '/generative-ai'
         },
         { 
           icon: Code, 
-          label: 'Web Development', 
-          description: 'Custom web applications & solutions',
+          label: t('header.servicesDropdown.webDev.label'),
+          description: t('header.servicesDropdown.webDev.description'),
           path: '/web-development'
         },
         { 
           icon: Server, 
-          label: 'Cloud Solutions', 
-          description: 'AWS, Azure & Google Cloud migration',
+          label: t('header.servicesDropdown.cloud.label'),
+          description: t('header.servicesDropdown.cloud.description'),
           path: '/cloud-solutions'
         },
         { 
           icon: Smartphone, 
-          label: 'Mobile App Development', 
-          description: 'iOS & Android applications',
+          label: t('header.servicesDropdown.mobile.label'),
+          description: t('header.servicesDropdown.mobile.description'),
           path: '/mobile-development'
         },
         { 
           icon: Database, 
-          label: 'Database Management', 
-          description: 'SQL, NoSQL & Data warehousing',
+          label: t('header.servicesDropdown.database.label'),
+          description: t('header.servicesDropdown.database.description'),
           path: '/database-management'
         },
         { 
           icon: Megaphone, 
-          label: 'Digital Marketing', 
-          description: 'Data-driven marketing strategies',
+          label: t('header.servicesDropdown.digitalMarketing.label'),
+          description: t('header.servicesDropdown.digitalMarketing.description'),
           path: '/digital-marketing'
         },
         { 
           icon: Shield, 
-          label: 'Cybersecurity', 
-          description: 'Advanced security solutions',
+          label: t('header.servicesDropdown.cybersecurity.label'),
+          description: t('header.servicesDropdown.cybersecurity.description'),
           path: '/cybersecurity'
         },
         { 
           icon: Zap, 
-          label: 'DevOps Services', 
-          description: 'CI/CD & automation solutions',
+          label: t('header.servicesDropdown.devops.label'),
+          description: t('header.servicesDropdown.devops.description'),
           path: '/devops-services'
         },
         { 
           icon: Briefcase, 
-          label: 'Technology Consulting', 
-          description: 'IT strategy, architecture & digital advisory',
+          label: t('header.servicesDropdown.consulting.label'),
+          description: t('header.servicesDropdown.consulting.description'),
           path: '/technology-consulting'
         },
         { 
           icon: Monitor, 
-          label: 'Remote Workplace Solutions', 
-          description: 'Secure remote work & collaboration tools',
+          label: t('header.servicesDropdown.remote.label'),
+          description: t('header.servicesDropdown.remote.description'),
           path: '/remote-workplace'
         },
         { 
           icon: HardDrive, 
-          label: 'Backup & Disaster Recovery', 
-          description: 'Business continuity & data protection',
+          label: t('header.servicesDropdown.backup.label'),
+          description: t('header.servicesDropdown.backup.description'),
           path: '/backup-disaster-recovery'
         },
         { 
           icon: Headphones, 
-          label: 'IT Help Desk Services', 
-          description: '24/7 technical support & issue resolution',
+          label: t('header.servicesDropdown.helpDesk.label'),
+          description: t('header.servicesDropdown.helpDesk.description'),
           path: '/help-desc'
         },
       ]
     },
     { 
-      label: 'Portfolio', 
+      label: t('header.portfolio'),
       path: '/portfolio',
       dropdown: false,
       icon: BarChart
     },
     { 
-      label: 'Our Partners',
+      label: t('header.partners'),
       path: '/partners',
       dropdown: false,
       icon: Handshake
     },
     { 
-      label: 'Team',  
+      label: t('header.team'),
       path: '/team',
       dropdown: false,
       icon: Users
     },
     { 
-      label: 'Contact Us', 
+      label: t('header.contact'),
       path: '/contact',
       dropdown: false,
       icon: MessageSquare
@@ -239,29 +266,27 @@ function Header() {
         scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white'
       }`}>
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mx-auto">
-          <div className="flex items-center justify-between py-2 md:py-3"> {/* Reduced py to accommodate larger logo */}
-            {/* Logo - INCREASED SIZE */}
+          <div className="flex items-center justify-between py-3 md:py-4">
+            {/* Logo */}
             <div className="flex items-center space-x-2 md:space-x-3">
               <Link to="/" className="flex items-center space-x-2 md:space-x-3">
-                {/* LARGER LOGO IMAGE - Increased from h-10 sm:h-12 md:h-14 to: */}
                 <img
                   src="/loggo.jpeg"
                   alt="KANDAX Logo"
-                  className="h-16 sm:h-20 md:h-24 w-auto object-contain" /* Increased size here */
+                  className="h-10 sm:h-12 md:h-14 w-auto object-contain"
                 />
                 <div className="hidden sm:block">
-                  {/* Adjusted text size to match larger logo */}
-                  <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
-                    KANDAX
+                  <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
+                    {t('header.company')}
                   </h1>
-                  <p className="text-sm text-red-600 -mt-1 font-medium"> {/* Increased text-sm */}
-                    Human-Led Technology
+                  <p className="text-xs text-red-600 -mt-1 font-medium">
+                    {t('header.tagline')}
                   </p>
                 </div>
               </Link>
             </div>
 
-            {/* Desktop Navigation - Show on lg screens and above */}
+            {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-4 xl:space-x-6 2xl:space-x-8">
               {navItems.map((item, index) => (
                 <div
@@ -335,27 +360,62 @@ function Header() {
                   )}
                 </div>
               ))}
+              
+              {/* Language Switcher - Desktop */}
+              <div className="relative" ref={languageRef}>
+                <button
+                  onClick={() => setLanguageDropdown(!languageDropdown)}
+                  className="flex items-center space-x-2 px-3 py-2 rounded-lg border border-gray-300 hover:border-red-600 text-gray-700 hover:text-red-600 transition-colors duration-200"
+                >
+                  <Languages className="w-4 h-4" />
+                  <span className="text-sm font-medium">{currentLanguage.toUpperCase()}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
+                    languageDropdown ? 'rotate-180' : ''
+                  }`} />
+                </button>
+
+                {languageDropdown && (
+                  <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg overflow-hidden z-50">
+                    <button
+                      onClick={() => changeLanguage('en')}
+                      className={`w-full text-left px-4 py-3 hover:bg-red-50 transition-colors ${
+                        currentLanguage === 'en' ? 'bg-red-50 text-red-600 font-medium' : 'text-gray-700'
+                      }`}
+                    >
+                      English
+                    </button>
+                    <button
+                      onClick={() => changeLanguage('ar')}
+                      className={`w-full text-left px-4 py-3 hover:bg-red-50 transition-colors ${
+                        currentLanguage === 'ar' ? 'bg-red-50 text-red-600 font-medium' : 'text-gray-700'
+                      }`}
+                    >
+                      العربية (Arabic)
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
 
-            {/* Action Buttons - Hidden on mobile, shown on tablet and up */}
+            {/* Action Buttons */}
             <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
               <a 
-                href="tel:+1 833-370-0333"
+                href="tel:+14167007091"
                 className="hidden lg:flex items-center space-x-2 px-3 py-2 rounded-lg border border-red-600 text-red-600 hover:bg-red-50 transition-colors duration-200 whitespace-nowrap"
               >
                 <Phone className="w-4 h-4 flex-shrink-0" />
-                <span className="text-sm">+1 833-370-0333</span>
+                <span className="text-sm">{t('header.phone')}</span>
               </a>
               <Link 
                 to="/contact"
                 className="px-4 py-2 lg:px-6 lg:py-2.5 rounded-lg bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-sm lg:text-base whitespace-nowrap"
               >
-                Get Started
+                {t('header.getStarted')}
               </Link>
             </div>
 
-            {/* Mobile/Tablet Phone Button - Show on mobile and tablet */}
-            <div className="flex md:hidden items-center space-x-2">
+            {/* Mobile Buttons */}
+            <div className="flex lg:hidden items-center space-x-2">
               <a 
                 href="tel:+14167007091"
                 className="flex items-center justify-center p-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors duration-200"
@@ -364,7 +424,6 @@ function Header() {
                 <Phone className="w-5 h-5" />
               </a>
               
-              {/* Mobile Menu Button */}
               <button
                 className="p-2 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white transition-all duration-300 hover:scale-105"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -379,7 +438,7 @@ function Header() {
         {/* Progress Indicator */}
         <div className="h-1 w-full bg-gradient-to-r from-red-600 via-red-400 to-red-600"></div>
 
-        {/* Mobile/Tablet Menu Overlay */}
+        {/* Mobile Menu Overlay */}
         {isMenuOpen && (
           <div 
             className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
@@ -387,23 +446,22 @@ function Header() {
           />
         )}
 
-        {/* Mobile/Tablet Menu Panel */}
+        {/* Mobile Menu Panel - Always opens from LEFT */}
         <div className={`lg:hidden fixed top-0 left-0 h-full w-full max-w-sm bg-white shadow-2xl transform transition-transform duration-300 ease-in-out z-50 ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
           <div className="h-full flex flex-col">
-            {/* Menu Header - Updated Logo Size */}
+            {/* Menu Header */}
             <div className="flex items-center justify-between p-4 border-b">
               <div className="flex items-center space-x-3">
-                {/* LARGER LOGO IN MOBILE MENU - Increased from h-10 to h-16 */}
                 <img
                   src="/loggo.jpeg"
                   alt="KANDAX Logo"
-                  className="h-16 w-auto object-contain" /* Increased size here */
+                  className="h-10 w-auto"
                 />
                 <div>
-                  <h1 className="text-xl font-bold text-gray-900">KANDAX</h1>
-                  <p className="text-xs text-red-600 font-medium">Human-Led Technology</p>
+                  <h1 className="text-xl font-bold text-gray-900">{t('header.company')}</h1>
+                  <p className="text-xs text-red-600 font-medium">{t('header.tagline')}</p>
                 </div>
               </div>
               <button
@@ -418,6 +476,38 @@ function Header() {
             {/* Scrollable Menu Content */}
             <div className="flex-1 overflow-y-auto custom-scrollbar py-4">
               <div className="px-4 space-y-2">
+                {/* Language Switcher - Mobile */}
+                <div className="mb-4 p-3 bg-gray-50 rounded-lg">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium text-gray-700 flex items-center">
+                      <Languages className="w-4 h-4 mr-2" />
+                      Language / اللغة
+                    </span>
+                  </div>
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => changeLanguage('en')}
+                      className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        currentLanguage === 'en' 
+                          ? 'bg-red-600 text-white' 
+                          : 'bg-white text-gray-700 border border-gray-300'
+                      }`}
+                    >
+                      English
+                    </button>
+                    <button
+                      onClick={() => changeLanguage('ar')}
+                      className={`flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                        currentLanguage === 'ar' 
+                          ? 'bg-red-600 text-white' 
+                          : 'bg-white text-gray-700 border border-gray-300'
+                      }`}
+                    >
+                      العربية
+                    </button>
+                  </div>
+                </div>
+
                 {navItems.map((item, index) => (
                   <div key={index} className="border-b border-gray-100 last:border-b-0">
                     {item.dropdown ? (
@@ -471,26 +561,40 @@ function Header() {
                   className="flex items-center justify-center space-x-2 py-3 rounded-lg bg-red-600 text-white hover:bg-red-700 transition-colors duration-200"
                 >
                   <Phone className="w-5 h-5" />
-                  <span className="font-medium"> +1 833-370-0333</span>
+                  <span className="font-medium">{t('header.callUs', { phone: t('header.phone') })}</span>
                 </a>
                 <Link 
                   to="/contact"
                   className="block py-3 rounded-lg bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-center hover:from-red-700 hover:to-red-800 transition-all duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  Get Started
+                  {t('header.getStarted')}
                 </Link>
-                
+                <div className="text-center pt-4">
+                  <p className="text-sm text-gray-600">{t('header.followUs')}</p>
+                  <div className="flex justify-center space-x-4 mt-3">
+                    {[Facebook, Twitter, Linkedin, Instagram, Youtube].map((Icon, index) => (
+                      <a
+                        key={index}
+                        href="#"
+                        className="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors duration-200"
+                        aria-label={`Follow on ${Icon.name}`}
+                      >
+                        <Icon className="w-5 h-5" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* INCREASED SPACER to prevent content from being hidden under larger header */}
-      <div className="h-20 md:h-28"></div> {/* Increased from h-16 md:h-20 */}
+      {/* Spacer */}
+      <div className="h-16 md:h-20"></div>
 
-      {/* Custom CSS for Scrollbar */}
+      {/* Custom CSS */}
       <style jsx>{`
         .custom-scrollbar {
           scrollbar-width: thin;
@@ -515,7 +619,6 @@ function Header() {
           background: #b91c1c;
         }
         
-        /* Line clamp utility */
         .line-clamp-2 {
           display: -webkit-box;
           -webkit-line-clamp: 2;

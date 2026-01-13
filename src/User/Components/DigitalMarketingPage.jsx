@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const DigitalMarketingPage = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -10,6 +12,12 @@ const DigitalMarketingPage = () => {
   });
   const [activeService, setActiveService] = useState(null);
   const [isVisible, setIsVisible] = useState({});
+  const [stats, setStats] = useState({
+    roi: 0,
+    leads: 0,
+    awareness: 0,
+    traffic: 0
+  });
   
   const sectionsRef = useRef([]);
 
@@ -32,6 +40,46 @@ const DigitalMarketingPage = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  // Animate stats counter
+  useEffect(() => {
+    if (!isVisible.hero) return;
+
+    const finalStats = {
+      roi: 42,
+      leads: 65,
+      awareness: 38,
+      traffic: 150
+    };
+
+    const duration = 2000;
+    const steps = 60;
+    const interval = duration / steps;
+
+    const counters = {};
+    Object.keys(finalStats).forEach(key => {
+      counters[key] = setInterval(() => {
+        setStats(prev => {
+          const current = prev[key];
+          const target = finalStats[key];
+          const increment = (target - current) / 10;
+          return {
+            ...prev,
+            [key]: current + increment > target ? target : current + increment
+          };
+        });
+      }, interval);
+    });
+
+    setTimeout(() => {
+      Object.values(counters).forEach(clearInterval);
+      setStats(finalStats);
+    }, duration);
+
+    return () => {
+      Object.values(counters).forEach(clearInterval);
+    };
+  }, [isVisible.hero]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -57,79 +105,145 @@ const DigitalMarketingPage = () => {
     {
       id: 1,
       icon: "🎯",
-      title: "SEO Optimization",
-      description: "Improve your website's visibility on search engines with proven SEO strategies",
-      features: ["Keyword Research", "On-page SEO", "Technical SEO", "Backlink Building", "Local SEO"]
+      title: t('digitalMarketingPage.services.items.0.title'),
+      description: t('digitalMarketingPage.services.items.0.description'),
+      features: [
+        t('digitalMarketingPage.services.items.0.features.0'),
+        t('digitalMarketingPage.services.items.0.features.1'),
+        t('digitalMarketingPage.services.items.0.features.2'),
+        t('digitalMarketingPage.services.items.0.features.3'),
+        t('digitalMarketingPage.services.items.0.features.4')
+      ]
     },
     {
       id: 2,
       icon: "📱",
-      title: "Social Media Marketing",
-      description: "Engage your audience and build brand presence across social platforms",
-      features: ["Content Strategy", "Community Management", "Paid Social Ads", "Influencer Marketing", "Analytics"]
+      title: t('digitalMarketingPage.services.items.1.title'),
+      description: t('digitalMarketingPage.services.items.1.description'),
+      features: [
+        t('digitalMarketingPage.services.items.1.features.0'),
+        t('digitalMarketingPage.services.items.1.features.1'),
+        t('digitalMarketingPage.services.items.1.features.2'),
+        t('digitalMarketingPage.services.items.1.features.3'),
+        t('digitalMarketingPage.services.items.1.features.4')
+      ]
     },
     {
       id: 3,
       icon: "📧",
-      title: "Email Marketing",
-      description: "Build relationships and drive conversions with targeted email campaigns",
-      features: ["Newsletter Design", "Automation Workflows", "Segmentation", "A/B Testing", "Performance Tracking"]
+      title: t('digitalMarketingPage.services.items.2.title'),
+      description: t('digitalMarketingPage.services.items.2.description'),
+      features: [
+        t('digitalMarketingPage.services.items.2.features.0'),
+        t('digitalMarketingPage.services.items.2.features.1'),
+        t('digitalMarketingPage.services.items.2.features.2'),
+        t('digitalMarketingPage.services.items.2.features.3'),
+        t('digitalMarketingPage.services.items.2.features.4')
+      ]
     },
     {
       id: 4,
       icon: "🔍",
-      title: "PPC Advertising",
-      description: "Drive targeted traffic and leads with pay-per-click advertising campaigns",
-      features: ["Google Ads", "Facebook Ads", "Display Advertising", "Remarketing", "Conversion Optimization"]
+      title: t('digitalMarketingPage.services.items.3.title'),
+      description: t('digitalMarketingPage.services.items.3.description'),
+      features: [
+        t('digitalMarketingPage.services.items.3.features.0'),
+        t('digitalMarketingPage.services.items.3.features.1'),
+        t('digitalMarketingPage.services.items.3.features.2'),
+        t('digitalMarketingPage.services.items.3.features.3'),
+        t('digitalMarketingPage.services.items.3.features.4')
+      ]
     },
     {
       id: 5,
       icon: "📝",
-      title: "Content Marketing",
-      description: "Create valuable content that attracts, engages, and converts your audience",
-      features: ["Blog Writing", "Video Content", "Infographics", "Case Studies", "Content Strategy"]
+      title: t('digitalMarketingPage.services.items.4.title'),
+      description: t('digitalMarketingPage.services.items.4.description'),
+      features: [
+        t('digitalMarketingPage.services.items.4.features.0'),
+        t('digitalMarketingPage.services.items.4.features.1'),
+        t('digitalMarketingPage.services.items.4.features.2'),
+        t('digitalMarketingPage.services.items.4.features.3'),
+        t('digitalMarketingPage.services.items.4.features.4')
+      ]
     },
     {
       id: 6,
       icon: "📊",
-      title: "Analytics & Reporting",
-      description: "Track performance and make data-driven decisions with comprehensive analytics",
-      features: ["Google Analytics", "Conversion Tracking", "ROI Analysis", "Dashboard Creation", "Performance Reports"]
+      title: t('digitalMarketingPage.services.items.5.title'),
+      description: t('digitalMarketingPage.services.items.5.description'),
+      features: [
+        t('digitalMarketingPage.services.items.5.features.0'),
+        t('digitalMarketingPage.services.items.5.features.1'),
+        t('digitalMarketingPage.services.items.5.features.2'),
+        t('digitalMarketingPage.services.items.5.features.3'),
+        t('digitalMarketingPage.services.items.5.features.4')
+      ]
     },
     {
       id: 7,
       icon: "🎨",
-      title: "Brand Strategy",
-      description: "Develop a strong brand identity and messaging that resonates with your audience",
-      features: ["Brand Positioning", "Visual Identity", "Brand Guidelines", "Voice & Tone", "Competitor Analysis"]
+      title: t('digitalMarketingPage.services.items.6.title'),
+      description: t('digitalMarketingPage.services.items.6.description'),
+      features: [
+        t('digitalMarketingPage.services.items.6.features.0'),
+        t('digitalMarketingPage.services.items.6.features.1'),
+        t('digitalMarketingPage.services.items.6.features.2'),
+        t('digitalMarketingPage.services.items.6.features.3'),
+        t('digitalMarketingPage.services.items.6.features.4')
+      ]
     },
     {
       id: 8,
       icon: "📈",
-      title: "Growth Marketing",
-      description: "Implement data-driven strategies to accelerate business growth and scale revenue",
-      features: ["CRO Optimization", "Growth Hacking", "Market Research", "Customer Acquisition", "Retention Strategies"]
+      title: t('digitalMarketingPage.services.items.7.title'),
+      description: t('digitalMarketingPage.services.items.7.description'),
+      features: [
+        t('digitalMarketingPage.services.items.7.features.0'),
+        t('digitalMarketingPage.services.items.7.features.1'),
+        t('digitalMarketingPage.services.items.7.features.2'),
+        t('digitalMarketingPage.services.items.7.features.3'),
+        t('digitalMarketingPage.services.items.7.features.4')
+      ]
     }
   ];
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "Marketing Director, TechCorp",
-      comment: "Their digital marketing strategy increased our online leads by 240% in just 6 months!",
+      name: t('digitalMarketingPage.testimonials.items.0.name'),
+      role: t('digitalMarketingPage.testimonials.items.0.role'),
+      comment: t('digitalMarketingPage.testimonials.items.0.comment'),
       avatar: "SJ"
     },
     {
-      name: "Michael Chen",
-      role: "CEO, Innovate Solutions",
-      comment: "The team's expertise in PPC and SEO transformed our digital presence. Highly recommended!",
+      name: t('digitalMarketingPage.testimonials.items.1.name'),
+      role: t('digitalMarketingPage.testimonials.items.1.role'),
+      comment: t('digitalMarketingPage.testimonials.items.1.comment'),
       avatar: "MC"
     },
     {
-      name: "Emily Rodriguez",
-      role: "Founder, StartUp Ventures",
-      comment: "Outstanding content marketing services that helped us build a loyal customer base.",
+      name: t('digitalMarketingPage.testimonials.items.2.name'),
+      role: t('digitalMarketingPage.testimonials.items.2.role'),
+      comment: t('digitalMarketingPage.testimonials.items.2.comment'),
       avatar: "ER"
+    }
+  ];
+
+  const reasons = [
+    {
+      number: "1",
+      title: t('digitalMarketingPage.reasons.items.0.title'),
+      description: t('digitalMarketingPage.reasons.items.0.description')
+    },
+    {
+      number: "2",
+      title: t('digitalMarketingPage.reasons.items.1.title'),
+      description: t('digitalMarketingPage.reasons.items.1.description')
+    },
+    {
+      number: "3",
+      title: t('digitalMarketingPage.reasons.items.2.title'),
+      description: t('digitalMarketingPage.reasons.items.2.description')
     }
   ];
 
@@ -152,17 +266,6 @@ const DigitalMarketingPage = () => {
           from {
             opacity: 0;
             transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
           }
           to {
             opacity: 1;
@@ -242,11 +345,6 @@ const DigitalMarketingPage = () => {
           animation: pulse 2s ease-in-out infinite;
         }
         
-        .animate-progress {
-          --target-width: 75%;
-          animation: progress 1s ease-out forwards;
-        }
-        
         .animate-gradient {
           background: linear-gradient(90deg, #dc2626, #4b5563, #dc2626);
           background-size: 200% auto;
@@ -268,14 +366,6 @@ const DigitalMarketingPage = () => {
         
         .hover-lift:hover {
           transform: translateY(-8px);
-        }
-        
-        .gradient-border {
-          position: relative;
-          border: 2px solid transparent;
-          background: linear-gradient(white, white) padding-box,
-                      linear-gradient(90deg, #dc2626, #4b5563, #dc2626) border-box;
-          animation: gradient 3s linear infinite;
         }
       `}</style>
 
@@ -303,15 +393,15 @@ const DigitalMarketingPage = () => {
             <div className="text-left">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="text-gray-900">
-                  Digital Marketing That
+                  {t('digitalMarketingPage.hero.title1')}
                 </span>
                 <br />
                 <span className="mt-2 inline-block animate-gradient">
-                  Drives Real Results
+                  {t('digitalMarketingPage.hero.title2')}
                 </span>
               </h1>
               <p className="mt-6 text-xl md:text-2xl text-gray-900 max-w-3xl leading-relaxed">
-                Human-led strategies combined with data-driven execution to increase your visibility, engagement, and conversions.
+                {t('digitalMarketingPage.hero.description')}
               </p>
             </div>
 
@@ -326,6 +416,48 @@ const DigitalMarketingPage = () => {
                 <div className="absolute inset-0 bg-gradient-to-tr from-red-600/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
             </div>
+          </div>
+
+          {/* STATS GRID */}
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 animate-stagger ${isVisible.hero ? 'visible' : ''}`}>
+            {[
+              { 
+                icon: "💰", 
+                value: stats.roi.toFixed(0), 
+                label: t('digitalMarketingPage.stats.roi'), 
+                suffix: "%" 
+              },
+              { 
+                icon: "👥", 
+                value: stats.leads.toFixed(0), 
+                label: t('digitalMarketingPage.stats.leads'), 
+                suffix: "%" 
+              },
+              { 
+                icon: "📢", 
+                value: stats.awareness.toFixed(0), 
+                label: t('digitalMarketingPage.stats.awareness'), 
+                suffix: "%" 
+              },
+              { 
+                icon: "🚀", 
+                value: stats.traffic.toFixed(0), 
+                label: t('digitalMarketingPage.stats.traffic'), 
+                suffix: "%" 
+              }
+            ].map((stat, index) => (
+              <div 
+                key={index}
+                className="bg-gray-50/90 border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all duration-500 backdrop-blur-sm hover-lift relative overflow-hidden group"
+              >
+                <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="text-red-600 mb-3 text-2xl animate-pulse">{stat.icon}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">
+                  {stat.value}{stat.suffix}
+                </div>
+                <div className="text-gray-600">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -343,15 +475,13 @@ const DigitalMarketingPage = () => {
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         
-      
-
         <div className="relative z-10">
           <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.services ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Comprehensive <span className="text-red-600 animate-pulse">Digital Marketing</span> Solutions
+              {t('digitalMarketingPage.services.title')}
             </h2>
             <p className="text-gray-900 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              We offer end-to-end digital marketing services tailored to your business goals and target audience.
+              {t('digitalMarketingPage.services.subtitle')}
             </p>
           </div>
 
@@ -377,7 +507,7 @@ const DigitalMarketingPage = () => {
                   onMouseEnter={() => setActiveService(index)}
                   onMouseLeave={() => setActiveService(null)}
                 >
-                  {/* Hover Gradient - Only show for active card */}
+                  {/* Hover Gradient */}
                   {activeService === index && (
                     <div
                       className="absolute inset-0 bg-gradient-to-br from-red-50/30 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -385,7 +515,7 @@ const DigitalMarketingPage = () => {
                   )}
 
                   <div className="relative flex flex-col h-full">
-                    {/* Icon and Title Container - Always visible */}
+                    {/* Icon and Title Container */}
                     <div className={`flex flex-col items-center justify-center flex-1 ${
                       activeService === index ? '' : 'h-full'
                     }`}>
@@ -406,12 +536,25 @@ const DigitalMarketingPage = () => {
                       </h3>
                     </div>
 
-                    {/* Details - Only show when this card is active */}
+                    {/* Details */}
                     {activeService === index && (
                       <div className="animate-fadeIn mt-4">
                         <p className="text-gray-600 mb-4 text-[14px] leading-relaxed text-center">
                           {service.description}
                         </p>
+
+                        <ul className="space-y-2 mb-4">
+                          {service.features.map((feature, i) => (
+                            <li 
+                              key={i} 
+                              className="flex items-start text-[13px] leading-snug opacity-0"
+                              style={{animation: `slideInLeft 0.5s ease-out forwards`, animationDelay: `${i * 0.1}s`}}
+                            >
+                              <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2 mt-1.5 flex-shrink-0 animate-pulse"></div>
+                              <span className="text-gray-700">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
                   </div>
@@ -434,88 +577,122 @@ const DigitalMarketingPage = () => {
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         
-
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible['why-choose'] ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Why Choose Our <span className="text-red-600">Marketing Agency</span>
+              {t('digitalMarketingPage.reasons.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We combine data-driven strategies with creative execution to deliver measurable results.
+              {t('digitalMarketingPage.reasons.subtitle')}
             </p>
           </div>
           
           <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-stagger ${isVisible['why-choose'] ? 'visible' : ''}`}>
             <div>
               <div className="mb-8">
-                <div className="flex items-start mb-8 group">
-                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 animate-pulse">
-                    <span className="text-white font-bold text-xl">1</span>
+                {reasons.map((reason, index) => (
+                  <div key={index} className="flex items-start mb-8 group">
+                    <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 animate-pulse" style={{animationDelay: `${index * 0.5}s`}}>
+                      <span className="text-white font-bold text-xl">{reason.number}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors duration-300">{reason.title}</h3>
+                      <p className="text-gray-600">{reason.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors duration-300">Proven Results</h3>
-                    <p className="text-gray-600">We have a track record of increasing client revenue by an average of 200% within the first year.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start mb-8 group">
-                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 animate-pulse" style={{animationDelay: '0.5s'}}>
-                    <span className="text-white font-bold text-xl">2</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors duration-300">Transparent Reporting</h3>
-                    <p className="text-gray-600">Get detailed analytics and regular reports so you can see exactly how your campaigns are performing.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start group">
-                  <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-lg flex items-center justify-center mr-4 flex-shrink-0 transform group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 animate-pulse" style={{animationDelay: '1s'}}>
-                    <span className="text-white font-bold text-xl">3</span>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors duration-300">Custom Strategies</h3>
-                    <p className="text-gray-600">We don't believe in one-size-fits-all solutions. Every strategy is tailored to your unique business needs.</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             
             <div className="bg-white/95 backdrop-blur-sm border border-gray-200/80 rounded-2xl p-8 shadow-lg hover-lift relative overflow-hidden">
               <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Campaign Performance</h3>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">{t('digitalMarketingPage.performance.title')}</h3>
               <div className="space-y-6">
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="font-medium text-gray-700">ROI Improvement</span>
-                    <span className="font-bold text-green-600 animate-pulse">+42%</span>
+                {[
+                  {
+                    label: t('digitalMarketingPage.performance.metrics.0.label'),
+                    value: `+${stats.roi.toFixed(0)}%`,
+                    width: '75%',
+                    color: 'from-green-500 to-emerald-500',
+                    delay: '0.1s'
+                  },
+                  {
+                    label: t('digitalMarketingPage.performance.metrics.1.label'),
+                    value: `+${stats.leads.toFixed(0)}%`,
+                    width: '80%',
+                    color: 'from-blue-500 to-cyan-500',
+                    delay: '0.3s'
+                  },
+                  {
+                    label: t('digitalMarketingPage.performance.metrics.2.label'),
+                    value: `+${stats.awareness.toFixed(0)}%`,
+                    width: '66%',
+                    color: 'from-purple-500 to-pink-500',
+                    delay: '0.5s'
+                  }
+                ].map((metric, index) => (
+                  <div key={index}>
+                    <div className="flex justify-between items-center mb-2">
+                      <span className="font-medium text-gray-700">{metric.label}</span>
+                      <span className="font-bold text-green-600 animate-pulse" style={{animationDelay: metric.delay}}>{metric.value}</span>
+                    </div>
+                    <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-2 bg-gradient-to-r ${metric.color} rounded-full animate-progress`} 
+                        style={{width: metric.width, animationDelay: metric.delay}}
+                      ></div>
+                    </div>
                   </div>
-                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-2 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full animate-progress" style={{animationDelay: '0.1s'}}></div>
-                  </div>
-                </div>
-                
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="font-medium text-gray-700">Lead Generation</span>
-                    <span className="font-bold text-blue-600 animate-pulse" style={{animationDelay: '0.3s'}}>+65%</span>
-                  </div>
-                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-2 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full animate-progress" style={{width: '80%', animationDelay: '0.3s'}}></div>
-                  </div>
-                </div>
-                
-                <div>
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="font-medium text-gray-700">Brand Awareness</span>
-                    <span className="font-bold text-purple-600 animate-pulse" style={{animationDelay: '0.5s'}}>+38%</span>
-                  </div>
-                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <div className="h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full animate-progress" style={{width: '66%', animationDelay: '0.5s'}}></div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== TESTIMONIALS SECTION ===== */}
+      <section 
+        className="relative py-20 bg-gray-50"
+        ref={el => sectionsRef.current[3] = el}
+        data-section-id="testimonials"
+      >
+        <img
+          src="/pic1.jpg"
+          alt="Testimonials Background"
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-20"
+        />
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+          <div className={`text-center mb-16 animate-on-scroll ${isVisible.testimonials ? 'visible' : ''}`}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              {t('digitalMarketingPage.testimonials.title')}
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {t('digitalMarketingPage.testimonials.subtitle')}
+            </p>
+          </div>
+          
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-8 animate-stagger ${isVisible.testimonials ? 'visible' : ''}`}>
+            {testimonials.map((testimonial, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-xl hover:border-red-300 transition-all duration-500 hover-lift group relative overflow-hidden"
+              >
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-red-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-500"></div>
+                <div className="relative">
+                  <div className="flex items-center mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-bold mr-4">
+                      {testimonial.avatar}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-gray-600 text-sm">{testimonial.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 italic">"{testimonial.comment}"</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -523,16 +700,17 @@ const DigitalMarketingPage = () => {
       {/* ===== FINAL CTA ===== */}
       <section 
         className="py-12 md:py-20 bg-gradient-to-br from-gray-900 to-black text-white"
-        ref={el => sectionsRef.current[3] = el}
+        ref={el => sectionsRef.current[4] = el}
         data-section-id="cta"
       >
         <div className="absolute inset-0 animate-gradient bg-gradient-to-r from-red-600/20 via-transparent to-blue-600/20 bg-[size:200%_100%]"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center relative z-10">
           <h2 className={`text-[30px] font-bold mb-4 md:mb-6 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            Technology Is Everywhere. <span className="text-red-400 animate-pulse">Ownership Is Rare</span>.
+            {t('digitalMarketingPage.cta.title1')}{" "}
+            <span className="text-red-400 animate-pulse">{t('digitalMarketingPage.cta.title2')}</span>
           </h2>
           <p className={`text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            Partner with a team that stays accountable from start to scale.
+            {t('digitalMarketingPage.cta.description')}
           </p>
           
           <div className={`flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
@@ -549,7 +727,7 @@ const DigitalMarketingPage = () => {
                          transform hover:scale-105
                          animate-pulse"
             >
-              Let's Talk
+              {t('digitalMarketingPage.cta.button')}
               <svg
                 className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
                            group-hover:opacity-100 group-hover:translate-x-0
@@ -569,7 +747,7 @@ const DigitalMarketingPage = () => {
           </div>
 
           <p className={`mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            No bots. No runaround. Just real conversations with accountable partners.
+            {t('digitalMarketingPage.cta.subtext')}
           </p>
         </div>
       </section>

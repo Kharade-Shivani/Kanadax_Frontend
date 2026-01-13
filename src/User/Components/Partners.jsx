@@ -60,8 +60,11 @@ import {
   Sparkle,
   Target as TargetIcon
 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 function Partners() {
+  const { t } = useTranslation();
+  
   // Animation state for scroll-triggered animations
   const [isVisible, setIsVisible] = useState({
     heroLeft: false,
@@ -130,48 +133,48 @@ function Partners() {
 
   // Company Information
   const companyInfo = {
-    name: 'Zplus Cyber Secure Technology Pvt Ltd',
-    tagline: 'Securing Digital Futures, Empowering Businesses',
+    name: t('partnersPage.company.name'),
+    tagline: t('partnersPage.company.tagline'),
     founded: 2018,
     employees: '250+',
-    headquarters: 'Pune, Maharashtra, India',
-    ceo: 'Mr. Gorakh Bhosale',
-    industry: 'Cybersecurity & IT Services',
+    headquarters: t('partnersPage.company.headquarters'),
+    ceo: t('partnersPage.company.ceo'),
+    industry: t('partnersPage.company.industry'),
     website: 'https://zpluscybertech.com/#/Home',
-    email: ' info@zpluscybertech.com',
-    phone: '+91 9850083751'
+    email: t('partnersPage.company.email'),
+    phone: t('partnersPage.company.phone')
   };
 
   // Awards Data
   const awardsData = [
     {
       id: 1,
-      title: "Best IT Company Award 2018",
-      year: "2018",
-      category: "Excellence in IT Services",
-      description: "Recognized as the top IT company in Pune for outstanding technology solutions and innovation",
-      image: "/award.png", // Main award image
+      title: t('partnersPage.awards.items.award1.title'),
+      year: t('partnersPage.awards.items.award1.year'),
+      category: t('partnersPage.awards.items.award1.category'),
+      description: t('partnersPage.awards.items.award1.description'),
+      image: "/award.png",
       icon: Trophy,
       color: "from-amber-500 to-yellow-500",
       bgColor: "bg-gradient-to-br from-amber-50 to-yellow-50"
     },
     {
       id: 2,
-      title: "Excellence in Cybersecurity",
-      year: "2020",
-      category: "Security Innovation",
-      description: "Awarded for innovative cybersecurity solutions and threat protection services",
-      image: "/award2.png", // Add your award images
+      title: t('partnersPage.awards.items.award2.title'),
+      year: t('partnersPage.awards.items.award2.year'),
+      category: t('partnersPage.awards.items.award2.category'),
+      description: t('partnersPage.awards.items.award2.description'),
+      image: "/award2.png",
       icon: Shield,
       color: "from-blue-600 to-indigo-600",
       bgColor: "bg-gradient-to-br from-blue-50 to-indigo-50"
     },
     {
       id: 3,
-      title: "Digital Transformation Leader",
-      year: "2021",
-      category: "Business Innovation",
-      description: "Recognized for excellence in digital transformation and business process automation",
+      title: t('partnersPage.awards.items.award3.title'),
+      year: t('partnersPage.awards.items.award3.year'),
+      category: t('partnersPage.awards.items.award3.category'),
+      description: t('partnersPage.awards.items.award3.description'),
       image: "/award3.png",
       icon: TrendingUp,
       color: "from-green-600 to-emerald-600",
@@ -179,10 +182,10 @@ function Partners() {
     },
     {
       id: 4,
-      title: "Best Startup IT Company",
-      year: "2019",
-      category: "Startup Excellence",
-      description: "Awarded for rapid growth and innovation in the IT services sector",
+      title: t('partnersPage.awards.items.award4.title'),
+      year: t('partnersPage.awards.items.award4.year'),
+      category: t('partnersPage.awards.items.award4.category'),
+      description: t('partnersPage.awards.items.award4.description'),
       image: "/award4.png",
       icon: Sparkle,
       color: "from-purple-600 to-violet-600",
@@ -190,10 +193,10 @@ function Partners() {
     },
     {
       id: 5,
-      title: "Customer Excellence Award",
-      year: "2022",
-      category: "Client Satisfaction",
-      description: "Recognized for exceptional customer service and client satisfaction ratings",
+      title: t('partnersPage.awards.items.award5.title'),
+      year: t('partnersPage.awards.items.award5.year'),
+      category: t('partnersPage.awards.items.award5.category'),
+      description: t('partnersPage.awards.items.award5.description'),
       image: "/award5.png",
       icon: Users,
       color: "from-pink-600 to-rose-600",
@@ -201,10 +204,10 @@ function Partners() {
     },
     {
       id: 6,
-      title: "Innovation in AI Solutions",
-      year: "2023",
-      category: "Technology Innovation",
-      description: "Awarded for cutting-edge AI and machine learning solutions implementation",
+      title: t('partnersPage.awards.items.award6.title'),
+      year: t('partnersPage.awards.items.award6.year'),
+      category: t('partnersPage.awards.items.award6.category'),
+      description: t('partnersPage.awards.items.award6.description'),
       image: "/award6.png",
       icon: Cpu,
       color: "from-red-600 to-orange-600",
@@ -216,75 +219,75 @@ function Partners() {
   const coreServices = [
     {
       icon: Sparkles,
-      title: 'Generative AI Solutions',
-      description: 'Content generation & creative AI tools',
-      features: ['AI Content Creation', 'Chatbot Development', 'Image Generation', 'Creative AI Tools']
+      title: t('partnersPage.services.items.service1.title'),
+      description: t('partnersPage.services.items.service1.description'),
+      features: t('partnersPage.services.items.service1.features', { returnObjects: true })
     },
     {
       icon: Code,
-      title: 'Web Development',
-      description: 'Custom web applications & solutions',
-      features: ['Frontend Development', 'Backend Systems', 'E-commerce Solutions', 'Progressive Web Apps']
+      title: t('partnersPage.services.items.service2.title'),
+      description: t('partnersPage.services.items.service2.description'),
+      features: t('partnersPage.services.items.service2.features', { returnObjects: true })
     },
     {
       icon: Server,
-      title: 'Cloud Solutions',
-      description: 'AWS, Azure & Google Cloud migration',
-      features: ['Cloud Migration', 'Multi-cloud Strategy', 'Cloud Optimization', 'Cloud Security']
+      title: t('partnersPage.services.items.service3.title'),
+      description: t('partnersPage.services.items.service3.description'),
+      features: t('partnersPage.services.items.service3.features', { returnObjects: true })
     },
     {
       icon: Smartphone,
-      title: 'Mobile App Development',
-      description: 'iOS & Android applications',
-      features: ['Native iOS Apps', 'Android Development', 'Cross-Platform Apps', 'App Maintenance']
+      title: t('partnersPage.services.items.service4.title'),
+      description: t('partnersPage.services.items.service4.description'),
+      features: t('partnersPage.services.items.service4.features', { returnObjects: true })
     },
     {
       icon: Database,
-      title: 'Database Management',
-      description: 'SQL, NoSQL & Data warehousing',
-      features: ['Database Design', 'Performance Tuning', 'Data Migration', 'Backup Solutions']
+      title: t('partnersPage.services.items.service5.title'),
+      description: t('partnersPage.services.items.service5.description'),
+      features: t('partnersPage.services.items.service5.features', { returnObjects: true })
     },
     {
       icon: Megaphone,
-      title: 'Digital Marketing',
-      description: 'Data-driven marketing strategies',
-      features: ['SEO Optimization', 'Social Media Marketing', 'Content Strategy', 'Analytics & Reporting']
+      title: t('partnersPage.services.items.service6.title'),
+      description: t('partnersPage.services.items.service6.description'),
+      features: t('partnersPage.services.items.service6.features', { returnObjects: true })
     },
     {
       icon: Shield,
-      title: 'Cybersecurity',
-      description: 'Advanced security solutions',
-      features: ['Threat Detection', 'Vulnerability Assessment', 'Security Audits', 'Incident Response']
+      title: t('partnersPage.services.items.service7.title'),
+      description: t('partnersPage.services.items.service7.description'),
+      features: t('partnersPage.services.items.service7.features', { returnObjects: true })
     },
     {
       icon: Zap,
-      title: 'DevOps Services',
-      description: 'CI/CD & automation solutions',
-      features: ['CI/CD Pipelines', 'Infrastructure as Code', 'Containerization', 'Monitoring & Logging']
+      title: t('partnersPage.services.items.service8.title'),
+      description: t('partnersPage.services.items.service8.description'),
+      features: t('partnersPage.services.items.service8.features', { returnObjects: true })
     },
     {
       icon: Briefcase,
-      title: 'Technology Consulting',
-      description: 'IT strategy, architecture & digital advisory',
-      features: ['IT Strategy', 'Digital Transformation', 'Technology Roadmap', 'Vendor Selection']
+      title: t('partnersPage.services.items.service9.title'),
+      description: t('partnersPage.services.items.service9.description'),
+      features: t('partnersPage.services.items.service9.features', { returnObjects: true })
     },
     {
       icon: Monitor,
-      title: 'Remote Workplace Solutions',
-      description: 'Secure remote work & collaboration tools',
-      features: ['Virtual Desktop', 'Collaboration Tools', 'Remote Security', 'Workplace Integration']
+      title: t('partnersPage.services.items.service10.title'),
+      description: t('partnersPage.services.items.service10.description'),
+      features: t('partnersPage.services.items.service10.features', { returnObjects: true })
     },
     {
       icon: HardDrive,
-      title: 'Backup & Disaster Recovery',
-      description: 'Business continuity & data protection',
-      features: ['Data Backup Solutions', 'Disaster Recovery Planning', 'Business Continuity', 'Cloud Backup']
+      title: t('partnersPage.services.items.service11.title'),
+      description: t('partnersPage.services.items.service11.description'),
+      features: t('partnersPage.services.items.service11.features', { returnObjects: true })
     },
     {
       icon: Headphones,
-      title: 'IT Help Desk Services',
-      description: '24/7 technical support & issue resolution',
-      features: ['24/7 Support', 'Remote Assistance', 'Ticket Management', 'User Training']
+      title: t('partnersPage.services.items.service12.title'),
+      description: t('partnersPage.services.items.service12.description'),
+      features: t('partnersPage.services.items.service12.features', { returnObjects: true })
     }
   ];
 
@@ -293,196 +296,40 @@ function Partners() {
   // Technology Stack
   const technologies = [
     {
-      category: 'Development',
-      items: [
-        'Python',
-        'Java',
-        'Node.js',
-        'React',
-        'Angular',
-        'Vue.js',
-        'Next.js',
-        'TypeScript',
-        'Spring Boot',
-        '.NET Core',
-        'Django',
-        'Flask',
-        'Express',
-        'Ruby on Rails',
-        'PHP',
-        'Laravel'
-      ]
+      category: t('partnersPage.techStack.categories.category1'),
+      items: t('partnersPage.techStack.items.category1', { returnObjects: true })
     },
     {
-      category: 'Cloud Platforms',
-      items: [
-        'AWS',
-        'Microsoft Azure',
-        'Google Cloud',
-        'Oracle Cloud',
-        'IBM Cloud',
-        'DigitalOcean',
-        'Alibaba Cloud',
-        'Heroku',
-        'Firebase',
-        'Cloudflare',
-        'OpenStack',
-        'VMware',
-        'Red Hat OpenShift'
-      ]
+      category: t('partnersPage.techStack.categories.category2'),
+      items: t('partnersPage.techStack.items.category2', { returnObjects: true })
     },
     {
-      category: 'Databases',
-      items: [
-        'MySQL',
-        'PostgreSQL',
-        'MongoDB',
-        'Oracle DB',
-        'SQL Server',
-        'SQLite',
-        'MariaDB',
-        'Cassandra',
-        'Redis',
-        'Elasticsearch',
-        'DynamoDB',
-        'Cosmos DB',
-        'Firestore',
-        'Neo4j',
-        'Couchbase'
-      ]
+      category: t('partnersPage.techStack.categories.category3'),
+      items: t('partnersPage.techStack.items.category3', { returnObjects: true })
     },
     {
-      category: 'Automation',
-      items: [
-        'Ansible',
-        'Terraform',
-        'Jenkins',
-        'Docker',
-        'Kubernetes',
-        'GitLab CI/CD',
-        'GitHub Actions',
-        'CircleCI',
-        'Travis CI',
-        'Azure DevOps',
-        'Puppet',
-        'Chef',
-        'SaltStack',
-        'Prometheus',
-        'Grafana',
-        'Nagios'
-      ]
+      category: t('partnersPage.techStack.categories.category4'),
+      items: t('partnersPage.techStack.items.category4', { returnObjects: true })
     },
     {
-      category: 'Frontend',
-      items: [
-        'HTML5',
-        'CSS3',
-        'JavaScript',
-        'Sass',
-        'Less',
-        'Bootstrap',
-        'Tailwind CSS',
-        'Material-UI',
-        'Ant Design',
-        'Webpack',
-        'Vite',
-        'Babel',
-        'Redux',
-        'MobX',
-        'Jest',
-        'Cypress'
-      ]
+      category: t('partnersPage.techStack.categories.category5'),
+      items: t('partnersPage.techStack.items.category5', { returnObjects: true })
     },
     {
-      category: 'Mobile',
-      items: [
-        'React Native',
-        'Flutter',
-        'Swift',
-        'Kotlin',
-        'Ionic',
-        'Xamarin',
-        'Android Studio',
-        'Xcode',
-        'Expo',
-        'Firebase Mobile'
-      ]
+      category: t('partnersPage.techStack.categories.category6'),
+      items: t('partnersPage.techStack.items.category6', { returnObjects: true })
     },
     {
-      category: 'AI/ML',
-      items: [
-        'TensorFlow',
-        'PyTorch',
-        'Scikit-learn',
-        'Keras',
-        'OpenCV',
-        'Pandas',
-        'NumPy',
-        'Jupyter',
-        'Hugging Face',
-        'LangChain'
-      ]
+      category: t('partnersPage.techStack.categories.category7'),
+      items: t('partnersPage.techStack.items.category7', { returnObjects: true })
     },
     {
-      category: 'DevOps Tools',
-      items: [
-        'Git',
-        'GitHub',
-        'GitLab',
-        'Bitbucket',
-        'Jira',
-        'Confluence',
-        'Slack',
-        'Teams',
-        'Splunk',
-        'New Relic',
-        'Datadog'
-      ]
+      category: t('partnersPage.techStack.categories.category8'),
+      items: t('partnersPage.techStack.items.category8', { returnObjects: true })
     }
   ];
 
-  const industries = [
-    {
-      name: 'Real Estate',
-      icon: Building2,
-      services: ['Property Management Systems', 'CRM Solutions', 'Virtual Tours', 'Digital Marketing']
-    },
-    {
-      name: 'Healthcare & Hospitality',
-      icon: Heart,
-      services: ['Hospital Management', 'Patient Records', 'Booking Systems', 'Telemedicine']
-    },
-    {
-      name: 'Retail & E-Commerce',
-      icon: ShoppingBag,
-      services: ['Online Store Development', 'Inventory Management', 'Payment Gateways', 'Analytics']
-    },
-    {
-      name: 'Travels & Import/Export',
-      icon: Plane,
-      services: ['Booking Portals', 'Logistics Tracking', 'Customs Management', 'Supply Chain']
-    },
-    {
-      name: 'Banking & Finance',
-      icon: Banknote,
-      services: ['Fintech Solutions', 'Payment Processing', 'Risk Management', 'Compliance Tools']
-    },
-    {
-      name: 'Auto & Manufacturing',
-      icon: Car,
-      services: ['ERP Solutions', 'Supply Chain Management', 'Quality Control', 'IoT Integration']
-    },
-    {
-      name: 'Food & Restaurant',
-      icon: Utensils,
-      services: ['POS Systems', 'Online Ordering', 'Inventory Management', 'Delivery Tracking']
-    },
-    {
-      name: 'Government',
-      icon: Shield,
-      services: ['Citizen Portals', 'Document Management', 'Security Solutions', 'Digital Services']
-    }
-  ];
+  const industries = t('partnersPage.industries.items', { returnObjects: true });
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -490,7 +337,7 @@ function Partners() {
       <div className="w-full">
         <img
           src="/copy5.jpg"
-          alt="Zplus Cyber Secure Technology Banner"
+          alt={t('partnersPage.banner.alt')}
           className="w-full h-auto object-cover"
         />
       </div>
@@ -500,7 +347,7 @@ function Partners() {
         <div className="absolute inset-0 z-0">
           <img
             src="/pic1.jpg"
-            alt="Background"
+            alt={t('partnersPage.hero.backgroundAlt')}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 opacity-50"></div>
@@ -520,21 +367,19 @@ function Partners() {
             >
               <div className="inline-flex items-center space-x-2 bg-red-50 px-4 py-2 rounded-full mb-6 border border-red-200 backdrop-blur-sm bg-white/80">
                 <Award className="w-5 h-5 text-red-600" />
-                <span className="text-sm font-medium text-red-700">Top IT Company in Pune - 2018</span>
+                <span className="text-sm font-medium text-red-700">
+                  {t('partnersPage.hero.awardBadge')}
+                </span>
               </div>
 
               <h1 className="text-5xl font-bold mb-6 text-grey-900">
-                <span className="">Zplus Cyber Secure Technology</span>
-                <span className="block text-red-600 mt-2">Private Limited</span>
+                <span className="">{t('partnersPage.hero.title1')}</span>
+                <span className="block text-red-600 mt-2">{t('partnersPage.hero.title2')}</span>
               </h1>
 
               <p className="text-xl text-gray-200 mb-8 max-w-3xl">
-                Securing digital futures with cutting-edge cybersecurity.
-                Empowering businesses through smart IT, AI, and digital innovation.
-                Trusted technology partners since 2018.
+                {t('partnersPage.hero.description')}
               </p>
-
-             
             </div>
 
             {/* Right Content - Award Image */}
@@ -548,15 +393,19 @@ function Partners() {
               <div className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-xl border border-white/20 flex flex-col items-center justify-center text-center h-full">
                 <div className="mb-4">
                   <Award className="w-16 h-16 mx-auto mb-3 text-red-600" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Award Winning</h3>
-                  <p className="text-gray-600 text-sm">Best IT Company Award</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">
+                    {t('partnersPage.hero.awardSection.title')}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {t('partnersPage.hero.awardSection.subtitle')}
+                  </p>
                 </div>
 
-                {/* Award Image Container - Improved for proper image display */}
+                {/* Award Image Container */}
                 <div className="w-full max-w-xs flex items-center justify-center overflow-hidden rounded-lg shadow-md">
                   <img
                     src="/award.png"
-                    alt="Best IT Company Award"
+                    alt={t('partnersPage.hero.awardSection.imageAlt')}
                     className="w-full h-auto object-contain max-h-64"
                     onError={(e) => {
                       e.target.onerror = null;
@@ -567,10 +416,10 @@ function Partners() {
 
                 <div className="mt-6">
                   <p className="text-sm text-gray-700 font-medium">
-                    Recognized for Excellence in IT Services
+                    {t('partnersPage.hero.awardSection.description')}
                   </p>
                   <p className="text-xs text-gray-500 mt-1">
-                    Pune, 2018
+                    {t('partnersPage.hero.awardSection.location')}
                   </p>
                 </div>
               </div>
@@ -590,7 +439,7 @@ function Partners() {
         <div className="absolute inset-0 z-0">
           <img
             src="/connn.jpg"
-            alt="Company Overview Background"
+            alt={t('partnersPage.overview.backgroundAlt')}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40"></div>
@@ -599,9 +448,11 @@ function Partners() {
 
         <div className="container mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">Company Overview</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              {t('partnersPage.overview.title')}
+            </h2>
             <p className="text-lg text-gray-200 max-w-3xl mx-auto">
-              Zplus Cyber Secure Technology is a Pune-based IT solutions firm delivering AI-powered cybersecurity, cloud-native platforms, and enterprise digital transformation across India.
+              {t('partnersPage.overview.description')}
             </p>
           </div>
 
@@ -611,9 +462,11 @@ function Partners() {
               <div className="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6 border border-red-200">
                 <Target className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Our Mission</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                {t('partnersPage.overview.mission.title')}
+              </h3>
               <p className="text-gray-700 flex-grow">
-                To deliver innovative technology solutions that empower businesses to achieve their goals while maintaining the highest standards of quality, integrity, and customer satisfaction.
+                {t('partnersPage.overview.mission.description')}
               </p>
             </div>
 
@@ -622,9 +475,11 @@ function Partners() {
               <div className="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6 border border-red-200">
                 <Eye className="w-8 h-8 text-red-600" />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Our Vision</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                {t('partnersPage.overview.vision.title')}
+              </h3>
               <p className="text-gray-700 flex-grow">
-                To be the leading technology partner that transforms businesses through cutting-edge solutions, fostering growth and success in the digital age.
+                {t('partnersPage.overview.vision.description')}
               </p>
             </div>
 
@@ -635,9 +490,11 @@ function Partners() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Our Expertise</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                {t('partnersPage.overview.expertise.title')}
+              </h3>
               <p className="text-gray-700 flex-grow">
-                Specializing in AI-powered cybersecurity solutions, cloud-native platforms, and enterprise digital transformation to protect and propel your business forward.
+                {t('partnersPage.overview.expertise.description')}
               </p>
             </div>
           </div>
@@ -666,9 +523,11 @@ function Partners() {
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-10'
               }`}>
-              <h2 className="text-4xl font-bold text-white mb-4">Our Core Services</h2>
+              <h2 className="text-4xl font-bold text-white mb-4">
+                {t('partnersPage.services.title')}
+              </h2>
               <p className="text-lg text-gray-200 max-w-3xl mx-auto">
-                Comprehensive IT solutions designed to meet the evolving needs of modern businesses
+                {t('partnersPage.services.subtitle')}
               </p>
             </div>
 
@@ -713,7 +572,7 @@ function Partners() {
         <div className="absolute inset-0 z-0">
           <img
             src="/imgg.jpg"
-            alt="Industries We Serve Background"
+            alt={t('partnersPage.industries.backgroundAlt')}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40"></div>
@@ -722,9 +581,11 @@ function Partners() {
 
         <div className="container mx-auto px-6 sm:px-8 lg:px-16 relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4">Industries We Serve</h2>
+            <h2 className="text-4xl font-bold text-white mb-4">
+              {t('partnersPage.industries.title')}
+            </h2>
             <p className="text-lg text-gray-200 max-w-3xl mx-auto">
-              Tailored IT solutions for diverse industry sectors with specialized expertise
+              {t('partnersPage.industries.subtitle')}
             </p>
           </div>
 
@@ -762,86 +623,77 @@ function Partners() {
         </div>
       </div>
 
-      
-        
+      {/* Awards Section */}
+      <div
+        ref={awardsRef}
+        className={`relative py-20 overflow-hidden transition-all duration-1000 ${isVisible.awardsSection
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-10'
+          }`}
+      >
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/contttt.avif"
+            alt={t('partnersPage.awards.backgroundAlt')}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black/30"></div>
+        </div>
 
-        {/* NEW AWARDS SECTION - Add this after Industries section */}
-       <div
-  ref={awardsRef}
-  className={`relative py-20 overflow-hidden transition-all duration-1000 ${isVisible.awardsSection
-      ? 'opacity-100 translate-y-0'
-      : 'opacity-0 translate-y-10'
-    }`}
->
-  {/* Background Image Section - Full width and height */}
-  <div className="absolute inset-0 z-0">
-    <img
-      src="/contttt.avif"  
-      alt="Achievements Background"
-      className="w-full h-full object-cover"
-    />
-    {/* Overlay to ensure text readability */}
-    <div className="absolute inset-0 bg-black/30"></div>
-  </div>
+        <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-16">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
+              {t('partnersPage.awards.title1')} <span className="bg-clip-text text-red-600">
+                {t('partnersPage.awards.title2')}
+              </span>
+            </h2>
+            <p className="text-lg text-gray-200 max-w-3xl mx-auto drop-shadow">
+              {t('partnersPage.awards.subtitle')}
+            </p>
+          </div>
 
-  {/* Removed the gradient background div */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
+            {awardsData.map((award, index) => (
+              <div
+                key={award.id}
+                className={`group transform transition-all duration-1000 delay-${index * 100} ${isVisible.awardsSection
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                  }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="bg-white/95 backdrop-blur-sm rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-full flex flex-col">
+                  <div className="relative overflow-hidden bg-white p-8 flex items-center justify-center min-h-[280px]">
+                    <img
+                      src={award.image}
+                      alt={award.title}
+                      className="w-auto h-auto max-w-full max-h-64 object-contain transition-transform duration-700 group-hover:scale-105"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "/award-placeholder.jpg";
+                      }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
 
-  <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-16">
-    {/* Section Header */}
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg">
-        Our <span className="bg-clip-text text-red-600">Achievements</span>
-      </h2>
-      <p className="text-lg text-gray-200 max-w-3xl mx-auto drop-shadow">
-        Recognized for excellence and innovation in the IT industry
-      </p>
-    </div>
-
-    {/* Awards Grid - Simplified */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
-      {awardsData.map((award, index) => (
-        <div
-          key={award.id}
-          className={`group transform transition-all duration-1000 delay-${index * 100} ${isVisible.awardsSection
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-10'
-            }`}
-          style={{ transitionDelay: `${index * 100}ms` }}
-        >
-          <div className="bg-white/95 backdrop-blur-sm rounded-2xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden h-full flex flex-col">
-
-            {/* Award Image - Full display */}
-            <div className="relative overflow-hidden bg-white p-8 flex items-center justify-center min-h-[280px]">
-              <img
-                src={award.image}
-                alt={award.title}
-                className="w-auto h-auto max-w-full max-h-64 object-contain transition-transform duration-700 group-hover:scale-105"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = "/award-placeholder.jpg";
-                }}
-              />
-
-              {/* Subtle overlay on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-
-            {/* Minimal Award Info */}
-            <div className="p-6 bg-white border-t border-white/20">
-              <div className="flex items-center justify-between mb-3">
-                {/* Optional icon/year sections removed as per original code */}
+                  <div className="p-6 bg-white border-t border-white/20">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className={`px-3 py-1 rounded-full bg-gradient-to-r ${award.color} text-white text-xs font-medium`}>
+                        {award.year}
+                      </div>
+                      <div className="text-sm text-gray-500 font-medium">
+                        {award.category}
+                      </div>
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{award.title}</h3>
+                    <p className="text-sm text-gray-600">{award.description}</p>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-bold text-gray-900">{award.title}</h3>
-            </div>
-
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-
-  </div>
-</div>
-    
+      </div>
 
       {/* Technology Stack - Fade Up Animation */}
       <div
@@ -866,9 +718,11 @@ function Partners() {
 
         <div className="relative z-10 container mx-auto px-6 sm:px-8 lg:px-16">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-white mb-4 drop-shadow-lg">Technology Stack</h2>
+            <h2 className="text-4xl font-bold text-white mb-4 drop-shadow-lg">
+              {t('partnersPage.techStack.title')}
+            </h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto">
-              Cutting-edge technologies and tools we work with
+              {t('partnersPage.techStack.subtitle')}
             </p>
           </div>
 

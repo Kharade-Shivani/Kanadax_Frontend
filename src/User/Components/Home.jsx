@@ -1,10 +1,12 @@
-// components/Home.js
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import httpClient from '../../Api/axios';
+import { useTranslation } from 'react-i18next';
 
 const Home = () => {
+  const { t } = useTranslation();
+  
   // State for testimonials
   const [testimonials, setTestimonials] = useState([]);
   const [testimonialsLoading, setTestimonialsLoading] = useState(true);
@@ -142,7 +144,7 @@ const Home = () => {
     }
   };
 
-  // Fetch testimonials data using axios - FIXED ENDPOINT
+  // Fetch testimonials data using axios
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
@@ -151,7 +153,6 @@ const Home = () => {
         
         console.log('Fetching testimonials from API...');
         
-        // FIX: Changed from 'getall_testimonial' to 'getall__testimonial' (two underscores)
         const response = await httpClient.get('getall__testimonial');
         
         console.log('API Response:', response);
@@ -191,19 +192,10 @@ const Home = () => {
         
         // Detailed error handling
         if (err.response) {
-          // The request was made and the server responded with a status code
-          // that falls out of the range of 2xx
-          console.error('Error response data:', err.response.data);
-          console.error('Error response status:', err.response.status);
-          console.error('Error response headers:', err.response.headers);
           setTestimonialsError(`API Error: ${err.response.status} - ${err.response.data?.message || 'No message'}`);
         } else if (err.request) {
-          // The request was made but no response was received
-          console.error('Error request:', err.request);
           setTestimonialsError('No response from server. Please check your connection.');
         } else {
-          // Something happened in setting up the request that triggered an Error
-          console.error('Error message:', err.message);
           setTestimonialsError(`Request error: ${err.message}`);
         }
         
@@ -346,7 +338,7 @@ const Home = () => {
 
           <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
             <h1 className="text-white text-center font-bold text-2xl sm:text-3xl md:text-5xl lg:text-6xl leading-tight tracking-wide drop-shadow-[0_4px_12px_rgba(0,0,0,0.85)]">
-              Where Human Insight Meets Technology
+              {t('homePage.hero.title')}
             </h1>
           </div>
 
@@ -354,12 +346,10 @@ const Home = () => {
             <div className="absolute inset-0 flex items-center justify-center bg-gray-900 z-20">
               <div className="text-white text-center">
                 <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                <p className="text-lg">Loading video...</p>
+                <p className="text-lg">{t('homePage.hero.loadingVideo')}</p>
               </div>
             </div>
           )}
-
-        
         </div>
       </section>
 
@@ -397,13 +387,13 @@ const Home = () => {
             viewport={{ once: true }}
           >
             <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 md:mb-6">
-              <motion.span variants={fadeInUp} className="block text-grey-900 drop-shadow-lg">Human-Led Technology</motion.span>
-              <motion.span variants={fadeInUp} className="block mt-2 text-grey-900 drop-shadow-lg">North American Accountability</motion.span>
-              <motion.span variants={fadeInUp} className="block mt-2 text-red-700 drop-shadow-lg">Indian Execution Excellence</motion.span>
+              <motion.span variants={fadeInUp} className="block text-grey-900 drop-shadow-lg">{t('homePage.hero.subtitle1')}</motion.span>
+              <motion.span variants={fadeInUp} className="block mt-2 text-grey-900 drop-shadow-lg">{t('homePage.hero.subtitle2')}</motion.span>
+              <motion.span variants={fadeInUp} className="block mt-2 text-red-700 drop-shadow-lg">{t('homePage.hero.subtitle3')}</motion.span>
             </motion.h1>
 
             <motion.p variants={fadeInUp} className="text-lg sm:text-xl md:text-2xl text-grey-900 max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed drop-shadow-lg">
-              Real people. Clear ownership. End-to-end IT consulting and delivery for USA , Canada & Middle East businesses.
+              {t('homePage.hero.description')}
             </motion.p>
 
             <motion.div 
@@ -416,7 +406,7 @@ const Home = () => {
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 bg-red-600 text-white px-6 py-3 sm:px-8 sm:py-4 rounded-full font-semibold text-base sm:text-lg shadow-lg shadow-red-600/20 hover:bg-red-700 transition-all duration-300"
               >
-                Let's Talk
+                {t('homePage.hero.ctaButton')}
                 <svg className="w-5 h-5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
                 </svg>
@@ -441,10 +431,10 @@ const Home = () => {
               className="text-center mb-12 md:mb-16"
             >
               <h2 className="text-[30px] font-bold mb-4 md:mb-6">
-                The IT Industry Has a <span className="text-red-400">Responsibility</span> Problem
+                {t('homePage.problem.title1')} <span className="text-red-400">{t('homePage.problem.title2')}</span>
               </h2>
               <p className="text-[22px] text-gray-300 max-w-3xl mx-auto px-4">
-                Technology fails when responsibility is outsourced to faceless teams and automated responses.
+                {t('homePage.problem.description')}
               </p>
             </motion.div>
 
@@ -452,48 +442,7 @@ const Home = () => {
               variants={staggerContainer}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 px-4 md:px-0"
             >
-              {[
-                {
-                  icon: (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  ),
-                  title: "Anonymous vendors, no ownership",
-                  color: "text-red-500",
-                  description: "No single point of contact, endless support tickets"
-                },
-                {
-                  icon: (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18" />
-                    </svg>
-                  ),
-                  title: "AI tools but no accountability",
-                  color: "text-blue-500",
-                  description: "Automated responses without human understanding"
-                },
-                {
-                  icon: (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01" />
-                    </svg>
-                  ),
-                  title: "Offshore teams with zero business context",
-                  color: "text-amber-500",
-                  description: "Cultural and timezone gaps causing misalignment"
-                },
-                {
-                  icon: (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6" />
-                    </svg>
-                  ),
-                  title: "Projects delivered, but problems remain",
-                  color: "text-purple-500",
-                  description: "Solutions that don't solve real business problems"
-                }
-              ].map((point, index) => (
+              {t('homePage.problem.points', { returnObjects: true }).map((point, index) => (
                 <motion.div
                   key={index}
                   variants={fadeInUp}
@@ -501,7 +450,23 @@ const Home = () => {
                   className="bg-gray-800/50 border border-gray-700 rounded-xl p-4 md:p-6 hover:border-red-500/50 transition-all duration-300"
                 >
                   <motion.div variants={iconRotate} className={`${point.color} mb-3 md:mb-4`}>
-                    {point.icon}
+                    {point.icon === "people" ? (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
+                    ) : point.icon === "ai" ? (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18" />
+                      </svg>
+                    ) : point.icon === "teams" ? (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v2m0 4h.01" />
+                      </svg>
+                    ) : (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6" />
+                      </svg>
+                    )}
                   </motion.div>
                   <h3 className="text-lg md:text-xl font-semibold mb-2">
                     {point.title}
@@ -518,7 +483,7 @@ const Home = () => {
               className="mt-12 md:mt-16 text-center p-6 md:p-8 bg-gradient-to-r from-red-900/30 to-blue-900/30 rounded-2xl border border-gray-700 mx-4 md:mx-0"
             >
               <p className="text-xl md:text-2xl font-bold italic">
-                "Technology without ownership is just another expense."
+                {t('homePage.problem.quote')}
               </p>
             </motion.div>
           </div>
@@ -550,7 +515,7 @@ const Home = () => {
                 className="text-center mb-12 md:mb-16"
               >
                 <h2 className="text-[30px] font-bold text-white mb-4 md:mb-6">
-                  What Makes <span className="text-red-600">KANDAX</span> Different
+                  {t('homePage.difference.title1')} <span className="text-red-600">{t('homePage.difference.title2')}</span>
                 </h2>
               </motion.div>
 
@@ -558,44 +523,7 @@ const Home = () => {
                 variants={staggerContainer}
                 className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16 px-4 md:px-0"
               >
-                {[
-                  {
-                    icon: "🧠",
-                    title: "Human-Led Engagement",
-                    description: "Named account owner. Direct access. Real conversations.",
-                    color: "from-purple-500 to-pink-500",
-                    features: [
-                      "Dedicated account executive",
-                      "Direct Slack/Teams access",
-                      "Weekly strategic reviews",
-                      "Executive escalation path"
-                    ]
-                  },
-                  {
-                    icon: "🇨🇦",
-                    title: "North American Accountability",
-                    description: "Strategy, compliance, and ownership stay in Canada.",
-                    color: "from-red-500 to-red-600",
-                    features: [
-                      "Canadian legal entity",
-                      "GDPR/PIPEDA compliance",
-                      "In-country data sovereignty",
-                      "Local contract enforcement"
-                    ]
-                  },
-                  {
-                    icon: "🇮🇳",
-                    title: "Indian Execution Excellence",
-                    description: "Senior engineers, structured delivery, long-term teams.",
-                    color: "from-green-500 to-emerald-600",
-                    features: [
-                      "10+ years average experience",
-                      "<5% annual attrition",
-                      "Domain-specific training",
-                      "Career growth paths"
-                    ]
-                  }
-                ].map((pillar, index) => (
+                {t('homePage.difference.pillars', { returnObjects: true }).map((pillar, index) => (
                   <motion.div 
                     key={index} 
                     variants={fadeInUp}
@@ -641,7 +569,7 @@ const Home = () => {
                 className="text-center p-6 md:p-8 bg-white/95 backdrop-blur-sm rounded-2xl border border-gray-200/80 mx-4 md:mx-0 shadow-xl"
               >
                 <p className="text-xl md:text-2xl font-bold text-gray-900">
-                  We don't outsource responsibility. We <span className="text-red-600">own outcomes</span>.
+                  {t('homePage.difference.quote')}
                 </p>
               </motion.div>
             </div>
@@ -674,10 +602,10 @@ const Home = () => {
                 className="text-center mb-12 md:mb-16"
               >
                 <h2 className="text-[30px] font-bold text-white mb-4 md:mb-6 drop-shadow-lg">
-                  Focused Services. <span className="text-red-500">Clear Outcomes</span>.
+                  {t('homePage.services.title1')} <span className="text-red-500">{t('homePage.services.title2')}</span>
                 </h2>
                 <p className="text-[22px] text-gray-200 max-w-3xl mx-auto px-4 drop-shadow">
-                  End-to-end technology solutions with measurable business impact
+                  {t('homePage.services.subtitle')}
                 </p>
               </motion.div>
 
@@ -685,64 +613,7 @@ const Home = () => {
                 variants={staggerContainer}
                 className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 px-4 md:px-0"
               >
-                {[
-                  { 
-                    icon: "✨", 
-                    title: 'Generative AI Solutions', 
-                    description: 'Content generation & creative AI tools',
-                    path: '/generative-ai',
-                    color: 'bg-purple-100'
-                  },
-                  { 
-                    icon: "🌐", 
-                    title: 'Web Development', 
-                    description: 'Custom web applications & solutions',
-                    path: '/web-development',
-                    color: 'bg-blue-100'
-                  },
-                  { 
-                    icon: "☁️", 
-                    title: 'Cloud Solutions', 
-                    description: 'AWS, Azure & Google Cloud migration',
-                    path: '/cloud-solutions',
-                    color: 'bg-sky-100'
-                  },
-                  { 
-                    icon: "📱", 
-                    title: 'Mobile App Development', 
-                    description: 'iOS & Android applications',
-                    path: '/mobile-development',
-                    color: 'bg-green-100'
-                  },
-                  { 
-                    icon: "🗄️", 
-                    title: 'Database Management', 
-                    description: 'SQL, NoSQL & Data warehousing',
-                    path: '/database-management',
-                    color: 'bg-amber-100'
-                  },
-                  { 
-                    icon: "📢", 
-                    title: 'Digital Marketing', 
-                    description: 'Data-driven marketing strategies',
-                    path: '/digital-marketing',
-                    color: 'bg-pink-100'
-                  },
-                  { 
-                    icon: "🛡️", 
-                    title: 'Cybersecurity', 
-                    description: 'Advanced security solutions',
-                    path: '/cybersecurity',
-                    color: 'bg-red-100'
-                  },
-                  { 
-                    icon: "⚡", 
-                    title: 'DevOps Services', 
-                    description: 'CI/CD & automation solutions',
-                    path: '/devops-services',
-                    color: 'bg-orange-100'
-                  }
-                ].map((service, index) => (
+                {t('homePage.services.items', { returnObjects: true }).map((service, index) => (
                   <motion.div
                     key={index}
                     variants={fadeInUp}
@@ -772,7 +643,7 @@ const Home = () => {
                           to={service.path}
                           className="inline-flex items-center gap-1 text-sm text-red-600 font-medium hover:text-red-700 transition-colors"
                         >
-                          Explore Service
+                          {t('homePage.services.exploreService')}
                           <svg className="w-3 h-3 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
                           </svg>
@@ -812,7 +683,7 @@ const Home = () => {
                 className="text-center mb-12 md:mb-16"
               >
                 <h2 className="text-[30px] font-bold text-white mb-4 md:mb-6 drop-shadow-lg">
-                  Built for Businesses That <span className="text-red-600">Value Ownership</span>
+                  {t('homePage.industries.title1')} <span className="text-red-600">{t('homePage.industries.title2')}</span>
                 </h2>
               </motion.div>
 
@@ -820,16 +691,7 @@ const Home = () => {
                 variants={staggerContainer}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-12 px-4 md:px-0"
               >
-                {[
-                  { name: "SMBs & Mid-Market", desc: "Growing companies needing scalable solutions", icon: "🏢" },
-                  { name: "Funded Startups", desc: "Founders requiring strategic tech leadership", icon: "🚀" },
-                  { name: "Healthcare", desc: "HIPAA-compliant systems and patient data security", icon: "🏥" },
-                  { name: "Professional Services", desc: "Legal, accounting, and consulting firms", icon: "⚖️" },
-                  { name: "Manufacturing", desc: "Operational technology and supply chain systems", icon: "🏭" },
-                  { name: "FinTech", desc: "Secure, compliant financial technology", icon: "💰" },
-                  { name: "E-commerce", desc: "Scalable platforms with seamless UX", icon: "🛒" },
-                  { name: "Enterprises", desc: "Legacy modernization and digital transformation", icon: "🏛️" }
-                ].map((industry, index) => (
+                {t('homePage.industries.items', { returnObjects: true }).map((industry, index) => (
                   <motion.div 
                     key={index}
                     variants={fadeInUp}
@@ -854,7 +716,7 @@ const Home = () => {
                 className="text-center p-6 md:p-8 bg-white/95 backdrop-blur-sm rounded-2xl border border-white/20 mx-4 md:mx-0 shadow-2xl"
               >
                 <p className="text-xl md:text-2xl font-bold text-gray-900">
-                  If <span className="text-red-600">accountability matters</span>, KANDAX fits.
+                  {t('homePage.industries.quote')}
                 </p>
               </motion.div>
             </div>
@@ -875,10 +737,10 @@ const Home = () => {
               className="text-center mb-12 md:mb-16"
             >
               <h2 className="text-[30px] font-bold mb-4 md:mb-6">
-                A Human-Centered <span className="text-red-400">Delivery Process</span>
+                {t('homePage.process.title1')} <span className="text-red-400">{t('homePage.process.title2')}</span>
               </h2>
               <p className="text-[22px] text-gray-300 max-w-3xl mx-auto px-4">
-                Transparent, collaborative, and designed for long-term success
+                {t('homePage.process.subtitle')}
               </p>
             </motion.div>
 
@@ -889,40 +751,7 @@ const Home = () => {
                 variants={staggerContainer}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 relative z-10"
               >
-                {[
-                  {
-                    number: "01",
-                    icon: "🔍",
-                    title: "Discover",
-                    subtitle: "Business-first understanding",
-                    description: "We start by understanding your business goals, challenges, and constraints before discussing technology.",
-                    color: "from-blue-500 to-cyan-500"
-                  },
-                  {
-                    number: "02",
-                    icon: "🎨",
-                    title: "Design",
-                    subtitle: "Strategy before code",
-                    description: "Architectural design, technology selection, and project planning with clear milestones and deliverables.",
-                    color: "from-purple-500 to-pink-500"
-                  },
-                  {
-                    number: "03",
-                    icon: "⚡",
-                    title: "Deliver",
-                    subtitle: "India-led execution, Canada-led oversight",
-                    description: "Agile development with weekly demos, continuous integration, and transparent progress tracking.",
-                    color: "from-red-500 to-orange-500"
-                  },
-                  {
-                    number: "04",
-                    icon: "🤝",
-                    title: "Support",
-                    subtitle: "Long-term partnership, not handoff",
-                    description: "Ongoing maintenance, updates, and evolution of your solution with dedicated support teams.",
-                    color: "from-green-500 to-emerald-500"
-                  }
-                ].map((step, index) => (
+                {t('homePage.process.steps', { returnObjects: true }).map((step, index) => (
                   <motion.div 
                     key={index}
                     variants={fadeInUp}
@@ -984,7 +813,7 @@ const Home = () => {
                 className="text-center mb-12 md:mb-16"
               >
                 <h2 className="text-[30px] font-bold text-white mb-4 md:mb-6 drop-shadow-sm">
-                  Why Clients <span className="text-red-600">Choose KANDAX</span>
+                  {t('homePage.trust.title1')} <span className="text-red-600">{t('homePage.trust.title2')}</span>
                 </h2>
               </motion.div>
 
@@ -992,28 +821,7 @@ const Home = () => {
                 variants={staggerContainer}
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-8 md:mb-12 px-4 md:px-0"
               >
-                {[
-                  {
-                    title: "Canadian Leadership & Governance",
-                    description: "All strategic decisions made in Canada with local accountability",
-                    icon: "🛡️"
-                  },
-                  {
-                    title: "Senior Engineering Teams",
-                    description: "No junior engineers. Average 10+ years experience per developer",
-                    icon: "👨‍💻"
-                  },
-                  {
-                    title: "Clear SLAs & Communication",
-                    description: "Guaranteed response times and regular executive reviews",
-                    icon: "📋"
-                  },
-                  {
-                    title: "Long-Term Partnerships",
-                    description: "We grow with you, not just complete projects",
-                    icon: "🤝"
-                  }
-                ].map((item, index) => (
+                {t('homePage.trust.items', { returnObjects: true }).map((item, index) => (
                   <motion.div
                     key={index}
                     variants={fadeInUp}
@@ -1062,22 +870,17 @@ const Home = () => {
                   className="text-white"
                 >
                   <h2 className="text-[30px] font-bold mb-4 md:mb-6">
-                    Our India <span className="text-red-600">Center of Excellence</span>
+                    {t('homePage.india.title1')} <span className="text-red-600">{t('homePage.india.title2')}</span>
                   </h2>
                   <p className="text-[16px] mb-6 md:mb-8">
-                    India is not a cost center for us—it's our execution backbone. Our teams are domain-trained, stable, and deeply integrated with our Canadian leadership.
+                    {t('homePage.india.description')}
                   </p>
                   
                   <motion.div 
                     variants={staggerContainer}
                     className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
                   >
-                    {[
-                      { label: "Senior engineers", value: "10+ years avg." },
-                      { label: "Team attrition", value: "< 5%" },
-                      { label: "Domain training", value: "Ongoing" },
-                      { label: "Security certified", value: "100%" }
-                    ].map((stat, index) => (
+                    {t('homePage.india.stats', { returnObjects: true }).map((stat, index) => (
                       <motion.div
                         key={index}
                         variants={fadeInUp}
@@ -1096,16 +899,9 @@ const Home = () => {
                   whileHover={{ y: -5 }}
                   className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-2xl border border-gray-200/80"
                 >
-                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">Execution Excellence</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4 md:mb-6">{t('homePage.india.executionTitle')}</h3>
                   <ul className="space-y-3 md:space-y-4">
-                    {[
-                      "Stable, long-term engineering teams",
-                      "Deep domain expertise across industries",
-                      "Secure development processes (ISO 27001)",
-                      "Continuous training & certification programs",
-                      "Seamless integration with Canadian leadership",
-                      "Follow-the-sun delivery model"
-                    ].map((item, index) => (
+                    {t('homePage.india.executionItems', { returnObjects: true }).map((item, index) => (
                       <motion.li 
                         key={index}
                         initial={{ opacity: 0, x: -20 }}
@@ -1154,10 +950,10 @@ const Home = () => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
               <div className="text-center mb-12 md:mb-16">
                 <h2 className="text-[30px] font-bold text-white mb-4 md:mb-6 drop-shadow-lg">
-                  What Our <span className="text-red-600">Clients Say</span>
+                  {t('homePage.testimonials.title1')} <span className="text-red-600">{t('homePage.testimonials.title2')}</span>
                 </h2>
                 <p className="text-[22px] text-gray-200 max-w-3xl mx-auto px-4 drop-shadow">
-                  KANDAX is a transformative technology partner, uniquely fusing Canadian accountability with Indian execution to own outcomes.
+                  {t('homePage.testimonials.description')}
                 </p>
               </div>
 
@@ -1192,43 +988,43 @@ const Home = () => {
                   {/* Left Column - Kandax Verified Section */}
                   <div className="flex flex-col items-center justify-center text-center">
                     <div className="mb-6 md:mb-8">
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow">Zplus Verified</h3>
-                      <p className="text-gray-200 text-lg mb-6 drop-shadow">Top-rated IT Services Provider</p>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow">{t('homePage.testimonials.verified.title')}</h3>
+                      <p className="text-gray-200 text-lg mb-6 drop-shadow">{t('homePage.testimonials.verified.subtitle')}</p>
                       {/* Rating Display */}
-                    <div className="flex flex-col items-center mb-4">
-  <div className="flex mb-2">
-    {[...Array(5)].map((_, i) => {
-      // 4.7 rating means:
-      // - 4 full stars
-      // - 1 partial star (70% filled)
-      if (i < 4) {
-        // Full stars for first 4
-        return (
-          <svg key={i} className="w-8 h-8 md:w-10 md:h-10 text-yellow-400 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-          </svg>
-        );
-      } else {
-        // 5th star - partial fill (70%)
-        return (
-          <div key={i} className="relative">
-            <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-300 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <div className="absolute top-0 left-0 overflow-hidden" style={{ width: '70%' }}>
-              <svg className="w-8 h-8 md:w-10 md:h-10 text-yellow-400 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-              </svg>
-            </div>
-          </div>
-        );
-      }
-    })}
-  </div>
-  <div>
-    <span className="text-3xl md:text-4xl font-bold text-white drop-shadow">4.7</span>
-  </div>
-</div>
+                      <div className="flex flex-col items-center mb-4">
+                        <div className="flex mb-2">
+                          {[...Array(5)].map((_, i) => {
+                            // 4.7 rating means:
+                            // - 4 full stars
+                            // - 1 partial star (70% filled)
+                            if (i < 4) {
+                              // Full stars for first 4
+                              return (
+                                <svg key={i} className="w-8 h-8 md:w-10 md:h-10 text-yellow-400 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                              );
+                            } else {
+                              // 5th star - partial fill (70%)
+                              return (
+                                <div key={i} className="relative">
+                                  <svg className="w-8 h-8 md:w-10 md:h-10 text-gray-300 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                  </svg>
+                                  <div className="absolute top-0 left-0 overflow-hidden" style={{ width: '70%' }}>
+                                    <svg className="w-8 h-8 md:w-10 md:h-10 text-yellow-400 drop-shadow" fill="currentColor" viewBox="0 0 20 20">
+                                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                    </svg>
+                                  </div>
+                                </div>
+                              );
+                            }
+                          })}
+                        </div>
+                        <div>
+                          <span className="text-3xl md:text-4xl font-bold text-white drop-shadow">4.7</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   
@@ -1275,7 +1071,7 @@ const Home = () => {
                                       <path d="M10 8c-3.3 0-6 2.7-6 6v10h10v-10h-4c0-2.2 1.8-4 4-4zm14 0c-3.3 0-6 2.7-6 6v10h10v-10h-4c0-2.2 1.8-4 4-4z" />
                                     </svg>
                                     <p className="text-gray-700 italic text-lg md:text-xl px-4">
-                                      "{testimonial.testimonial_text || "Great service and support!"}"
+                                      "{testimonial.testimonial_text || t('homePage.testimonials.defaultText')}"
                                     </p>
                                   </div>
                                   {/* Navigation Dots */}
@@ -1307,8 +1103,8 @@ const Home = () => {
                           <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                           </svg>
-                          <p className="text-lg">No testimonials available yet</p>
-                          <p className="text-sm">Check back soon for client reviews!</p>
+                          <p className="text-lg">{t('homePage.testimonials.noTestimonials')}</p>
+                          <p className="text-sm">{t('homePage.testimonials.checkBack')}</p>
                         </div>
                       </div>
                     )}
@@ -1332,13 +1128,14 @@ const Home = () => {
               variants={fadeInUp}
               className="text-[30px] font-bold mb-4 md:mb-6"
             >
-              Technology Is Everywhere. <span className="text-red-400">Ownership Is Rare</span>.
+              {t('homePage.cta.title1')}{" "}
+              <span className="text-red-400">{t('homePage.cta.title2')}</span>
             </motion.h2>
             <motion.p 
               variants={fadeInUp}
               className="text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4"
             >
-              Partner with a team that stays accountable from start to scale.
+              {t('homePage.cta.description')}
             </motion.p>
             <motion.div 
               variants={scaleIn}
@@ -1350,7 +1147,7 @@ const Home = () => {
                 href="/contact"
                 className="group inline-flex items-center justify-center gap-2 bg-red-600 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-semibold text-sm md:text-base shadow-sm shadow-red-600/20 hover:bg-red-700 transition-all duration-300"
               >
-                Let's Talk
+                {t('homePage.cta.button')}
                 <svg
                   className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
                   fill="none"
@@ -1365,7 +1162,7 @@ const Home = () => {
               variants={fadeInUp}
               className="mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0"
             >
-              No bots. No runaround. Just real conversations with accountable partners.
+              {t('homePage.cta.subtext')}
             </motion.p>
           </div>
         </motion.section>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Mobile() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('native');
   const [activeService, setActiveService] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
@@ -74,192 +76,276 @@ function Mobile() {
     };
   }, [isVisible.hero]);
 
+  // Mobile Services from translations
   const mobileServices = [
     {
       icon: "📱",
-      title: "iOS App Development",
-      description: "Native iOS applications built with Swift and SwiftUI for optimal performance",
-      features: ["Swift/SwiftUI", "UIKit", "Core Data", "App Store Deployment", "Apple Pay Integration"]
+      title: t('mobilePage.services.items.0.title'),
+      description: t('mobilePage.services.items.0.description'),
+      features: [
+        t('mobilePage.services.items.0.features.0'),
+        t('mobilePage.services.items.0.features.1'),
+        t('mobilePage.services.items.0.features.2'),
+        t('mobilePage.services.items.0.features.3'),
+        t('mobilePage.services.items.0.features.4')
+      ]
     },
     {
       icon: "🤖",
-      title: "Android App Development",
-      description: "Native Android apps using Kotlin and Jetpack Compose for superior user experience",
-      features: ["Kotlin/Java", "Jetpack Compose", "Room Database", "Play Store Deployment", "Material Design"]
+      title: t('mobilePage.services.items.1.title'),
+      description: t('mobilePage.services.items.1.description'),
+      features: [
+        t('mobilePage.services.items.1.features.0'),
+        t('mobilePage.services.items.1.features.1'),
+        t('mobilePage.services.items.1.features.2'),
+        t('mobilePage.services.items.1.features.3'),
+        t('mobilePage.services.items.1.features.4')
+      ]
     },
     {
       icon: "⚛️",
-      title: "Cross-Platform Development",
-      description: "Build once, deploy everywhere with React Native and Flutter",
-      features: ["React Native", "Flutter", "Single Codebase", "iOS & Android", "Hot Reload"]
+      title: t('mobilePage.services.items.2.title'),
+      description: t('mobilePage.services.items.2.description'),
+      features: [
+        t('mobilePage.services.items.2.features.0'),
+        t('mobilePage.services.items.2.features.1'),
+        t('mobilePage.services.items.2.features.2'),
+        t('mobilePage.services.items.2.features.3'),
+        t('mobilePage.services.items.2.features.4')
+      ]
     },
     {
       icon: "🌐",
-      title: "Progressive Web Apps",
-      description: "Web applications that work offline and feel like native apps",
-      features: ["PWA", "Service Workers", "Offline Capability", "Push Notifications", "App-like UI"]
+      title: t('mobilePage.services.items.3.title'),
+      description: t('mobilePage.services.items.3.description'),
+      features: [
+        t('mobilePage.services.items.3.features.0'),
+        t('mobilePage.services.items.3.features.1'),
+        t('mobilePage.services.items.3.features.2'),
+        t('mobilePage.services.items.3.features.3'),
+        t('mobilePage.services.items.3.features.4')
+      ]
     },
     {
       icon: "🎮",
-      title: "Mobile Games Development",
-      description: "Engaging mobile games with stunning graphics and smooth gameplay",
-      features: ["Unity", "Unreal Engine", "2D/3D Graphics", "In-App Purchases", "Multiplayer Support"]
+      title: t('mobilePage.services.items.4.title'),
+      description: t('mobilePage.services.items.4.description'),
+      features: [
+        t('mobilePage.services.items.4.features.0'),
+        t('mobilePage.services.items.4.features.1'),
+        t('mobilePage.services.items.4.features.2'),
+        t('mobilePage.services.items.4.features.3'),
+        t('mobilePage.services.items.4.features.4')
+      ]
     },
     {
       icon: "🔌",
-      title: "API Integration",
-      description: "Seamlessly connect your mobile app with backend services and third-party APIs",
-      features: ["REST APIs", "GraphQL", "WebSockets", "Authentication", "Real-time Updates"]
+      title: t('mobilePage.services.items.5.title'),
+      description: t('mobilePage.services.items.5.description'),
+      features: [
+        t('mobilePage.services.items.5.features.0'),
+        t('mobilePage.services.items.5.features.1'),
+        t('mobilePage.services.items.5.features.2'),
+        t('mobilePage.services.items.5.features.3'),
+        t('mobilePage.services.items.5.features.4')
+      ]
     },
     {
       icon: "🔒",
-      title: "App Security",
-      description: "Protect user data and ensure compliance with security best practices",
-      features: ["Data Encryption", "Secure Authentication", "Code Obfuscation", "Penetration Testing", "GDPR Compliance"]
+      title: t('mobilePage.services.items.6.title'),
+      description: t('mobilePage.services.items.6.description'),
+      features: [
+        t('mobilePage.services.items.6.features.0'),
+        t('mobilePage.services.items.6.features.1'),
+        t('mobilePage.services.items.6.features.2'),
+        t('mobilePage.services.items.6.features.3'),
+        t('mobilePage.services.items.6.features.4')
+      ]
     },
     {
       icon: "📊",
-      title: "App Maintenance & Support",
-      description: "Ongoing support, updates, and optimization for your mobile applications",
-      features: ["Bug Fixes", "Performance Optimization", "OS Updates", "Feature Enhancements", "24/7 Support"]
+      title: t('mobilePage.services.items.7.title'),
+      description: t('mobilePage.services.items.7.description'),
+      features: [
+        t('mobilePage.services.items.7.features.0'),
+        t('mobilePage.services.items.7.features.1'),
+        t('mobilePage.services.items.7.features.2'),
+        t('mobilePage.services.items.7.features.3'),
+        t('mobilePage.services.items.7.features.4')
+      ]
     }
   ];
 
+  // Tech Stack
   const techStack = {
     native: [
-      { name: "Swift", level: "Advanced" },
-      { name: "SwiftUI", level: "Expert" },
-      { name: "Kotlin", level: "Advanced" },
-      { name: "Jetpack Compose", level: "Advanced" },
-      { name: "Objective-C", level: "Intermediate" },
-      { name: "Java", level: "Intermediate" }
+      { name: "Swift", level: t('mobilePage.techStack.levels.advanced') },
+      { name: "SwiftUI", level: t('mobilePage.techStack.levels.expert') },
+      { name: "Kotlin", level: t('mobilePage.techStack.levels.advanced') },
+      { name: "Jetpack Compose", level: t('mobilePage.techStack.levels.advanced') },
+      { name: "Objective-C", level: t('mobilePage.techStack.levels.intermediate') },
+      { name: "Java", level: t('mobilePage.techStack.levels.intermediate') }
     ],
     cross: [
-      { name: "React Native", level: "Expert" },
-      { name: "Flutter", level: "Advanced" },
-      { name: "Expo", level: "Expert" },
-      { name: "TypeScript", level: "Advanced" },
-      { name: "Dart", level: "Intermediate" },
-      { name: "Redux", level: "Advanced" }
+      { name: "React Native", level: t('mobilePage.techStack.levels.expert') },
+      { name: "Flutter", level: t('mobilePage.techStack.levels.advanced') },
+      { name: "Expo", level: t('mobilePage.techStack.levels.expert') },
+      { name: "TypeScript", level: t('mobilePage.techStack.levels.advanced') },
+      { name: "Dart", level: t('mobilePage.techStack.levels.intermediate') },
+      { name: "Redux", level: t('mobilePage.techStack.levels.advanced') }
     ],
     backend: [
-      { name: "Firebase", level: "Expert" },
-      { name: "Node.js", level: "Advanced" },
-      { name: "GraphQL", level: "Advanced" },
-      { name: "WebSockets", level: "Advanced" },
-      { name: "AWS Amplify", level: "Intermediate" },
-      { name: "MongoDB", level: "Intermediate" }
+      { name: "Firebase", level: t('mobilePage.techStack.levels.expert') },
+      { name: "Node.js", level: t('mobilePage.techStack.levels.advanced') },
+      { name: "GraphQL", level: t('mobilePage.techStack.levels.advanced') },
+      { name: "WebSockets", level: t('mobilePage.techStack.levels.advanced') },
+      { name: "AWS Amplify", level: t('mobilePage.techStack.levels.intermediate') },
+      { name: "MongoDB", level: t('mobilePage.techStack.levels.intermediate') }
     ]
   };
 
+  // Mobile Projects from translations
   const mobileProjects = [
     {
       id: 1,
-      title: "Fitness Tracking App",
-      description: "Comprehensive fitness app with workout plans, nutrition tracking, and progress analytics",
-      category: "Health & Fitness",
+      title: t('mobilePage.projects.items.0.title'),
+      description: t('mobilePage.projects.items.0.description'),
+      category: t('mobilePage.projects.items.0.category'),
       tech: ["React Native", "Firebase", "Redux", "Google Fit API", "Apple HealthKit"],
-      results: ["500K+ downloads", "4.8-star rating", "30% monthly active users"]
+      results: [
+        t('mobilePage.projects.items.0.results.0'),
+        t('mobilePage.projects.items.0.results.1'),
+        t('mobilePage.projects.items.0.results.2')
+      ]
     },
     {
       id: 2,
-      title: "Food Delivery Platform",
-      description: "Multi-restaurant food ordering and delivery app with real-time tracking",
-      category: "Food & Delivery",
+      title: t('mobilePage.projects.items.1.title'),
+      description: t('mobilePage.projects.items.1.description'),
+      category: t('mobilePage.projects.items.1.category'),
       tech: ["Flutter", "Node.js", "MongoDB", "Google Maps API", "Stripe"],
-      results: ["200+ restaurant partners", "Average order time 25 mins", "$2M+ monthly GMV"]
+      results: [
+        t('mobilePage.projects.items.1.results.0'),
+        t('mobilePage.projects.items.1.results.1'),
+        t('mobilePage.projects.items.1.results.2')
+      ]
     },
     {
       id: 3,
-      title: "Language Learning App",
-      description: "Interactive language learning platform with speech recognition and AI tutors",
-      category: "Education",
+      title: t('mobilePage.projects.items.2.title'),
+      description: t('mobilePage.projects.items.2.description'),
+      category: t('mobilePage.projects.items.2.category'),
       tech: ["Swift", "Kotlin", "AWS", "Machine Learning", "Speech Recognition"],
-      results: ["1M+ active learners", "85% course completion rate", "Featured by Apple & Google"]
+      results: [
+        t('mobilePage.projects.items.2.results.0'),
+        t('mobilePage.projects.items.2.results.1'),
+        t('mobilePage.projects.items.2.results.2')
+      ]
     },
     {
       id: 4,
-      title: "E-commerce Mobile App",
-      description: "Feature-rich shopping app with AR product visualization and secure payments",
-      category: "E-commerce",
+      title: t('mobilePage.projects.items.3.title'),
+      description: t('mobilePage.projects.items.3.description'),
+      category: t('mobilePage.projects.items.3.category'),
       tech: ["React Native", "Redux", "Stripe", "AR Core", "AR Kit"],
-      results: ["300% increase in mobile sales", "2x faster checkout", "4.9-star rating"]
+      results: [
+        t('mobilePage.projects.items.3.results.0'),
+        t('mobilePage.projects.items.3.results.1'),
+        t('mobilePage.projects.items.3.results.2')
+      ]
     },
     {
       id: 5,
-      title: "Meditation & Wellness App",
-      description: "Mindfulness and meditation app with personalized recommendations",
-      category: "Mental Health",
+      title: t('mobilePage.projects.items.4.title'),
+      description: t('mobilePage.projects.items.4.description'),
+      category: t('mobilePage.projects.items.4.category'),
       tech: ["Flutter", "Firebase", "Audio Streaming", "Push Notifications", "Subscription"],
-      results: ["750K+ users", "95% retention rate", "$500K+ monthly revenue"]
+      results: [
+        t('mobilePage.projects.items.4.results.0'),
+        t('mobilePage.projects.items.4.results.1'),
+        t('mobilePage.projects.items.4.results.2')
+      ]
     },
     {
       id: 6,
-      title: "Social Networking App",
-      description: "Niche social platform for hobby enthusiasts with video sharing features",
-      category: "Social Media",
+      title: t('mobilePage.projects.items.5.title'),
+      description: t('mobilePage.projects.items.5.description'),
+      category: t('mobilePage.projects.items.5.category'),
       tech: ["SwiftUI", "Kotlin", "WebRTC", "AWS S3", "WebSocket"],
-      results: ["250K+ registered users", "1M+ daily interactions", "Viral growth 200% month-over-month"]
+      results: [
+        t('mobilePage.projects.items.5.results.0'),
+        t('mobilePage.projects.items.5.results.1'),
+        t('mobilePage.projects.items.5.results.2')
+      ]
     },
     {
       id: 7,
-      title: "Finance & Budgeting App",
-      description: "Personal finance management app with expense tracking and investment insights",
-      category: "FinTech",
+      title: t('mobilePage.projects.items.6.title'),
+      description: t('mobilePage.projects.items.6.description'),
+      category: t('mobilePage.projects.items.6.category'),
       tech: ["React Native", "Plaid API", "Bank Integration", "Data Encryption", "Biometric Auth"],
-      results: ["100K+ active users", "Average savings increase 25%", "Bank-level security"]
+      results: [
+        t('mobilePage.projects.items.6.results.0'),
+        t('mobilePage.projects.items.6.results.1'),
+        t('mobilePage.projects.items.6.results.2')
+      ]
     },
     {
       id: 8,
-      title: "Event Management App",
-      description: "All-in-one event planning and ticketing platform with QR scanning",
-      category: "Events",
+      title: t('mobilePage.projects.items.7.title'),
+      description: t('mobilePage.projects.items.7.description'),
+      category: t('mobilePage.projects.items.7.category'),
       tech: ["Flutter", "Node.js", "QR Code", "Push Notifications", "Payment Gateway"],
-      results: ["500+ events managed", "95% attendee satisfaction", "Sold 1M+ tickets"]
+      results: [
+        t('mobilePage.projects.items.7.results.0'),
+        t('mobilePage.projects.items.7.results.1'),
+        t('mobilePage.projects.items.7.results.2')
+      ]
     }
   ];
 
+  // Process Steps from translations
   const processSteps = [
     {
       step: "01",
-      title: "Discovery & Strategy",
-      description: "Analyze requirements and define app architecture and features",
+      title: t('mobilePage.process.steps.0.title'),
+      description: t('mobilePage.process.steps.0.description'),
       icon: "📋"
     },
     {
       step: "02",
-      title: "UI/UX Design",
-      description: "Create intuitive mobile interfaces and seamless user journeys",
+      title: t('mobilePage.process.steps.1.title'),
+      description: t('mobilePage.process.steps.1.description'),
       icon: "🎨"
     },
     {
       step: "03",
-      title: "Development",
-      description: "Agile development with weekly demos and continuous integration",
+      title: t('mobilePage.process.steps.2.title'),
+      description: t('mobilePage.process.steps.2.description'),
       icon: "💻"
     },
     {
       step: "04",
-      title: "Testing",
-      description: "Comprehensive testing on real devices and emulators",
+      title: t('mobilePage.process.steps.3.title'),
+      description: t('mobilePage.process.steps.3.description'),
       icon: "🔍"
     },
     {
       step: "05",
-      title: "Deployment",
-      description: "App Store/Play Store submission and launch management",
+      title: t('mobilePage.process.steps.4.title'),
+      description: t('mobilePage.process.steps.4.description'),
       icon: "🚀"
     },
     {
       step: "06",
-      title: "Support & Updates",
-      description: "Ongoing maintenance, feature updates, and performance monitoring",
+      title: t('mobilePage.process.steps.5.title'),
+      description: t('mobilePage.process.steps.5.description'),
       icon: "🔄"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen bg-white overflow-x-hidden" dir="ltr">
       {/* Custom Animation Styles */}
       <style jsx>{`
         @keyframes fadeInUp {
@@ -277,17 +363,6 @@ function Mobile() {
           from {
             opacity: 0;
             transform: translateX(-30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
           }
           to {
             opacity: 1;
@@ -414,17 +489,16 @@ function Mobile() {
             <div className="text-left">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="text-gray-900">
-                  Next-Generation
+                  {t('mobilePage.hero.title1')}
                 </span>
                 <br />
                 <span className="mt-2 inline-block gradient-text">
-                  Mobile Applications
+                  {t('mobilePage.hero.title2')}
                 </span>
               </h1>
 
               <p className="mt-6 text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed">
-                We create powerful, user-centric mobile apps that drive engagement
-                and deliver exceptional experiences across all platforms and devices.
+                {t('mobilePage.hero.description')}
               </p>
             </div>
 
@@ -443,10 +517,30 @@ function Mobile() {
 
           <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 animate-stagger ${isVisible.hero ? 'visible' : ''}`}>
             {[
-              { icon: "📱", value: stats.platforms, label: "Dual Platform", suffix: "" },
-              { icon: "⚡", value: stats.loadTime.toFixed(0), label: "Load Time", suffix: "s" },
-              { icon: "👥", value: stats.apps.toFixed(0), label: "Mobile Apps", suffix: "+" },
-              { icon: "✅", value: stats.rating.toFixed(1), label: "Average Rating", suffix: "★" }
+              { 
+                icon: "📱", 
+                value: stats.platforms, 
+                label: t('mobilePage.stats.platforms'), 
+                suffix: "" 
+              },
+              { 
+                icon: "⚡", 
+                value: stats.loadTime.toFixed(0), 
+                label: t('mobilePage.stats.loadTime'), 
+                suffix: "s" 
+              },
+              { 
+                icon: "👥", 
+                value: stats.apps.toFixed(0), 
+                label: t('mobilePage.stats.apps'), 
+                suffix: "+" 
+              },
+              { 
+                icon: "✅", 
+                value: stats.rating.toFixed(1), 
+                label: t('mobilePage.stats.rating'), 
+                suffix: "★" 
+              }
             ].map((stat, index) => (
               <div 
                 key={index}
@@ -481,10 +575,10 @@ function Mobile() {
         <div className="relative z-10">
           <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.services ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Our Mobile Development <span className="text-red-600">Services</span>
+              {t('mobilePage.services.title')}
             </h2>
             <p className="text-gray-600 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              From concept to deployment, we build mobile solutions that users love
+              {t('mobilePage.services.subtitle')}
             </p>
           </div>
 
@@ -585,10 +679,10 @@ function Mobile() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible['tech-stack'] ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Advanced <span className="text-red-600">Technology Stack</span>
+              {t('mobilePage.techStack.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Cutting-edge technologies for building high-performance mobile apps
+              {t('mobilePage.techStack.subtitle')}
             </p>
           </div>
           
@@ -604,8 +698,9 @@ function Mobile() {
                       : 'bg-gray-100/80 text-gray-700 hover:bg-gray-200/80 backdrop-blur-sm'
                   }`}
                 >
-                  {tab === 'native' ? 'Native Development' : 
-                   tab === 'cross' ? 'Cross-Platform' : 'Backend & APIs'}
+                  {tab === 'native' ? t('mobilePage.techStack.tabs.native') : 
+                   tab === 'cross' ? t('mobilePage.techStack.tabs.cross') : 
+                   t('mobilePage.techStack.tabs.backend')}
                 </button>
               ))}
             </div>
@@ -620,8 +715,8 @@ function Mobile() {
                     {tech.name}
                   </div>
                   <div className={`text-sm font-medium animate-pulse ${
-                    tech.level === 'Expert' ? 'text-green-600' :
-                    tech.level === 'Advanced' ? 'text-blue-600' :
+                    tech.level === t('mobilePage.techStack.levels.expert') ? 'text-green-600' :
+                    tech.level === t('mobilePage.techStack.levels.advanced') ? 'text-blue-600' :
                     'text-amber-600'
                   }`}>
                     {tech.level}
@@ -645,15 +740,13 @@ function Mobile() {
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         
-       
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible.process ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Our App Development <span className="text-red-600">Process</span>
+              {t('mobilePage.process.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              A proven methodology for delivering successful mobile applications
+              {t('mobilePage.process.subtitle')}
             </p>
           </div>
           
@@ -695,15 +788,13 @@ function Mobile() {
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         
-        
-
         <div className="relative z-10">
           <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.projects ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Featured <span className="text-red-600">Mobile Apps</span>
+              {t('mobilePage.projects.title')}
             </h2>
             <p className="text-gray-900 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              See how we've transformed ideas into successful mobile applications
+              {t('mobilePage.projects.subtitle')}
             </p>
           </div>
 
@@ -769,7 +860,9 @@ function Mobile() {
                         
                         {/* Technologies */}
                         <div className="mb-4">
-                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Technologies:</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">
+                            {t('mobilePage.projects.technologies')}
+                          </h4>
                           <div className="flex flex-wrap gap-1.5">
                             {project.tech.map((tech, idx) => (
                               <span 
@@ -785,7 +878,9 @@ function Mobile() {
                         
                         {/* Results */}
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Results:</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">
+                            {t('mobilePage.projects.results')}
+                          </h4>
                           <ul className="space-y-2">
                             {project.results.map((result, idx) => (
                               <li 
@@ -827,13 +922,14 @@ function Mobile() {
         ref={el => sectionsRef.current[5] = el}
         data-section-id="cta"
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-transparent to-blue-600/20 animate-gradient-shift"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-transparent to-blue-600/20"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center relative z-10">
           <h2 className={`text-[30px] font-bold mb-4 md:mb-6 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            Technology Is Everywhere. <span className="text-red-400">Ownership Is Rare</span>.
+            {t('mobilePage.cta.title1')}{" "}
+            <span className="text-red-400">{t('mobilePage.cta.title2')}</span>
           </h2>
           <p className={`text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            Partner with a team that stays accountable from start to scale.
+            {t('mobilePage.cta.description')}
           </p>
           
           <div className={`flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
@@ -850,7 +946,7 @@ function Mobile() {
                          transform hover:scale-105
                          animate-pulse"
             >
-              Let's Talk
+              {t('mobilePage.cta.button')}
               <svg
                 className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
                            group-hover:opacity-100 group-hover:translate-x-0
@@ -870,7 +966,7 @@ function Mobile() {
           </div>
 
           <p className={`mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            No bots. No runaround. Just real conversations with accountable partners.
+            {t('mobilePage.cta.subtext')}
           </p>
         </div>
       </section>

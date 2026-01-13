@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { 
   Phone, 
   Mail, 
@@ -21,6 +22,8 @@ import {
 } from 'lucide-react';
 
 function Contact() {
+  const { t } = useTranslation();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -118,7 +121,7 @@ function Contact() {
         setFormStatus({
           submitted: true,
           error: false,
-          message: 'Thank you for your message! We\'ll get back to you within 24 hours.'
+          message: t('contactPage.form.successMessage')
         });
         setFormData({
           name: '',
@@ -131,18 +134,18 @@ function Contact() {
         setFormStatus({
           submitted: false,
           error: true,
-          message: 'Please fill in all required fields.'
+          message: t('contactPage.form.errorMessage')
         });
       }
     }, 1500);
   };
 
   return (
-    <div className="min-h-screen overflow-x-hidden font-poppins">
+    <div className="min-h-screen overflow-x-hidden font-poppins" dir="ltr">
       {/* Banner Image */}
       <img
         src="/copy1.jpg"
-        alt="contactus"
+        alt={t('contactPage.banner.alt')}
         className="w-full h-auto object-cover"
       />
       
@@ -172,10 +175,10 @@ function Contact() {
               }`}
             >
               <h2 className="text-[30px] font-bold text-white mb-2">
-                Get in <span className="text-red-600">Touch</span>
+                {t('contactPage.header.title1')} <span className="text-red-600">{t('contactPage.header.title2')}</span>
               </h2>
               <p className="text-[18px] text-gray-200 max-w-2xl mx-auto leading-relaxed">
-                Fill out the form below and our team will get back to you within 24 hours. No bots, no runaround.
+                {t('contactPage.header.description')}
               </p>
             </div>
 
@@ -192,7 +195,7 @@ function Contact() {
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white/20 backdrop-blur-md border-2 border-white/30 flex items-center justify-center">
                   <img 
                     src="/contactt.jpeg"
-                    alt="Contact Us" 
+                    alt={t('contactPage.images.contactAlt')} 
                     className="w-full h-auto object-contain"
                   />
                 </div>
@@ -226,7 +229,9 @@ function Contact() {
                   <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div>
-                        <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">Full Name *</label>
+                        <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">
+                          {t('contactPage.form.labels.name')} *
+                        </label>
                         <div className="relative">
                           <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-500" />
                           <input
@@ -235,13 +240,15 @@ function Contact() {
                             value={formData.name}
                             onChange={handleInputChange}
                             className="w-full pl-10 pr-4 py-2 md:py-3 bg-white border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
-                            placeholder="John Doe"
+                            placeholder={t('contactPage.form.placeholders.name')}
                             required
                           />
                         </div>
                       </div>
                       <div>
-                        <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">Email Address *</label>
+                        <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">
+                          {t('contactPage.form.labels.email')} *
+                        </label>
                         <div className="relative">
                           <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-500" />
                           <input
@@ -250,7 +257,7 @@ function Contact() {
                             value={formData.email}
                             onChange={handleInputChange}
                             className="w-full pl-10 pr-4 py-2 md:py-3 bg-white border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
-                            placeholder="john@example.com"
+                            placeholder={t('contactPage.form.placeholders.email')}
                             required
                           />
                         </div>
@@ -259,7 +266,9 @@ function Contact() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                       <div>
-                        <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">Phone Number</label>
+                        <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">
+                          {t('contactPage.form.labels.phone')}
+                        </label>
                         <div className="relative">
                           <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-500" />
                           <input
@@ -268,12 +277,14 @@ function Contact() {
                             value={formData.phone}
                             onChange={handleInputChange}
                             className="w-full pl-10 pr-4 py-2 md:py-3 bg-white border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
-                            placeholder="+1 (555) 123-4567"
+                            placeholder={t('contactPage.form.placeholders.phone')}
                           />
                         </div>
                       </div>
                       <div>
-                        <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">Subject</label>
+                        <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">
+                          {t('contactPage.form.labels.subject')}
+                        </label>
                         <div className="relative">
                           <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-gray-500" />
                           <input
@@ -282,21 +293,23 @@ function Contact() {
                             value={formData.subject}
                             onChange={handleInputChange}
                             className="w-full pl-10 pr-4 py-2 md:py-3 bg-white border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:border-red-500 transition-colors text-sm md:text-base"
-                            placeholder="How can we help?"
+                            placeholder={t('contactPage.form.placeholders.subject')}
                           />
                         </div>
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">Your Message *</label>
+                      <label className="block text-gray-800 mb-2 font-medium text-base md:text-lg">
+                        {t('contactPage.form.labels.message')} *
+                      </label>
                       <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
                         rows="5"
                         className="w-full px-4 py-2 md:py-3 bg-white border-2 border-gray-300 rounded-lg text-gray-900 placeholder-gray-600 focus:outline-none focus:border-red-500 transition-colors resize-none text-sm md:text-base"
-                        placeholder="Tell us about your project or inquiry..."
+                        placeholder={t('contactPage.form.placeholders.message')}
                         required
                       ></textarea>
                     </div>
@@ -309,12 +322,12 @@ function Contact() {
                       {isLoading ? (
                         <>
                           <div className="w-4 h-4 md:w-5 md:h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                          <span className="text-sm md:text-base">Sending...</span>
+                          <span className="text-sm md:text-base">{t('contactPage.form.sending')}</span>
                         </>
                       ) : (
                         <>
                           <Send className="w-4 h-4 md:w-5 md:h-5" />
-                          <span className="text-sm md:text-base">Send Message</span>
+                          <span className="text-sm md:text-base">{t('contactPage.form.sendButton')}</span>
                           <ChevronRight className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform" />
                         </>
                       )}
@@ -329,7 +342,7 @@ function Contact() {
               {/* "Meet us at our office" Header */}
               <div className="text-center mb-12">
                 <h2 className="text-[32px] md:text-[36px] font-bold text-white">
-                  Meet us at our <span className="text-red-600">office</span>
+                  {t('contactPage.office.title1')} <span className="text-red-600">{t('contactPage.office.title2')}</span>
                 </h2>
               </div>
 
@@ -346,14 +359,14 @@ function Contact() {
                   {/* Head Office Section */}
                   <div>
                     <div className="flex items-center mb-6">
-                      <h3 className="text-[26px] font-bold text-white">Canada Office</h3>
+                      <h3 className="text-[26px] font-bold text-white">{t('contactPage.office.canadaTitle')}</h3>
                     </div>
                     <div className="pl-7 space-y-6">
                       <div className="flex items-start space-x-4">
                         <p className="text-gray-200 text-lg leading-relaxed">
-                          338 Queen St E # 207<br />
-                          Brampton, ON L6V IC4<br />
-                          Canada
+                          {t('contactPage.office.canadaAddress.line1')}<br />
+                          {t('contactPage.office.canadaAddress.line2')}<br />
+                          {t('contactPage.office.canadaAddress.line3')}
                         </p>
                       </div>
                     </div>
@@ -362,15 +375,16 @@ function Contact() {
                   {/* Regional Office Section */}
                   <div>
                     <div className="flex items-center mb-6">
-                      <h3 className="text-[26px] font-bold text-white">India Development Office</h3>
+                      <h3 className="text-[26px] font-bold text-white">{t('contactPage.office.indiaTitle')}</h3>
                     </div>
                     <div className="pl-7 space-y-6">
                       <div className="flex items-start space-x-4">
                         <p className="text-gray-200 text-lg leading-relaxed">
-                          Office no. 409, 4th Floor, Rajdhani Complex,<br />
-                          Pune - Satara Rd, near shankar maharaj math,<br />
-                          KK Market, Balaji Nagar, Pune,<br />
-                          Maharashtra 411043
+                          {t('contactPage.office.indiaAddress.line1')}<br />
+                          {t('contactPage.office.indiaAddress.line2')}<br />
+                          {t('contactPage.office.indiaAddress.line3')}<br />
+                          {t('contactPage.office.indiaAddress.line4')}<br />
+                          {t('contactPage.office.indiaAddress.line5')}
                         </p>
                       </div>
                     </div>
@@ -389,7 +403,7 @@ function Contact() {
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white/20 backdrop-blur-md border-2 border-white/30 flex items-center justify-center">
                     <img 
                       src="/office_meeting.png"
-                      alt="Our Office Location" 
+                      alt={t('contactPage.images.officeAlt')} 
                       className="w-full h-auto object-contain"
                     />
                   </div>

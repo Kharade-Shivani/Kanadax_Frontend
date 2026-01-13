@@ -1,11 +1,81 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from "react-router-dom";
 
 function RemoteWorkplace() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('collaboration');
   const [activeService, setActiveService] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
+  const [isVisible, setIsVisible] = useState({});
+  const [stats, setStats] = useState({
+    support: 0,
+    security: 0,
+    setups: 0,
+    uptime: 0
+  });
+
+  const sectionsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('data-section-id');
+            setIsVisible(prev => ({ ...prev, [id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-50px' }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Animate stats counter
+  useEffect(() => {
+    if (!isVisible.hero) return;
+
+    const finalStats = {
+      support: 24,
+      security: 100,
+      setups: 100,
+      uptime: 99.9
+    };
+
+    const duration = 2000;
+    const steps = 60;
+    const interval = duration / steps;
+
+    const counters = {};
+    Object.keys(finalStats).forEach(key => {
+      counters[key] = setInterval(() => {
+        setStats(prev => {
+          const current = prev[key];
+          const target = finalStats[key];
+          const increment = (target - current) / 10;
+          return {
+            ...prev,
+            [key]: current + increment > target ? target : current + increment
+          };
+        });
+      }, interval);
+    });
+
+    setTimeout(() => {
+      Object.values(counters).forEach(clearInterval);
+      setStats(finalStats);
+    }, duration);
+
+    return () => {
+      Object.values(counters).forEach(clearInterval);
+    };
+  }, [isVisible.hero]);
 
   // Animation variants
   const fadeInUp = {
@@ -24,15 +94,6 @@ function RemoteWorkplace() {
       transition: {
         staggerChildren: 0.1
       }
-    }
-  };
-
-  const scaleIn = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: { 
-      scale: 1, 
-      opacity: 1,
-      transition: { duration: 0.4, ease: "backOut" }
     }
   };
 
@@ -66,183 +127,263 @@ function RemoteWorkplace() {
   const remoteServices = [
     {
       icon: "💻",
-      title: "Remote Infrastructure Setup",
-      description: "Comprehensive remote work infrastructure including hardware, software, and networking",
-      features: ["Device Provisioning", "VPN Setup", "Network Security", "Cloud Storage", "IT Support"]
+      title: t('remoteWorkplacePage.services.items.0.title'),
+      description: t('remoteWorkplacePage.services.items.0.description'),
+      features: [
+        t('remoteWorkplacePage.services.items.0.features.0'),
+        t('remoteWorkplacePage.services.items.0.features.1'),
+        t('remoteWorkplacePage.services.items.0.features.2'),
+        t('remoteWorkplacePage.services.items.0.features.3'),
+        t('remoteWorkplacePage.services.items.0.features.4')
+      ]
     },
     {
       icon: "🔒",
-      title: "Cybersecurity for Remote Work",
-      description: "End-to-end security solutions to protect remote workers and company data",
-      features: ["Endpoint Security", "Zero Trust Architecture", "Data Encryption", "Threat Detection", "Compliance"]
+      title: t('remoteWorkplacePage.services.items.1.title'),
+      description: t('remoteWorkplacePage.services.items.1.description'),
+      features: [
+        t('remoteWorkplacePage.services.items.1.features.0'),
+        t('remoteWorkplacePage.services.items.1.features.1'),
+        t('remoteWorkplacePage.services.items.1.features.2'),
+        t('remoteWorkplacePage.services.items.1.features.3'),
+        t('remoteWorkplacePage.services.items.1.features.4')
+      ]
     },
     {
       icon: "🤝",
-      title: "Collaboration Tools",
-      description: "Implement and optimize collaboration platforms for distributed teams",
-      features: ["Video Conferencing", "Team Chat", "Project Management", "Document Collaboration", "Virtual Whiteboards"]
+      title: t('remoteWorkplacePage.services.items.2.title'),
+      description: t('remoteWorkplacePage.services.items.2.description'),
+      features: [
+        t('remoteWorkplacePage.services.items.2.features.0'),
+        t('remoteWorkplacePage.services.items.2.features.1'),
+        t('remoteWorkplacePage.services.items.2.features.2'),
+        t('remoteWorkplacePage.services.items.2.features.3'),
+        t('remoteWorkplacePage.services.items.2.features.4')
+      ]
     },
     {
       icon: "🔄",
-      title: "Remote Work Management",
-      description: "Tools and processes for managing remote teams effectively",
-      features: ["Performance Tracking", "Time Management", "Goal Setting", "Communication Protocols", "Remote Onboarding"]
+      title: t('remoteWorkplacePage.services.items.3.title'),
+      description: t('remoteWorkplacePage.services.items.3.description'),
+      features: [
+        t('remoteWorkplacePage.services.items.3.features.0'),
+        t('remoteWorkplacePage.services.items.3.features.1'),
+        t('remoteWorkplacePage.services.items.3.features.2'),
+        t('remoteWorkplacePage.services.items.3.features.3'),
+        t('remoteWorkplacePage.services.items.3.features.4')
+      ]
     },
     {
       icon: "🏠",
-      title: "Home Office Setup",
-      description: "Complete home office solutions for productivity and ergonomics",
-      features: ["Ergonomic Equipment", "Hardware Setup", "Internet Optimization", "Workspace Design", "Technical Support"]
+      title: t('remoteWorkplacePage.services.items.4.title'),
+      description: t('remoteWorkplacePage.services.items.4.description'),
+      features: [
+        t('remoteWorkplacePage.services.items.4.features.0'),
+        t('remoteWorkplacePage.services.items.4.features.1'),
+        t('remoteWorkplacePage.services.items.4.features.2'),
+        t('remoteWorkplacePage.services.items.4.features.3'),
+        t('remoteWorkplacePage.services.items.4.features.4')
+      ]
     },
     {
       icon: "📚",
-      title: "Remote Training & Development",
-      description: "Training programs and resources for remote work best practices",
-      features: ["Digital Skills Training", "Remote Leadership", "Cybersecurity Awareness", "Tool Training", "Continuous Learning"]
+      title: t('remoteWorkplacePage.services.items.5.title'),
+      description: t('remoteWorkplacePage.services.items.5.description'),
+      features: [
+        t('remoteWorkplacePage.services.items.5.features.0'),
+        t('remoteWorkplacePage.services.items.5.features.1'),
+        t('remoteWorkplacePage.services.items.5.features.2'),
+        t('remoteWorkplacePage.services.items.5.features.3'),
+        t('remoteWorkplacePage.services.items.5.features.4')
+      ]
     },
     {
       icon: "⚖️",
-      title: "Compliance & Legal Support",
-      description: "Ensure compliance with regulations and legal requirements for remote work",
-      features: ["Labor Law Compliance", "Data Privacy", "Tax Implications", "Insurance Coverage", "Policy Development"]
+      title: t('remoteWorkplacePage.services.items.6.title'),
+      description: t('remoteWorkplacePage.services.items.6.description'),
+      features: [
+        t('remoteWorkplacePage.services.items.6.features.0'),
+        t('remoteWorkplacePage.services.items.6.features.1'),
+        t('remoteWorkplacePage.services.items.6.features.2'),
+        t('remoteWorkplacePage.services.items.6.features.3'),
+        t('remoteWorkplacePage.services.items.6.features.4')
+      ]
     },
     {
       icon: "📊",
-      title: "Productivity Analytics",
-      description: "Monitor and optimize remote team productivity with data-driven insights",
-      features: ["Performance Metrics", "Productivity Analysis", "Well-being Monitoring", "ROI Tracking", "Improvement Recommendations"]
+      title: t('remoteWorkplacePage.services.items.7.title'),
+      description: t('remoteWorkplacePage.services.items.7.description'),
+      features: [
+        t('remoteWorkplacePage.services.items.7.features.0'),
+        t('remoteWorkplacePage.services.items.7.features.1'),
+        t('remoteWorkplacePage.services.items.7.features.2'),
+        t('remoteWorkplacePage.services.items.7.features.3'),
+        t('remoteWorkplacePage.services.items.7.features.4')
+      ]
     }
   ];
 
   const techStack = {
     collaboration: [
-      { name: "Microsoft 365", level: "Expert" },
-      { name: "Google Workspace", level: "Advanced" },
-      { name: "Slack", level: "Advanced" },
-      { name: "Zoom", level: "Expert" },
-      { name: "Teams", level: "Expert" },
-      { name: "Notion", level: "Advanced" }
+      { name: "Microsoft 365", level: t('remoteWorkplacePage.techStack.levels.expert') },
+      { name: "Google Workspace", level: t('remoteWorkplacePage.techStack.levels.advanced') },
+      { name: "Slack", level: t('remoteWorkplacePage.techStack.levels.advanced') },
+      { name: "Zoom", level: t('remoteWorkplacePage.techStack.levels.expert') },
+      { name: "Teams", level: t('remoteWorkplacePage.techStack.levels.expert') },
+      { name: "Notion", level: t('remoteWorkplacePage.techStack.levels.advanced') }
     ],
     security: [
-      { name: "Zero Trust", level: "Advanced" },
-      { name: "VPN Solutions", level: "Expert" },
-      { name: "MFA/2FA", level: "Expert" },
-      { name: "Endpoint Security", level: "Advanced" },
-      { name: "SIEM", level: "Intermediate" },
-      { name: "DLP", level: "Advanced" }
+      { name: "Zero Trust", level: t('remoteWorkplacePage.techStack.levels.advanced') },
+      { name: "VPN Solutions", level: t('remoteWorkplacePage.techStack.levels.expert') },
+      { name: "MFA/2FA", level: t('remoteWorkplacePage.techStack.levels.expert') },
+      { name: "Endpoint Security", level: t('remoteWorkplacePage.techStack.levels.advanced') },
+      { name: "SIEM", level: t('remoteWorkplacePage.techStack.levels.intermediate') },
+      { name: "DLP", level: t('remoteWorkplacePage.techStack.levels.advanced') }
     ],
     infrastructure: [
-      { name: "VDI", level: "Advanced" },
-      { name: "Citrix", level: "Intermediate" },
-      { name: "VMware", level: "Intermediate" },
-      { name: "AWS Workspaces", level: "Advanced" },
-      { name: "Azure Virtual Desktop", level: "Advanced" },
-      { name: "RMM Tools", level: "Expert" }
+      { name: "VDI", level: t('remoteWorkplacePage.techStack.levels.advanced') },
+      { name: "Citrix", level: t('remoteWorkplacePage.techStack.levels.intermediate') },
+      { name: "VMware", level: t('remoteWorkplacePage.techStack.levels.intermediate') },
+      { name: "AWS Workspaces", level: t('remoteWorkplacePage.techStack.levels.advanced') },
+      { name: "Azure Virtual Desktop", level: t('remoteWorkplacePage.techStack.levels.advanced') },
+      { name: "RMM Tools", level: t('remoteWorkplacePage.techStack.levels.expert') }
     ]
   };
 
   const remoteProjects = [
     {
       id: 1,
-      title: "Global Enterprise Remote Transition",
-      description: "Transitioned 10,000+ employees to remote work across 50 countries within 30 days",
-      category: "Enterprise Remote Work",
+      title: t('remoteWorkplacePage.projects.items.0.title'),
+      description: t('remoteWorkplacePage.projects.items.0.description'),
+      category: t('remoteWorkplacePage.projects.items.0.category'),
       tech: ["Microsoft 365", "Zoom", "Slack", "Okta", "VPN Infrastructure"],
-      results: ["99% business continuity", "Productivity increased by 25%", "Real estate costs reduced by 40%"]
+      results: [
+        t('remoteWorkplacePage.projects.items.0.results.0'),
+        t('remoteWorkplacePage.projects.items.0.results.1'),
+        t('remoteWorkplacePage.projects.items.0.results.2')
+      ]
     },
     {
       id: 2,
-      title: "Financial Services Remote Compliance",
-      description: "Implemented secure remote work solutions for regulated financial institution",
-      category: "Finance Remote Work",
+      title: t('remoteWorkplacePage.projects.items.1.title'),
+      description: t('remoteWorkplacePage.projects.items.1.description'),
+      category: t('remoteWorkplacePage.projects.items.1.category'),
       tech: ["Virtual Desktop Infrastructure", "Multi-factor Authentication", "Endpoint Security", "Compliance Monitoring", "Encrypted Communications"],
-      results: ["Zero security incidents", "Regulatory compliance maintained", "Employee satisfaction increased by 35%"]
+      results: [
+        t('remoteWorkplacePage.projects.items.1.results.0'),
+        t('remoteWorkplacePage.projects.items.1.results.1'),
+        t('remoteWorkplacePage.projects.items.1.results.2')
+      ]
     },
     {
       id: 3,
-      title: "Healthcare Remote Workforce",
-      description: "Enabled remote work for healthcare administrative staff while maintaining HIPAA compliance",
-      category: "Healthcare Remote",
+      title: t('remoteWorkplacePage.projects.items.2.title'),
+      description: t('remoteWorkplacePage.projects.items.2.description'),
+      category: t('remoteWorkplacePage.projects.items.2.category'),
       tech: ["HIPAA-compliant VPN", "Secure Video Conferencing", "Electronic Health Records", "Encrypted Messaging", "Access Control"],
-      results: ["100% HIPAA compliance", "Administrative costs reduced by 30%", "Staff retention improved by 20%"]
+      results: [
+        t('remoteWorkplacePage.projects.items.2.results.0'),
+        t('remoteWorkplacePage.projects.items.2.results.1'),
+        t('remoteWorkplacePage.projects.items.2.results.2')
+      ]
     },
     {
       id: 4,
-      title: "Tech Startup Remote Scaling",
-      description: "Scaled remote-first startup from 10 to 500 employees across 20 countries",
-      category: "Startup Remote Culture",
+      title: t('remoteWorkplacePage.projects.items.3.title'),
+      description: t('remoteWorkplacePage.projects.items.3.description'),
+      category: t('remoteWorkplacePage.projects.items.3.category'),
       tech: ["Notion", "Figma", "GitHub", "Slack", "Google Workspace"],
-      results: ["Recruiting pool expanded globally", "Time to hire reduced by 60%", "Diversity increased by 40%"]
+      results: [
+        t('remoteWorkplacePage.projects.items.3.results.0'),
+        t('remoteWorkplacePage.projects.items.3.results.1'),
+        t('remoteWorkplacePage.projects.items.3.results.2')
+      ]
     },
     {
       id: 5,
-      title: "Manufacturing Hybrid Workforce",
-      description: "Implemented hybrid work model for manufacturing company's office staff",
-      category: "Hybrid Work Model",
+      title: t('remoteWorkplacePage.projects.items.4.title'),
+      description: t('remoteWorkplacePage.projects.items.4.description'),
+      category: t('remoteWorkplacePage.projects.items.4.category'),
       tech: ["IoT Monitoring", "Cloud ERP", "Collaboration Tools", "Productivity Analytics", "Remote Training"],
-      results: ["Office space reduced by 50%", "Carbon footprint decreased by 25%", "Employee flexibility improved satisfaction"]
+      results: [
+        t('remoteWorkplacePage.projects.items.4.results.0'),
+        t('remoteWorkplacePage.projects.items.4.results.1'),
+        t('remoteWorkplacePage.projects.items.4.results.2')
+      ]
     },
     {
       id: 6,
-      title: "Education Sector Remote Transition",
-      description: "Transitioned entire educational institution to remote teaching and administration",
-      category: "Education Remote",
+      title: t('remoteWorkplacePage.projects.items.5.title'),
+      description: t('remoteWorkplacePage.projects.items.5.description'),
+      category: t('remoteWorkplacePage.projects.items.5.category'),
       tech: ["Learning Management System", "Video Lectures", "Online Assessments", "Virtual Labs", "Parent Portal"],
-      results: ["Learning continuity maintained", "Geographic reach expanded", "Digital literacy improved across institution"]
+      results: [
+        t('remoteWorkplacePage.projects.items.5.results.0'),
+        t('remoteWorkplacePage.projects.items.5.results.1'),
+        t('remoteWorkplacePage.projects.items.5.results.2')
+      ]
     },
     {
       id: 7,
-      title: "Consulting Firm Digital Nomad Setup",
-      description: "Enabled digital nomad lifestyle for consulting firm with global clients",
-      category: "Digital Nomad",
+      title: t('remoteWorkplacePage.projects.items.6.title'),
+      description: t('remoteWorkplacePage.projects.items.6.description'),
+      category: t('remoteWorkplacePage.projects.items.6.category'),
       tech: ["Global Internet Solutions", "Portable Offices", "Cross-border Compliance", "Time Zone Management", "Client Portal"],
-      results: ["Client satisfaction increased by 30%", "Consultant retention improved by 40%", "Global expertise expanded"]
+      results: [
+        t('remoteWorkplacePage.projects.items.6.results.0'),
+        t('remoteWorkplacePage.projects.items.6.results.1'),
+        t('remoteWorkplacePage.projects.items.6.results.2')
+      ]
     },
     {
       id: 8,
-      title: "Government Agency Remote Operations",
-      description: "Secured remote work implementation for government agency with strict security requirements",
-      category: "Government Remote",
+      title: t('remoteWorkplacePage.projects.items.7.title'),
+      description: t('remoteWorkplacePage.projects.items.7.description'),
+      category: t('remoteWorkplacePage.projects.items.7.category'),
       tech: ["Secure Access Service Edge", "Zero Trust Architecture", "Data Loss Prevention", "Audit Logging", "Disaster Recovery"],
-      results: ["Zero data breaches", "Public service continuity", "Operational resilience established"]
+      results: [
+        t('remoteWorkplacePage.projects.items.7.results.0'),
+        t('remoteWorkplacePage.projects.items.7.results.1'),
+        t('remoteWorkplacePage.projects.items.7.results.2')
+      ]
     }
   ];
 
   const processSteps = [
     {
       step: "01",
-      title: "Needs Assessment",
-      description: "Analyze remote work requirements and security considerations",
+      title: t('remoteWorkplacePage.process.steps.0.title'),
+      description: t('remoteWorkplacePage.process.steps.0.description'),
       icon: "📋"
     },
     {
       step: "02",
-      title: "Security Planning",
-      description: "Design secure access and data protection strategies",
+      title: t('remoteWorkplacePage.process.steps.1.title'),
+      description: t('remoteWorkplacePage.process.steps.1.description'),
       icon: "🛡️"
     },
     {
       step: "03",
-      title: "Tool Selection & Setup",
-      description: "Implement collaboration tools and remote access solutions",
+      title: t('remoteWorkplacePage.process.steps.2.title'),
+      description: t('remoteWorkplacePage.process.steps.2.description'),
       icon: "🛠️"
     },
     {
       step: "04",
-      title: "Infrastructure Deployment",
-      description: "Deploy VDI, VPN, and unified communications systems",
+      title: t('remoteWorkplacePage.process.steps.3.title'),
+      description: t('remoteWorkplacePage.process.steps.3.description'),
       icon: "🚀"
     },
     {
       step: "05",
-      title: "Training & Onboarding",
-      description: "Train employees on remote tools and security protocols",
+      title: t('remoteWorkplacePage.process.steps.4.title'),
+      description: t('remoteWorkplacePage.process.steps.4.description'),
       icon: "👨‍🏫"
     },
     {
       step: "06",
-      title: "Ongoing Support",
-      description: "24/7 monitoring, maintenance, and optimization",
+      title: t('remoteWorkplacePage.process.steps.5.title'),
+      description: t('remoteWorkplacePage.process.steps.5.description'),
       icon: "🔧"
     }
   ];
@@ -254,9 +395,128 @@ function RemoteWorkplace() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
     >
+      {/* Custom Animation Styles */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+        
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.8;
+          }
+        }
+        
+        @keyframes gradient {
+          0% { background-position: 0% center; }
+          100% { background-position: 200% center; }
+        }
+        
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+        
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .animate-stagger > * {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+        .animate-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+        .animate-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+        .animate-stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+        .animate-stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+        .animate-stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+        .animate-stagger.visible > *:nth-child(7) { transition-delay: 0.7s; }
+        .animate-stagger.visible > *:nth-child(8) { transition-delay: 0.8s; }
+        
+        .animate-stagger.visible > * {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-pulse {
+          animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .animate-gradient {
+          background: linear-gradient(90deg, #dc2626, #4b5563, #dc2626);
+          background-size: 200% auto;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradient 3s linear infinite;
+        }
+        
+        .animate-shimmer {
+          animation: shimmer 2s infinite linear;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+          background-size: 1000px 100%;
+        }
+        
+        .hover-lift {
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+          transform: translateY(-8px);
+        }
+      `}</style>
+
       {/* ===== HERO SECTION ===== */}
-      <section className="relative overflow-hidden py-20 md:py-32">
-        {/* Background Image with Overlay - ONLY for the section */}
+      <section 
+        className="relative overflow-hidden py-20 md:py-32"
+        ref={el => sectionsRef.current[0] = el}
+        data-section-id="hero"
+      >
+        {/* Background Image with Overlay */}
         <motion.div 
           className="absolute inset-0 z-0"
           initial={{ scale: 1.1 }}
@@ -288,37 +548,18 @@ function RemoteWorkplace() {
               animate="visible"
               transition={{ delay: 0.2 }}
             >
-              <motion.h1 
-                className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight"
-                variants={staggerContainer}
-                initial="hidden"
-                animate="visible"
-              >
-                <motion.span 
-                  className="text-gray-900"
-                  variants={fadeInUp}
-                >
-                  Secure Remote
-                </motion.span>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+                <span className="text-gray-900">
+                  {t('remoteWorkplacePage.hero.title1')}
+                </span>
                 <br />
-                <motion.span 
-                  className="mt-2 inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-gray-800 to-red-800"
-                  variants={fadeInUp}
-                >
-                  Workplace Solutions
-                </motion.span>
-              </motion.h1>
-
-              <motion.p 
-                className="mt-6 text-xl md:text-2xl text-gray-700 max-w-3xl leading-relaxed"
-                variants={fadeInUp}
-                initial="hidden"
-                animate="visible"
-                transition={{ delay: 0.3 }}
-              >
-                We implement secure, efficient remote work infrastructures with enterprise-grade
-                collaboration tools that ensure productivity and data security from anywhere.
-              </motion.p>
+                <span className="mt-2 inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-gray-800 to-red-800">
+                  {t('remoteWorkplacePage.hero.title2')}
+                </span>
+              </h1>
+              <p className="mt-6 text-xl md:text-2xl text-gray-700 max-w-3xl leading-relaxed">
+                {t('remoteWorkplacePage.hero.description')}
+              </p>
             </motion.div>
 
             {/* RIGHT IMAGE */}
@@ -345,6 +586,7 @@ function RemoteWorkplace() {
             </motion.div>
           </div>
 
+          {/* STATS GRID */}
           <motion.div 
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
             variants={staggerContainer}
@@ -352,138 +594,93 @@ function RemoteWorkplace() {
             animate="visible"
             transition={{ delay: 0.4 }}
           >
-            <motion.div 
-              variants={fadeInUp}
-              className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all"
-              whileHover={{ y: -5, scale: 1.05 }}
-            >
+            {[
+              { 
+                icon: "⌛", 
+                value: stats.support.toFixed(1), 
+                label: t('remoteWorkplacePage.stats.support'), 
+                suffix: "/7" 
+              },
+              { 
+                icon: "🛡️", 
+                value: stats.security.toFixed(0), 
+                label: t('remoteWorkplacePage.stats.security'), 
+                suffix: "%" 
+              },
+              { 
+                icon: "👥", 
+                value: stats.setups.toFixed(0), 
+                label: t('remoteWorkplacePage.stats.setups'), 
+                suffix: "+" 
+              },
+              { 
+                icon: "✅", 
+                value: stats.uptime.toFixed(1), 
+                label: t('remoteWorkplacePage.stats.uptime'), 
+                suffix: "%" 
+              }
+            ].map((stat, index) => (
               <motion.div 
-                className="text-red-600 mb-3 text-2xl"
-                animate={{ rotate: [0, 10, 0] }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity,
-                  repeatDelay: 3
-                }}
-              >⌛</motion.div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">24/7</div>
-              <div className="text-gray-600">Remote Support</div>
-            </motion.div>
-            <motion.div 
-              variants={fadeInUp}
-              className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all"
-              whileHover={{ y: -5, scale: 1.05 }}
-            >
-              <motion.div 
-                className="text-red-600 mb-3 text-2xl"
-                animate={{ rotate: [0, 10, 0] }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                  delay: 0.5
-                }}
-              >🛡️</motion.div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">100%</div>
-              <div className="text-gray-600">Security Guarantee</div>
-            </motion.div>
-            <motion.div 
-              variants={fadeInUp}
-              className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all"
-              whileHover={{ y: -5, scale: 1.05 }}
-            >
-              <motion.div 
-                className="text-red-600 mb-3 text-2xl"
-                animate={{ rotate: [0, 10, 0] }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                  delay: 1
-                }}
-              >👥</motion.div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">100+</div>
-              <div className="text-gray-600">Remote Setups</div>
-            </motion.div>
-            <motion.div 
-              variants={fadeInUp}
-              className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all"
-              whileHover={{ y: -5, scale: 1.05 }}
-            >
-              <motion.div 
-                className="text-red-600 mb-3 text-2xl"
-                animate={{ rotate: [0, 10, 0] }}
-                transition={{ 
-                  duration: 2, 
-                  repeat: Infinity,
-                  repeatDelay: 3,
-                  delay: 1.5
-                }}
-              >✅</motion.div>
-              <div className="text-3xl font-bold text-gray-900 mb-2">99.9%</div>
-              <div className="text-gray-600">Uptime SLA</div>
-            </motion.div>
+                key={index}
+                variants={fadeInUp}
+                className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all"
+                whileHover={{ y: -5, scale: 1.05 }}
+              >
+                <motion.div 
+                  className="text-red-600 mb-3 text-2xl"
+                  animate={{ rotate: [0, 10, 0] }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity,
+                    repeatDelay: 3
+                  }}
+                >
+                  {stat.icon}
+                </motion.div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">
+                  {stat.value}{stat.suffix}
+                </div>
+                <div className="text-gray-600">{stat.label}</div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
       {/* ===== SERVICES SECTION ===== */}
-      <motion.section 
+      <section 
         id="services" 
         className="relative py-12 md:py-16"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        ref={el => sectionsRef.current[1] = el}
+        data-section-id="services"
       >
-        {/* Background Image with Overlay - ONLY for the section */}
         <div className="absolute inset-0 z-0">
-          <motion.img
+          <img
             src="/pic.avif" 
             alt="Remote Workplace Services Background"
             className="w-full h-full object-cover opacity-25"
-            animate={{ 
-              y: [0, -10, 0],
-            }}
-            transition={{ 
-              duration: 15, 
-              repeat: Infinity,
-              ease: "easeInOut" 
-            }}
           />
         </div>
 
-        <motion.div 
-          className="relative z-10"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="text-center mb-8 md:mb-12">
+        <div className="relative z-10">
+          <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.services ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Our Remote Workplace <span className="text-red-600">Services</span>
+              {t('remoteWorkplacePage.services.title')}
             </h2>
             <p className="text-gray-700 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              Comprehensive solutions for secure, productive, and collaborative remote work environments
+              {t('remoteWorkplacePage.services.subtitle')}
             </p>
           </div>
 
           <div className="max-w-7xl mx-auto px-4">
-            <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
+            <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 animate-stagger ${isVisible.services ? 'visible' : ''}`}>
               {remoteServices.map((service, index) => (
-                <motion.div
+                <div
                   key={index}
-                  variants={fadeInUp}
-                  className={`group relative transition-all duration-500 ease-out cursor-pointer flex flex-col ${activeService === index
-                    ? 'rounded-xl border-red-600 shadow-lg bg-white'
-                    : 'rounded-lg border-gray-200 bg-white hover:border-gray-300'
+                  className={`group relative transition-all duration-500 ease-out cursor-pointer flex flex-col ${
+                    activeService === index
+                      ? 'rounded-xl border-red-600 shadow-lg bg-white'
+                      : 'rounded-lg border-gray-200 bg-white hover:border-gray-300'
                     }`}
                   style={{
                     borderWidth: '1px',
@@ -496,24 +693,16 @@ function RemoteWorkplace() {
                   }}
                   onMouseEnter={() => setActiveService(index)}
                   onMouseLeave={() => setActiveService(null)}
-                  whileHover={{ scale: 1.02 }}
-                  layout
                 >
                   <div className="flex flex-col h-full">
                     {/* Icon and Title Container - Always visible */}
                     <div className={`flex flex-col items-center justify-center flex-1 ${activeService === index ? '' : 'h-full'
                       }`}>
                       {/* Icon */}
-                      <motion.div 
-                        className={`text-red-600 transition-all duration-300 ${activeService === index ? 'scale-110 mb-3' : 'scale-100 mb-4'
-                          }`}
-                        animate={{ 
-                          rotate: activeService === index ? [0, 360] : 0 
-                        }}
-                        transition={{ duration: 0.6 }}
-                      >
+                      <div className={`text-red-600 transition-all duration-300 ${activeService === index ? 'scale-110 mb-3' : 'scale-100 mb-4'
+                        }`}>
                         {service.icon}
-                      </motion.div>
+                      </div>
 
                       {/* Title */}
                       <h3 className={`text-center font-bold text-gray-900 transition-all duration-300 ${activeService === index
@@ -540,337 +729,177 @@ function RemoteWorkplace() {
                           </p>
 
                           {/* Features */}
-                          <motion.ul 
-                            className="space-y-2 mb-4"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.1 }}
-                          >
+                          <ul className="space-y-2 mb-4">
                             {service.features.map((feature, i) => (
-                              <motion.li 
+                              <li 
                                 key={i} 
-                                className="flex items-start text-[13px] leading-snug"
-                                initial={{ opacity: 0, x: -10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: i * 0.05 }}
+                                className="flex items-start text-[13px] leading-snug opacity-0"
+                                style={{animation: `slideInLeft 0.5s ease-out forwards`, animationDelay: `${i * 0.1}s`}}
                               >
-                                <motion.div 
-                                  className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2 mt-1.5 flex-shrink-0"
-                                  animate={{ 
-                                    scale: [1, 1.2, 1],
-                                    rotate: [0, 180, 360]
-                                  }}
-                                  transition={{ 
-                                    duration: 2,
-                                    repeat: Infinity,
-                                    delay: i * 0.1
-                                  }}
-                                ></motion.div>
+                                <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2 mt-1.5 flex-shrink-0 animate-pulse"></div>
                                 <span className="text-gray-700">{feature}</span>
-                              </motion.li>
+                              </li>
                             ))}
-                          </motion.ul>
+                          </ul>
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
-      </motion.section>
+        </div>
+      </section>
 
       {/* ===== TECH STACK SECTION ===== */}
-      <motion.section 
+      <section 
         className="relative py-20"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        ref={el => sectionsRef.current[2] = el}
+        data-section-id="tech-stack"
       >
-        {/* Background Image with Overlay - ONLY for the section */}
         <div className="absolute inset-0 z-0">
-          <motion.img
+          <img
             src="/pic5.png" 
             alt="Technology Stack Background"
             className="w-full h-full object-cover opacity-5"
-            animate={{ 
-              x: [0, 5, 0],
-            }}
-            transition={{ 
-              duration: 20, 
-              repeat: Infinity,
-              ease: "easeInOut" 
-            }}
           />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className={`text-center mb-16 animate-on-scroll ${isVisible['tech-stack'] ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Enterprise-Grade <span className="text-red-600">Technology Stack</span>
+              {t('remoteWorkplacePage.techStack.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Trusted tools and platforms for secure and efficient remote operations
+              {t('remoteWorkplacePage.techStack.subtitle')}
             </p>
-          </motion.div>
+          </div>
 
           <div className="mb-8">
-            <motion.div 
-              className="flex flex-wrap gap-4 justify-center mb-8"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-            >
-              <motion.button
-                variants={fadeInUp}
-                onClick={() => setActiveTab('collaboration')}
-                className={`px-6 py-3 rounded-lg font-medium transition ${activeTab === 'collaboration'
-                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-                  }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Collaboration Tools
-              </motion.button>
-              <motion.button
-                variants={fadeInUp}
-                onClick={() => setActiveTab('security')}
-                className={`px-6 py-3 rounded-lg font-medium transition ${activeTab === 'security'
-                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-                  }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Security Solutions
-              </motion.button>
-              <motion.button
-                variants={fadeInUp}
-                onClick={() => setActiveTab('infrastructure')}
-                className={`px-6 py-3 rounded-lg font-medium transition ${activeTab === 'infrastructure'
-                  ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg'
-                  : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
-                  }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Infrastructure
-              </motion.button>
-            </motion.div>
+            <div className={`flex flex-wrap gap-4 justify-center mb-8 animate-stagger ${isVisible['tech-stack'] ? 'visible' : ''}`}>
+              {['collaboration', 'security', 'infrastructure'].map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${
+                    activeTab === tab
+                      ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/30 animate-pulse'
+                      : 'bg-white text-gray-700 hover:bg-red-50 border border-gray-300 hover:border-red-300'
+                    }`}
+                >
+                  {tab === 'collaboration' ? t('remoteWorkplacePage.techStack.tabs.collaboration') : 
+                   tab === 'security' ? t('remoteWorkplacePage.techStack.tabs.security') : 
+                   t('remoteWorkplacePage.techStack.tabs.infrastructure')}
+                </button>
+              ))}
+            </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-                className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
-              >
-                {techStack[activeTab].map((tech, index) => (
-                  <motion.div
-                    key={index}
-                    className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all text-center"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.05 }}
-                    whileHover={{ 
-                      y: -5,
-                      scale: 1.05,
-                      transition: { duration: 0.2 }
-                    }}
-                  >
-                    <motion.div 
-                      className="text-lg font-bold text-gray-900 mb-2"
-                      whileHover={{ scale: 1.1 }}
-                    >
-                      {tech.name}
-                    </motion.div>
-                    <div className={`text-sm font-medium ${tech.level === 'Expert' ? 'text-green-600' :
-                      tech.level === 'Advanced' ? 'text-blue-600' :
-                        'text-amber-600'
-                      }`}>
-                      {tech.level}
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
+            <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 animate-stagger ${isVisible['tech-stack'] ? 'visible' : ''}`}>
+              {techStack[activeTab].map((tech, index) => (
+                <div
+                  key={index}
+                  className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all duration-500 text-center group hover-lift"
+                >
+                  <div className="text-lg font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors transform group-hover:scale-110 duration-300">
+                    {tech.name}
+                  </div>
+                  <div className={`text-sm font-medium animate-pulse ${tech.level === t('remoteWorkplacePage.techStack.levels.expert') ? 'text-green-600' :
+                    tech.level === t('remoteWorkplacePage.techStack.levels.advanced') ? 'text-red-600' :
+                      'text-amber-600'
+                    }`}>
+                    {tech.level}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* ===== IMPLEMENTATION PROCESS SECTION ===== */}
-      <motion.section 
+      {/* ===== PROCESS SECTION ===== */}
+      <section 
         className="relative py-20"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        ref={el => sectionsRef.current[3] = el}
+        data-section-id="process"
       >
-        {/* Background Image with Overlay - ONLY for the section */}
         <div className="absolute inset-0 z-0">
-          <motion.img
+          <img
             src="/image.avif" 
             alt="Implementation Process Background"
             className="w-full h-full object-cover opacity-20"
-            animate={{ 
-              scale: [1, 1.02, 1],
-            }}
-            transition={{ 
-              duration: 10, 
-              repeat: Infinity,
-              ease: "easeInOut" 
-            }}
           />
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className={`text-center mb-16 animate-on-scroll ${isVisible.process ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Implementation <span className="text-red-600">Process</span>
+              {t('remoteWorkplacePage.process.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              A systematic approach to deploying secure and efficient remote workplace solutions
+              {t('remoteWorkplacePage.process.subtitle')}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-          >
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-stagger ${isVisible.process ? 'visible' : ''}`}>
             {processSteps.map((step, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={fadeInUp}
-                className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-red-300"
-                whileHover={{ 
-                  y: -10,
-                  scale: 1.03,
-                  transition: { duration: 0.2 }
-                }}
-                whileTap={{ scale: 0.98 }}
+                className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-xl hover:border-red-300 transition-all duration-500 hover-lift group relative overflow-hidden"
               >
-                <div className="flex items-start justify-between mb-6">
-                  <motion.div 
-                    className="text-3xl font-bold text-gray-300"
-                    animate={{ 
-                      opacity: [0.5, 1, 0.5],
-                    }}
-                    transition={{ 
-                      duration: 2, 
-                      repeat: Infinity,
-                      delay: index * 0.3 
-                    }}
-                  >
-                    {step.step}
-                  </motion.div>
-                  <motion.div 
-                    className="text-2xl"
-                    animate={{ 
-                      rotate: [0, 360],
-                    }}
-                    transition={{ 
-                      duration: 10,
-                      repeat: Infinity,
-                      ease: "linear",
-                      delay: index * 0.5
-                    }}
-                  >
-                    {step.icon}
-                  </motion.div>
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-red-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-500"></div>
+                <div className="relative">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="text-3xl font-bold text-gray-300 group-hover:text-red-500 transition-colors animate-pulse">
+                      {step.step}
+                    </div>
+                    <div className="text-2xl text-red-600 group-hover:scale-110 group-hover:text-red-500 group-hover:rotate-12 transition-all duration-300">
+                      {step.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-600 transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 group-hover:text-gray-700 transition-colors">
+                    {step.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
-      </motion.section>
+      </section>
 
-      {/* ===== PROJECTS SHOWCASE SECTION ===== */}
-      <motion.section 
+      {/* ===== PROJECTS SECTION ===== */}
+      <section 
         className="relative py-12 md:py-16" 
         id="projects"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.6 }}
+        ref={el => sectionsRef.current[4] = el}
+        data-section-id="projects"
       >
-        {/* Background Image with Overlay - ONLY for the section */}
         <div className="absolute inset-0 z-0">
-          <motion.img
+          <img
             src="/picc.avif"
             alt="Success Stories Background"
             className="w-full h-full object-cover"
-            animate={{ 
-              scale: [1, 1.01, 1],
-            }}
-            transition={{ 
-              duration: 15, 
-              repeat: Infinity,
-              ease: "easeInOut" 
-            }}
-          />
-          <motion.div 
-            className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/90 to-white/80"
-            initial={{ opacity: 0.8 }}
-            animate={{ opacity: 0.9 }}
-            transition={{ 
-              duration: 2, 
-              repeat: Infinity,
-              repeatType: "reverse" 
-            }}
           />
         </div>
 
         <div className="relative z-10">
-          <motion.div 
-            className="text-center mb-8 md:mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.projects ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Success <span className="text-red-600">Stories</span>
+              {t('remoteWorkplacePage.projects.title')}
             </h2>
             <p className="text-gray-700 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              Real-world implementations that transformed businesses into remote-first organizations
+              {t('remoteWorkplacePage.projects.subtitle')}
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-7xl mx-auto px-4">
-            <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5"
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
               {remoteProjects.map((project) => (
-                <motion.div
+                <div
                   key={project.id}
-                  variants={fadeInUp}
                   className={`group relative transition-all duration-500 ease-out cursor-pointer flex flex-col ${activeProject === project.id
                     ? 'rounded-xl border-red-600 shadow-lg bg-white'
                     : 'rounded-lg border-gray-200 bg-white hover:border-gray-300'
@@ -886,23 +915,18 @@ function RemoteWorkplace() {
                   }}
                   onMouseEnter={() => setActiveProject(project.id)}
                   onMouseLeave={() => setActiveProject(null)}
-                  whileHover={{ scale: 1.02 }}
-                  layout
                 >
                   <div className="flex flex-col h-full">
                     {/* Main Content Container - Always visible */}
                     <div className={`flex flex-col items-center justify-center flex-1 ${activeProject === project.id ? '' : 'h-full'
                       }`}>
                       {/* Category Badge */}
-                      <motion.div 
-                        className={`inline-flex items-center gap-1.5 transition-all duration-300 ${activeProject === project.id ? 'scale-105 mb-4' : 'scale-100 mb-3'
-                          }`}
-                        whileHover={{ scale: 1.1 }}
-                      >
+                      <div className={`inline-flex items-center gap-1.5 transition-all duration-300 ${activeProject === project.id ? 'scale-105 mb-4' : 'scale-100 mb-3'
+                        }`}>
                         <div className="bg-red-100 text-red-600 px-2.5 py-0.5 rounded-full text-xs font-medium">
                           {project.category}
                         </div>
-                      </motion.div>
+                      </div>
 
                       {/* Title */}
                       <h3 className={`text-center font-bold text-gray-900 transition-all duration-300 ${activeProject === project.id
@@ -928,134 +952,63 @@ function RemoteWorkplace() {
                             {project.description}
                           </p>
 
-                          {/* Technologies */}
-                          <div className="mb-4">
-                            <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Technologies:</h4>
-                            <div className="flex flex-wrap gap-1.5">
-                              {project.tech.map((tech, idx) => (
-                                <motion.span
-                                  key={idx}
-                                  className="bg-gray-50 px-2 py-0.5 rounded text-xs text-gray-700 border border-gray-200"
-                                  initial={{ opacity: 0, scale: 0.8 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  transition={{ delay: idx * 0.05 }}
-                                  whileHover={{ 
-                                    scale: 1.1,
-                                    backgroundColor: "#fee2e2"
-                                  }}
-                                >
-                                  {tech}
-                                </motion.span>
-                              ))}
-                            </div>
-                          </div>
-
                           {/* Results */}
                           <div>
-                            <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Results:</h4>
-                            <motion.ul 
-                              className="space-y-2"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.1 }}
-                            >
+                            <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">{t('consultingPage.caseStudies.results')}</h4>
+                            <div className="space-y-2">
                               {project.results.map((result, idx) => (
-                                <motion.li 
+                                <div 
                                   key={idx} 
-                                  className="flex items-start text-gray-700 text-[12px] leading-snug"
-                                  initial={{ opacity: 0, x: -10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ delay: idx * 0.05 }}
+                                  className="flex items-center text-sm text-gray-700 opacity-0"
+                                  style={{animation: `slideInLeft 0.5s ease-out forwards`, animationDelay: `${idx * 0.2}s`}}
                                 >
-                                  <motion.svg
-                                    className="w-3 h-3 text-green-500 mr-2 mt-0.5 flex-shrink-0"
-                                    fill="none"
-                                    stroke="currentColor"
+                                  <svg 
+                                    className="w-4 h-4 text-green-500 mr-2 flex-shrink-0 animate-pulse" 
+                                    fill="none" 
+                                    stroke="currentColor" 
                                     viewBox="0 0 24 24"
-                                    animate={{ 
-                                      scale: [1, 1.3, 1],
-                                    }}
-                                    transition={{ 
-                                      duration: 0.8,
-                                      repeat: Infinity,
-                                      delay: idx * 0.2
-                                    }}
                                   >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth="3"
+                                    <path 
+                                      strokeLinecap="round" 
+                                      strokeLinejoin="round" 
+                                      strokeWidth="3" 
                                       d="M5 13l4 4L19 7"
-                                    ></path>
-                                  </motion.svg>
+                                    />
+                                  </svg>
                                   {result}
-                                </motion.li>
+                                </div>
                               ))}
-                            </motion.ul>
+                            </div>
                           </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
-      </motion.section>
+      </section>
 
       {/* ===== FINAL CTA ===== */}
-      <motion.section 
+      <section 
         className="py-12 md:py-20 bg-gradient-to-br from-gray-900 to-black text-white"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        ref={el => sectionsRef.current[5] = el}
+        data-section-id="cta"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-          <motion.h2 
-            className="text-[30px] font-bold mb-4 md:mb-6"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            Technology Is Everywhere. <motion.span 
-              className="text-red-400"
-              animate={{ 
-                textShadow: [
-                  "0 0 0px rgba(248, 113, 113, 0)",
-                  "0 0 10px rgba(248, 113, 113, 0.5)",
-                  "0 0 0px rgba(248, 113, 113, 0)"
-                ]
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity 
-              }}
-            >
-              Ownership Is Rare
-            </motion.span>.
-          </motion.h2>
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-transparent to-blue-600/20 animate-gradient bg-[size:200%_100%]"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center relative z-10">
+          <h2 className={`text-[30px] font-bold mb-4 md:mb-6 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            {t('remoteWorkplacePage.cta.title1')}{" "}
+            <span className="text-red-400 animate-pulse">{t('remoteWorkplacePage.cta.title2')}</span>
+          </h2>
+          <p className={`text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            {t('remoteWorkplacePage.cta.description')}
+          </p>
           
-          <motion.p 
-            className="text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Partner with a team that stays accountable from start to scale.
-          </motion.p>
-          
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-          >
-            <motion.a
+          <div className={`flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            <a
               href="/contact"
               className="group inline-flex items-center justify-center gap-2
                bg-red-600 text-white
@@ -1064,27 +1017,18 @@ function RemoteWorkplace() {
                font-semibold text-sm md:text-base
                shadow-sm shadow-red-600/20
                hover:bg-red-700
-               transition-all duration-300"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 10px 25px -5px rgba(239, 68, 68, 0.4)"
-              }}
-              whileTap={{ scale: 0.95 }}
+               transition-all duration-300
+               transform hover:scale-105
+               animate-pulse"
             >
-              Let's Talk
-              <motion.svg
-                className="w-4 h-4 md:w-5 md:h-5"
+              {t('remoteWorkplacePage.cta.button')}
+              <svg
+                className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
+                 group-hover:opacity-100 group-hover:translate-x-0
+                 transition-all duration-300"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                animate={{ 
-                  x: [0, 5, 0],
-                }}
-                transition={{ 
-                  duration: 1.5,
-                  repeat: Infinity,
-                  repeatDelay: 0.5
-                }}
               >
                 <path
                   strokeLinecap="round"
@@ -1092,21 +1036,15 @@ function RemoteWorkplace() {
                   strokeWidth="2"
                   d="M9 5l7 7-7 7"
                 />
-              </motion.svg>
-            </motion.a>
-          </motion.div>
+              </svg>
+            </a>
+          </div>
 
-          <motion.p 
-            className="mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.6 }}
-          >
-            No bots. No runaround. Just real conversations with accountable partners.
-          </motion.p>
+          <p className={`mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            {t('remoteWorkplacePage.cta.subtext')}
+          </p>
         </div>
-      </motion.section>
+      </section>
     </motion.div>
   );
 }

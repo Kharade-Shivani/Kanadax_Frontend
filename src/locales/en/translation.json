@@ -1,0 +1,3244 @@
+  {
+    "header": {
+      "company": "KANDAX",
+      "tagline": "Human-Led Technology",
+      "home": "Home",
+      "about": "About Us",
+      "services": "Services",
+      "portfolio": "Portfolio",
+      "partners": "Our Partners",
+      "team": "Team",
+      "contact": "Contact Us",
+      "phone": "+1 (416) 700-7091",
+      "getStarted": "Get Started",
+      "callUs": "Call {{phone}}",
+      "followUs": "Follow us on social media",
+      "servicesDropdown": {
+        "generativeAI": {
+          "label": "Generative AI Solutions",
+          "description": "Content generation & creative AI tools"
+        },
+        "webDev": {
+          "label": "Web Development",
+          "description": "Custom web applications & solutions"
+        },
+        "cloud": {
+          "label": "Cloud Solutions",
+          "description": "AWS, Azure & Google Cloud migration"
+        },
+        "mobile": {
+          "label": "Mobile App Development",
+          "description": "iOS & Android applications"
+        },
+        "database": {
+          "label": "Database Management",
+          "description": "SQL, NoSQL & Data warehousing"
+        },
+        "digitalMarketing": {
+          "label": "Digital Marketing",
+          "description": "Data-driven marketing strategies"
+        },
+        "cybersecurity": {
+          "label": "Cybersecurity",
+          "description": "Advanced security solutions"
+        },
+        "devops": {
+          "label": "DevOps Services",
+          "description": "CI/CD & automation solutions"
+        },
+        "consulting": {
+          "label": "Technology Consulting",
+          "description": "IT strategy, architecture & digital advisory"
+        },
+        "remote": {
+          "label": "Remote Workplace Solutions",
+          "description": "Secure remote work & collaboration tools"
+        },
+        "backup": {
+          "label": "Backup & Disaster Recovery",
+          "description": "Business continuity & data protection"
+        },
+        "helpDesk": {
+          "label": "IT Help Desk Services",
+          "description": "24/7 technical support & issue resolution"
+        }
+      }
+    },
+    "aiMlPage": {
+      "hero": {
+        "title1": "Artificial Intelligence",
+        "title2": "& Machine Learning",
+        "description": "We build intelligent systems that transform data into actionable insights, automate complex processes, and drive innovation with cutting-edge AI solutions."
+      },
+      "stats": {
+        "mlModels": "ML Models",
+        "accuracy": "Accuracy Rate",
+        "efficiency": "Efficiency Gain",
+        "support": "AI Support"
+      },
+      "services": {
+        "title": "AI & ML Services",
+        "subtitle": "Comprehensive AI solutions that transform your business with intelligent automation and insights",
+        "items": [
+          {
+            "title": "Machine Learning Solutions",
+            "description": "Custom ML models for predictive analytics and data-driven decision making",
+            "features": ["Predictive Analytics", "Regression Models", "Classification Systems", "Recommendation Engines"]
+          },
+          {
+            "title": "Computer Vision",
+            "description": "Image and video analysis solutions for automation and quality control",
+            "features": ["Object Detection", "Facial Recognition", "Image Classification", "Video Analytics"]
+          },
+          {
+            "title": "Natural Language Processing",
+            "description": "Text analysis, sentiment analysis, and language understanding solutions",
+            "features": ["Chatbots", "Sentiment Analysis", "Text Classification", "Language Translation"]
+          },
+          {
+            "title": "Predictive Analytics",
+            "description": "Forecast trends and make data-driven predictions for business growth",
+            "features": ["Demand Forecasting", "Risk Assessment", "Customer Behavior Analysis", "Market Trends"]
+          },
+          {
+            "title": "AI Integration",
+            "description": "Seamlessly integrate AI capabilities into existing systems and workflows",
+            "features": ["API Development", "System Integration", "Cloud AI Services", "Edge Computing"]
+          },
+          {
+            "title": "AI Automation",
+            "description": "Automate repetitive tasks and processes with intelligent systems",
+            "features": ["Process Automation", "Document Processing", "Workflow Optimization", "Intelligent Assistants"]
+          },
+          {
+            "title": "AI Security & Compliance",
+            "description": "Secure AI implementations with compliance monitoring and threat detection",
+            "features": ["Adversarial Defense", "Model Security", "Regulatory Compliance", "Data Privacy"]
+          },
+          {
+            "title": "AI Consulting & Strategy",
+            "description": "End-to-end AI strategy development and implementation consulting",
+            "features": ["AI Roadmap", "Proof of Concepts", "ROI Analysis", "Change Management"]
+          }
+        ]
+      },
+      "techStack": {
+        "title": "Advanced AI Technology Stack",
+        "subtitle": "We leverage cutting-edge technologies to build robust AI solutions",
+        "tabs": {
+          "frameworks": "ML Frameworks",
+          "languages": "Programming",
+          "platforms": "Platforms"
+        },
+        "levels": {
+          "expert": "Expert",
+          "advanced": "Advanced",
+          "intermediate": "Intermediate"
+        }
+      },
+      "process": {
+        "title": "Our AI Development Process",
+        "subtitle": "A structured methodology that ensures successful AI implementation and measurable results",
+        "steps": [
+          {
+            "title": "Problem Definition",
+            "description": "Understand business challenges and define clear AI/ML objectives"
+          },
+          {
+            "title": "Data Collection & Preparation",
+            "description": "Gather, clean, and preprocess data for model training"
+          },
+          {
+            "title": "Model Development",
+            "description": "Design, train, and validate machine learning models"
+          },
+          {
+            "title": "Testing & Validation",
+            "description": "Rigorous testing and validation against real-world scenarios"
+          },
+          {
+            "title": "Deployment & Integration",
+            "description": "Deploy models to production and integrate with existing systems"
+          },
+          {
+            "title": "Monitoring & Optimization",
+            "description": "Continuous monitoring, retraining, and performance optimization"
+          }
+        ]
+      },
+      "projects": {
+        "title": "AI Success Stories",
+        "subtitle": "Real-world AI solutions delivering transformative business impact",
+        "technologies": "Technologies:",
+        "results": "Results:",
+        "items": [
+          {
+            "title": "Predictive Maintenance System",
+            "description": "AI-powered system predicting equipment failures in manufacturing plants",
+            "category": "Industrial AI",
+            "results": ["30% reduction in downtime", "25% cost savings", "99% prediction accuracy"]
+          },
+          {
+            "title": "Healthcare Diagnosis Assistant",
+            "description": "Deep learning system for early detection of medical conditions from scans",
+            "category": "Healthcare AI",
+            "results": ["95% detection accuracy", "40% faster diagnosis", "FDA-approved"]
+          },
+          {
+            "title": "Customer Sentiment Analyzer",
+            "description": "Real-time sentiment analysis platform for customer feedback and reviews",
+            "category": "NLP Solution",
+            "results": ["10M+ reviews processed", "Real-time insights", "85% sentiment accuracy"]
+          },
+          {
+            "title": "Intelligent Video Surveillance",
+            "description": "AI-powered security system for real-time threat detection and behavior analysis",
+            "category": "Security AI",
+            "results": ["99.8% threat detection accuracy", "Real-time alerts", "40% reduction in security costs"]
+          },
+          {
+            "title": "Personalized Learning Platform",
+            "description": "Adaptive AI tutor that customizes educational content based on student performance",
+            "category": "EdTech AI",
+            "results": ["45% improvement in test scores", "Personalized learning paths", "50K+ active students"]
+          },
+          {
+            "title": "Climate Prediction System",
+            "description": "AI model for predicting extreme weather events and climate patterns",
+            "category": "Climate AI",
+            "results": ["92% prediction accuracy", "7-day advance warnings", "Used by 50+ governments"]
+          },
+          {
+            "title": "Automated Code Review",
+            "description": "AI assistant for detecting bugs, vulnerabilities, and code quality issues",
+            "category": "DevOps AI",
+            "results": ["80% reduction in bugs", "60% faster code reviews", "Integrated with 1000+ repos"]
+          },
+          {
+            "title": "Intelligent Recruitment Platform",
+            "description": "AI-powered talent matching and candidate screening system for HR departments",
+            "category": "HR Tech AI",
+            "results": ["75% faster hiring process", "90% candidate-job match accuracy", "30% reduction in turnover"]
+          }
+        ]
+      },
+      "cta": {
+        "title1": "Technology Is Everywhere.",
+        "title2": "Ownership Is Rare.",
+        "description": "Partner with a team that stays accountable from start to scale.",
+        "button": "Let's Talk",
+        "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+      }
+    },
+    "webDevPage": {
+      "hero": {
+        "title1": "Modern Web",
+        "title2": "Development Solutions",
+        "description": "We build high-performance, scalable web applications that drive business growth and deliver exceptional user experiences with clear ownership and accountability."
+      },
+      "stats": {
+        "support": "Support",
+        "uptime": "Uptime",
+        "projects": "Web Projects",
+        "satisfaction": "Satisfaction"
+      },
+      "services": {
+        "title": "Our Web Development Expertise",
+        "subtitle": "From simple websites to complex web applications, we deliver solutions that exceed expectations",
+        "items": [
+          {
+            "title": "Frontend Development",
+            "description": "Modern, responsive websites and applications with the latest frameworks",
+            "features": ["React.js", "Next.js", "Vue.js", "Tailwind CSS", "TypeScript"]
+          },
+          {
+            "title": "Backend Development",
+            "description": "Robust server-side solutions with scalable architecture",
+            "features": ["Node.js", "Python/Django", "Java/Spring", "REST APIs", "GraphQL"]
+          },
+          {
+            "title": "Mobile Development",
+            "description": "Cross-platform mobile applications for iOS and Android",
+            "features": ["React Native", "Flutter", "PWA", "iOS/Android Native", "App Store Deployment"]
+          },
+          {
+            "title": "E-commerce Solutions",
+            "description": "Complete online stores with secure payment processing",
+            "features": ["Shopify", "WooCommerce", "Magento", "Payment Gateways", "Inventory Management"]
+          },
+          {
+            "title": "Performance Optimization",
+            "description": "Speed up your website for better user experience and SEO",
+            "features": ["Page Speed Optimization", "Code Minification", "CDN Integration", "Caching Strategies"]
+          },
+          {
+            "title": "Security & Maintenance",
+            "description": "Keep your website secure and up-to-date with regular maintenance",
+            "features": ["SSL Certificates", "Security Audits", "Regular Updates", "Backup Solutions"]
+          },
+          {
+            "title": "UI/UX Design",
+            "description": "Beautiful, intuitive designs that enhance user engagement",
+            "features": ["Wireframing", "Prototyping", "User Testing", "Design Systems", "Accessibility"]
+          },
+          {
+            "title": "Analytics & SEO",
+            "description": "Drive traffic and measure performance with advanced analytics",
+            "features": ["Google Analytics", "SEO Optimization", "Conversion Tracking", "A/B Testing"]
+          }
+        ]
+      },
+      "techStack": {
+        "title": "Cutting-Edge Technology Stack",
+        "subtitle": "We use modern technologies to build robust and scalable web solutions",
+        "tabs": {
+          "frontend": "Frontend",
+          "backend": "Backend",
+          "devops": "DevOps"
+        },
+        "levels": {
+          "expert": "Expert",
+          "advanced": "Advanced",
+          "intermediate": "Intermediate"
+        }
+      },
+      "process": {
+        "title": "Our Development Process",
+        "subtitle": "A structured approach that ensures quality, transparency, and timely delivery",
+        "steps": [
+          {
+            "title": "Discovery & Planning",
+            "description": "We analyze requirements and create detailed project specifications"
+          },
+          {
+            "title": "UI/UX Design",
+            "description": "Creating intuitive user interfaces and seamless user experiences"
+          },
+          {
+            "title": "Development",
+            "description": "Agile development with regular demos and iterations"
+          },
+          {
+            "title": "Testing & QA",
+            "description": "Comprehensive testing including unit, integration, and user testing"
+          },
+          {
+            "title": "Deployment",
+            "description": "Seamless deployment with CI/CD pipelines and monitoring"
+          },
+          {
+            "title": "Maintenance",
+            "description": "Ongoing support, updates, and performance optimization"
+          }
+        ]
+      },
+      "projects": {
+        "title": "Featured Projects",
+        "subtitle": "See how we've helped businesses transform their digital presence",
+        "technologies": "Technologies:",
+        "results": "Results:",
+        "items": [
+          {
+            "title": "E-commerce Platform Redesign",
+            "description": "Complete overhaul of an online store with improved UX and performance",
+            "category": "E-commerce",
+            "results": ["300% increase in conversions", "40% faster page load", "25% higher average order value"]
+          },
+          {
+            "title": "Healthcare Portal Development",
+            "description": "Secure patient portal with appointment scheduling and telemedicine features",
+            "category": "Healthcare",
+            "results": ["50K+ active users", "99.9% uptime", "Reduced admin work by 60%"]
+          },
+          {
+            "title": "Real Estate Management System",
+            "description": "Comprehensive platform for property management and virtual tours",
+            "category": "Real Estate",
+            "results": ["200% faster property listings", "Virtual tour engagement up 150%", "Mobile app 4.8 stars"]
+          },
+          {
+            "title": "SaaS Productivity Tool",
+            "description": "All-in-one project management and team collaboration platform",
+            "category": "SaaS",
+            "results": ["10K+ monthly active users", "75% team productivity increase", "$500K+ ARR"]
+          },
+          {
+            "title": "Educational Learning Platform",
+            "description": "Interactive online learning platform with video courses and assessments",
+            "category": "EdTech",
+            "results": ["50K+ course enrollments", "95% student satisfaction", "Mobile app downloads 100K+"]
+          },
+          {
+            "title": "Travel Booking Portal",
+            "description": "Multi-vendor travel booking platform with real-time availability",
+            "category": "Travel",
+            "results": ["500+ travel partners onboarded", "Booking conversion rate 35%", "24/7 customer support"]
+          },
+          {
+            "title": "Food Delivery App",
+            "description": "Complete food ordering and delivery solution for restaurants",
+            "category": "Food Tech",
+            "results": ["200+ restaurant partners", "Average delivery time 25 mins", "App rating 4.7 stars"]
+          },
+          {
+            "title": "Financial Dashboard",
+            "description": "Real-time financial analytics and reporting dashboard for enterprises",
+            "category": "FinTech",
+            "results": ["Real-time data updates", "Reduced reporting time by 80%", "Used by 500+ financial analysts"]
+          }
+        ]
+      },
+      "cta": {
+        "title1": "Technology Is Everywhere.",
+        "title2": "Ownership Is Rare.",
+        "description": "Partner with a team that stays accountable from start to scale.",
+        "button": "Let's Talk",
+        "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+      }
+    },
+    "cloudPage": {
+      "hero": {
+        "title1": "Enterprise Cloud",
+        "title2": "Solutions & Services",
+        "description": "We deliver scalable, secure, and cost-effective cloud solutions that transform your business and drive digital innovation with complete transparency and accountability."
+      },
+      "stats": {
+        "uptime": "Uptime SLA",
+        "savings": "Cost Savings",
+        "deployments": "Cloud Deployments",
+        "monitoring": "Security Monitoring"
+      },
+      "services": {
+        "title": "Our Cloud Services",
+        "subtitle": "Comprehensive cloud solutions designed to optimize performance, security, and costs",
+        "items": [
+          {
+            "title": "Cloud Migration",
+            "description": "Seamless migration of your infrastructure and applications to the cloud",
+            "features": ["AWS Migration", "Azure Migration", "Google Cloud Migration", "Hybrid Cloud Setup"]
+          },
+          {
+            "title": "Cloud Architecture",
+            "description": "Design and implement scalable, secure cloud infrastructure solutions",
+            "features": ["Microservices Architecture", "Serverless Design", "High Availability", "Disaster Recovery"]
+          },
+          {
+            "title": "Cloud Security",
+            "description": "Comprehensive security solutions to protect your cloud environment",
+            "features": ["IAM & Access Control", "Network Security", "Data Encryption", "Compliance Management"]
+          },
+          {
+            "title": "Cost Optimization",
+            "description": "Optimize your cloud spending without compromising performance",
+            "features": ["Cost Analysis", "Resource Right-sizing", "Reserved Instances", "Budget Management"]
+          },
+          {
+            "title": "DevOps & CI/CD",
+            "description": "Automate development and deployment processes in the cloud",
+            "features": ["CI/CD Pipeline", "Infrastructure as Code", "Container Orchestration", "Monitoring & Logging"]
+          },
+          {
+            "title": "Data Management",
+            "description": "Store, process, and analyze data efficiently in the cloud",
+            "features": ["Data Lakes", "Big Data Processing", "Data Warehousing", "Real-time Analytics"]
+          },
+          {
+            "title": "Multi-Cloud Strategy",
+            "description": "Leverage multiple cloud providers for maximum flexibility and resilience",
+            "features": ["Multi-cloud Architecture", "Vendor Management", "Inter-cloud Networking", "Unified Management"]
+          },
+          {
+            "title": "Backup & Recovery",
+            "description": "Ensure business continuity with robust backup and disaster recovery solutions",
+            "features": ["Automated Backups", "Disaster Recovery Plans", "Data Retention", "Recovery Testing"]
+          }
+        ]
+      },
+      "techStack": {
+        "title": "Cloud Technology Stack",
+        "subtitle": "We leverage industry-leading cloud technologies and tools",
+        "tabs": {
+          "cloudPlatforms": "Cloud Platforms",
+          "infrastructure": "Infrastructure",
+          "serverless": "Serverless"
+        },
+        "levels": {
+          "expert": "Expert",
+          "advanced": "Advanced",
+          "intermediate": "Intermediate"
+        }
+      },
+      "process": {
+        "title": "Cloud Migration Process",
+        "subtitle": "A structured approach to ensure successful cloud adoption and transformation",
+        "steps": [
+          {
+            "title": "Assessment & Strategy",
+            "description": "Analyze current infrastructure and develop cloud migration strategy"
+          },
+          {
+            "title": "Architecture Design",
+            "description": "Design scalable and secure cloud architecture tailored to your needs"
+          },
+          {
+            "title": "Migration Planning",
+            "description": "Detailed migration plan with risk assessment and rollback strategy"
+          },
+          {
+            "title": "Implementation",
+            "description": "Execute migration with minimal disruption using proven methodologies"
+          },
+          {
+            "title": "Optimization",
+            "description": "Continuous optimization for performance, security, and cost efficiency"
+          },
+          {
+            "title": "Managed Services",
+            "description": "24/7 monitoring, support, and maintenance of cloud infrastructure"
+          }
+        ]
+      },
+      "projects": {
+        "title": "Cloud Success Stories",
+        "subtitle": "Transforming businesses with innovative cloud solutions",
+        "technologies": "Technologies:",
+        "results": "Results:",
+        "items": [
+          {
+            "title": "Enterprise Cloud Migration",
+            "description": "Migrated 500+ servers and applications to AWS with zero downtime",
+            "category": "Cloud Migration",
+            "results": ["60% reduction in infrastructure costs", "Zero downtime migration", "99.99% uptime achieved"]
+          },
+          {
+            "title": "Healthcare Data Platform",
+            "description": "Built a HIPAA-compliant data analytics platform on Azure",
+            "category": "Healthcare Cloud",
+            "results": ["50% faster data processing", "HIPAA compliance achieved", "Real-time analytics enabled"]
+          },
+          {
+            "title": "E-commerce Scalability Solution",
+            "description": "Scaled e-commerce platform to handle 10x traffic during peak seasons",
+            "category": "Scalability",
+            "results": ["Handled 1M+ concurrent users", "Page load time reduced by 70%", "Zero outages during peak"]
+          },
+          {
+            "title": "Multi-Cloud Disaster Recovery",
+            "description": "Implemented disaster recovery across AWS and Azure for financial institution",
+            "category": "Disaster Recovery",
+            "results": ["RTO reduced to 15 minutes", "RPO of 5 minutes", "99.999% availability"]
+          },
+          {
+            "title": "IoT Cloud Platform",
+            "description": "Built cloud platform for processing 1M+ IoT device data points per second",
+            "category": "IoT Cloud",
+            "results": ["Real-time device monitoring", "95% cost optimization", "Scaled to 5M devices"]
+          },
+          {
+            "title": "Serverless Application",
+            "description": "Developed completely serverless SaaS application with auto-scaling",
+            "category": "Serverless",
+            "results": ["Zero server management", "90% cost reduction", "Automatic global scaling"]
+          },
+          {
+            "title": "AI/ML Cloud Infrastructure",
+            "description": "Built scalable ML platform for training and deploying AI models",
+            "category": "AI Cloud",
+            "results": ["10x faster model training", "Automated model deployment", "50% cost savings"]
+          },
+          {
+            "title": "Hybrid Cloud Setup",
+            "description": "Implemented hybrid cloud connecting on-premise data center with public cloud",
+            "category": "Hybrid Cloud",
+            "results": ["Seamless data synchronization", "Enhanced security posture", "40% performance improvement"]
+          }
+        ]
+      },
+      "benefits": {
+        "title": "Why Choose Our Cloud Services?",
+        "items": [
+          {
+            "title": "Scalability",
+            "description": "Elastic resources that grow with your business"
+          },
+          {
+            "title": "Cost Efficiency",
+            "description": "Pay only for what you use with optimized spending"
+          },
+          {
+            "title": "Security",
+            "description": "Enterprise-grade security and compliance"
+          },
+          {
+            "title": "Global Reach",
+            "description": "Deploy applications globally with low latency"
+          }
+        ]
+      },
+      "cta": {
+        "title1": "Technology Is Everywhere.",
+        "title2": "Ownership Is Rare.",
+        "description": "Partner with a team that stays accountable from start to scale.",
+        "button": "Let's Talk",
+        "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+      }
+    },
+    
+    "mobilePage": {
+      "hero": {
+        "title1": "Next-Generation",
+        "title2": "Mobile Applications",
+        "description": "We create powerful, user-centric mobile apps that drive engagement and deliver exceptional experiences across all platforms and devices."
+      },
+      "stats": {
+        "platforms": "Dual Platform",
+        "loadTime": "Load Time",
+        "apps": "Mobile Apps",
+        "rating": "Average Rating"
+      },
+      "services": {
+        "title": "Our Mobile Development Services",
+        "subtitle": "From concept to deployment, we build mobile solutions that users love",
+        "items": [
+          {
+            "title": "iOS App Development",
+            "description": "Native iOS applications built with Swift and SwiftUI for optimal performance",
+            "features": ["Swift/SwiftUI", "UIKit", "Core Data", "App Store Deployment", "Apple Pay Integration"]
+          },
+          {
+            "title": "Android App Development",
+            "description": "Native Android apps using Kotlin and Jetpack Compose for superior user experience",
+            "features": ["Kotlin/Java", "Jetpack Compose", "Room Database", "Play Store Deployment", "Material Design"]
+          },
+          {
+            "title": "Cross-Platform Development",
+            "description": "Build once, deploy everywhere with React Native and Flutter",
+            "features": ["React Native", "Flutter", "Single Codebase", "iOS & Android", "Hot Reload"]
+          },
+          {
+            "title": "Progressive Web Apps",
+            "description": "Web applications that work offline and feel like native apps",
+            "features": ["PWA", "Service Workers", "Offline Capability", "Push Notifications", "App-like UI"]
+          },
+          {
+            "title": "Mobile Games Development",
+            "description": "Engaging mobile games with stunning graphics and smooth gameplay",
+            "features": ["Unity", "Unreal Engine", "2D/3D Graphics", "In-App Purchases", "Multiplayer Support"]
+          },
+          {
+            "title": "API Integration",
+            "description": "Seamlessly connect your mobile app with backend services and third-party APIs",
+            "features": ["REST APIs", "GraphQL", "WebSockets", "Authentication", "Real-time Updates"]
+          },
+          {
+            "title": "App Security",
+            "description": "Protect user data and ensure compliance with security best practices",
+            "features": ["Data Encryption", "Secure Authentication", "Code Obfuscation", "Penetration Testing", "GDPR Compliance"]
+          },
+          {
+            "title": "App Maintenance & Support",
+            "description": "Ongoing support, updates, and optimization for your mobile applications",
+            "features": ["Bug Fixes", "Performance Optimization", "OS Updates", "Feature Enhancements", "24/7 Support"]
+          }
+        ]
+      },
+      "techStack": {
+        "title": "Advanced Technology Stack",
+        "subtitle": "Cutting-edge technologies for building high-performance mobile apps",
+        "tabs": {
+          "native": "Native Development",
+          "cross": "Cross-Platform",
+          "backend": "Backend & APIs"
+        },
+        "levels": {
+          "expert": "Expert",
+          "advanced": "Advanced",
+          "intermediate": "Intermediate"
+        }
+      },
+      "process": {
+        "title": "Our App Development Process",
+        "subtitle": "A proven methodology for delivering successful mobile applications",
+        "steps": [
+          {
+            "title": "Discovery & Strategy",
+            "description": "Analyze requirements and define app architecture and features"
+          },
+          {
+            "title": "UI/UX Design",
+            "description": "Create intuitive mobile interfaces and seamless user journeys"
+          },
+          {
+            "title": "Development",
+            "description": "Agile development with weekly demos and continuous integration"
+          },
+          {
+            "title": "Testing",
+            "description": "Comprehensive testing on real devices and emulators"
+          },
+          {
+            "title": "Deployment",
+            "description": "App Store/Play Store submission and launch management"
+          },
+          {
+            "title": "Support & Updates",
+            "description": "Ongoing maintenance, feature updates, and performance monitoring"
+          }
+        ]
+      },
+      "projects": {
+        "title": "Featured Mobile Apps",
+        "subtitle": "See how we've transformed ideas into successful mobile applications",
+        "technologies": "Technologies:",
+        "results": "Results:",
+        "items": [
+          {
+            "title": "Fitness Tracking App",
+            "description": "Comprehensive fitness app with workout plans, nutrition tracking, and progress analytics",
+            "category": "Health & Fitness",
+            "results": ["500K+ downloads", "4.8-star rating", "30% monthly active users"]
+          },
+          {
+            "title": "Food Delivery Platform",
+            "description": "Multi-restaurant food ordering and delivery app with real-time tracking",
+            "category": "Food & Delivery",
+            "results": ["200+ restaurant partners", "Average order time 25 mins", "$2M+ monthly GMV"]
+          },
+          {
+            "title": "Language Learning App",
+            "description": "Interactive language learning platform with speech recognition and AI tutors",
+            "category": "Education",
+            "results": ["1M+ active learners", "85% course completion rate", "Featured by Apple & Google"]
+          },
+          {
+            "title": "E-commerce Mobile App",
+            "description": "Feature-rich shopping app with AR product visualization and secure payments",
+            "category": "E-commerce",
+            "results": ["300% increase in mobile sales", "2x faster checkout", "4.9-star rating"]
+          },
+          {
+            "title": "Meditation & Wellness App",
+            "description": "Mindfulness and meditation app with personalized recommendations",
+            "category": "Mental Health",
+            "results": ["750K+ users", "95% retention rate", "$500K+ monthly revenue"]
+          },
+          {
+            "title": "Social Networking App",
+            "description": "Niche social platform for hobby enthusiasts with video sharing features",
+            "category": "Social Media",
+            "results": ["250K+ registered users", "1M+ daily interactions", "Viral growth 200% month-over-month"]
+          },
+          {
+            "title": "Finance & Budgeting App",
+            "description": "Personal finance management app with expense tracking and investment insights",
+            "category": "FinTech",
+            "results": ["100K+ active users", "Average savings increase 25%", "Bank-level security"]
+          },
+          {
+            "title": "Event Management App",
+            "description": "All-in-one event planning and ticketing platform with QR scanning",
+            "category": "Events",
+            "results": ["500+ events managed", "95% attendee satisfaction", "Sold 1M+ tickets"]
+          }
+        ]
+      },
+      "cta": {
+        "title1": "Technology Is Everywhere.",
+        "title2": "Ownership Is Rare.",
+        "description": "Partner with a team that stays accountable from start to scale.",
+        "button": "Let's Talk",
+        "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+      }
+    },
+    
+    "databasePage": {
+      "hero": {
+        "title1": "Enterprise Database",
+        "title2": "Solutions & Management",
+        "description": "We design, optimize, and manage high-performance databases that power your applications with reliability, security, and scalability."
+      },
+      "stats": {
+        "performance": "Performance Gain",
+        "availability": "Uptime SLA",
+        "security": "Security Score",
+        "scalability": "Scale Factor"
+      },
+      "services": {
+        "title": "Our Database Services",
+        "subtitle": "Comprehensive database solutions from design to maintenance and optimization",
+        "items": [
+          {
+            "title": "Database Design & Architecture",
+            "description": "Scalable database architecture designed for performance and reliability",
+            "features": ["Schema Design", "Normalization", "Indexing Strategy", "Data Modeling", "Scalability Planning"]
+          },
+          {
+            "title": "Database Migration",
+            "description": "Seamless migration of databases between platforms with zero downtime",
+            "features": ["Platform Migration", "Version Upgrades", "Data Validation", "Performance Tuning", "Backup Strategy"]
+          },
+          {
+            "title": "Performance Optimization",
+            "description": "Optimize database performance for faster queries and better efficiency",
+            "features": ["Query Optimization", "Index Management", "Caching Strategies", "Connection Pooling", "Monitoring"]
+          },
+          {
+            "title": "Database Security",
+            "description": "Comprehensive security solutions to protect your valuable data assets",
+            "features": ["Access Control", "Encryption", "Audit Logging", "Compliance", "Vulnerability Assessment"]
+          },
+          {
+            "title": "Data Analytics & Reporting",
+            "description": "Transform raw data into actionable insights with advanced analytics",
+            "features": ["Data Warehousing", "ETL Processes", "Business Intelligence", "Real-time Analytics", "Dashboarding"]
+          },
+          {
+            "title": "Database Replication & Backup",
+            "description": "Ensure data availability and business continuity with robust backup solutions",
+            "features": ["High Availability", "Disaster Recovery", "Replication Setup", "Automated Backups", "Recovery Testing"]
+          },
+          {
+            "title": "Cloud Database Management",
+            "description": "Managed database services in the cloud for scalability and flexibility",
+            "features": ["AWS RDS/Aurora", "Azure SQL", "Google Cloud SQL", "NoSQL Databases", "Serverless Databases"]
+          },
+          {
+            "title": "Database Maintenance & Support",
+            "description": "Ongoing maintenance, monitoring, and support for database systems",
+            "features": ["Regular Maintenance", "Performance Monitoring", "Patch Management", "24/7 Support", "Health Checks"]
+          }
+        ]
+      },
+      "techStack": {
+        "title": "Database Technology Expertise",
+        "subtitle": "We work with both SQL and NoSQL databases across all major platforms",
+        "tabs": {
+          "relational": "SQL Databases",
+          "nosql": "NoSQL Databases",
+          "cloud": "Cloud Databases"
+        },
+        "levels": {
+          "expert": "Expert",
+          "advanced": "Advanced",
+          "intermediate": "Intermediate"
+        }
+      },
+      "process": {
+        "title": "Our Database Implementation Process",
+        "subtitle": "A methodical approach to ensure your database is secure, performant, and scalable",
+        "steps": [
+          {
+            "title": "Requirements Analysis",
+            "description": "Understanding data volume, access patterns, and performance requirements"
+          },
+          {
+            "title": "Database Design",
+            "description": "Creating optimized schemas, relationships, and indexing strategies"
+          },
+          {
+            "title": "Implementation",
+            "description": "Setting up databases, configuring parameters, and deploying infrastructure"
+          },
+          {
+            "title": "Migration & Integration",
+            "description": "Migrating existing data and integrating with applications"
+          },
+          {
+            "title": "Optimization",
+            "description": "Performance tuning, query optimization, and monitoring setup"
+          },
+          {
+            "title": "Maintenance",
+            "description": "Regular backups, updates, security patches, and scaling"
+          }
+        ]
+      },
+      "projects": {
+        "title": "Database Success Stories",
+        "subtitle": "See how we've transformed database performance for businesses",
+        "technologies": "Technologies:",
+        "results": "Results:",
+        "items": [
+          {
+            "title": "E-commerce Database Optimization",
+            "description": "Scaled database to handle 10x traffic during holiday season with zero downtime",
+            "category": "Performance Tuning",
+            "results": ["Query speed improved by 500%", "Zero downtime during peak", "Cost reduction by 40%"]
+          },
+          {
+            "title": "Healthcare Data Migration",
+            "description": "Migrated 50TB of patient data to cloud with HIPAA compliance",
+            "category": "Data Migration",
+            "results": ["Zero data loss migration", "HIPAA compliance achieved", "99.99% availability"]
+          },
+          {
+            "title": "Real-time Analytics Platform",
+            "description": "Built data platform processing 1M+ events per second for real-time insights",
+            "category": "Big Data",
+            "results": ["Real-time data processing", "Scaled to 10B+ daily events", "Sub-second query response"]
+          },
+          {
+            "title": "Financial Data Warehouse",
+            "description": "Enterprise data warehouse for financial reporting and compliance",
+            "category": "Data Warehousing",
+            "results": ["Reporting time reduced from days to minutes", "Single source of truth", "Audit trail compliance"]
+          },
+          {
+            "title": "Multi-Region Database Replication",
+            "description": "Implemented global database replication for disaster recovery",
+            "category": "High Availability",
+            "results": ["RPO of 1 second", "Automatic failover", "Global users served with low latency"]
+          },
+          {
+            "title": "IoT Data Management",
+            "description": "Database solution for 100K+ IoT devices with real-time data ingestion",
+            "category": "IoT Database",
+            "results": ["Handled 1B+ data points daily", "Real-time device monitoring", "95% storage optimization"]
+          },
+          {
+            "title": "Legacy Database Modernization",
+            "description": "Modernized legacy database systems with improved performance and scalability",
+            "category": "Modernization",
+            "results": ["Performance improved by 300%", "Reduced maintenance costs by 60%", "Improved developer productivity"]
+          },
+          {
+            "title": "Graph Database Implementation",
+            "description": "Implemented graph database for complex relationship analysis in social network",
+            "category": "Graph Database",
+            "results": ["Relationship queries 100x faster", "Discovered new business insights", "Scaled to 1M+ relationships"]
+          }
+        ]
+      },
+      "features": {
+        "title": "Why Choose Our Database Solutions",
+        "items": [
+          {
+            "title": "High Availability",
+            "description": "Multi-zone replication and failover systems"
+          },
+          {
+            "title": "Security First",
+            "description": "End-to-end encryption and comprehensive access controls"
+          },
+          {
+            "title": "Performance",
+            "description": "Optimized queries and intelligent caching mechanisms"
+          },
+          {
+            "title": "Scalability",
+            "description": "Horizontal and vertical scaling to handle growth"
+          }
+        ]
+      },
+      "benefits": {
+        "title": "Why Choose Our Database Solutions",
+        "items": [
+          {
+            "title": "Performance",
+            "description": "Optimized queries and indexing for lightning-fast data access"
+          },
+          {
+            "title": "Security",
+            "description": "Enterprise-grade security with encryption and access controls"
+          },
+          {
+            "title": "Scalability",
+            "description": "Designed to grow with your business, handling millions of requests"
+          },
+          {
+            "title": "Reliability",
+            "description": "High availability with automatic failover and backup systems"
+          }
+        ]
+      },
+      "cta": {
+        "title1": "Technology Is Everywhere.",
+        "title2": "Ownership Is Rare.",
+        "description": "Partner with a team that stays accountable from start to scale.",
+        "button": "Let's Talk",
+        "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+      }
+    },
+    
+    "digitalMarketingPage": {
+      "hero": {
+        "title1": "Digital Marketing That",
+        "title2": "Drives Real Results",
+        "description": "Human-led strategies combined with data-driven execution to increase your visibility, engagement, and conversions."
+      },
+      "stats": {
+        "roi": "Average ROI",
+        "leads": "Lead Growth",
+        "awareness": "Brand Awareness",
+        "traffic": "Traffic Increase"
+      },
+      "services": {
+        "title": "Comprehensive Digital Marketing Solutions",
+        "subtitle": "We offer end-to-end digital marketing services tailored to your business goals and target audience.",
+        "items": [
+          {
+            "title": "SEO Optimization",
+            "description": "Improve your website's visibility on search engines with proven SEO strategies",
+            "features": ["Keyword Research", "On-page SEO", "Technical SEO", "Backlink Building", "Local SEO"]
+          },
+          {
+            "title": "Social Media Marketing",
+            "description": "Engage your audience and build brand presence across social platforms",
+            "features": ["Content Strategy", "Community Management", "Paid Social Ads", "Influencer Marketing", "Analytics"]
+          },
+          {
+            "title": "Email Marketing",
+            "description": "Build relationships and drive conversions with targeted email campaigns",
+            "features": ["Newsletter Design", "Automation Workflows", "Segmentation", "A/B Testing", "Performance Tracking"]
+          },
+          {
+            "title": "PPC Advertising",
+            "description": "Drive targeted traffic and leads with pay-per-click advertising campaigns",
+            "features": ["Google Ads", "Facebook Ads", "Display Advertising", "Remarketing", "Conversion Optimization"]
+          },
+          {
+            "title": "Content Marketing",
+            "description": "Create valuable content that attracts, engages, and converts your audience",
+            "features": ["Blog Writing", "Video Content", "Infographics", "Case Studies", "Content Strategy"]
+          },
+          {
+            "title": "Analytics & Reporting",
+            "description": "Track performance and make data-driven decisions with comprehensive analytics",
+            "features": ["Google Analytics", "Conversion Tracking", "ROI Analysis", "Dashboard Creation", "Performance Reports"]
+          },
+          {
+            "title": "Brand Strategy",
+            "description": "Develop a strong brand identity and messaging that resonates with your audience",
+            "features": ["Brand Positioning", "Visual Identity", "Brand Guidelines", "Voice & Tone", "Competitor Analysis"]
+          },
+          {
+            "title": "Growth Marketing",
+            "description": "Implement data-driven strategies to accelerate business growth and scale revenue",
+            "features": ["CRO Optimization", "Growth Hacking", "Market Research", "Customer Acquisition", "Retention Strategies"]
+          }
+        ]
+      },
+      "reasons": {
+        "title": "Why Choose Our Marketing Agency",
+        "subtitle": "We combine data-driven strategies with creative execution to deliver measurable results.",
+        "items": [
+          {
+            "title": "Proven Results",
+            "description": "We have a track record of increasing client revenue by an average of 200% within the first year."
+          },
+          {
+            "title": "Transparent Reporting",
+            "description": "Get detailed analytics and regular reports so you can see exactly how your campaigns are performing."
+          },
+          {
+            "title": "Custom Strategies",
+            "description": "We don't believe in one-size-fits-all solutions. Every strategy is tailored to your unique business needs."
+          }
+        ]
+      },
+      "performance": {
+        "title": "Campaign Performance",
+        "metrics": [
+          {
+            "label": "ROI Improvement",
+            "value": "+42%"
+          },
+          {
+            "label": "Lead Generation",
+            "value": "+65%"
+          },
+          {
+            "label": "Brand Awareness",
+            "value": "+38%"
+          }
+        ]
+      },
+      "testimonials": {
+        "title": "Client Success Stories",
+        "subtitle": "See what our clients have to say about our digital marketing services",
+        "items": [
+          {
+            "name": "Sarah Johnson",
+            "role": "Marketing Director, TechCorp",
+            "comment": "Their digital marketing strategy increased our online leads by 240% in just 6 months!"
+          },
+          {
+            "name": "Michael Chen",
+            "role": "CEO, Innovate Solutions",
+            "comment": "The team's expertise in PPC and SEO transformed our digital presence. Highly recommended!"
+          },
+          {
+            "name": "Emily Rodriguez",
+            "role": "Founder, StartUp Ventures",
+            "comment": "Outstanding content marketing services that helped us build a loyal customer base."
+          }
+        ]
+      },
+      "cta": {
+        "title1": "Technology Is Everywhere.",
+        "title2": "Ownership Is Rare.",
+        "description": "Partner with a team that stays accountable from start to scale.",
+        "button": "Let's Talk",
+        "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+      }
+    },
+    
+    "cybersecurityPage": {
+      "hero": {
+        "title1": "Fortify Your Digital",
+        "title2": "Security Frontier",
+        "description": "Comprehensive cybersecurity solutions with North American accountability and global execution excellence. Protect your business from evolving digital threats with 24/7 monitoring and human-led security operations."
+      },
+      "heroFeatures": {
+        "items": [
+          {
+            "title": "Network Protection",
+            "description": "Advanced firewall and intrusion detection systems"
+          },
+          {
+            "title": "Data Security",
+            "description": "Encryption and access control for sensitive data"
+          },
+          {
+            "title": "Threat Defense",
+            "description": "Real-time threat detection and response"
+          },
+          {
+            "title": "Endpoint Security",
+            "description": "Comprehensive device and server protection"
+          }
+        ]
+      },
+      "stats": {
+        "title": "Trusted Security Metrics",
+        "subtitle": "Proven results in protecting businesses from cyber threats",
+        "items": [
+          "Uptime Guarantee",
+          "Response Time",
+          "Threats Blocked",
+          "Protected Clients",
+          "Major Breaches",
+          "Security Monitoring"
+        ]
+      },
+      "services": {
+        "title": "Comprehensive Cybersecurity Solutions",
+        "subtitle": "End-to-end security services tailored to protect your business at every layer",
+        "items": [
+          {
+            "title": "Network Security",
+            "description": "Protect your network infrastructure from unauthorized access and attacks",
+            "features": ["Firewall Configuration", "Intrusion Detection", "VPN Setup", "Network Monitoring", "Access Control"]
+          },
+          {
+            "title": "Data Protection",
+            "description": "Safeguard sensitive data with encryption and access control measures",
+            "features": ["Data Encryption", "DLP Solutions", "Backup & Recovery", "Data Classification", "Privacy Compliance"]
+          },
+          {
+            "title": "Threat Detection",
+            "description": "Advanced threat detection and response to identify security incidents",
+            "features": ["SIEM Solutions", "Threat Intelligence", "Incident Response", "Forensic Analysis", "24/7 Monitoring"]
+          },
+          {
+            "title": "Endpoint Security",
+            "description": "Secure all endpoints including devices, servers, and workstations",
+            "features": ["Antivirus/Antimalware", "Patch Management", "Device Control", "Application Whitelisting", "Mobile Security"]
+          },
+          {
+            "title": "Antivirus Solution",
+            "description": "Comprehensive antivirus and antimalware solutions for all devices",
+            "features": ["Real-time Scanning", "Malware Removal", "Ransomware Protection", "Email Security", "Automatic Updates", "Behavior Analysis"]
+          },
+          {
+            "title": "Cloud Security",
+            "description": "Protect cloud infrastructure and ensure compliance with security standards",
+            "features": ["Cloud Access Security", "Configuration Auditing", "Identity Management", "Data Loss Prevention", "Compliance"]
+          },
+          {
+            "title": "Compliance & Governance",
+            "description": "Ensure compliance with industry regulations and security frameworks",
+            "features": ["Risk Assessment", "Policy Development", "Audit Preparation", "GDPR/CCPA Compliance", "Security Frameworks"]
+          },
+          {
+            "title": "Security Awareness",
+            "description": "Train employees to recognize and respond to security threats",
+            "features": ["Phishing Simulations", "Security Training", "Awareness Campaigns", "Policy Education", "Best Practices"]
+          }
+        ]
+      },
+      "features": {
+        "title": "Advanced Security Features",
+        "subtitle": "Cutting-edge security technologies and methodologies for comprehensive protection",
+        "items": [
+          {
+            "title": "Multi-Factor Authentication",
+            "description": "Add multiple layers of security to verify user identities"
+          },
+          {
+            "title": "24/7 Monitoring",
+            "description": "Round-the-clock surveillance of your digital assets"
+          },
+          {
+            "title": "Compliance Management",
+            "description": "Meet GDPR, HIPAA, PCI-DSS, and other regulatory requirements"
+          },
+          {
+            "title": "Incident Response",
+            "description": "Immediate action and recovery from security breaches"
+          },
+          {
+            "title": "Encryption Services",
+            "description": "End-to-end encryption for data at rest and in transit"
+          },
+          {
+            "title": "Zero Trust Architecture",
+            "description": "Never trust, always verify security model implementation"
+          }
+        ]
+      },
+      "cta": {
+        "title1": "Technology Is Everywhere.",
+        "title2": "Ownership Is Rare.",
+        "description": "Partner with a team that stays accountable from start to scale.",
+        "button": "Let's Talk",
+        "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+      }
+    },
+    
+    "devopsPage": {
+      "hero": {
+        "title1": "DevOps & Cloud",
+        "title2": "Infrastructure Solutions",
+        "description": "We engineer scalable, automated, and secure infrastructure that accelerates development cycles and ensures 24/7 reliability with full transparency and ownership."
+      },
+      "stats": {
+        "deployments": "Faster Deployments",
+        "uptime": "Uptime SLA",
+        "costReduction": "Cost Reduction",
+        "monitoring": "Security Monitoring"
+      },
+      "services": {
+        "title": "Our DevOps Services",
+        "subtitle": "End-to-end DevOps solutions that streamline development, enhance reliability, and boost productivity",
+        "items": [
+          {
+            "title": "CI/CD Pipeline",
+            "description": "Automated continuous integration and deployment pipelines for faster releases",
+            "features": ["Automated Testing", "Build Automation", "Deployment Automation", "Rollback Strategies", "Pipeline Monitoring"]
+          },
+          {
+            "title": "Containerization",
+            "description": "Container-based development and deployment using Docker and Kubernetes",
+            "features": ["Docker Implementation", "Kubernetes Orchestration", "Container Registry", "Microservices", "Service Mesh"]
+          },
+          {
+            "title": "Infrastructure as Code",
+            "description": "Manage and provision infrastructure through code for consistency and efficiency",
+            "features": ["Terraform", "CloudFormation", "Ansible", "Configuration Management", "Version Control"]
+          },
+          {
+            "title": "Monitoring & Observability",
+            "description": "Comprehensive monitoring solutions for performance and reliability insights",
+            "features": ["Log Management", "Metrics Collection", "APM Tools", "Alerting Systems", "Dashboard Creation"]
+          },
+          {
+            "title": "DevSecOps",
+            "description": "Integrate security practices throughout the DevOps lifecycle",
+            "features": ["Security Scanning", "Vulnerability Management", "Compliance Automation", "Secret Management", "Security Testing"]
+          },
+          {
+            "title": "Cloud DevOps",
+            "description": "Cloud-native DevOps practices for scalable and resilient applications",
+            "features": ["Cloud Migration", "Serverless Architecture", "Cloud Optimization", "Multi-cloud Strategy", "Cost Management"]
+          },
+          {
+            "title": "Performance Optimization",
+            "description": "Optimize application performance and infrastructure efficiency",
+            "features": ["Load Testing", "Performance Tuning", "Capacity Planning", "Resource Optimization", "Caching Strategies"]
+          },
+          {
+            "title": "DevOps Consulting",
+            "description": "Strategic consulting to implement DevOps best practices and culture",
+            "features": ["Process Assessment", "Toolchain Selection", "Team Training", "Culture Transformation", "ROI Analysis"]
+          }
+        ]
+      },
+      "techStack": {
+        "title": "Enterprise DevOps Stack",
+        "subtitle": "We leverage industry-leading tools and platforms for robust infrastructure",
+        "tabs": {
+          "automation": "Automation Tools",
+          "containerization": "Containerization",
+          "cloud": "Cloud Platforms"
+        },
+        "levels": {
+          "expert": "Expert",
+          "advanced": "Advanced",
+          "intermediate": "Intermediate"
+        }
+      },
+      "process": {
+        "title": "DevOps Implementation Process",
+        "subtitle": "A systematic approach to transforming your development and operations workflow",
+        "steps": [
+          {
+            "title": "Assessment & Planning",
+            "description": "Analyze current infrastructure and define DevOps transformation roadmap"
+          },
+          {
+            "title": "Infrastructure Setup",
+            "description": "Configure cloud infrastructure and container orchestration platforms"
+          },
+          {
+            "title": "Pipeline Implementation",
+            "description": "Build CI/CD pipelines for automated testing and deployment"
+          },
+          {
+            "title": "Monitoring Integration",
+            "description": "Implement comprehensive monitoring, logging, and alerting systems"
+          },
+          {
+            "title": "Security Hardening",
+            "description": "Integrate security practices and compliance automation"
+          },
+          {
+            "title": "Optimization & Scaling",
+            "description": "Continuous optimization, scaling, and performance tuning"
+          }
+        ]
+      },
+      "projects": {
+        "title": "DevOps Success Stories",
+        "subtitle": "Real-world transformations that delivered measurable business impact",
+        "technologies": "Technologies:",
+        "results": "Business Impact:",
+        "items": [
+          {
+            "title": "Enterprise CI/CD Transformation",
+            "description": "Implemented automated CI/CD pipelines for 50+ development teams across the organization",
+            "category": "CI/CD Implementation",
+            "results": ["Deployment time reduced by 80%", "Release frequency increased from monthly to daily", "99.9% deployment success rate"]
+          },
+          {
+            "title": "Container Platform Migration",
+            "description": "Migrated legacy applications to Kubernetes platform with zero downtime",
+            "category": "Containerization",
+            "results": ["Infrastructure costs reduced by 40%", "Application scalability improved 5x", "Zero downtime during migration"]
+          },
+          {
+            "title": "Multi-cloud DevOps Strategy",
+            "description": "Implemented DevOps practices across AWS, Azure, and Google Cloud platforms",
+            "category": "Multi-cloud",
+            "results": ["Cloud costs optimized by 35%", "Disaster recovery time reduced to minutes", "Vendor lock-in eliminated"]
+          },
+          {
+            "title": "FinTech DevOps Modernization",
+            "description": "Transformed development processes for financial services company with strict compliance",
+            "category": "FinTech DevOps",
+            "results": ["Compliance audit time reduced by 70%", "Security vulnerabilities detected early", "Developer productivity increased 60%"]
+          },
+          {
+            "title": "E-commerce Performance Scaling",
+            "description": "Scaled DevOps infrastructure to handle 10x traffic during peak holiday seasons",
+            "category": "Performance Scaling",
+            "results": ["Handled 1M+ concurrent users", "Page load time under 2 seconds", "Zero downtime during peak traffic"]
+          },
+          {
+            "title": "Healthcare DevOps Compliance",
+            "description": "Implemented HIPAA-compliant DevOps practices for healthcare application",
+            "category": "Healthcare DevOps",
+            "results": ["HIPAA compliance achieved", "Security incidents reduced by 90%", "Audit preparation time cut by 75%"]
+          },
+          {
+            "title": "Microservices Transformation",
+            "description": "Migrated monolithic application to microservices architecture with DevOps practices",
+            "category": "Microservices",
+            "results": ["Deployment independence for teams", "Fault isolation improved", "New feature delivery 3x faster"]
+          },
+          {
+            "title": "Observability Platform Implementation",
+            "description": "Built comprehensive observability platform for real-time application monitoring",
+            "category": "Observability",
+            "results": ["Mean time to resolution reduced by 65%", "Proactive issue detection", "System performance improved 40%"]
+          }
+        ]
+      },
+      "benefits": {
+        "title": "Why Choose Our DevOps Solutions",
+        "subtitle": "Transform your development lifecycle with proven DevOps practices",
+        "items": [
+          {
+            "title": "Accelerated Delivery",
+            "description": "Reduce deployment time from weeks to hours with automated pipelines"
+          },
+          {
+            "title": "Enhanced Security",
+            "description": "Built-in security controls and compliance automation throughout the pipeline"
+          },
+          {
+            "title": "Improved Reliability",
+            "description": "99.99% uptime with comprehensive monitoring and auto-recovery"
+          },
+          {
+            "title": "Cost Optimization",
+            "description": "Reduce infrastructure costs by up to 40% with smart resource management"
+          }
+        ]
+      },
+      "cta": {
+        "title1": "Technology Is Everywhere.",
+        "title2": "Ownership Is Rare.",
+        "description": "Partner with a team that stays accountable from start to scale.",
+        "button": "Let's Talk",
+        "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+      }
+    },
+    
+    "consultingPage": {
+      "hero": {
+        "title1": "Technology",
+        "title2": "Consulting & Advisory",
+        "description": "IT strategy, architecture, and digital advisory services that transform businesses through technology innovation with clear ownership and strategic vision."
+      },
+      "stats": {
+        "clients": "Enterprise Clients",
+        "experience": "Years Experience",
+        "savings": "Avg. Cost Savings",
+        "retention": "Client Retention"
+      },
+      "services": {
+        "title": "Our Consulting Expertise",
+        "subtitle": "Strategic technology advisory services that drive business growth and digital transformation",
+        "items": [
+          {
+            "title": "Digital Transformation",
+            "description": "Guide your organization through comprehensive digital transformation initiatives",
+            "features": ["Strategy Development", "Change Management", "Technology Roadmap", "ROI Analysis", "Implementation Planning"]
+          },
+          {
+            "title": "IT Strategy & Governance",
+            "description": "Develop IT strategies aligned with business objectives and governance frameworks",
+            "features": ["IT Governance", "Strategic Planning", "Budget Optimization", "Vendor Management", "Performance Metrics"]
+          },
+          {
+            "title": "Technology Assessment",
+            "description": "Comprehensive evaluation of your current technology stack and capabilities",
+            "features": ["Current State Analysis", "Gap Assessment", "Technology Selection", "Vendor Evaluation", "Best Practices"]
+          },
+          {
+            "title": "Cloud Strategy",
+            "description": "Strategic planning for cloud adoption, migration, and optimization",
+            "features": ["Cloud Readiness", "Migration Planning", "Multi-cloud Strategy", "Cost Optimization", "Security Framework"]
+          },
+          {
+            "title": "Business Process Optimization",
+            "description": "Streamline operations and improve efficiency through process redesign",
+            "features": ["Process Mapping", "Automation Opportunities", "Workflow Analysis", "KPI Definition", "Continuous Improvement"]
+          },
+          {
+            "title": "Cybersecurity Advisory",
+            "description": "Strategic guidance to strengthen your security posture and compliance",
+            "features": ["Risk Assessment", "Security Framework", "Compliance Strategy", "Incident Response", "Security Awareness"]
+          },
+          {
+            "title": "AI & Analytics Strategy",
+            "description": "Strategic planning for AI implementation and data-driven decision making",
+            "features": ["AI Roadmap", "Data Strategy", "Use Case Identification", "ROI Analysis", "Implementation Guidance"]
+          },
+          {
+            "title": "Organizational Change",
+            "description": "Manage people and cultural aspects of technology transformations",
+            "features": ["Change Management", "Training Programs", "Communication Strategy", "Stakeholder Engagement", "Culture Assessment"]
+          }
+        ]
+      },
+      "expertise": {
+        "title": "Specialized Expertise Areas",
+        "subtitle": "Deep knowledge across technology domains to provide comprehensive advisory",
+        "tabs": {
+          "strategy": "Strategy",
+          "architecture": "Architecture",
+          "cloud": "Cloud"
+        },
+        "levels": {
+          "expert": "Expert",
+          "advanced": "Advanced",
+          "intermediate": "Intermediate"
+        },
+        "strategy": {
+          "items": [
+            { "name": "Digital Strategy", "level": "Expert" },
+            { "name": "Business Analysis", "level": "Advanced" },
+            { "name": "IT Governance", "level": "Expert" },
+            { "name": "Vendor Selection", "level": "Advanced" },
+            { "name": "Cost Optimization", "level": "Expert" },
+            { "name": "Risk Management", "level": "Advanced" }
+          ]
+        },
+        "architecture": {
+          "items": [
+            { "name": "Enterprise Architecture", "level": "Expert" },
+            { "name": "Microservices", "level": "Advanced" },
+            { "name": "API Strategy", "level": "Expert" },
+            { "name": "System Integration", "level": "Advanced" },
+            { "name": "Scalability Design", "level": "Expert" },
+            { "name": "Legacy Modernization", "level": "Advanced" }
+          ]
+        },
+        "cloud": {
+          "items": [
+            { "name": "AWS", "level": "Expert" },
+            { "name": "Azure", "level": "Advanced" },
+            { "name": "Google Cloud", "level": "Intermediate" },
+            { "name": "Cloud Migration", "level": "Expert" },
+            { "name": "Container Strategy", "level": "Advanced" },
+            { "name": "Serverless Architecture", "level": "Advanced" }
+          ]
+        }
+      },
+      "process": {
+        "title": "Our Advisory Process",
+        "subtitle": "A structured methodology that ensures technology investments deliver maximum business value",
+        "steps": [
+          {
+            "title": "Discovery & Assessment",
+            "description": "Comprehensive analysis of current technology landscape and business needs"
+          },
+          {
+            "title": "Strategy Development",
+            "description": "Creating tailored technology roadmap aligned with business objectives"
+          },
+          {
+            "title": "Architecture Design",
+            "description": "Designing scalable, secure, and future-proof technical solutions"
+          },
+          {
+            "title": "Implementation Planning",
+            "description": "Detailed execution plan with timelines, resources, and milestones"
+          },
+          {
+            "title": "Change Management",
+            "description": "Guiding teams through technology adoption and process changes"
+          },
+          {
+            "title": "Ongoing Advisory",
+            "description": "Continuous support, optimization, and strategic guidance"
+          }
+        ]
+      },
+      "caseStudies": {
+        "title": "Success Stories",
+        "subtitle": "Real-world technology consulting engagements that delivered measurable business impact",
+        "technologies": "Technologies:",
+        "results": "Business Outcomes:",
+        "items": [
+          {
+            "title": "Global Retail Digital Transformation",
+            "description": "Led digital transformation initiative for Fortune 500 retail chain across 30 countries",
+            "category": "Digital Transformation",
+            "results": ["$500M annual cost savings", "Customer satisfaction increased by 40%", "Digital revenue grew by 300%"]
+          },
+          {
+            "title": "Healthcare System Modernization",
+            "description": "Modernized legacy healthcare system for better patient care and operational efficiency",
+            "category": "Healthcare IT",
+            "results": ["Patient wait times reduced by 60%", "Operational costs decreased by 35%", "Patient outcomes improved by 25%"]
+          },
+          {
+            "title": "Financial Services Innovation",
+            "description": "Developed innovative fintech solutions for leading banking institution",
+            "category": "FinTech",
+            "results": ["Fraud detection accuracy improved to 99.9%", "Customer acquisition increased by 200%", "Operational efficiency improved by 50%"]
+          },
+          {
+            "title": "Manufacturing 4.0 Implementation",
+            "description": "Implemented Industry 4.0 solutions for smart manufacturing operations",
+            "category": "Smart Manufacturing",
+            "results": ["Production efficiency increased by 45%", "Equipment downtime reduced by 70%", "Quality defects decreased by 80%"]
+          },
+          {
+            "title": "Education Technology Platform",
+            "description": "Built comprehensive edtech platform for global education provider",
+            "category": "EdTech",
+            "results": ["Student engagement increased by 300%", "Learning outcomes improved by 40%", "Scaled to 2M+ students globally"]
+          },
+          {
+            "title": "Energy Sector Digitalization",
+            "description": "Digital transformation for renewable energy company's operations",
+            "category": "Energy Tech",
+            "results": ["Energy production optimized by 30%", "Maintenance costs reduced by 50%", "Carbon footprint reduced by 25%"]
+          },
+          {
+            "title": "Logistics & Supply Chain Optimization",
+            "description": "Optimized global supply chain operations with AI and data analytics",
+            "category": "Supply Chain",
+            "results": ["Delivery times reduced by 40%", "Supply chain costs decreased by 35%", "Inventory accuracy improved to 99.5%"]
+          },
+          {
+            "title": "Media & Entertainment Platform",
+            "description": "Built next-generation media platform for content streaming and distribution",
+            "category": "Media Tech",
+            "results": ["Viewer engagement increased by 250%", "Content delivery costs reduced by 40%", "Subscriber growth of 300%"]
+          }
+        ]
+      },
+      "cta": {
+        "title1": "Technology Is Everywhere.",
+        "title2": "Ownership Is Rare.",
+        "description": "Partner with a team that stays accountable from start to scale.",
+        "button": "Let's Talk",
+        "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+      }
+    },
+    "remoteWorkplacePage": {
+  "hero": {
+    "title1": "Secure Remote",
+    "title2": "Workplace Solutions",
+    "description": "We implement secure, efficient remote work infrastructures with enterprise-grade collaboration tools that ensure productivity and data security from anywhere."
+  },
+  "stats": {
+    "support": "Remote Support",
+    "security": "Security Guarantee",
+    "setups": "Remote Setups",
+    "uptime": "Uptime SLA"
+  },
+  "services": {
+    "title": "Our Remote Workplace Services",
+    "subtitle": "Comprehensive solutions for secure, productive, and collaborative remote work environments",
+    "items": [
+      {
+        "title": "Remote Infrastructure Setup",
+        "description": "Comprehensive remote work infrastructure including hardware, software, and networking",
+        "features": ["Device Provisioning", "VPN Setup", "Network Security", "Cloud Storage", "IT Support"]
+      },
+      {
+        "title": "Cybersecurity for Remote Work",
+        "description": "End-to-end security solutions to protect remote workers and company data",
+        "features": ["Endpoint Security", "Zero Trust Architecture", "Data Encryption", "Threat Detection", "Compliance"]
+      },
+      {
+        "title": "Collaboration Tools",
+        "description": "Implement and optimize collaboration platforms for distributed teams",
+        "features": ["Video Conferencing", "Team Chat", "Project Management", "Document Collaboration", "Virtual Whiteboards"]
+      },
+      {
+        "title": "Remote Work Management",
+        "description": "Tools and processes for managing remote teams effectively",
+        "features": ["Performance Tracking", "Time Management", "Goal Setting", "Communication Protocols", "Remote Onboarding"]
+      },
+      {
+        "title": "Home Office Setup",
+        "description": "Complete home office solutions for productivity and ergonomics",
+        "features": ["Ergonomic Equipment", "Hardware Setup", "Internet Optimization", "Workspace Design", "Technical Support"]
+      },
+      {
+        "title": "Remote Training & Development",
+        "description": "Training programs and resources for remote work best practices",
+        "features": ["Digital Skills Training", "Remote Leadership", "Cybersecurity Awareness", "Tool Training", "Continuous Learning"]
+      },
+      {
+        "title": "Compliance & Legal Support",
+        "description": "Ensure compliance with regulations and legal requirements for remote work",
+        "features": ["Labor Law Compliance", "Data Privacy", "Tax Implications", "Insurance Coverage", "Policy Development"]
+      },
+      {
+        "title": "Productivity Analytics",
+        "description": "Monitor and optimize remote team productivity with data-driven insights",
+        "features": ["Performance Metrics", "Productivity Analysis", "Well-being Monitoring", "ROI Tracking", "Improvement Recommendations"]
+      }
+    ]
+  },
+  "techStack": {
+    "title": "Enterprise-Grade Technology Stack",
+    "subtitle": "Trusted tools and platforms for secure and efficient remote operations",
+    "tabs": {
+      "collaboration": "Collaboration Tools",
+      "security": "Security Solutions",
+      "infrastructure": "Infrastructure"
+    },
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate"
+    }
+  },
+  "process": {
+    "title": "Implementation Process",
+    "subtitle": "A systematic approach to deploying secure and efficient remote workplace solutions",
+    "steps": [
+      {
+        "title": "Needs Assessment",
+        "description": "Analyze remote work requirements and security considerations"
+      },
+      {
+        "title": "Security Planning",
+        "description": "Design secure access and data protection strategies"
+      },
+      {
+        "title": "Tool Selection & Setup",
+        "description": "Implement collaboration tools and remote access solutions"
+      },
+      {
+        "title": "Infrastructure Deployment",
+        "description": "Deploy VDI, VPN, and unified communications systems"
+      },
+      {
+        "title": "Training & Onboarding",
+        "description": "Train employees on remote tools and security protocols"
+      },
+      {
+        "title": "Ongoing Support",
+        "description": "24/7 monitoring, maintenance, and optimization"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Success Stories",
+    "subtitle": "Real-world implementations that transformed businesses into remote-first organizations",
+    "items": [
+      {
+        "title": "Global Enterprise Remote Transition",
+        "description": "Transitioned 10,000+ employees to remote work across 50 countries within 30 days",
+        "category": "Enterprise Remote Work",
+        "results": ["99% business continuity", "Productivity increased by 25%", "Real estate costs reduced by 40%"]
+      },
+      {
+        "title": "Financial Services Remote Compliance",
+        "description": "Implemented secure remote work solutions for regulated financial institution",
+        "category": "Finance Remote Work",
+        "results": ["Zero security incidents", "Regulatory compliance maintained", "Employee satisfaction increased by 35%"]
+      },
+      {
+        "title": "Healthcare Remote Workforce",
+        "description": "Enabled remote work for healthcare administrative staff while maintaining HIPAA compliance",
+        "category": "Healthcare Remote",
+        "results": ["100% HIPAA compliance", "Administrative costs reduced by 30%", "Staff retention improved by 20%"]
+      },
+      {
+        "title": "Tech Startup Remote Scaling",
+        "description": "Scaled remote-first startup from 10 to 500 employees across 20 countries",
+        "category": "Startup Remote Culture",
+        "results": ["Recruiting pool expanded globally", "Time to hire reduced by 60%", "Diversity increased by 40%"]
+      },
+      {
+        "title": "Manufacturing Hybrid Workforce",
+        "description": "Implemented hybrid work model for manufacturing company's office staff",
+        "category": "Hybrid Work Model",
+        "results": ["Office space reduced by 50%", "Carbon footprint decreased by 25%", "Employee flexibility improved satisfaction"]
+      },
+      {
+        "title": "Education Sector Remote Transition",
+        "description": "Transitioned entire educational institution to remote teaching and administration",
+        "category": "Education Remote",
+        "results": ["Learning continuity maintained", "Geographic reach expanded", "Digital literacy improved across institution"]
+      },
+      {
+        "title": "Consulting Firm Digital Nomad Setup",
+        "description": "Enabled digital nomad lifestyle for consulting firm with global clients",
+        "category": "Digital Nomad",
+        "results": ["Client satisfaction increased by 30%", "Consultant retention improved by 40%", "Global expertise expanded"]
+      },
+      {
+        "title": "Government Agency Remote Operations",
+        "description": "Secured remote work implementation for government agency with strict security requirements",
+        "category": "Government Remote",
+        "results": ["Zero data breaches", "Public service continuity", "Operational resilience established"]
+      }
+    ]
+  },
+  "cta": {
+    "title1": "Technology Is Everywhere.",
+    "title2": "Ownership Is Rare.",
+    "description": "Partner with a team that stays accountable from start to scale.",
+    "button": "Let's Talk",
+    "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+  }
+},
+"disasterRecoveryPage": {
+  "hero": {
+    "title1": "Backup & Disaster",
+    "title2": "Recovery Solutions",
+    "description": "Business continuity & data protection solutions ensuring your operations continue uninterrupted with secure backups and rapid recovery capabilities."
+  },
+  "stats": {
+    "recoveryTime": "Recovery Time",
+    "dataProtection": "Data Protection",
+    "dataLoss": "Data Loss",
+    "compliance": "Compliance"
+  },
+  "services": {
+    "title": "Comprehensive Recovery Services",
+    "subtitle": "End-to-end backup and disaster recovery solutions for business continuity",
+    "items": [
+      {
+        "title": "Backup Solutions",
+        "description": "Comprehensive backup strategies to protect your critical data and applications",
+        "features": ["Automated Backups", "Incremental Backups", "Cloud Backup", "Local Backup", "Backup Verification"]
+      },
+      {
+        "title": "Disaster Recovery Planning",
+        "description": "Develop and implement comprehensive disaster recovery plans for business continuity",
+        "features": ["Business Impact Analysis", "Recovery Strategy", "RTO/RPO Definition", "Plan Documentation", "Testing Procedures"]
+      },
+      {
+        "title": "Cloud Recovery",
+        "description": "Cloud-based disaster recovery solutions for rapid restoration and scalability",
+        "features": ["DRaaS Solutions", "Cloud Replication", "Failover Automation", "Multi-region Recovery", "Cost Optimization"]
+      },
+      {
+        "title": "Data Center Recovery",
+        "description": "Complete data center recovery solutions for on-premise infrastructure",
+        "features": ["Secondary Data Centers", "Hardware Replication", "Network Recovery", "Storage Replication", "Site Recovery"]
+      },
+      {
+        "title": "High Availability",
+        "description": "Implement high availability solutions to minimize downtime and ensure continuous operations",
+        "features": ["Load Balancing", "Clustering", "Redundant Systems", "Failover Clusters", "Monitoring & Alerting"]
+      },
+      {
+        "title": "Recovery Testing",
+        "description": "Regular testing and validation of disaster recovery plans and procedures",
+        "features": ["Tabletop Exercises", "Simulated Failovers", "Recovery Drills", "Performance Testing", "Gap Analysis"]
+      },
+      {
+        "title": "Cyber Recovery",
+        "description": "Specialized recovery solutions for ransomware and cyber attack scenarios",
+        "features": ["Air-gapped Backups", "Immutable Storage", "Ransomware Detection", "Forensic Analysis", "Clean Recovery"]
+      },
+      {
+        "title": "Compliance & Documentation",
+        "description": "Ensure compliance with regulatory requirements and maintain proper documentation",
+        "features": ["Compliance Auditing", "Policy Development", "Documentation Management", "Regulatory Reporting", "Audit Support"]
+      }
+    ]
+  },
+  "techStack": {
+    "title": "Advanced Capabilities",
+    "subtitle": "Expert solutions for backup, recovery, and data protection",
+    "tabs": {
+      "backup": "Backup Solutions",
+      "recovery": "Disaster Recovery",
+      "protection": "Data Protection"
+    },
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Advanced",
+      "intermediate": "Intermediate"
+    }
+  },
+  "process": {
+    "title": "Our Recovery Process",
+    "subtitle": "Structured approach to ensure rapid recovery and business continuity",
+    "steps": [
+      {
+        "title": "Risk Assessment",
+        "description": "Identify potential threats and vulnerabilities to your business"
+      },
+      {
+        "title": "Strategy Development",
+        "description": "Create customized backup and recovery strategies"
+      },
+      {
+        "title": "Implementation",
+        "description": "Deploy backup solutions and configure recovery systems"
+      },
+      {
+        "title": "Testing & Validation",
+        "description": "Regular testing of recovery procedures and systems"
+      },
+      {
+        "title": "Monitoring & Management",
+        "description": "24/7 monitoring of backup systems and data integrity"
+      },
+      {
+        "title": "Continuous Improvement",
+        "description": "Regular updates and optimization of recovery plans"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Recovery Success Stories",
+    "subtitle": "Real-world examples of our disaster recovery solutions in action",
+    "technologies": "Solutions:",
+    "results": "Key Results:",
+    "items": [
+      {
+        "title": "Financial Institution Ransomware Recovery",
+        "description": "Recovered banking systems after sophisticated ransomware attack with zero data loss",
+        "category": "Cyber Recovery",
+        "results": ["Zero data loss recovery", "Business resumed within 4 hours", "Enhanced security posture post-recovery"]
+      },
+      {
+        "title": "Hospital System Disaster Recovery",
+        "description": "Maintained critical healthcare operations during regional power outage",
+        "category": "Healthcare DR",
+        "results": ["100% patient care continuity", "Electronic health records remained accessible", "Zero patient data compromise"]
+      },
+      {
+        "title": "E-commerce Platform Data Center Failure",
+        "description": "Recovered online retail platform after complete data center failure during peak season",
+        "category": "Data Center DR",
+        "results": ["99.9% uptime maintained", "Zero lost transactions", "Customer experience unaffected"]
+      },
+      {
+        "title": "Manufacturing Plant Natural Disaster",
+        "description": "Restored manufacturing operations after flood damaged primary facility",
+        "category": "Physical Disaster",
+        "results": ["Production resumed in 48 hours", "Supply chain continuity maintained", "Insurance claim supported with documentation"]
+      },
+      {
+        "title": "Government Agency Cyber Attack",
+        "description": "Secured and restored government services after nation-state cyber attack",
+        "category": "Government DR",
+        "results": ["Critical services restored within 6 hours", "No citizen data breached", "Enhanced national security protocols established"]
+      },
+      {
+        "title": "Cloud Provider Regional Outage",
+        "description": "Maintained business operations during major cloud provider regional outage",
+        "category": "Cloud DR",
+        "results": ["Zero downtime experienced", "Automatic failover to backup region", "Customer trust maintained"]
+      },
+      {
+        "title": "Global Enterprise Human Error Recovery",
+        "description": "Recovered from critical database deletion by employee with malicious intent",
+        "category": "Human Error Recovery",
+        "results": ["Full data recovery within 2 hours", "Enhanced access controls implemented", "Prevented future similar incidents"]
+      },
+      {
+        "title": "Critical Infrastructure Cyber Resilience",
+        "description": "Built cyber-resilient infrastructure for energy grid operator",
+        "category": "Infrastructure DR",
+        "results": ["Prevented potential blackout", "Regulatory compliance achieved", "Public safety ensured"]
+      }
+    ]
+  },
+  "cta": {
+    "title1": "Technology Is Everywhere.",
+    "title2": "Ownership Is Rare.",
+    "description": "Partner with a team that stays accountable from start to scale.",
+    "button": "Let's Talk",
+    "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+  }
+},
+"itHelpDeskPage": {
+  "hero": {
+    "title1": "24/7 IT Help Desk &",
+    "title2": "Technical Support",
+    "description": "Immediate technical support and issue resolution ensuring your business operations run smoothly 24/7 with guaranteed response times and expert solutions."
+  },
+  "stats": {
+    "responseTime": "Response Time",
+    "resolutionRate": "Resolution Rate",
+    "supportCoverage": "Support Coverage",
+    "supportedCompanies": "Supported Companies"
+  },
+  "services": {
+    "title": "Our IT Support Services",
+    "subtitle": "Comprehensive technical support solutions to keep your business running smoothly",
+    "items": [
+      {
+        "title": "Help Desk Support",
+        "description": "24/7 technical support for end-users and immediate issue resolution",
+        "features": ["Phone Support", "Email Support", "Chat Support", "Remote Assistance", "Ticket Management"]
+      },
+      {
+        "title": "IT Infrastructure Management",
+        "description": "Proactive management and maintenance of your IT infrastructure",
+        "features": ["Server Management", "Network Monitoring", "Patch Management", "Performance Optimization", "Capacity Planning"]
+      },
+      {
+        "title": "User Account Management",
+        "description": "Comprehensive user lifecycle management and access control",
+        "features": ["Account Provisioning", "Access Management", "Password Resets", "Group Policy Management", "Directory Services"]
+      },
+      {
+        "title": "On-site Support",
+        "description": "Professional on-site technical support for hardware and network issues",
+        "features": ["Hardware Installation", "Network Troubleshooting", "Equipment Setup", "Cable Management", "Inventory Management"]
+      },
+      {
+        "title": "Security Support",
+        "description": "Ongoing security monitoring, updates, and threat response",
+        "features": ["Security Updates", "Antivirus Management", "Firewall Configuration", "Security Audits", "Incident Response"]
+      },
+      {
+        "title": "Cloud Support",
+        "description": "Expert support for cloud platforms and cloud-based applications",
+        "features": ["Cloud Migration", "Cloud Optimization", "SaaS Management", "Cloud Security", "Cost Management"]
+      },
+      {
+        "title": "Mobile Device Management",
+        "description": "Comprehensive support for mobile devices and BYOD policies",
+        "features": ["Device Enrollment", "App Management", "Security Policies", "Remote Wipe", "Troubleshooting"]
+      },
+      {
+        "title": "IT Reporting & Analytics",
+        "description": "Detailed reporting and analytics for IT performance and trends",
+        "features": ["Service Level Reporting", "Performance Metrics", "Trend Analysis", "Budget Planning", "ROI Analysis"]
+      }
+    ]
+  },
+  "expertise": {
+    "title": "Technical Support Expertise",
+    "subtitle": "Specialized skills across all IT support domains",
+    "tabs": {
+      "onsite": "On-site Support",
+      "remote": "Remote Support",
+      "network": "Network & Security"
+    },
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Advanced"
+    }
+  },
+  "process": {
+    "title": "Our Support Process",
+    "subtitle": "Efficient workflow ensuring rapid issue resolution and maximum uptime",
+    "steps": [
+      {
+        "title": "Issue Reporting",
+        "description": "Multiple channels for users to report IT issues instantly"
+      },
+      {
+        "title": "Ticket Creation",
+        "description": "Automated ticket generation with priority assignment"
+      },
+      {
+        "title": "Immediate Response",
+        "description": "First response within 15 minutes for critical issues"
+      },
+      {
+        "title": "Diagnosis & Resolution",
+        "description": "Expert analysis and solution implementation"
+      },
+      {
+        "title": "Quality Check",
+        "description": "Verification of solution and user satisfaction"
+      },
+      {
+        "title": "Preventive Measures",
+        "description": "Implement safeguards to prevent recurrence"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Support Success Stories",
+    "subtitle": "Real-world examples of our IT support making a difference",
+    "technologies": "Support Areas:",
+    "results": "Achievements:",
+    "items": [
+      {
+        "title": "Global Retail IT Support",
+        "description": "Provided 24/7 IT support for 500+ retail stores across 3 continents",
+        "category": "Retail Support",
+        "results": ["99.9% system uptime achieved", "Issue resolution time reduced by 70%", "Store productivity increased by 25%"]
+      },
+      {
+        "title": "Healthcare System Help Desk",
+        "description": "Managed IT support for large hospital network with 10,000+ users",
+        "category": "Healthcare Support",
+        "results": ["Clinical workflow uninterrupted", "IT ticket response time under 5 minutes", "Physician satisfaction 98%"]
+      },
+      {
+        "title": "Financial Trading Floor Support",
+        "description": "Mission-critical IT support for high-frequency trading environment",
+        "category": "Financial Support",
+        "results": ["Zero trading interruptions", "Millisecond response times", "Regulatory compliance maintained"]
+      },
+      {
+        "title": "Manufacturing Plant IT Support",
+        "description": "Industrial IT support for automated manufacturing facilities",
+        "category": "Manufacturing Support",
+        "results": ["Production efficiency increased by 30%", "Equipment downtime reduced by 80%", "Quality defects decreased by 45%"]
+      },
+      {
+        "title": "Education Technology Support",
+        "description": "Comprehensive IT support for university with 50,000+ students and staff",
+        "category": "Education Support",
+        "results": ["Student satisfaction 95%", "System availability 99.99%", "IT support costs reduced by 40%"]
+      },
+      {
+        "title": "Legal Firm IT Management",
+        "description": "Managed IT services for international law firm with strict security requirements",
+        "category": "Legal Support",
+        "results": ["Client data security 100%", "Attorney productivity increased 35%", "Audit compliance simplified"]
+      },
+      {
+        "title": "Media Company Cloud Migration Support",
+        "description": "Supported large media company's transition to cloud-based workflows",
+        "category": "Media Support",
+        "results": ["Production time reduced by 50%", "Collaboration improved globally", "Content delivery accelerated"]
+      },
+      {
+        "title": "Non-profit Organization IT Modernization",
+        "description": "Transformed IT support for humanitarian organization operating in challenging environments",
+        "category": "Non-profit Support",
+        "results": ["Field operations efficiency doubled", "Aid delivery accelerated by 60%", "Administrative overhead reduced 70%"]
+      }
+    ]
+  },
+  "cta": {
+    "title1": "Technology Is Everywhere.",
+    "title2": "Ownership Is Rare.",
+    "description": "Partner with a team that stays accountable from start to scale.",
+    "button": "Let's Talk",
+    "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+  }
+},
+"itHelpDeskPage": {
+  "hero": {
+    "title1": "24/7 IT Help Desk &",
+    "title2": "Technical Support",
+    "description": "Immediate technical support and issue resolution ensuring your business operations run smoothly 24/7 with guaranteed response times and expert solutions."
+  },
+  "stats": {
+    "responseTime": "Response Time",
+    "resolutionRate": "Resolution Rate",
+    "supportCoverage": "Support Coverage",
+    "supportedCompanies": "Supported Companies"
+  },
+  "services": {
+    "title": "Our IT Support Services",
+    "subtitle": "Comprehensive technical support solutions to keep your business running smoothly",
+    "items": [
+      {
+        "title": "Help Desk Support",
+        "description": "24/7 technical support for end-users and immediate issue resolution",
+        "features": ["Phone Support", "Email Support", "Chat Support", "Remote Assistance", "Ticket Management"]
+      },
+      {
+        "title": "IT Infrastructure Management",
+        "description": "Proactive management and maintenance of your IT infrastructure",
+        "features": ["Server Management", "Network Monitoring", "Patch Management", "Performance Optimization", "Capacity Planning"]
+      },
+      {
+        "title": "User Account Management",
+        "description": "Comprehensive user lifecycle management and access control",
+        "features": ["Account Provisioning", "Access Management", "Password Resets", "Group Policy Management", "Directory Services"]
+      },
+      {
+        "title": "On-site Support",
+        "description": "Professional on-site technical support for hardware and network issues",
+        "features": ["Hardware Installation", "Network Troubleshooting", "Equipment Setup", "Cable Management", "Inventory Management"]
+      },
+      {
+        "title": "Security Support",
+        "description": "Ongoing security monitoring, updates, and threat response",
+        "features": ["Security Updates", "Antivirus Management", "Firewall Configuration", "Security Audits", "Incident Response"]
+      },
+      {
+        "title": "Cloud Support",
+        "description": "Expert support for cloud platforms and cloud-based applications",
+        "features": ["Cloud Migration", "Cloud Optimization", "SaaS Management", "Cloud Security", "Cost Management"]
+      },
+      {
+        "title": "Mobile Device Management",
+        "description": "Comprehensive support for mobile devices and BYOD policies",
+        "features": ["Device Enrollment", "App Management", "Security Policies", "Remote Wipe", "Troubleshooting"]
+      },
+      {
+        "title": "IT Reporting & Analytics",
+        "description": "Detailed reporting and analytics for IT performance and trends",
+        "features": ["Service Level Reporting", "Performance Metrics", "Trend Analysis", "Budget Planning", "ROI Analysis"]
+      }
+    ]
+  },
+  "expertise": {
+    "title": "Technical Support Expertise",
+    "subtitle": "Specialized skills across all IT support domains",
+    "tabs": {
+      "onsite": "On-site Support",
+      "remote": "Remote Support",
+      "network": "Network & Security"
+    },
+    "levels": {
+      "expert": "Expert",
+      "advanced": "Advanced"
+    }
+  },
+  "process": {
+    "title": "Our Support Process",
+    "subtitle": "Efficient workflow ensuring rapid issue resolution and maximum uptime",
+    "steps": [
+      {
+        "title": "Issue Reporting",
+        "description": "Multiple channels for users to report IT issues instantly"
+      },
+      {
+        "title": "Ticket Creation",
+        "description": "Automated ticket generation with priority assignment"
+      },
+      {
+        "title": "Immediate Response",
+        "description": "First response within 15 minutes for critical issues"
+      },
+      {
+        "title": "Diagnosis & Resolution",
+        "description": "Expert analysis and solution implementation"
+      },
+      {
+        "title": "Quality Check",
+        "description": "Verification of solution and user satisfaction"
+      },
+      {
+        "title": "Preventive Measures",
+        "description": "Implement safeguards to prevent recurrence"
+      }
+    ]
+  },
+  "projects": {
+    "title": "Support Success Stories",
+    "subtitle": "Real-world examples of our IT support making a difference",
+    "technologies": "Support Areas:",
+    "results": "Achievements:",
+    "items": [
+      {
+        "title": "Global Retail IT Support",
+        "description": "Provided 24/7 IT support for 500+ retail stores across 3 continents",
+        "category": "Retail Support",
+        "results": ["99.9% system uptime achieved", "Issue resolution time reduced by 70%", "Store productivity increased by 25%"]
+      },
+      {
+        "title": "Healthcare System Help Desk",
+        "description": "Managed IT support for large hospital network with 10,000+ users",
+        "category": "Healthcare Support",
+        "results": ["Clinical workflow uninterrupted", "IT ticket response time under 5 minutes", "Physician satisfaction 98%"]
+      },
+      {
+        "title": "Financial Trading Floor Support",
+        "description": "Mission-critical IT support for high-frequency trading environment",
+        "category": "Financial Support",
+        "results": ["Zero trading interruptions", "Millisecond response times", "Regulatory compliance maintained"]
+      },
+      {
+        "title": "Manufacturing Plant IT Support",
+        "description": "Industrial IT support for automated manufacturing facilities",
+        "category": "Manufacturing Support",
+        "results": ["Production efficiency increased by 30%", "Equipment downtime reduced by 80%", "Quality defects decreased by 45%"]
+      },
+      {
+        "title": "Education Technology Support",
+        "description": "Comprehensive IT support for university with 50,000+ students and staff",
+        "category": "Education Support",
+        "results": ["Student satisfaction 95%", "System availability 99.99%", "IT support costs reduced by 40%"]
+      },
+      {
+        "title": "Legal Firm IT Management",
+        "description": "Managed IT services for international law firm with strict security requirements",
+        "category": "Legal Support",
+        "results": ["Client data security 100%", "Attorney productivity increased 35%", "Audit compliance simplified"]
+      },
+      {
+        "title": "Media Company Cloud Migration Support",
+        "description": "Supported large media company's transition to cloud-based workflows",
+        "category": "Media Support",
+        "results": ["Production time reduced by 50%", "Collaboration improved globally", "Content delivery accelerated"]
+      },
+      {
+        "title": "Non-profit Organization IT Modernization",
+        "description": "Transformed IT support for humanitarian organization operating in challenging environments",
+        "category": "Non-profit Support",
+        "results": ["Field operations efficiency doubled", "Aid delivery accelerated by 60%", "Administrative overhead reduced 70%"]
+      }
+    ]
+  },
+  "cta": {
+    "title1": "Technology Is Everywhere.",
+    "title2": "Ownership Is Rare.",
+    "description": "Partner with a team that stays accountable from start to scale.",
+    "button": "Let's Talk",
+    "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+  }
+},
+
+  "homePage": {
+    "hero": {
+      "title": "Where Human Insight Meets Technology",
+      "subtitle1": "Human-Led Technology",
+      "subtitle2": "North American Accountability",
+      "subtitle3": "Indian Execution Excellence",
+      "description": "Real people. Clear ownership. End-to-end IT consulting and delivery for USA, Canada & Middle East businesses.",
+      "ctaButton": "Let's Talk",
+      "loadingVideo": "Loading video..."
+    },
+    "problem": {
+      "title1": "The IT Industry Has a",
+      "title2": "Responsibility Problem",
+      "description": "Technology fails when responsibility is outsourced to faceless teams and automated responses.",
+      "points": [
+        {
+          "title": "Anonymous vendors, no ownership",
+          "description": "No single point of contact, endless support tickets",
+          "icon": "people",
+          "color": "text-red-500"
+        },
+        {
+          "title": "AI tools but no accountability",
+          "description": "Automated responses without human understanding",
+          "icon": "ai",
+          "color": "text-blue-500"
+        },
+        {
+          "title": "Offshore teams with zero business context",
+          "description": "Cultural and timezone gaps causing misalignment",
+          "icon": "teams",
+          "color": "text-amber-500"
+        },
+        {
+          "title": "Projects delivered, but problems remain",
+          "description": "Solutions that don't solve real business problems",
+          "icon": "projects",
+          "color": "text-purple-500"
+        }
+      ],
+      "quote": "\"Technology without ownership is just another expense.\""
+    },
+    "difference": {
+      "title1": "What Makes",
+      "title2": "KANDAX Different",
+      "pillars": [
+        {
+          "icon": "🧠",
+          "title": "Human-Led Engagement",
+          "description": "Named account owner. Direct access. Real conversations.",
+          "color": "from-purple-500 to-pink-500",
+          "features": [
+            "Dedicated account executive",
+            "Direct Slack/Teams access",
+            "Weekly strategic reviews",
+            "Executive escalation path"
+          ]
+        },
+        {
+          "icon": "🇨🇦",
+          "title": "North American Accountability",
+          "description": "Strategy, compliance, and ownership stay in Canada.",
+          "color": "from-red-500 to-red-600",
+          "features": [
+            "Canadian legal entity",
+            "GDPR/PIPEDA compliance",
+            "In-country data sovereignty",
+            "Local contract enforcement"
+          ]
+        },
+        {
+          "icon": "🇮🇳",
+          "title": "Indian Execution Excellence",
+          "description": "Senior engineers, structured delivery, long-term teams.",
+          "color": "from-green-500 to-emerald-600",
+          "features": [
+            "10+ years average experience",
+            "<5% annual attrition",
+            "Domain-specific training",
+            "Career growth paths"
+          ]
+        }
+      ],
+      "quote": "We don't outsource responsibility. We own outcomes."
+    },
+    "services": {
+      "title1": "Focused Services.",
+      "title2": "Clear Outcomes",
+      "subtitle": "End-to-end technology solutions with measurable business impact",
+      "exploreService": "Explore Service",
+      "items": [
+        {
+          "icon": "✨",
+          "title": "Generative AI Solutions",
+          "description": "Content generation & creative AI tools",
+          "path": "/generative-ai",
+          "color": "bg-purple-100"
+        },
+        {
+          "icon": "🌐",
+          "title": "Web Development",
+          "description": "Custom web applications & solutions",
+          "path": "/web-development",
+          "color": "bg-blue-100"
+        },
+        {
+          "icon": "☁️",
+          "title": "Cloud Solutions",
+          "description": "AWS, Azure & Google Cloud migration",
+          "path": "/cloud-solutions",
+          "color": "bg-sky-100"
+        },
+        {
+          "icon": "📱",
+          "title": "Mobile App Development",
+          "description": "iOS & Android applications",
+          "path": "/mobile-development",
+          "color": "bg-green-100"
+        },
+        {
+          "icon": "🗄️",
+          "title": "Database Management",
+          "description": "SQL, NoSQL & Data warehousing",
+          "path": "/database-management",
+          "color": "bg-amber-100"
+        },
+        {
+          "icon": "📢",
+          "title": "Digital Marketing",
+          "description": "Data-driven marketing strategies",
+          "path": "/digital-marketing",
+          "color": "bg-pink-100"
+        },
+        {
+          "icon": "🛡️",
+          "title": "Cybersecurity",
+          "description": "Advanced security solutions",
+          "path": "/cybersecurity",
+          "color": "bg-red-100"
+        },
+        {
+          "icon": "⚡",
+          "title": "DevOps Services",
+          "description": "CI/CD & automation solutions",
+          "path": "/devops-services",
+          "color": "bg-orange-100"
+        }
+      ]
+    },
+    "industries": {
+      "title1": "Built for Businesses That",
+      "title2": "Value Ownership",
+      "quote": "If accountability matters, KANDAX fits.",
+      "items": [
+        {
+          "name": "SMBs & Mid-Market",
+          "desc": "Growing companies needing scalable solutions",
+          "icon": "🏢"
+        },
+        {
+          "name": "Funded Startups",
+          "desc": "Founders requiring strategic tech leadership",
+          "icon": "🚀"
+        },
+        {
+          "name": "Healthcare",
+          "desc": "HIPAA-compliant systems and patient data security",
+          "icon": "🏥"
+        },
+        {
+          "name": "Professional Services",
+          "desc": "Legal, accounting, and consulting firms",
+          "icon": "⚖️"
+        },
+        {
+          "name": "Manufacturing",
+          "desc": "Operational technology and supply chain systems",
+          "icon": "🏭"
+        },
+        {
+          "name": "FinTech",
+          "desc": "Secure, compliant financial technology",
+          "icon": "💰"
+        },
+        {
+          "name": "E-commerce",
+          "desc": "Scalable platforms with seamless UX",
+          "icon": "🛒"
+        },
+        {
+          "name": "Enterprises",
+          "desc": "Legacy modernization and digital transformation",
+          "icon": "🏛️"
+        }
+      ]
+    },
+    "process": {
+      "title1": "A Human-Centered",
+      "title2": "Delivery Process",
+      "subtitle": "Transparent, collaborative, and designed for long-term success",
+      "steps": [
+        {
+          "number": "01",
+          "icon": "🔍",
+          "title": "Discover",
+          "subtitle": "Business-first understanding",
+          "description": "We start by understanding your business goals, challenges, and constraints before discussing technology.",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "number": "02",
+          "icon": "🎨",
+          "title": "Design",
+          "subtitle": "Strategy before code",
+          "description": "Architectural design, technology selection, and project planning with clear milestones and deliverables.",
+          "color": "from-purple-500 to-pink-500"
+        },
+        {
+          "number": "03",
+          "icon": "⚡",
+          "title": "Deliver",
+          "subtitle": "India-led execution, Canada-led oversight",
+          "description": "Agile development with weekly demos, continuous integration, and transparent progress tracking.",
+          "color": "from-red-500 to-orange-500"
+        },
+        {
+          "number": "04",
+          "icon": "🤝",
+          "title": "Support",
+          "subtitle": "Long-term partnership, not handoff",
+          "description": "Ongoing maintenance, updates, and evolution of your solution with dedicated support teams.",
+          "color": "from-green-500 to-emerald-500"
+        }
+      ]
+    },
+    "trust": {
+      "title1": "Why Clients",
+      "title2": "Choose KANDAX",
+      "items": [
+        {
+          "title": "Canadian Leadership & Governance",
+          "description": "All strategic decisions made in Canada with local accountability",
+          "icon": "🛡️"
+        },
+        {
+          "title": "Senior Engineering Teams",
+          "description": "No junior engineers. Average 10+ years experience per developer",
+          "icon": "👨‍💻"
+        },
+        {
+          "title": "Clear SLAs & Communication",
+          "description": "Guaranteed response times and regular executive reviews",
+          "icon": "📋"
+        },
+        {
+          "title": "Long-Term Partnerships",
+          "description": "We grow with you, not just complete projects",
+          "icon": "🤝"
+        }
+      ]
+    },
+    "india": {
+      "title1": "Our India",
+      "title2": "Center of Excellence",
+      "description": "India is not a cost center for us—it's our execution backbone. Our teams are domain-trained, stable, and deeply integrated with our Canadian leadership.",
+      "executionTitle": "Execution Excellence",
+      "stats": [
+        {
+          "label": "Senior engineers",
+          "value": "10+ years avg."
+        },
+        {
+          "label": "Team attrition",
+          "value": "< 5%"
+        },
+        {
+          "label": "Domain training",
+          "value": "Ongoing"
+        },
+        {
+          "label": "Security certified",
+          "value": "100%"
+        }
+      ],
+      "executionItems": [
+        "Stable, long-term engineering teams",
+        "Deep domain expertise across industries",
+        "Secure development processes (ISO 27001)",
+        "Continuous training & certification programs",
+        "Seamless integration with Canadian leadership",
+        "Follow-the-sun delivery model"
+      ]
+    },
+    "testimonials": {
+      "title1": "What Our",
+      "title2": "Clients Say",
+      "description": "KANDAX is a transformative technology partner, uniquely fusing Canadian accountability with Indian execution to own outcomes.",
+      "verified": {
+        "title": "Kandax Verified",
+        "subtitle": "Top-rated IT Services Provider"
+      },
+      "noTestimonials": "No testimonials available yet",
+      "checkBack": "Check back soon for client reviews!",
+      "defaultText": "Great service and support!"
+    },
+    "cta": {
+      "title1": "Technology Is Everywhere.",
+      "title2": "Ownership Is Rare.",
+      "description": "Partner with a team that stays accountable from start to scale.",
+      "button": "Let's Talk",
+      "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+    }
+  },
+  
+  "footer": {
+    "company": {
+      "tagline": "Human-Led Technology",
+      "description": "KANDAX combines North American accountability with Indian execution excellence to deliver end-to-end IT solutions with clear ownership and measurable results.",
+      "indianPartner": "Indian Delivery Partner",
+      "partnerName": "TechMigrates",
+      "division": "A Division of",
+      "parentCompany": "TechMigrates"
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "about": "About Us",
+      "partners": "Our Partners",
+      "portfolio": "Portfolio",
+      "team": "Team",
+      "contact": "Contact Us"
+    },
+    "services": {
+      "title": "Our Services",
+      "generativeAI": "Generative AI Solutions",
+      "webDev": "Web Development",
+      "cloud": "Cloud Solutions",
+      "mobile": "Mobile App Development",
+      "database": "Database Management",
+      "digitalMarketing": "Digital Marketing",
+      "cybersecurity": "Cybersecurity",
+      "devops": "DevOps Services",
+      "consulting": "Technology Consulting",
+      "remoteWorkplace": "Remote Workplace",
+      "disasterRecovery": "Disaster Recovery",
+      "helpDesk": "IT Help Desk"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "canadaPhonePrimary": "Canada - Primary",
+      "canadaPhoneSecondary": "Canada - Secondary",
+      "canadaPhoneSecondaryNumber": "+1 (437) 983-2657",
+      "indiaPhone": "India",
+      "indiaPhoneNumber": "+91 9860997997",
+      "email": "Email",
+      "canadaOffice": "Canada Office",
+      "indiaOffice": "India Office",
+      "indiaAddress": "B/1, 403, Vishnudas Bhaskar Nagar, Building No. 4, Shimpoli Road, Borivali West, Mumbai, Maharashtra 400092"
+    },
+    "social": {
+      "connect": "Connect With Us",
+      "twitter": "Follow us on Twitter",
+      "linkedin": "Connect on LinkedIn",
+      "facebook": "Like us on Facebook",
+      "instagram": "Follow on Instagram"
+    },
+    "bottom": {
+      "rights": "All rights reserved."
+    },
+    "errors": {
+      "fetchError": "Failed to load contact information"
+    }
+  },
+  
+  "contactPage": {
+    "banner": {
+      "alt": "Contact Us Banner"
+    },
+    "header": {
+      "title1": "Get in",
+      "title2": "Touch",
+      "description": "Fill out the form below and our team will get back to you within 24 hours. No bots, no runaround."
+    },
+    "form": {
+      "labels": {
+        "name": "Full Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "subject": "Subject",
+        "message": "Your Message"
+      },
+      "placeholders": {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "phone": "+1 (555) 123-4567",
+        "subject": "How can we help?",
+        "message": "Tell us about your project or inquiry..."
+      },
+      "sendButton": "Send Message",
+      "sending": "Sending...",
+      "successMessage": "Thank you for your message! We'll get back to you within 24 hours.",
+      "errorMessage": "Please fill in all required fields."
+    },
+    "office": {
+      "title1": "Meet us at our",
+      "title2": "office",
+      "canadaTitle": "Canada Office",
+      "canadaAddress": {
+        "line1": "338 Queen St E # 207",
+        "line2": "Brampton, ON L6V IC4",
+        "line3": "Canada"
+      },
+      "indiaTitle": "India Development Office",
+      "indiaAddress": {
+        "line1": "Office no. 409, 4th Floor, Rajdhani Complex,",
+        "line2": "Pune - Satara Rd, near shankar maharaj math,",
+        "line3": "KK Market, Balaji Nagar, Pune,",
+        "line4": "Maharashtra 411043",
+        "line5": ""
+      }
+    },
+    "images": {
+      "contactAlt": "Contact Us Illustration",
+      "officeAlt": "Our Office Location"
+    }
+  },
+  
+  "partnersPage": {
+    "banner": {
+      "alt": "Zplus Cyber Secure Technology Banner"
+    },
+    "hero": {
+      "title1": "Zplus Cyber Secure Technology",
+      "title2": "Private Limited",
+      "description": "Securing digital futures with cutting-edge cybersecurity. Empowering businesses through smart IT, AI, and digital innovation. Trusted technology partners since 2018.",
+      "backgroundAlt": "Background",
+      "awardBadge": "Top IT Company in Pune - 2018",
+      "awardSection": {
+        "title": "Award Winning",
+        "subtitle": "Best IT Company Award",
+        "imageAlt": "Best IT Company Award",
+        "description": "Recognized for Excellence in IT Services",
+        "location": "Pune, 2018"
+      }
+    },
+    "company": {
+      "name": "Zplus Cyber Secure Technology Pvt Ltd",
+      "tagline": "Securing Digital Futures, Empowering Businesses",
+      "headquarters": "Pune, Maharashtra, India",
+      "ceo": "Mr. Gorakh Bhosale",
+      "industry": "Cybersecurity & IT Services",
+      "email": "info@zpluscybertech.com",
+      "phone": "+91 9850083751"
+    },
+    "overview": {
+      "title": "Company Overview",
+      "description": "Zplus Cyber Secure Technology is a Pune-based IT solutions firm delivering AI-powered cybersecurity, cloud-native platforms, and enterprise digital transformation across India.",
+      "backgroundAlt": "Company Overview Background",
+      "mission": {
+        "title": "Our Mission",
+        "description": "To deliver innovative technology solutions that empower businesses to achieve their goals while maintaining the highest standards of quality, integrity, and customer satisfaction."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "To be the leading technology partner that transforms businesses through cutting-edge solutions, fostering growth and success in the digital age."
+      },
+      "expertise": {
+        "title": "Our Expertise",
+        "description": "Specializing in AI-powered cybersecurity solutions, cloud-native platforms, and enterprise digital transformation to protect and propel your business forward."
+      }
+    },
+    "services": {
+      "title": "Our Core Services",
+      "subtitle": "Comprehensive IT solutions designed to meet the evolving needs of modern businesses",
+      "items": {
+        "service1": {
+          "title": "Generative AI Solutions",
+          "description": "Content generation & creative AI tools",
+          "features": ["AI Content Creation", "Chatbot Development", "Image Generation", "Creative AI Tools"]
+        },
+        "service2": {
+          "title": "Web Development",
+          "description": "Custom web applications & solutions",
+          "features": ["Frontend Development", "Backend Systems", "E-commerce Solutions", "Progressive Web Apps"]
+        },
+        "service3": {
+          "title": "Cloud Solutions",
+          "description": "AWS, Azure & Google Cloud migration",
+          "features": ["Cloud Migration", "Multi-cloud Strategy", "Cloud Optimization", "Cloud Security"]
+        },
+        "service4": {
+          "title": "Mobile App Development",
+          "description": "iOS & Android applications",
+          "features": ["Native iOS Apps", "Android Development", "Cross-Platform Apps", "App Maintenance"]
+        },
+        "service5": {
+          "title": "Database Management",
+          "description": "SQL, NoSQL & Data warehousing",
+          "features": ["Database Design", "Performance Tuning", "Data Migration", "Backup Solutions"]
+        },
+        "service6": {
+          "title": "Digital Marketing",
+          "description": "Data-driven marketing strategies",
+          "features": ["SEO Optimization", "Social Media Marketing", "Content Strategy", "Analytics & Reporting"]
+        },
+        "service7": {
+          "title": "Cybersecurity",
+          "description": "Advanced security solutions",
+          "features": ["Threat Detection", "Vulnerability Assessment", "Security Audits", "Incident Response"]
+        },
+        "service8": {
+          "title": "DevOps Services",
+          "description": "CI/CD & automation solutions",
+          "features": ["CI/CD Pipelines", "Infrastructure as Code", "Containerization", "Monitoring & Logging"]
+        },
+        "service9": {
+          "title": "Technology Consulting",
+          "description": "IT strategy, architecture & digital advisory",
+          "features": ["IT Strategy", "Digital Transformation", "Technology Roadmap", "Vendor Selection"]
+        },
+        "service10": {
+          "title": "Remote Workplace Solutions",
+          "description": "Secure remote work & collaboration tools",
+          "features": ["Virtual Desktop", "Collaboration Tools", "Remote Security", "Workplace Integration"]
+        },
+        "service11": {
+          "title": "Backup & Disaster Recovery",
+          "description": "Business continuity & data protection",
+          "features": ["Data Backup Solutions", "Disaster Recovery Planning", "Business Continuity", "Cloud Backup"]
+        },
+        "service12": {
+          "title": "IT Help Desk Services",
+          "description": "24/7 technical support & issue resolution",
+          "features": ["24/7 Support", "Remote Assistance", "Ticket Management", "User Training"]
+        }
+      }
+    },
+    "industries": {
+      "title": "Industries We Serve",
+      "subtitle": "Tailored IT solutions for diverse industry sectors with specialized expertise",
+      "backgroundAlt": "Industries We Serve Background",
+      "items": [
+        {
+          "name": "Real Estate",
+          "icon": "Building2",
+          "services": ["Property Management Systems", "CRM Solutions", "Virtual Tours", "Digital Marketing"]
+        },
+        {
+          "name": "Healthcare & Hospitality",
+          "icon": "Heart",
+          "services": ["Hospital Management", "Patient Records", "Booking Systems", "Telemedicine"]
+        },
+        {
+          "name": "Retail & E-Commerce",
+          "icon": "ShoppingBag",
+          "services": ["Online Store Development", "Inventory Management", "Payment Gateways", "Analytics"]
+        },
+        {
+          "name": "Travels & Import/Export",
+          "icon": "Plane",
+          "services": ["Booking Portals", "Logistics Tracking", "Customs Management", "Supply Chain"]
+        },
+        {
+          "name": "Banking & Finance",
+          "icon": "Banknote",
+          "services": ["Fintech Solutions", "Payment Processing", "Risk Management", "Compliance Tools"]
+        },
+        {
+          "name": "Auto & Manufacturing",
+          "icon": "Car",
+          "services": ["ERP Solutions", "Supply Chain Management", "Quality Control", "IoT Integration"]
+        },
+        {
+          "name": "Food & Restaurant",
+          "icon": "Utensils",
+          "services": ["POS Systems", "Online Ordering", "Inventory Management", "Delivery Tracking"]
+        },
+        {
+          "name": "Government",
+          "icon": "Shield",
+          "services": ["Citizen Portals", "Document Management", "Security Solutions", "Digital Services"]
+        }
+      ]
+    },
+    "awards": {
+      "title1": "Our",
+      "title2": "Achievements",
+      "subtitle": "Recognized for excellence and innovation in the IT industry",
+      "backgroundAlt": "Achievements Background",
+      "items": {
+        "award1": {
+          "title": "Best IT Company Award 2018",
+          "year": "2018",
+          "category": "Excellence in IT Services",
+          "description": "Recognized as the top IT company in Pune for outstanding technology solutions and innovation"
+        },
+        "award2": {
+          "title": "Excellence in Cybersecurity",
+          "year": "2020",
+          "category": "Security Innovation",
+          "description": "Awarded for innovative cybersecurity solutions and threat protection services"
+        },
+        "award3": {
+          "title": "Digital Transformation Leader",
+          "year": "2021",
+          "category": "Business Innovation",
+          "description": "Recognized for excellence in digital transformation and business process automation"
+        },
+        "award4": {
+          "title": "Best Startup IT Company",
+          "year": "2019",
+          "category": "Startup Excellence",
+          "description": "Awarded for rapid growth and innovation in the IT services sector"
+        },
+        "award5": {
+          "title": "Customer Excellence Award",
+          "year": "2022",
+          "category": "Client Satisfaction",
+          "description": "Recognized for exceptional customer service and client satisfaction ratings"
+        },
+        "award6": {
+          "title": "Innovation in AI Solutions",
+          "year": "2023",
+          "category": "Technology Innovation",
+          "description": "Awarded for cutting-edge AI and machine learning solutions implementation"
+        }
+      }
+    },
+    "techStack": {
+      "title": "Technology Stack",
+      "subtitle": "Cutting-edge technologies and tools we work with",
+      "categories": {
+        "category1": "Development",
+        "category2": "Cloud Platforms",
+        "category3": "Databases",
+        "category4": "Automation",
+        "category5": "Frontend",
+        "category6": "Mobile",
+        "category7": "AI/ML",
+        "category8": "DevOps Tools"
+      },
+      "items": {
+        "category1": ["Python", "Java", "Node.js", "React", "Angular", "Vue.js", "Next.js", "TypeScript", "Spring Boot", ".NET Core", "Django", "Flask", "Express", "Ruby on Rails", "PHP", "Laravel"],
+        "category2": ["AWS", "Microsoft Azure", "Google Cloud", "Oracle Cloud", "IBM Cloud", "DigitalOcean", "Alibaba Cloud", "Heroku", "Firebase", "Cloudflare", "OpenStack", "VMware", "Red Hat OpenShift"],
+        "category3": ["MySQL", "PostgreSQL", "MongoDB", "Oracle DB", "SQL Server", "SQLite", "MariaDB", "Cassandra", "Redis", "Elasticsearch", "DynamoDB", "Cosmos DB", "Firestore", "Neo4j", "Couchbase"],
+        "category4": ["Ansible", "Terraform", "Jenkins", "Docker", "Kubernetes", "GitLab CI/CD", "GitHub Actions", "CircleCI", "Travis CI", "Azure DevOps", "Puppet", "Chef", "SaltStack", "Prometheus", "Grafana", "Nagios"],
+        "category5": ["HTML5", "CSS3", "JavaScript", "Sass", "Less", "Bootstrap", "Tailwind CSS", "Material-UI", "Ant Design", "Webpack", "Vite", "Babel", "Redux", "MobX", "Jest", "Cypress"],
+        "category6": ["React Native", "Flutter", "Swift", "Kotlin", "Ionic", "Xamarin", "Android Studio", "Xcode", "Expo", "Firebase Mobile"],
+        "category7": ["TensorFlow", "PyTorch", "Scikit-learn", "Keras", "OpenCV", "Pandas", "NumPy", "Jupyter", "Hugging Face", "LangChain"],
+        "category8": ["Git", "GitHub", "GitLab", "Bitbucket", "Jira", "Confluence", "Slack", "Teams", "Splunk", "New Relic", "Datadog"]
+      }
+    },
+    
+  "aboutPage": {
+    "banner": {
+      "alt": "About Us Banner"
+    },
+    "whoWeAre": {
+      "title1": "Who",
+      "title2": "We Are",
+      "description": [
+        "<b>KANDAX</b> is a human-led technology consulting firm with Canadian accountability and Indian execution excellence—built for businesses that want real ownership, not robotic delivery.",
+        "At KANDAX, technology is delivered by experts, but accountability stays human. We combine North American leadership with India's best engineering talent to build systems that work—and relationships that last.",
+        "In a world full of automation and anonymous vendors, KANDAX stands for clarity, ownership, and human-led technology delivery.",
+        "We're not just service providers; we're accountable partners who take ownership of your digital success from start to scale."
+      ],
+      "backgroundAlt": "Who We Are Background",
+      "imageAlt": "Who We Are - KANDAX Team",
+      "partnersLink": "View Our Trusted Partners"
+    },
+    "parthHanda": {
+      "title": "Mr. Parth Handa",
+      "position": "CEO & Founder, Canada",
+      "description": [
+        "I'm Parth Handa, a Canada-based company driven by vision, integrity, and a commitment to delivering impactful solutions with a global mindset. With a strong focus on leadership, innovation, and growth, I work closely with teams and partners to build meaningful strategies.",
+        "Inspired by Franklin D. Roosevelt's words, 'The only limit to our realization of tomorrow is our doubts of today,' I believe in continuous evolution, bold thinking, and turning ideas into lasting impact.",
+        "At Kandax, our mission is to move forward with clarity, professionalism, and a fresh perspective—building value through innovation and purposeful leadership."
+      ],
+      "highlights": [
+        "Canadian Accountability Standards",
+        "Indian Technical Excellence",
+        "Human-Led Technology Delivery"
+      ],
+      "imageAlt": "KANDAX CEO - Leadership with Accountability"
+    },
+    "gorakhBhosale": {
+      "title": "Mr. Gorakh Bhosale",
+      "position": "Director & Founder, India",
+      "description": [
+        "With a strong background in MCM, DCM, PGDCS, CEH, ITIL, Gorakh holds over 18 years of experience as a Cyber Security Expert at Quick Heal. Beyond his technical expertise, he is passionate about Social Awareness for Cyber Security.",
+        "Throughout his skillful career, he has taken on various challenging roles while managing fundamental business aspects including IT retails, marketing, sales, and cloud computing solutions.",
+        "Gorakh plays a crucial role in driving the company's growth through strategic business planning and sales initiatives, while also organizing company conferences, trade shows, and major events."
+      ],
+      "highlights": [
+        "18+ Years Cyber Security Experience",
+        "Certifications: MCM, DCM, PGDCS, CEH, ITIL",
+        "Business Strategy & Event Management"
+      ],
+      "imageAlt": "Mr. Gorakh Bhosale - Director & Founder"
+    },
+    "missionVision": {
+      "title1": "Our",
+      "title2": "Mission & Vision",
+      "subtitle": "Driving innovation and delivering excellence in every project we undertake",
+      "backgroundAlt": "Mission & Vision Background",
+      "mission": {
+        "title": "Our Mission",
+        "description": "Design and deliver world-class software solutions, robust cybersecurity frameworks, and data-driven digital marketing strategies that help enterprises and startups succeed globally. By combining innovation, security-first thinking, agile execution, and customer-centric values, we create measurable impact and long-term digital excellence for our clients."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "To be a globally trusted IT leader that empowers businesses through secure, intelligent, and scalable digital solutions—driving innovation, resilience, and sustainable growth in the connected digital world."
+      }
+    },
+    "values": {
+      "title1": "Our",
+      "title2": "Core Values",
+      "subtitle": "The principles that guide everything we do",
+      "backgroundAlt": "Core Values Background",
+      "partnersCta": "Explore Our Partnerships",
+      "items": [
+        {
+          "icon": "Shield",
+          "title": "Integrity",
+          "description": "Transparent and honest communication with accountability at every level.",
+          "color": "from-red-500 to-red-600"
+        },
+        {
+          "icon": "Zap",
+          "title": "Innovation",
+          "description": "Pushing boundaries with cutting-edge technologies and creative solutions.",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "icon": "Flame",
+          "title": "Passion",
+          "description": "Genuine commitment to excellence and client success.",
+          "color": "from-red-600 to-orange-500"
+        },
+        {
+          "icon": "Star",
+          "title": "Excellence",
+          "description": "Striving for the highest quality in every project we undertake.",
+          "color": "from-blue-600 to-purple-500"
+        }
+      ]
+    },
+    "stats": {
+      "items": [
+        {
+          "icon": "Users",
+          "value": "50+",
+          "label": "Team Members"
+        },
+        {
+          "icon": "Globe",
+          "value": "100+",
+          "label": "Projects Completed"
+        },
+        {
+          "icon": "TrendingUp",
+          "value": "95%",
+          "label": "Success Rate"
+        },
+        {
+          "icon": "Award",
+          "value": "25+",
+          "label": "Awards Won"
+        }
+      ]
+    },
+    "milestones": {
+      "title1": "Our",
+      "title2": "Journey",
+      "subtitle": "Milestones in our journey of innovation and growth",
+      "backgroundAlt": "Journey Background",
+      "items": [
+        {
+          "year": "2018",
+          "title": "Company Founded",
+          "description": "Started with passionate technology experts"
+        },
+        {
+          "year": "2019",
+          "title": "First Major Client",
+          "description": "Landed our first enterprise client partnership"
+        },
+        {
+          "year": "2020",
+          "title": "Team Expansion",
+          "description": "Grew to 50+ dedicated team members"
+        },
+        {
+          "year": "2021",
+          "title": "Award Recognition",
+          "description": "Won industry recognition for excellence"
+        },
+        {
+          "year": "2022",
+          "title": "Global Expansion",
+          "description": "Established multiple delivery centers"
+        },
+        {
+          "year": "2023",
+          "title": "Milestone Projects",
+          "description": "Completed 100+ successful projects"
+        }
+      ]
+    },
+    "timeline": {
+      "title1": "Our",
+      "title2": "Journey",
+      "subtitle": "Milestones in our journey of innovation and growth",
+      "backgroundAlt": "Journey Background"
+    },
+    "cta": {
+      "title1": "Technology Is Everywhere.",
+      "title2": "Ownership Is Rare",
+      "description": "Partner with a team that stays accountable from start to scale.",
+      "button1": "Let's Talk",
+      "button2": "View Our Partners",
+      "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+    }
+  }
+},
+
+  "about": {
+      "title": "What Makes KANDAX Different",
+      "description": "With over a decade of experience in digital transformation, we've helped hundreds of businesses migrate to modern technology stacks, improving efficiency, security, and scalability.",
+      "features": {
+        "security": {
+          "title": "Enterprise-Grade Security",
+          "description": "Military-grade security protocols for all our solutions"
+        },
+        "monitoring": {
+          "title": "24/7 Monitoring",
+          "description": "Round-the-clock support and system monitoring"
+        },
+        "scalable": {
+          "title": "Scalable Solutions",
+          "description": "Architecture designed to grow with your business"
+        },
+        "team": {
+          "title": "Award-Winning Team",
+          "description": "Industry-recognized experts in their fields"
+        }
+      },
+      "stats": {
+        "experience": "Years Experience",
+        "experts": "Certified Experts",
+        "support": "Support",
+        "uptime": "Uptime SLA"
+      },
+      "cta": {
+        "title": "Ready to Start?",
+        "description": "Get your free consultation today",
+        "button": "Contact Now"
+      }
+    },
+  "portfolio": {
+    "hero": {
+      "title": "Technology with Purpose",
+      "subtitle": "Digital solutions that deliver measurable business impact",
+      "cta": "Start Your Transformation"
+    },
+    "clients": {
+      "title": "Trusted by Industry Leaders",
+      "since": "Since"
+    },
+    "services": {
+      "title": "Focused Services. Clear Outcomes.",
+      "subtitle": "End-to-end technology solutions with measurable business impact",
+      "generativeAI": {
+        "title": "Generative AI Solutions",
+        "description": "Content generation & creative AI tools"
+      },
+      "webDev": {
+        "title": "Web Development",
+        "description": "Custom web applications & solutions"
+      },
+      "cloud": {
+        "title": "Cloud Solutions",
+        "description": "AWS, Azure & Google Cloud migration"
+      },
+      "mobile": {
+        "title": "Mobile App Development",
+        "description": "iOS & Android applications"
+      },
+      "database": {
+        "title": "Database Management",
+        "description": "SQL, NoSQL & Data warehousing"
+      },
+      "digitalMarketing": {
+        "title": "Digital Marketing",
+        "description": "Data-driven marketing strategies"
+      },
+      "cybersecurity": {
+        "title": "Cybersecurity",
+        "description": "Advanced security solutions"
+      },
+      "devops": {
+        "title": "DevOps Services",
+        "description": "CI/CD & automation solutions"
+      },
+      "consulting": {
+        "title": "Technology Consulting",
+        "description": "IT strategy, architecture & digital advisory"
+      },
+      "remote": {
+        "title": "Remote Workplace Solutions",
+        "description": "Secure remote work & collaboration tools"
+      },
+      "backup": {
+        "title": "Backup & Disaster Recovery",
+        "description": "Business continuity & data protection"
+      },
+      "helpDesk": {
+        "title": "IT Help Desk Services",
+        "description": "24/7 technical support & issue resolution"
+      }
+    }
+  
+},
+
+  "globalEnquiry": {
+    "icon": {
+      "tooltip": "Quick Enquiry"
+    },
+    "autoPopup": {
+      "title": "Welcome to KANDAX!",
+      "subtitle": "Let's discuss your technology needs"
+    },
+    "manualPopup": {
+      "title": "Get Your Free Consultation",
+      "subtitle": "Let's discuss how we can help your business grow"
+    },
+    "form": {
+      "labels": {
+        "name": "Full Name",
+        "email": "Email",
+        "company": "Company",
+        "phone": "Phone",
+        "service": "Service Interest",
+        "message": "Message",
+        "required": "*"
+      },
+      "placeholders": {
+        "name": "Enter your full name",
+        "email": "Enter your email",
+        "company": "Enter company name",
+        "phone": "Enter phone number",
+        "service": "Select a service",
+        "message": "Tell us about your project..."
+      },
+      "serviceOptions": [
+        "Generative AI Solutions",
+        "Web Development",
+        "Cloud Solutions",
+        "Mobile App Development",
+        "Database Management",
+        "Digital Marketing",
+        "Cybersecurity",
+        "DevOps Services",
+        "Other"
+      ],
+      "buttons": {
+        "close": "Close",
+        "submit": "Submit Enquiry",
+        "sending": "Sending..."
+      },
+      "messages": {
+        "success": "Thank you! We'll contact you within 24 hours.",
+        "error": "Something went wrong. Please try again."
+      }
+    }
+  }
+}
+  
+  
+  
+
+
+
+
+ 
+
+
+
+
+

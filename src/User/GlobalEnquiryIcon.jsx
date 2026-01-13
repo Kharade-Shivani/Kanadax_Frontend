@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const GlobalEnquiryIcon = () => {
+  const { t } = useTranslation();
   const [showEnquiryForm, setShowEnquiryForm] = useState(false);
   const [showAutoPopup, setShowAutoPopup] = useState(false);
   const [isAutoPopupClosed, setIsAutoPopupClosed] = useState(false);
@@ -17,32 +19,11 @@ const GlobalEnquiryIcon = () => {
   const [submitStatus, setSubmitStatus] = useState(null);
   const formRef = useRef(null);
 
-  // Service options
-  const serviceOptions = [
-    'Generative AI Solutions',
-    'Web Development',
-    'Cloud Solutions',
-    'Mobile App Development',
-    'Database Management',
-    'Digital Marketing',
-    'Cybersecurity',
-    'DevOps Services',
-    'Other'
-  ];
+  // Get service options from translations
+  const serviceOptions = t('globalEnquiry.form.serviceOptions', { returnObjects: true });
 
   // REMOVED: Auto popup on page load
   // Commented out or removed the useEffect that shows auto popup
-  /*
-  useEffect(() => {
-    const wasClosed = localStorage.getItem('autoPopupClosed');
-    if (wasClosed !== 'true') {
-      const timer = setTimeout(() => {
-        setShowAutoPopup(true);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, []);
-  */
 
   // Handle click outside
   useEffect(() => {
@@ -83,7 +64,7 @@ const GlobalEnquiryIcon = () => {
       
       setSubmitStatus({
         type: 'success',
-        message: 'Thank you! We\'ll contact you within 24 hours.'
+        message: t('globalEnquiry.form.messages.success')
       });
       
       setFormData({
@@ -97,7 +78,7 @@ const GlobalEnquiryIcon = () => {
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'Something went wrong. Please try again.'
+        message: t('globalEnquiry.form.messages.error')
       });
     } finally {
       setIsSubmitting(false);
@@ -118,7 +99,7 @@ const GlobalEnquiryIcon = () => {
     }
   };
 
-  // Handle close auto popup (kept for consistency but won't be used)
+  // Handle close auto popup
   const handleCloseAutoPopup = () => {
     setShowAutoPopup(false);
     setIsAutoPopupClosed(true);
@@ -149,12 +130,14 @@ const GlobalEnquiryIcon = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-lg font-bold text-white">
-                  {isAutoPopup ? 'Welcome to KANDAX!' : 'Get Your Free Consultation'}
+                  {isAutoPopup 
+                    ? t('globalEnquiry.autoPopup.title') 
+                    : t('globalEnquiry.manualPopup.title')}
                 </h3>
                 <p className="text-red-100 text-sm mt-0.5">
                   {isAutoPopup 
-                    ? 'Let\'s discuss your technology needs' 
-                    : 'Let\'s discuss how we can help your business grow'}
+                    ? t('globalEnquiry.autoPopup.subtitle') 
+                    : t('globalEnquiry.manualPopup.subtitle')}
                 </p>
               </div>
               <button
@@ -174,7 +157,9 @@ const GlobalEnquiryIcon = () => {
             <div className="grid grid-cols-1 gap-4">
               {/* Name */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-gray-700">Full Name *</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  {t('globalEnquiry.form.labels.name')} {t('globalEnquiry.form.labels.required')}
+                </label>
                 <input
                   type="text"
                   name="name"
@@ -183,12 +168,15 @@ const GlobalEnquiryIcon = () => {
                   required
                   className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
+                  placeholder={t('globalEnquiry.form.placeholders.name')}
                 />
               </div>
               
               {/* Email */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-gray-700">Email *</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  {t('globalEnquiry.form.labels.email')} {t('globalEnquiry.form.labels.required')}
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -197,12 +185,15 @@ const GlobalEnquiryIcon = () => {
                   required
                   className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
+                  placeholder={t('globalEnquiry.form.placeholders.email')}
                 />
               </div>
               
               {/* Company */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-gray-700">Company</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  {t('globalEnquiry.form.labels.company')}
+                </label>
                 <input
                   type="text"
                   name="company"
@@ -210,12 +201,15 @@ const GlobalEnquiryIcon = () => {
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
+                  placeholder={t('globalEnquiry.form.placeholders.company')}
                 />
               </div>
               
               {/* Phone */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-gray-700">Phone</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  {t('globalEnquiry.form.labels.phone')}
+                </label>
                 <input
                   type="tel"
                   name="phone"
@@ -223,12 +217,15 @@ const GlobalEnquiryIcon = () => {
                   onChange={handleInputChange}
                   className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
+                  placeholder={t('globalEnquiry.form.placeholders.phone')}
                 />
               </div>
               
               {/* Service */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-gray-700">Service Interest *</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  {t('globalEnquiry.form.labels.service')} {t('globalEnquiry.form.labels.required')}
+                </label>
                 <select
                   name="service"
                   value={formData.service}
@@ -237,7 +234,7 @@ const GlobalEnquiryIcon = () => {
                   className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
                 >
-                  <option value="">Select a service</option>
+                  <option value="">{t('globalEnquiry.form.placeholders.service')}</option>
                   {serviceOptions.map((service, idx) => (
                     <option key={idx} value={service}>{service}</option>
                   ))}
@@ -246,7 +243,9 @@ const GlobalEnquiryIcon = () => {
               
               {/* Message */}
               <div className="space-y-1">
-                <label className="block text-sm font-medium text-gray-700">Message *</label>
+                <label className="block text-sm font-medium text-gray-700">
+                  {t('globalEnquiry.form.labels.message')} {t('globalEnquiry.form.labels.required')}
+                </label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -255,6 +254,7 @@ const GlobalEnquiryIcon = () => {
                   rows="3"
                   className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500"
                   disabled={isSubmitting}
+                  placeholder={t('globalEnquiry.form.placeholders.message')}
                 />
               </div>
             </div>
@@ -272,7 +272,9 @@ const GlobalEnquiryIcon = () => {
               disabled={isSubmitting}
               className="w-full mt-4 bg-red-600 hover:bg-red-700 text-white font-semibold py-3 text-sm rounded-lg transition-colors disabled:opacity-50"
             >
-              {isSubmitting ? 'Sending...' : 'Submit Enquiry'}
+              {isSubmitting 
+                ? t('globalEnquiry.form.buttons.sending') 
+                : t('globalEnquiry.form.buttons.submit')}
             </button>
           </form>
         </div>
@@ -305,7 +307,7 @@ const GlobalEnquiryIcon = () => {
         
         {/* Tooltip */}
         <div className="absolute right-16 top-1/2 transform -translate-y-1/2 bg-gray-900 text-white px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-lg">
-          Quick Enquiry
+          {t('globalEnquiry.icon.tooltip')}
           <div className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-1 w-0 h-0 border-t-2 border-b-2 border-l-2 border-transparent border-l-gray-900"></div>
         </div>
       </motion.button>

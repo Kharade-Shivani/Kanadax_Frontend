@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Database() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('relational');
   const [activeService, setActiveService] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
@@ -77,207 +79,310 @@ function Database() {
   const databaseServices = [
     {
       icon: "🗄️",
-      title: "Database Design & Architecture",
-      description: "Scalable database architecture designed for performance and reliability",
-      features: ["Schema Design", "Normalization", "Indexing Strategy", "Data Modeling", "Scalability Planning"]
+      title: t('databasePage.services.items.0.title'),
+      description: t('databasePage.services.items.0.description'),
+      features: [
+        t('databasePage.services.items.0.features.0'),
+        t('databasePage.services.items.0.features.1'),
+        t('databasePage.services.items.0.features.2'),
+        t('databasePage.services.items.0.features.3'),
+        t('databasePage.services.items.0.features.4')
+      ]
     },
     {
       icon: "🚚",
-      title: "Database Migration",
-      description: "Seamless migration of databases between platforms with zero downtime",
-      features: ["Platform Migration", "Version Upgrades", "Data Validation", "Performance Tuning", "Backup Strategy"]
+      title: t('databasePage.services.items.1.title'),
+      description: t('databasePage.services.items.1.description'),
+      features: [
+        t('databasePage.services.items.1.features.0'),
+        t('databasePage.services.items.1.features.1'),
+        t('databasePage.services.items.1.features.2'),
+        t('databasePage.services.items.1.features.3'),
+        t('databasePage.services.items.1.features.4')
+      ]
     },
     {
       icon: "⚡",
-      title: "Performance Optimization",
-      description: "Optimize database performance for faster queries and better efficiency",
-      features: ["Query Optimization", "Index Management", "Caching Strategies", "Connection Pooling", "Monitoring"]
+      title: t('databasePage.services.items.2.title'),
+      description: t('databasePage.services.items.2.description'),
+      features: [
+        t('databasePage.services.items.2.features.0'),
+        t('databasePage.services.items.2.features.1'),
+        t('databasePage.services.items.2.features.2'),
+        t('databasePage.services.items.2.features.3'),
+        t('databasePage.services.items.2.features.4')
+      ]
     },
     {
       icon: "🔒",
-      title: "Database Security",
-      description: "Comprehensive security solutions to protect your valuable data assets",
-      features: ["Access Control", "Encryption", "Audit Logging", "Compliance", "Vulnerability Assessment"]
+      title: t('databasePage.services.items.3.title'),
+      description: t('databasePage.services.items.3.description'),
+      features: [
+        t('databasePage.services.items.3.features.0'),
+        t('databasePage.services.items.3.features.1'),
+        t('databasePage.services.items.3.features.2'),
+        t('databasePage.services.items.3.features.3'),
+        t('databasePage.services.items.3.features.4')
+      ]
     },
     {
       icon: "📊",
-      title: "Data Analytics & Reporting",
-      description: "Transform raw data into actionable insights with advanced analytics",
-      features: ["Data Warehousing", "ETL Processes", "Business Intelligence", "Real-time Analytics", "Dashboarding"]
+      title: t('databasePage.services.items.4.title'),
+      description: t('databasePage.services.items.4.description'),
+      features: [
+        t('databasePage.services.items.4.features.0'),
+        t('databasePage.services.items.4.features.1'),
+        t('databasePage.services.items.4.features.2'),
+        t('databasePage.services.items.4.features.3'),
+        t('databasePage.services.items.4.features.4')
+      ]
     },
     {
       icon: "🔄",
-      title: "Database Replication & Backup",
-      description: "Ensure data availability and business continuity with robust backup solutions",
-      features: ["High Availability", "Disaster Recovery", "Replication Setup", "Automated Backups", "Recovery Testing"]
+      title: t('databasePage.services.items.5.title'),
+      description: t('databasePage.services.items.5.description'),
+      features: [
+        t('databasePage.services.items.5.features.0'),
+        t('databasePage.services.items.5.features.1'),
+        t('databasePage.services.items.5.features.2'),
+        t('databasePage.services.items.5.features.3'),
+        t('databasePage.services.items.5.features.4')
+      ]
     },
     {
       icon: "☁️",
-      title: "Cloud Database Management",
-      description: "Managed database services in the cloud for scalability and flexibility",
-      features: ["AWS RDS/Aurora", "Azure SQL", "Google Cloud SQL", "NoSQL Databases", "Serverless Databases"]
+      title: t('databasePage.services.items.6.title'),
+      description: t('databasePage.services.items.6.description'),
+      features: [
+        t('databasePage.services.items.6.features.0'),
+        t('databasePage.services.items.6.features.1'),
+        t('databasePage.services.items.6.features.2'),
+        t('databasePage.services.items.6.features.3'),
+        t('databasePage.services.items.6.features.4')
+      ]
     },
     {
       icon: "🛠️",
-      title: "Database Maintenance & Support",
-      description: "Ongoing maintenance, monitoring, and support for database systems",
-      features: ["Regular Maintenance", "Performance Monitoring", "Patch Management", "24/7 Support", "Health Checks"]
+      title: t('databasePage.services.items.7.title'),
+      description: t('databasePage.services.items.7.description'),
+      features: [
+        t('databasePage.services.items.7.features.0'),
+        t('databasePage.services.items.7.features.1'),
+        t('databasePage.services.items.7.features.2'),
+        t('databasePage.services.items.7.features.3'),
+        t('databasePage.services.items.7.features.4')
+      ]
     }
   ];
 
   const techStack = {
     relational: [
-      { name: "PostgreSQL", level: "Expert" },
-      { name: "MySQL", level: "Expert" },
-      { name: "SQL Server", level: "Advanced" },
-      { name: "Oracle", level: "Intermediate" },
-      { name: "MariaDB", level: "Advanced" },
-      { name: "SQLite", level: "Expert" }
+      { name: "PostgreSQL", level: t('databasePage.techStack.levels.expert') },
+      { name: "MySQL", level: t('databasePage.techStack.levels.expert') },
+      { name: "SQL Server", level: t('databasePage.techStack.levels.advanced') },
+      { name: "Oracle", level: t('databasePage.techStack.levels.intermediate') },
+      { name: "MariaDB", level: t('databasePage.techStack.levels.advanced') },
+      { name: "SQLite", level: t('databasePage.techStack.levels.expert') }
     ],
     nosql: [
-      { name: "MongoDB", level: "Expert" },
-      { name: "Redis", level: "Advanced" },
-      { name: "Cassandra", level: "Intermediate" },
-      { name: "Elasticsearch", level: "Advanced" },
-      { name: "DynamoDB", level: "Intermediate" },
-      { name: "Firebase", level: "Advanced" }
+      { name: "MongoDB", level: t('databasePage.techStack.levels.expert') },
+      { name: "Redis", level: t('databasePage.techStack.levels.advanced') },
+      { name: "Cassandra", level: t('databasePage.techStack.levels.intermediate') },
+      { name: "Elasticsearch", level: t('databasePage.techStack.levels.advanced') },
+      { name: "DynamoDB", level: t('databasePage.techStack.levels.intermediate') },
+      { name: "Firebase", level: t('databasePage.techStack.levels.advanced') }
     ],
     cloud: [
-      { name: "AWS RDS", level: "Advanced" },
-      { name: "Azure SQL", level: "Intermediate" },
-      { name: "Google Cloud SQL", level: "Intermediate" },
-      { name: "AWS DynamoDB", level: "Advanced" },
-      { name: "Azure Cosmos DB", level: "Intermediate" },
-      { name: "Firestore", level: "Advanced" }
+      { name: "AWS RDS", level: t('databasePage.techStack.levels.advanced') },
+      { name: "Azure SQL", level: t('databasePage.techStack.levels.intermediate') },
+      { name: "Google Cloud SQL", level: t('databasePage.techStack.levels.intermediate') },
+      { name: "AWS DynamoDB", level: t('databasePage.techStack.levels.advanced') },
+      { name: "Azure Cosmos DB", level: t('databasePage.techStack.levels.intermediate') },
+      { name: "Firestore", level: t('databasePage.techStack.levels.advanced') }
     ]
   };
 
   const databaseProjects = [
     {
       id: 1,
-      title: "E-commerce Database Optimization",
-      description: "Scaled database to handle 10x traffic during holiday season with zero downtime",
-      category: "Performance Tuning",
+      title: t('databasePage.projects.items.0.title'),
+      description: t('databasePage.projects.items.0.description'),
+      category: t('databasePage.projects.items.0.category'),
       tech: ["PostgreSQL", "Redis", "Connection Pooling", "Query Optimization", "Load Balancing"],
-      results: ["Query speed improved by 500%", "Zero downtime during peak", "Cost reduction by 40%"]
+      results: [
+        t('databasePage.projects.items.0.results.0'),
+        t('databasePage.projects.items.0.results.1'),
+        t('databasePage.projects.items.0.results.2')
+      ]
     },
     {
       id: 2,
-      title: "Healthcare Data Migration",
-      description: "Migrated 50TB of patient data to cloud with HIPAA compliance",
-      category: "Data Migration",
+      title: t('databasePage.projects.items.1.title'),
+      description: t('databasePage.projects.items.1.description'),
+      category: t('databasePage.projects.items.1.category'),
       tech: ["AWS RDS", "PostgreSQL", "Data Encryption", "CDC", "Backup Strategy"],
-      results: ["Zero data loss migration", "HIPAA compliance achieved", "99.99% availability"]
+      results: [
+        t('databasePage.projects.items.1.results.0'),
+        t('databasePage.projects.items.1.results.1'),
+        t('databasePage.projects.items.1.results.2')
+      ]
     },
     {
       id: 3,
-      title: "Real-time Analytics Platform",
-      description: "Built data platform processing 1M+ events per second for real-time insights",
-      category: "Big Data",
+      title: t('databasePage.projects.items.2.title'),
+      description: t('databasePage.projects.items.2.description'),
+      category: t('databasePage.projects.items.2.category'),
       tech: ["Apache Kafka", "Cassandra", "Spark", "Elasticsearch", "Kubernetes"],
-      results: ["Real-time data processing", "Scaled to 10B+ daily events", "Sub-second query response"]
+      results: [
+        t('databasePage.projects.items.2.results.0'),
+        t('databasePage.projects.items.2.results.1'),
+        t('databasePage.projects.items.2.results.2')
+      ]
     },
     {
       id: 4,
-      title: "Financial Data Warehouse",
-      description: "Enterprise data warehouse for financial reporting and compliance",
-      category: "Data Warehousing",
+      title: t('databasePage.projects.items.3.title'),
+      description: t('databasePage.projects.items.3.description'),
+      category: t('databasePage.projects.items.3.category'),
       tech: ["Snowflake", "dbt", "Airflow", "Tableau", "Data Governance"],
-      results: ["Reporting time reduced from days to minutes", "Single source of truth", "Audit trail compliance"]
+      results: [
+        t('databasePage.projects.items.3.results.0'),
+        t('databasePage.projects.items.3.results.1'),
+        t('databasePage.projects.items.3.results.2')
+      ]
     },
     {
       id: 5,
-      title: "Multi-Region Database Replication",
-      description: "Implemented global database replication for disaster recovery",
-      category: "High Availability",
+      title: t('databasePage.projects.items.4.title'),
+      description: t('databasePage.projects.items.4.description'),
+      category: t('databasePage.projects.items.4.category'),
       tech: ["AWS Aurora", "Global Database", "Read Replicas", "Failover Automation", "Monitoring"],
-      results: ["RPO of 1 second", "Automatic failover", "Global users served with low latency"]
+      results: [
+        t('databasePage.projects.items.4.results.0'),
+        t('databasePage.projects.items.4.results.1'),
+        t('databasePage.projects.items.4.results.2')
+      ]
     },
     {
       id: 6,
-      title: "IoT Data Management",
-      description: "Database solution for 100K+ IoT devices with real-time data ingestion",
-      category: "IoT Database",
+      title: t('databasePage.projects.items.5.title'),
+      description: t('databasePage.projects.items.5.description'),
+      category: t('databasePage.projects.items.5.category'),
       tech: ["TimescaleDB", "PostgreSQL", "MQTT", "Grafana", "Data Retention"],
-      results: ["Handled 1B+ data points daily", "Real-time device monitoring", "95% storage optimization"]
+      results: [
+        t('databasePage.projects.items.5.results.0'),
+        t('databasePage.projects.items.5.results.1'),
+        t('databasePage.projects.items.5.results.2')
+      ]
     },
     {
       id: 7,
-      title: "Legacy Database Modernization",
-      description: "Modernized legacy database systems with improved performance and scalability",
-      category: "Modernization",
+      title: t('databasePage.projects.items.6.title'),
+      description: t('databasePage.projects.items.6.description'),
+      category: t('databasePage.projects.items.6.category'),
       tech: ["Database Refactoring", "API Layer", "Microservices", "Cloud Migration", "Data Quality"],
-      results: ["Performance improved by 300%", "Reduced maintenance costs by 60%", "Improved developer productivity"]
+      results: [
+        t('databasePage.projects.items.6.results.0'),
+        t('databasePage.projects.items.6.results.1'),
+        t('databasePage.projects.items.6.results.2')
+      ]
     },
     {
       id: 8,
-      title: "Graph Database Implementation",
-      description: "Implemented graph database for complex relationship analysis in social network",
-      category: "Graph Database",
+      title: t('databasePage.projects.items.7.title'),
+      description: t('databasePage.projects.items.7.description'),
+      category: t('databasePage.projects.items.7.category'),
       tech: ["Neo4j", "Cypher", "Graph Algorithms", "APOC", "Cluster Management"],
-      results: ["Relationship queries 100x faster", "Discovered new business insights", "Scaled to 1M+ relationships"]
+      results: [
+        t('databasePage.projects.items.7.results.0'),
+        t('databasePage.projects.items.7.results.1'),
+        t('databasePage.projects.items.7.results.2')
+      ]
     }
   ];
 
   const processSteps = [
     {
       step: "01",
-      title: "Requirements Analysis",
-      description: "Understanding data volume, access patterns, and performance requirements",
+      title: t('databasePage.process.steps.0.title'),
+      description: t('databasePage.process.steps.0.description'),
       icon: "📋"
     },
     {
       step: "02",
-      title: "Database Design",
-      description: "Creating optimized schemas, relationships, and indexing strategies",
+      title: t('databasePage.process.steps.1.title'),
+      description: t('databasePage.process.steps.1.description'),
       icon: "🗺️"
     },
     {
       step: "03",
-      title: "Implementation",
-      description: "Setting up databases, configuring parameters, and deploying infrastructure",
+      title: t('databasePage.process.steps.2.title'),
+      description: t('databasePage.process.steps.2.description'),
       icon: "💻"
     },
     {
       step: "04",
-      title: "Migration & Integration",
-      description: "Migrating existing data and integrating with applications",
+      title: t('databasePage.process.steps.3.title'),
+      description: t('databasePage.process.steps.3.description'),
       icon: "🔄"
     },
     {
       step: "05",
-      title: "Optimization",
-      description: "Performance tuning, query optimization, and monitoring setup",
+      title: t('databasePage.process.steps.4.title'),
+      description: t('databasePage.process.steps.4.description'),
       icon: "⚡"
     },
     {
       step: "06",
-      title: "Maintenance",
-      description: "Regular backups, updates, security patches, and scaling",
+      title: t('databasePage.process.steps.5.title'),
+      description: t('databasePage.process.steps.5.description'),
       icon: "🔧"
     }
   ];
 
   const databaseFeatures = [
     {
-      title: "High Availability",
-      description: "Multi-zone replication and failover systems",
+      title: t('databasePage.features.items.0.title'),
+      description: t('databasePage.features.items.0.description'),
       icon: "🔄"
     },
     {
-      title: "Security First",
-      description: "End-to-end encryption and comprehensive access controls",
+      title: t('databasePage.features.items.1.title'),
+      description: t('databasePage.features.items.1.description'),
       icon: "🔐"
     },
     {
-      title: "Performance",
-      description: "Optimized queries and intelligent caching mechanisms",
+      title: t('databasePage.features.items.2.title'),
+      description: t('databasePage.features.items.2.description'),
       icon: "⚡"
     },
     {
-      title: "Scalability",
-      description: "Horizontal and vertical scaling to handle growth",
+      title: t('databasePage.features.items.3.title'),
+      description: t('databasePage.features.items.3.description'),
       icon: "📈"
+    }
+  ];
+
+  const benefits = [
+    {
+      icon: '⚡',
+      title: t('databasePage.benefits.items.0.title'),
+      description: t('databasePage.benefits.items.0.description')
+    },
+    {
+      icon: '🔒',
+      title: t('databasePage.benefits.items.1.title'),
+      description: t('databasePage.benefits.items.1.description')
+    },
+    {
+      icon: '📈',
+      title: t('databasePage.benefits.items.2.title'),
+      description: t('databasePage.benefits.items.2.description')
+    },
+    {
+      icon: '🔄',
+      title: t('databasePage.benefits.items.3.title'),
+      description: t('databasePage.benefits.items.3.description')
     }
   ];
 
@@ -307,17 +412,6 @@ function Database() {
           }
         }
         
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
         @keyframes float {
           0%, 100% {
             transform: translateY(0px);
@@ -334,11 +428,6 @@ function Database() {
           50% {
             opacity: 0.8;
           }
-        }
-        
-        @keyframes progress {
-          0% { width: 0%; }
-          100% { width: var(--target-width); }
         }
         
         @keyframes gradient {
@@ -395,11 +484,6 @@ function Database() {
           animation: pulse 2s ease-in-out infinite;
         }
         
-        .animate-progress {
-          --target-width: 75%;
-          animation: progress 1s ease-out forwards;
-        }
-        
         .animate-gradient {
           background: linear-gradient(90deg, #dc2626, #4b5563, #dc2626);
           background-size: 200% auto;
@@ -425,18 +509,6 @@ function Database() {
         
         .hover-lift:hover {
           transform: translateY(-8px);
-        }
-        
-        .gradient-border {
-          position: relative;
-          border: 2px solid transparent;
-          background: linear-gradient(white, white) padding-box,
-                      linear-gradient(90deg, #dc2626, #4b5563, #dc2626) border-box;
-          animation: gradient 3s linear infinite;
-        }
-        
-        .data-pulse {
-          animation: pulse 1.5s ease-in-out infinite;
         }
       `}</style>
 
@@ -465,17 +537,16 @@ function Database() {
             <div className="text-left">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="text-black">
-                  Enterprise Database
+                  {t('databasePage.hero.title1')}
                 </span>
                 <br />
                 <span className="mt-2 inline-block animate-gradient">
-                  Solutions & Management
+                  {t('databasePage.hero.title2')}
                 </span>
               </h1>
 
               <p className="mt-6 text-xl md:text-2xl text-gray-900 max-w-3xl leading-relaxed">
-                We design, optimize, and manage high-performance databases that power
-                your applications with reliability, security, and scalability.
+                {t('databasePage.hero.description')}
               </p>
             </div>
 
@@ -524,16 +595,15 @@ function Database() {
             alt="Services Background"
             className="w-full h-full object-cover opacity-25"
           />
-        
         </div>
 
         <div className="relative z-10">
           <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.services ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Our Database <span className="text-red-600 animate-pulse">Services</span>
+              {t('databasePage.services.title')}
             </h2>
             <p className="text-gray-900 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              Comprehensive database solutions from design to maintenance and optimization
+              {t('databasePage.services.subtitle')}
             </p>
           </div>
 
@@ -624,16 +694,15 @@ function Database() {
             alt="Technology Pattern Background"
             className="w-full h-full object-cover"
           />
-        
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible['tech-stack'] ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Database Technology <span className="text-red-600">Expertise</span>
+              {t('databasePage.techStack.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              We work with both SQL and NoSQL databases across all major platforms
+              {t('databasePage.techStack.subtitle')}
             </p>
           </div>
 
@@ -649,8 +718,9 @@ function Database() {
                       : 'bg-white text-gray-700 hover:bg-red-50 border border-gray-300 hover:border-red-300'
                     }`}
                 >
-                  {tab === 'relational' ? 'SQL Databases' : 
-                   tab === 'nosql' ? 'NoSQL Databases' : 'Cloud Databases'}
+                  {tab === 'relational' ? t('databasePage.techStack.tabs.relational') : 
+                   tab === 'nosql' ? t('databasePage.techStack.tabs.nosql') : 
+                   t('databasePage.techStack.tabs.cloud')}
                 </button>
               ))}
             </div>
@@ -664,8 +734,8 @@ function Database() {
                   <div className="text-lg font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors transform group-hover:scale-110 duration-300">
                     {tech.name}
                   </div>
-                  <div className={`text-sm font-medium animate-pulse ${tech.level === 'Expert' ? 'text-green-600' :
-                    tech.level === 'Advanced' ? 'text-red-600' :
+                  <div className={`text-sm font-medium animate-pulse ${tech.level === t('databasePage.techStack.levels.expert') ? 'text-green-600' :
+                    tech.level === t('databasePage.techStack.levels.advanced') ? 'text-red-600' :
                       'text-amber-600'
                     }`}>
                     {tech.level}
@@ -689,16 +759,15 @@ function Database() {
             alt="Process Flow Background"
             className="w-full h-full object-cover"
           />
-         
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible.process ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Our Database <span className="text-red-600">Implementation Process</span>
+              {t('databasePage.process.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              A methodical approach to ensure your database is secure, performant, and scalable
+              {t('databasePage.process.subtitle')}
             </p>
           </div>
 
@@ -743,16 +812,15 @@ function Database() {
             alt="Projects Background"
             className="w-full h-full object-cover"
           />
-          
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible.projects ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Database Success <span className="text-red-600">Stories</span>
+              {t('databasePage.projects.title')}
             </h2>
             <p className="text-xl text-gray-900 max-w-3xl mx-auto">
-              See how we've transformed database performance for businesses
+              {t('databasePage.projects.subtitle')}
             </p>
           </div>
 
@@ -822,33 +890,12 @@ function Database() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible.benefits ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Why Choose Our <span className="text-red-600">Database Solutions</span>
+              {t('databasePage.benefits.title')}
             </h2>
           </div>
 
           <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-stagger ${isVisible.benefits ? 'visible' : ''}`}>
-            {[
-              {
-                icon: '⚡',
-                title: 'Performance',
-                description: 'Optimized queries and indexing for lightning-fast data access'
-              },
-              {
-                icon: '🔒',
-                title: 'Security',
-                description: 'Enterprise-grade security with encryption and access controls'
-              },
-              {
-                icon: '📈',
-                title: 'Scalability',
-                description: 'Designed to grow with your business, handling millions of requests'
-              },
-              {
-                icon: '🔄',
-                title: 'Reliability',
-                description: 'High availability with automatic failover and backup systems'
-              }
-            ].map((item, index) => (
+            {benefits.map((item, index) => (
               <div
                 key={index}
                 className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-2xl hover:border-red-300 hover-lift transition-all duration-500 text-center group relative overflow-hidden"
@@ -880,10 +927,11 @@ function Database() {
         <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-transparent to-blue-600/20 animate-gradient bg-[size:200%_100%]"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center relative z-10">
           <h2 className={`text-[30px] font-bold mb-4 md:mb-6 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            Technology Is Everywhere. <span className="text-red-400 animate-pulse">Ownership Is Rare</span>.
+            {t('databasePage.cta.title1')}{" "}
+            <span className="text-red-400 animate-pulse">{t('databasePage.cta.title2')}</span>
           </h2>
           <p className={`text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            Partner with a team that stays accountable from start to scale.
+            {t('databasePage.cta.description')}
           </p>
           
           <div className={`flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
@@ -900,7 +948,7 @@ function Database() {
                transform hover:scale-105
                animate-pulse"
             >
-              Let's Talk
+              {t('databasePage.cta.button')}
               <svg
                 className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
                  group-hover:opacity-100 group-hover:translate-x-0
@@ -920,7 +968,7 @@ function Database() {
           </div>
 
           <p className={`mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            No bots. No runaround. Just real conversations with accountable partners.
+            {t('databasePage.cta.subtext')}
           </p>
         </div>
       </section>

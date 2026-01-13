@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import {
   Code, Cloud, Database, Shield, Smartphone, Globe,
   Mail, Phone, MapPin, ArrowRight, CheckCircle, Users,
@@ -10,6 +11,7 @@ import {
 } from 'lucide-react';
 
 function Portfolio() {
+  const { t } = useTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeService, setActiveService] = useState(0);
   const [activeTab, setActiveTab] = useState('all');
@@ -71,64 +73,64 @@ function Portfolio() {
   const services = [
   {
     icon: <Sparkles size={40} />,
-    title: 'Generative AI Solutions',
-    description: 'Content generation & creative AI tools',
+    title: t('portfolio.services.generativeAI.title'),
+    description: t('portfolio.services.generativeAI.description'),
      features: [],
     color: "from-purple-500/10 to-pink-500/5",
     path: '/generative-ai'
   },
   {
     icon: <Code size={40} />,
-    title: 'Web Development',
-    description: 'Custom web applications & solutions',
+    title: t('portfolio.services.webDev.title'),
+    description: t('portfolio.services.webDev.description'),
     features: [],
     color: "from-red-500/10 to-blue-500/5",
     path:  '/web-development'
   },
   {
     icon: <Server size={40} />,
-    title: 'Cloud Solutions',
-    description: 'AWS, Azure & Google Cloud migration',
+    title: t('portfolio.services.cloud.title'),
+    description: t('portfolio.services.cloud.description'),
     features: [],
     color: "from-blue-500/10 to-red-500/5",
     path:'/cloud-solutions'
   },
   {
     icon: <Smartphone size={40} />,
-    title: 'Mobile App Development',
-    description: 'iOS & Android applications',
+    title: t('portfolio.services.mobile.title'),
+    description: t('portfolio.services.mobile.description'),
     features: [],
     color: "from-purple-500/10 to-red-500/5",
     path: '/mobile-development'
   },
   {
     icon: <Database size={40} />,
-    title: 'Database Management',
-    description: 'SQL, NoSQL & Data warehousing',
+    title: t('portfolio.services.database.title'),
+    description: t('portfolio.services.database.description'),
     features: [],
     color: "from-green-500/10 to-red-500/5",
     path: '/database-management'
   },
   {
     icon: <Megaphone size={40} />,
-    title: 'Digital Marketing',
-    description: 'Data-driven marketing strategies',
+    title: t('portfolio.services.digitalMarketing.title'),
+    description: t('portfolio.services.digitalMarketing.description'),
     features: [],
     color: "from-green-500/10 to-blue-500/5",
     path: '/digital-marketing'
   },
   {
     icon: <Shield size={40} />,
-    title: 'Cybersecurity',
-    description: 'Advanced security solutions',
+    title: t('portfolio.services.cybersecurity.title'),
+    description: t('portfolio.services.cybersecurity.description'),
     features: [],
     color: "from-red-500/10 to-purple-500/5",
     path: '/cybersecurity'
   },
   {
     icon: <Zap size={40} />,
-    title: 'DevOps Services',
-    description: 'CI/CD & automation solutions',
+    title: t('portfolio.services.devops.title'),
+    description: t('portfolio.services.devops.description'),
   
     features: [],
     color: "from-yellow-500/10 to-red-500/5",
@@ -136,32 +138,32 @@ function Portfolio() {
   },
   {
     icon: <Briefcase size={40} />,
-    title: 'Technology Consulting',
-    description: 'IT strategy, architecture & digital advisory',
+    title: t('portfolio.services.consulting.title'),
+    description: t('portfolio.services.consulting.description'),
     features: [],
     color: "from-gray-500/10 to-blue-500/5",
     path: '/technology-consulting'
   },
   {
     icon: <Monitor size={40} />,
-    title: 'Remote Workplace Solutions',
-    description: 'Secure remote work & collaboration tools',
+    title: t('portfolio.services.remote.title'),
+    description: t('portfolio.services.remote.description'),
     features: [],
     color: "from-blue-500/10 to-green-500/5",
     path: '/remote-workplace'
   },
   {
     icon: <HardDrive size={40} />,
-    title: 'Backup & Disaster Recovery',
-    description: 'Business continuity & data protection',
+    title: t('portfolio.services.backup.title'),
+    description: t('portfolio.services.backup.description'),
     features: [],
     color: "from-orange-500/10 to-red-500/5",
     path: '/backup-disaster-recovery'
   },
   {
     icon: <Headphones size={40} />,
-    title: 'IT Help Desk Services',
-    description: '24/7 technical support & issue resolution',
+    title: t('portfolio.services.helpDesk.title'),
+    description: t('portfolio.services.helpDesk.description'),
     features: [],
     color: "from-red-500/10 to-yellow-500/5",
     path: '/help-desk'
@@ -171,129 +173,129 @@ function Portfolio() {
  const projects = [
     {
       id: 1,
-      title: "Enterprise Banking System",
+      title: t('portfolio.projects.projectList.0.title'),
       client: "Global Bank Inc.",
-      description: "Complete digital transformation of legacy banking systems with enhanced security.",
+      description: t('portfolio.projects.projectList.0.description'),
       tech: ["React", "Node.js", "Microservices", "AWS"],
       results: ["40% Reduction in Costs", "99.9% Uptime", "3x Performance"],
     },
     {
       id: 2,
-      title: "Healthcare Platform",
+      title: t('portfolio.projects.projectList.1.title'),
       client: "MediCare Solutions",
-      description: "HIPAA-compliant patient management system with telemedicine capabilities.",
+      description: t('portfolio.projects.projectList.1.description'),
       tech: ["React Native", "Python", "PostgreSQL", "Docker"],
       results: ["50% Efficiency Gain", "24/7 Availability", "Full Compliance"],
     },
     {
       id: 3,
-      title: "E-commerce Platform",
+      title: t('portfolio.projects.projectList.2.title'),
       client: "Retail Giant Corp",
-      description: "Scalable e-commerce platform handling 1M+ monthly transactions.",
+      description: t('portfolio.projects.projectList.2.description'),
       tech: ["Next.js", "TypeScript", "MongoDB", "Kubernetes"],
       results: ["200% Revenue Growth", "2s Load Time", "Zero Downtime"],
     },
     {
       id: 4,
-      title: "IoT Smart City Solution",
+      title: t('portfolio.projects.projectList.3.title'),
       client: "City Municipal Corp",
-      description: "City-wide IoT implementation for smart traffic and energy management.",
+      description: t('portfolio.projects.projectList.3.description'),
       tech: ["Python", "TensorFlow", "AWS IoT", "React"],
       results: ["30% Energy Saved", "Real-time Analytics", "100K+ Devices"],
     },
     {
       id: 5,
-      title: "AI Content Generation Platform",
+      title: t('portfolio.projects.projectList.4.title'),
       client: "Creative Media Group",
-      description: "Enterprise-grade generative AI platform for automated content creation and marketing.",
+      description: t('portfolio.projects.projectList.4.description'),
       tech: ["Python", "TensorFlow", "OpenAI API", "React", "FastAPI"],
       results: ["80% Content Creation Time Saved", "10x Output Volume", "Multi-language Support"],
     },
     {
       id: 6,
-      title: "Cloud Migration & Optimization",
+      title: t('portfolio.projects.projectList.5.title'),
       client: "Manufacturing Enterprise Ltd.",
-      description: "Complete migration of on-premise infrastructure to AWS with cost optimization.",
+      description: t('portfolio.projects.projectList.5.description'),
       tech: ["AWS", "Terraform", "Docker", "Kubernetes", "Python"],
       results: ["60% Cost Reduction", "99.95% SLA", "Auto-scaling Implementation"],
     },
     {
       id: 7,
-      title: "Mobile Banking Application",
+      title: t('portfolio.projects.projectList.6.title'),
       client: "FinTech Startup",
-      description: "Feature-rich mobile banking app with biometric authentication and AI-powered insights.",
+      description: t('portfolio.projects.projectList.6.description'),
       tech: ["React Native", "Node.js", "MongoDB", "AWS Amplify"],
       results: ["500K+ Downloads", "4.8 App Store Rating", "Millisecond Transaction Time"],
     },
     {
       id: 8,
-      title: "Big Data Analytics Platform",
+      title: t('portfolio.projects.projectList.7.title'),
       client: "E-commerce Analytics Corp",
-      description: "Real-time data warehousing and analytics solution for business intelligence.",
+      description: t('portfolio.projects.projectList.7.description'),
       tech: ["Apache Spark", "Snowflake", "Python", "React", "AWS Redshift"],
       results: ["Real-time Data Processing", "Petabyte-scale Storage", "50+ Data Sources Integrated"],
     },
     {
       id: 9,
-      title: "Digital Marketing Automation Suite",
+      title: t('portfolio.projects.projectList.8.title'),
       client: "Marketing Agency International",
-      description: "AI-driven marketing automation platform with multi-channel campaign management.",
+      description: t('portfolio.projects.projectList.8.description'),
       tech: ["Python", "React", "PostgreSQL", "Machine Learning", "REST APIs"],
       results: ["300% ROI Increase", "Automated 85% of Tasks", "Unified Dashboard"],
     },
     {
       id: 10,
-      title: "Enterprise Security Implementation",
+      title: t('portfolio.projects.projectList.9.title'),
       client: "Financial Services Corporation",
-      description: "Comprehensive cybersecurity framework with threat detection and compliance monitoring.",
+      description: t('portfolio.projects.projectList.9.description'),
       tech: ["SIEM", "Zero Trust Architecture", "Python", "Cloud Security", "Encryption"],
       results: ["Zero Security Breaches", "99.99% Threat Detection", "Full Regulatory Compliance"],
     },
     {
       id: 11,
-      title: "DevOps Transformation Initiative",
+      title: t('portfolio.projects.projectList.10.title'),
       client: "Technology Conglomerate",
-      description: "End-to-end DevOps implementation with CI/CD pipelines and infrastructure as code.",
+      description: t('portfolio.projects.projectList.10.description'),
       tech: ["Jenkins", "Docker", "Kubernetes", "Terraform", "Prometheus"],
       results: ["90% Faster Deployment", "Auto-recovery Systems", "Infrastructure Automation"],
     },
     {
       id: 12,
-      title: "Digital Transformation Consulting",
+      title: t('portfolio.projects.projectList.11.title'),
       client: "Traditional Retail Chain",
-      description: "Strategic technology consulting for digital transformation and cloud adoption.",
+      description: t('portfolio.projects.projectList.11.description'),
       tech: ["Enterprise Architecture", "Cloud Strategy", "Digital Roadmap", "Change Management"],
       results: ["Complete Digital Overhaul", "40% Operational Efficiency", "Future-ready Infrastructure"],
     },
     {
       id: 13,
-      title: "Remote Work Infrastructure",
+      title: t('portfolio.projects.projectList.12.title'),
       client: "Global Consulting Firm",
-      description: "Secure remote workplace solution with collaboration tools and VPN infrastructure.",
+      description: t('portfolio.projects.projectList.12.description'),
       tech: ["Zero Trust Network", "VPN", "Collaboration Tools", "Cloud Storage", "Security"],
       results: ["Seamless Remote Transition", "Enhanced Productivity", "Military-grade Security"],
     },
     {
       id: 14,
-      title: "Disaster Recovery Implementation",
+      title: t('portfolio.projects.projectList.13.title'),
       client: "Healthcare Data Center",
-      description: "Business continuity solution with automated backup and disaster recovery protocols.",
+      description: t('portfolio.projects.projectList.13.description'),
       tech: ["AWS Backup", "Disaster Recovery", "Data Replication", "Monitoring", "Automation"],
       results: ["RPO: 15 minutes", "RTO: 1 hour", "100% Data Integrity", "Automated Failover"],
     },
     {
       id: 15,
-      title: "Enterprise IT Support System",
+      title: t('portfolio.projects.projectList.14.title'),
       client: "Multinational Corporation",
-      description: "24/7 IT help desk platform with AI-powered ticketing and resolution system.",
+      description: t('portfolio.projects.projectList.14.description'),
       tech: ["AI Chatbots", "Ticketing System", "Knowledge Base", "Remote Support", "Analytics"],
       results: ["90% Ticket Resolution Rate", "50% Faster Response", "24/7 Support Coverage"],
     },
     {
       id: 16,
-      title: "Blockchain Financial Platform",
+      title: t('portfolio.projects.projectList.15.title'),
       client: "Crypto Exchange International",
-      description: "Secure blockchain-based trading platform with smart contract functionality and real-time settlement.",
+      description: t('portfolio.projects.projectList.15.description'),
       tech: ["Blockchain", "Solidity", "React", "Node.js", "PostgreSQL"],
       results: ["99.99% Uptime", "Sub-second Transactions", "Bank-grade Security"],
     }
@@ -309,37 +311,37 @@ function Portfolio() {
   ];
 
   const stats = [
-    { value: "150+", label: "Projects Completed", icon: <CheckCircle />, suffix: "" },
-    { value: "98%", label: "Client Satisfaction", icon: <TrendingUp />, suffix: "" },
-    { value: "50+", label: "Expert Team Members", icon: <Users />, suffix: "" },
-    { value: "24/7", label: "Support Available", icon: <Server />, suffix: "" }
+    { value: "150+", label: t('portfolio.stats.projects'), icon: <CheckCircle />, suffix: "" },
+    { value: "98%", label: t('portfolio.stats.satisfaction'), icon: <TrendingUp />, suffix: "" },
+    { value: "50+", label: t('portfolio.stats.team'), icon: <Users />, suffix: "" },
+    { value: "24/7", label: t('portfolio.stats.support'), icon: <Server />, suffix: "" }
   ];
 
   const team = [
     {
       name: "Sarah Chen",
-      role: "CTO & Lead Architect",
+      role: t('portfolio.team.cto'),
       expertise: "Cloud & DevOps",
       image: "SC",
       social: { linkedin: "#", twitter: "#", github: "#" }
     },
     {
       name: "Michael Rodriguez",
-      role: "Head of Development",
+      role: t('portfolio.team.headDev'),
       expertise: "Full Stack",
       image: "MR",
       social: { linkedin: "#", twitter: "#", github: "#" }
     },
     {
       name: "Priya Sharma",
-      role: "Security Director",
+      role: t('portfolio.team.security'),
       expertise: "Cybersecurity",
       image: "PS",
       social: { linkedin: "#", twitter: "#", github: "#" }
     },
     {
       name: "David Kim",
-      role: "AI/ML Lead",
+      role: t('portfolio.team.aiLead'),
       expertise: "Data Science",
       image: "DK",
       social: { linkedin: "#", twitter: "#", github: "#" }
@@ -528,7 +530,7 @@ function Portfolio() {
               variants={fadeInUp}
             >
               <h3 className="text-gray-900 mb-2 text-base md:text-lg font-semibold">
-                Trusted by Industry Leaders
+                {t('portfolio.clients.title')}
               </h3>
               <motion.div 
                 className="w-24 h-0.5 bg-red-600 mx-auto"
@@ -563,7 +565,7 @@ function Portfolio() {
                       {client.name}
                     </div>
                     <div className="text-gray-600 text-sm">
-                      Since {client.since}
+                      {t('portfolio.clients.since')} {client.since}
                     </div>
                   </div>
                 </motion.div>
@@ -597,25 +599,10 @@ function Portfolio() {
             variants={fadeInUp}
           >
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-white leading-tight">
-              Focused Services. <motion.span 
-                className="text-red-500"
-                animate={{ 
-                  scale: [1, 1.05, 1],
-                  textShadow: [
-                    "0 0 0px rgba(239, 68, 68, 0)",
-                    "0 0 20px rgba(239, 68, 68, 0.5)",
-                    "0 0 0px rgba(239, 68, 68, 0)"
-                  ]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              >Clear Outcomes</motion.span>.
+              {t('portfolio.services.title')}
             </h2>
             <p className="text-white/90 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              End-to-end technology solutions with measurable business impact
+              {t('portfolio.services.subtitle')}
             </p>
           </motion.div>
 
@@ -740,24 +727,11 @@ function Portfolio() {
             <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <motion.div variants={fadeInLeft}>
                 <h2 className="text-[30px] font-bold mb-6 text-gray-900 leading-tight">
-                  What Makes <motion.span 
-                    className="text-red-600"
-                    animate={{ 
-                      scale: [1, 1.02, 1],
-                      rotate: [0, 1, -1, 0]
-                    }}
-                    transition={{ 
-                      duration: 3,
-                      repeat: Infinity,
-                      repeatType: "reverse"
-                    }}
-                  >KANDAX</motion.span> Different
+                  {t('portfolio.about.title')}
                 </h2>
 
                 <p className="text-gray-700 mb-8 leading-relaxed text-[22px]">
-                  With over a decade of experience in digital transformation, we've helped
-                  hundreds of businesses migrate to modern technology stacks, improving
-                  efficiency, security, and scalability.
+                  {t('portfolio.about.description')}
                 </p> 
                 
                 <motion.div 
@@ -765,10 +739,10 @@ function Portfolio() {
                   variants={containerVariants}
                 >
                   {[
-                    { icon: <Shield />, title: "Enterprise-Grade Security", desc: "Military-grade security protocols for all our solutions" },
-                    { icon: <Zap />, title: "24/7 Monitoring", desc: "Round-the-clock support and system monitoring" },
-                    { icon: <TrendingUp />, title: "Scalable Solutions", desc: "Architecture designed to grow with your business" },
-                    { icon: <Award />, title: "Award-Winning Team", desc: "Industry-recognized experts in their fields" }
+                    { icon: <Shield />, title: t('portfolio.about.features.security.title'), desc: t('portfolio.about.features.security.description') },
+                    { icon: <Zap />, title: t('portfolio.about.features.monitoring.title'), desc: t('portfolio.about.features.monitoring.description') },
+                    { icon: <TrendingUp />, title: t('portfolio.about.features.scalable.title'), desc: t('portfolio.about.features.scalable.description') },
+                    { icon: <Award />, title: t('portfolio.about.features.team.title'), desc: t('portfolio.about.features.team.description') }
                   ].map((item, index) => (
                     <motion.div 
                       key={index} 
@@ -805,10 +779,10 @@ function Portfolio() {
                     variants={staggerContainer}
                   >
                     {[
-                      { value: "10+", label: "Years Experience" },
-                      { value: "50+", label: "Certified Experts" },
-                      { value: "24/7", label: "Support" },
-                      { value: "99.9%", label: "Uptime SLA" }
+                      { value: "10+", label: t('portfolio.about.stats.experience') },
+                      { value: "50+", label: t('portfolio.about.stats.experts') },
+                      { value: "24/7", label: t('portfolio.about.stats.support') },
+                      { value: "99.9%", label: t('portfolio.about.stats.uptime') }
                     ].map((stat, index) => (
                       <motion.div
                         key={index}
@@ -852,10 +826,10 @@ function Portfolio() {
                       </motion.div>
                       <div className="flex-1 text-center sm:text-left">
                         <h4 className="font-bold text-[20px] text-gray-900">
-                          Ready to Start?
+                          {t('portfolio.about.cta.title')}
                         </h4>
                         <p className="text-gray-700 text-[18px]">
-                          Get your free consultation today
+                          {t('portfolio.about.cta.description')}
                         </p>
                       </div>
                       <motion.div
@@ -875,7 +849,7 @@ function Portfolio() {
                             whitespace-nowrap
                           "
                         >
-                          Contact Now
+                          {t('portfolio.about.cta.button')}
                         </Link>
                       </motion.div>
                     </div>
@@ -912,25 +886,10 @@ function Portfolio() {
               variants={fadeInUp}
             >
               <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-white leading-tight">
-                Real-world solutions delivering{" "}
-                <motion.span 
-                  className="text-red-400"
-                  animate={{ 
-                    textShadow: [
-                      "0 0 0px rgba(248, 113, 113, 0)",
-                      "0 0 15px rgba(248, 113, 113, 0.7)",
-                      "0 0 0px rgba(248, 113, 113, 0)"
-                    ]
-                  }}
-                  transition={{ 
-                    duration: 2,
-                    repeat: Infinity,
-                    repeatType: "reverse"
-                  }}
-                >measurable business impact</motion.span>
+                {t('portfolio.projects.title')}
               </h2>
               <p className="text-white/90 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-                See how we've helped businesses transform digitally
+                {t('portfolio.projects.subtitle')}
               </p>
             </motion.div>
 
@@ -1008,7 +967,7 @@ function Portfolio() {
 
                         <div className="mb-4">
                           <h4 className="text-[14px] font-semibold text-gray-800 mb-2 text-center">
-                            Technologies Used
+                            {t('portfolio.projects.techUsed')}
                           </h4>
                           <div className="flex flex-wrap gap-2 justify-center">
                             {project.tech.map((tech, i) => (
@@ -1028,7 +987,7 @@ function Portfolio() {
 
                         <div className="mb-4">
                           <h4 className="text-[14px] font-semibold text-gray-800 mb-2 text-center">
-                            Key Results
+                            {t('portfolio.projects.keyResults')}
                           </h4>
                           <div className="space-y-2.5">
                             {project.results.map((result, i) => (
@@ -1081,22 +1040,7 @@ function Portfolio() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            Technology Is Everywhere. <motion.span 
-              className="text-red-400"
-              animate={{ 
-                scale: [1, 1.02, 1],
-                textShadow: [
-                  "0 0 0px rgba(248, 113, 113, 0)",
-                  "0 0 25px rgba(248, 113, 113, 0.8)",
-                  "0 0 0px rgba(248, 113, 113, 0)"
-                ]
-              }}
-              transition={{ 
-                duration: 2,
-                repeat: Infinity,
-                repeatType: "reverse"
-              }}
-            >Ownership Is Rare</motion.span>.
+            {t('portfolio.finalCta.title')}
           </motion.h2>
           <motion.p 
             className="text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4"
@@ -1105,7 +1049,7 @@ function Portfolio() {
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
           >
-            Partner with a team that stays accountable from start to scale.
+            {t('portfolio.finalCta.subtitle')}
           </motion.p>
           <motion.div 
             className="flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8"
@@ -1139,7 +1083,7 @@ function Portfolio() {
                 repeatType: "reverse"
               }}
             >
-              Let's Talk
+              {t('portfolio.finalCta.button')}
               <motion.svg
                 className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
                            group-hover:opacity-100 group-hover:translate-x-0
@@ -1167,7 +1111,7 @@ function Portfolio() {
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
           >
-            No bots. No runaround. Just real conversations with accountable partners.
+            {t('portfolio.finalCta.note')}
           </motion.p>
         </div>
       </motion.section>

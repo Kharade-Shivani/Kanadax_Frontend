@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useTranslation } from 'react-i18next';
 
 function WebDevelopment() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('frontend');
   const [activeService, setActiveService] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
@@ -95,186 +96,267 @@ function WebDevelopment() {
     };
   }, []);
 
+  // Web Development Services from translations
   const webDevServices = [
     {
       icon: "🌐",
-      title: "Frontend Development",
-      description: "Modern, responsive websites and applications with the latest frameworks",
-      features: ["React.js", "Next.js", "Vue.js", "Tailwind CSS", "TypeScript"]
+      title: t('webDevPage.services.items.0.title'),
+      description: t('webDevPage.services.items.0.description'),
+      features: [
+        t('webDevPage.services.items.0.features.0'),
+        t('webDevPage.services.items.0.features.1'),
+        t('webDevPage.services.items.0.features.2'),
+        t('webDevPage.services.items.0.features.3'),
+        t('webDevPage.services.items.0.features.4')
+      ]
     },
     {
       icon: "⚙️",
-      title: "Backend Development",
-      description: "Robust server-side solutions with scalable architecture",
-      features: ["Node.js", "Python/Django", "Java/Spring", "REST APIs", "GraphQL"]
+      title: t('webDevPage.services.items.1.title'),
+      description: t('webDevPage.services.items.1.description'),
+      features: [
+        t('webDevPage.services.items.1.features.0'),
+        t('webDevPage.services.items.1.features.1'),
+        t('webDevPage.services.items.1.features.2'),
+        t('webDevPage.services.items.1.features.3'),
+        t('webDevPage.services.items.1.features.4')
+      ]
     },
     {
       icon: "📱",
-      title: "Mobile Development",
-      description: "Cross-platform mobile applications for iOS and Android",
-      features: ["React Native", "Flutter", "PWA", "iOS/Android Native", "App Store Deployment"]
+      title: t('webDevPage.services.items.2.title'),
+      description: t('webDevPage.services.items.2.description'),
+      features: [
+        t('webDevPage.services.items.2.features.0'),
+        t('webDevPage.services.items.2.features.1'),
+        t('webDevPage.services.items.2.features.2'),
+        t('webDevPage.services.items.2.features.3'),
+        t('webDevPage.services.items.2.features.4')
+      ]
     },
     {
       icon: "🛒",
-      title: "E-commerce Solutions",
-      description: "Complete online stores with secure payment processing",
-      features: ["Shopify", "WooCommerce", "Magento", "Payment Gateways", "Inventory Management"]
+      title: t('webDevPage.services.items.3.title'),
+      description: t('webDevPage.services.items.3.description'),
+      features: [
+        t('webDevPage.services.items.3.features.0'),
+        t('webDevPage.services.items.3.features.1'),
+        t('webDevPage.services.items.3.features.2'),
+        t('webDevPage.services.items.3.features.3'),
+        t('webDevPage.services.items.3.features.4')
+      ]
     },
     {
       icon: "🚀",
-      title: "Performance Optimization",
-      description: "Speed up your website for better user experience and SEO",
-      features: ["Page Speed Optimization", "Code Minification", "CDN Integration", "Caching Strategies"]
+      title: t('webDevPage.services.items.4.title'),
+      description: t('webDevPage.services.items.4.description'),
+      features: [
+        t('webDevPage.services.items.4.features.0'),
+        t('webDevPage.services.items.4.features.1'),
+        t('webDevPage.services.items.4.features.2'),
+        t('webDevPage.services.items.4.features.3')
+      ]
     },
     {
       icon: "🔒",
-      title: "Security & Maintenance",
-      description: "Keep your website secure and up-to-date with regular maintenance",
-      features: ["SSL Certificates", "Security Audits", "Regular Updates", "Backup Solutions"]
+      title: t('webDevPage.services.items.5.title'),
+      description: t('webDevPage.services.items.5.description'),
+      features: [
+        t('webDevPage.services.items.5.features.0'),
+        t('webDevPage.services.items.5.features.1'),
+        t('webDevPage.services.items.5.features.2'),
+        t('webDevPage.services.items.5.features.3')
+      ]
     },
     {
       icon: "🎨",
-      title: "UI/UX Design",
-      description: "Beautiful, intuitive designs that enhance user engagement",
-      features: ["Wireframing", "Prototyping", "User Testing", "Design Systems", "Accessibility"]
+      title: t('webDevPage.services.items.6.title'),
+      description: t('webDevPage.services.items.6.description'),
+      features: [
+        t('webDevPage.services.items.6.features.0'),
+        t('webDevPage.services.items.6.features.1'),
+        t('webDevPage.services.items.6.features.2'),
+        t('webDevPage.services.items.6.features.3'),
+        t('webDevPage.services.items.6.features.4')
+      ]
     },
     {
       icon: "📊",
-      title: "Analytics & SEO",
-      description: "Drive traffic and measure performance with advanced analytics",
-      features: ["Google Analytics", "SEO Optimization", "Conversion Tracking", "A/B Testing"]
+      title: t('webDevPage.services.items.7.title'),
+      description: t('webDevPage.services.items.7.description'),
+      features: [
+        t('webDevPage.services.items.7.features.0'),
+        t('webDevPage.services.items.7.features.1'),
+        t('webDevPage.services.items.7.features.2'),
+        t('webDevPage.services.items.7.features.3')
+      ]
     }
   ];
 
+  // Tech Stack
   const techStack = {
     frontend: [
-      { name: "React", level: "Advanced" },
-      { name: "Next.js", level: "Advanced" },
-      { name: "TypeScript", level: "Advanced" },
-      { name: "Tailwind CSS", level: "Expert" },
-      { name: "Vue.js", level: "Intermediate" },
-      { name: "Redux", level: "Advanced" }
+      { name: "React", level: t('webDevPage.techStack.levels.advanced') },
+      { name: "Next.js", level: t('webDevPage.techStack.levels.advanced') },
+      { name: "TypeScript", level: t('webDevPage.techStack.levels.advanced') },
+      { name: "Tailwind CSS", level: t('webDevPage.techStack.levels.expert') },
+      { name: "Vue.js", level: t('webDevPage.techStack.levels.intermediate') },
+      { name: "Redux", level: t('webDevPage.techStack.levels.advanced') }
     ],
     backend: [
-      { name: "Node.js", level: "Advanced" },
-      { name: "Python", level: "Intermediate" },
-      { name: "MongoDB", level: "Advanced" },
-      { name: "PostgreSQL", level: "Intermediate" },
-      { name: "GraphQL", level: "Advanced" },
-      { name: "Redis", level: "Intermediate" }
+      { name: "Node.js", level: t('webDevPage.techStack.levels.advanced') },
+      { name: "Python", level: t('webDevPage.techStack.levels.intermediate') },
+      { name: "MongoDB", level: t('webDevPage.techStack.levels.advanced') },
+      { name: "PostgreSQL", level: t('webDevPage.techStack.levels.intermediate') },
+      { name: "GraphQL", level: t('webDevPage.techStack.levels.advanced') },
+      { name: "Redis", level: t('webDevPage.techStack.levels.intermediate') }
     ],
     devops: [
-      { name: "Docker", level: "Advanced" },
-      { name: "Kubernetes", level: "Intermediate" },
-      { name: "AWS", level: "Intermediate" },
-      { name: "CI/CD", level: "Advanced" },
-      { name: "Nginx", level: "Intermediate" },
-      { name: "Linux", level: "Advanced" }
+      { name: "Docker", level: t('webDevPage.techStack.levels.advanced') },
+      { name: "Kubernetes", level: t('webDevPage.techStack.levels.intermediate') },
+      { name: "AWS", level: t('webDevPage.techStack.levels.intermediate') },
+      { name: "CI/CD", level: t('webDevPage.techStack.levels.advanced') },
+      { name: "Nginx", level: t('webDevPage.techStack.levels.intermediate') },
+      { name: "Linux", level: t('webDevPage.techStack.levels.advanced') }
     ]
   };
 
+  // Web Projects from translations
   const webProjects = [
     {
       id: 1,
-      title: "E-commerce Platform Redesign",
-      description: "Complete overhaul of an online store with improved UX and performance",
-      category: "E-commerce",
+      title: t('webDevPage.projects.items.0.title'),
+      description: t('webDevPage.projects.items.0.description'),
+      category: t('webDevPage.projects.items.0.category'),
       tech: ["React", "Next.js", "Tailwind CSS", "Stripe", "MongoDB"],
-      results: ["300% increase in conversions", "40% faster page load", "25% higher average order value"]
+      results: [
+        t('webDevPage.projects.items.0.results.0'),
+        t('webDevPage.projects.items.0.results.1'),
+        t('webDevPage.projects.items.0.results.2')
+      ]
     },
     {
       id: 2,
-      title: "Healthcare Portal Development",
-      description: "Secure patient portal with appointment scheduling and telemedicine features",
-      category: "Healthcare",
+      title: t('webDevPage.projects.items.1.title'),
+      description: t('webDevPage.projects.items.1.description'),
+      category: t('webDevPage.projects.items.1.category'),
       tech: ["Vue.js", "Node.js", "PostgreSQL", "AWS", "HIPAA Compliant"],
-      results: ["50K+ active users", "99.9% uptime", "Reduced admin work by 60%"]
+      results: [
+        t('webDevPage.projects.items.1.results.0'),
+        t('webDevPage.projects.items.1.results.1'),
+        t('webDevPage.projects.items.1.results.2')
+      ]
     },
     {
       id: 3,
-      title: "Real Estate Management System",
-      description: "Comprehensive platform for property management and virtual tours",
-      category: "Real Estate",
+      title: t('webDevPage.projects.items.2.title'),
+      description: t('webDevPage.projects.items.2.description'),
+      category: t('webDevPage.projects.items.2.category'),
       tech: ["React Native", "Firebase", "Google Maps API", "Cloudinary", "Redux"],
-      results: ["200% faster property listings", "Virtual tour engagement up 150%", "Mobile app 4.8 stars"]
+      results: [
+        t('webDevPage.projects.items.2.results.0'),
+        t('webDevPage.projects.items.2.results.1'),
+        t('webDevPage.projects.items.2.results.2')
+      ]
     },
     {
       id: 4,
-      title: "SaaS Productivity Tool",
-      description: "All-in-one project management and team collaboration platform",
-      category: "SaaS",
+      title: t('webDevPage.projects.items.3.title'),
+      description: t('webDevPage.projects.items.3.description'),
+      category: t('webDevPage.projects.items.3.category'),
       tech: ["Angular", "Python/Django", "Redis", "Docker", "WebSockets"],
-      results: ["10K+ monthly active users", "75% team productivity increase", "$500K+ ARR"]
+      results: [
+        t('webDevPage.projects.items.3.results.0'),
+        t('webDevPage.projects.items.3.results.1'),
+        t('webDevPage.projects.items.3.results.2')
+      ]
     },
     {
       id: 5,
-      title: "Educational Learning Platform",
-      description: "Interactive online learning platform with video courses and assessments",
-      category: "EdTech",
+      title: t('webDevPage.projects.items.4.title'),
+      description: t('webDevPage.projects.items.4.description'),
+      category: t('webDevPage.projects.items.4.category'),
       tech: ["Next.js", "TypeScript", "Prisma", "Vercel", "Stripe"],
-      results: ["50K+ course enrollments", "95% student satisfaction", "Mobile app downloads 100K+"]
+      results: [
+        t('webDevPage.projects.items.4.results.0'),
+        t('webDevPage.projects.items.4.results.1'),
+        t('webDevPage.projects.items.4.results.2')
+      ]
     },
     {
       id: 6,
-      title: "Travel Booking Portal",
-      description: "Multi-vendor travel booking platform with real-time availability",
-      category: "Travel",
+      title: t('webDevPage.projects.items.5.title'),
+      description: t('webDevPage.projects.items.5.description'),
+      category: t('webDevPage.projects.items.5.category'),
       tech: ["React", "Express.js", "MongoDB", "REST APIs", "Payment Gateway"],
-      results: ["500+ travel partners onboarded", "Booking conversion rate 35%", "24/7 customer support"]
+      results: [
+        t('webDevPage.projects.items.5.results.0'),
+        t('webDevPage.projects.items.5.results.1'),
+        t('webDevPage.projects.items.5.results.2')
+      ]
     },
     {
       id: 7,
-      title: "Food Delivery App",
-      description: "Complete food ordering and delivery solution for restaurants",
-      category: "Food Tech",
+      title: t('webDevPage.projects.items.6.title'),
+      description: t('webDevPage.projects.items.6.description'),
+      category: t('webDevPage.projects.items.6.category'),
       tech: ["Flutter", "Node.js", "Firebase", "Google Maps", "Push Notifications"],
-      results: ["200+ restaurant partners", "Average delivery time 25 mins", "App rating 4.7 stars"]
+      results: [
+        t('webDevPage.projects.items.6.results.0'),
+        t('webDevPage.projects.items.6.results.1'),
+        t('webDevPage.projects.items.6.results.2')
+      ]
     },
     {
       id: 8,
-      title: "Financial Dashboard",
-      description: "Real-time financial analytics and reporting dashboard for enterprises",
-      category: "FinTech",
+      title: t('webDevPage.projects.items.7.title'),
+      description: t('webDevPage.projects.items.7.description'),
+      category: t('webDevPage.projects.items.7.category'),
       tech: ["Vue.js", "Python/Flask", "Chart.js", "WebSockets", "Data Visualization"],
-      results: ["Real-time data updates", "Reduced reporting time by 80%", "Used by 500+ financial analysts"]
+      results: [
+        t('webDevPage.projects.items.7.results.0'),
+        t('webDevPage.projects.items.7.results.1'),
+        t('webDevPage.projects.items.7.results.2')
+      ]
     }
   ];
 
+  // Process Steps from translations
   const processSteps = [
     {
       step: "01",
-      title: "Discovery & Planning",
-      description: "We analyze requirements and create detailed project specifications",
+      title: t('webDevPage.process.steps.0.title'),
+      description: t('webDevPage.process.steps.0.description'),
       icon: "📋"
     },
     {
       step: "02",
-      title: "UI/UX Design",
-      description: "Creating intuitive user interfaces and seamless user experiences",
+      title: t('webDevPage.process.steps.1.title'),
+      description: t('webDevPage.process.steps.1.description'),
       icon: "🎨"
     },
     {
       step: "03",
-      title: "Development",
-      description: "Agile development with regular demos and iterations",
+      title: t('webDevPage.process.steps.2.title'),
+      description: t('webDevPage.process.steps.2.description'),
       icon: "💻"
     },
     {
       step: "04",
-      title: "Testing & QA",
-      description: "Comprehensive testing including unit, integration, and user testing",
+      title: t('webDevPage.process.steps.3.title'),
+      description: t('webDevPage.process.steps.3.description'),
       icon: "🔍"
     },
     {
       step: "05",
-      title: "Deployment",
-      description: "Seamless deployment with CI/CD pipelines and monitoring",
+      title: t('webDevPage.process.steps.4.title'),
+      description: t('webDevPage.process.steps.4.description'),
       icon: "🚀"
     },
     {
       step: "06",
-      title: "Maintenance",
-      description: "Ongoing support, updates, and performance optimization",
+      title: t('webDevPage.process.steps.5.title'),
+      description: t('webDevPage.process.steps.5.description'),
       icon: "🔄"
     }
   ];
@@ -285,6 +367,7 @@ function WebDevelopment() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-white overflow-x-hidden"
+      dir="ltr"
     >
       {/* ===== HERO SECTION ===== */}
       <motion.section 
@@ -314,14 +397,14 @@ function WebDevelopment() {
                 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight drop-shadow-lg"
               >
                 <motion.span variants={fadeInUp} className="text-black">
-                  Modern Web
+                  {t('webDevPage.hero.title1')}
                 </motion.span>
                 <br />
                 <motion.span 
                   variants={fadeInUp}
                   className="mt-2 inline-block bg-clip-text text-red-500"
                 >
-                  Development Solutions
+                  {t('webDevPage.hero.title2')}
                 </motion.span>
               </motion.h1>
 
@@ -329,8 +412,7 @@ function WebDevelopment() {
                 variants={fadeInUp}
                 className="mt-6 text-xl md:text-2xl text-gray-200 max-w-3xl leading-relaxed drop-shadow"
               >
-                We build high-performance, scalable web applications that drive business growth
-                and deliver exceptional user experiences with clear ownership and accountability.
+                {t('webDevPage.hero.description')}
               </motion.p>
             </motion.div>
 
@@ -358,10 +440,30 @@ function WebDevelopment() {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
           >
             {[
-              { icon: "⌛", value: "24/7", label: "Support", color: "from-red-500 to-red-600" },
-              { icon: "📈", value: "99.9%", label: "Uptime", color: "from-green-500 to-emerald-600" },
-              { icon: "👥", value: "50+", label: "Web Projects", color: "from-blue-500 to-cyan-600" },
-              { icon: "✅", value: "100%", label: "Satisfaction", color: "from-purple-500 to-pink-600" }
+              { 
+                icon: "⌛", 
+                value: "24/7", 
+                label: t('webDevPage.stats.support'), 
+                color: "from-red-500 to-red-600" 
+              },
+              { 
+                icon: "📈", 
+                value: "99.9%", 
+                label: t('webDevPage.stats.uptime'), 
+                color: "from-green-500 to-emerald-600" 
+              },
+              { 
+                icon: "👥", 
+                value: "50+", 
+                label: t('webDevPage.stats.projects'), 
+                color: "from-blue-500 to-cyan-600" 
+              },
+              { 
+                icon: "✅", 
+                value: "100%", 
+                label: t('webDevPage.stats.satisfaction'), 
+                color: "from-purple-500 to-pink-600" 
+              }
             ].map((stat, index) => (
               <motion.div 
                 key={index}
@@ -407,10 +509,10 @@ function WebDevelopment() {
             className="text-center mb-8 md:mb-12"
           >
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-black leading-tight drop-shadow-md">
-              Our Web Development <span className="text-red-600">Expertise</span>
+              {t('webDevPage.services.title')}
             </h2>
             <p className="text-gray-800 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed drop-shadow">
-              From simple websites to complex web applications, we deliver solutions that exceed expectations
+              {t('webDevPage.services.subtitle')}
             </p>
           </motion.div>
 
@@ -531,10 +633,10 @@ function WebDevelopment() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Cutting-Edge <span className="text-red-600">Technology Stack</span>
+              {t('webDevPage.techStack.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We use modern technologies to build robust and scalable web solutions
+              {t('webDevPage.techStack.subtitle')}
             </p>
           </motion.div>
           
@@ -557,7 +659,9 @@ function WebDevelopment() {
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                  {tab === 'frontend' ? t('webDevPage.techStack.tabs.frontend') : 
+                   tab === 'backend' ? t('webDevPage.techStack.tabs.backend') : 
+                   t('webDevPage.techStack.tabs.devops')}
                 </motion.button>
               ))}
             </motion.div>
@@ -591,8 +695,8 @@ function WebDevelopment() {
                     {tech.name}
                   </div>
                   <div className={`text-sm font-medium ${
-                    tech.level === 'Expert' ? 'text-green-600' :
-                    tech.level === 'Advanced' ? 'text-blue-600' :
+                    tech.level === t('webDevPage.techStack.levels.expert') ? 'text-green-600' :
+                    tech.level === t('webDevPage.techStack.levels.advanced') ? 'text-blue-600' :
                     'text-amber-600'
                   }`}>
                     {tech.level}
@@ -626,10 +730,10 @@ function WebDevelopment() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Our Development <span className="text-red-600">Process</span>
+              {t('webDevPage.process.title')}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              A structured approach that ensures quality, transparency, and timely delivery
+              {t('webDevPage.process.subtitle')}
             </p>
           </motion.div>
           
@@ -698,14 +802,14 @@ function WebDevelopment() {
             variants={fadeInUp}
             className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-white leading-tight"
           >
-            Featured <span className="text-red-600">Projects</span>
+            {t('webDevPage.projects.title')}
           </motion.h2>
           <motion.p 
             variants={fadeInUp}
             transition={{ delay: 0.1 }}
             className="text-white max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed"
           >
-            See how we've helped businesses transform their digital presence
+            {t('webDevPage.projects.subtitle')}
           </motion.p>
         </div>
 
@@ -784,7 +888,9 @@ function WebDevelopment() {
                       </p>
                       
                       <div className="mb-4">
-                        <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Technologies:</h4>
+                        <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">
+                          {t('webDevPage.projects.technologies')}
+                        </h4>
                         <div className="flex flex-wrap gap-1.5">
                           {project.tech.map((tech, idx) => (
                             <motion.span 
@@ -801,7 +907,9 @@ function WebDevelopment() {
                       </div>
                       
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Results:</h4>
+                        <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">
+                          {t('webDevPage.projects.results')}
+                        </h4>
                         <ul className="space-y-2">
                           {project.results.map((result, idx) => (
                             <motion.li 
@@ -851,14 +959,15 @@ function WebDevelopment() {
             variants={fadeInUp}
             className="text-[30px] font-bold mb-4 md:mb-6"
           >
-            Technology Is Everywhere. <span className="text-red-400">Ownership Is Rare</span>.
+            {t('webDevPage.cta.title1')}{" "}
+            <span className="text-red-400">{t('webDevPage.cta.title2')}</span>
           </motion.h2>
           <motion.p 
             variants={fadeInUp}
             transition={{ delay: 0.1 }}
             className="text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4"
           >
-            Partner with a team that stays accountable from start to scale.
+            {t('webDevPage.cta.description')}
           </motion.p>
           
           <motion.div 
@@ -878,7 +987,7 @@ function WebDevelopment() {
                          hover:bg-red-700
                          transition-all duration-300"
             >
-              Let's Talk
+              {t('webDevPage.cta.button')}
               <motion.svg
                 initial={{ opacity: 0, x: -5 }}
                 whileHover={{ opacity: 1, x: 0 }}
@@ -902,7 +1011,7 @@ function WebDevelopment() {
             transition={{ delay: 0.2 }}
             className="mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0"
           >
-            No bots. No runaround. Just real conversations with accountable partners.
+            {t('webDevPage.cta.subtext')}
           </motion.p>
         </div>
       </motion.section>

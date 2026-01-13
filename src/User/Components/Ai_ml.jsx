@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 // Animation variants
 const fadeInUp = {
@@ -34,196 +34,273 @@ const slideInFromRight = {
 };
 
 function Ai_ml() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('frameworks');
   const [activeService, setActiveService] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
 
- const aiServices = [
-  {
-    icon: "🧠",
-    title: "Machine Learning Solutions",
-    description: "Custom ML models for predictive analytics and data-driven decision making",
-    features: ["Predictive Analytics", "Regression Models", "Classification Systems", "Recommendation Engines"]
-  },
-  {
-    icon: "🔍",
-    title: "Computer Vision",
-    description: "Image and video analysis solutions for automation and quality control",
-    features: ["Object Detection", "Facial Recognition", "Image Classification", "Video Analytics"]
-  },
-  {
-    icon: "🗣️",
-    title: "Natural Language Processing",
-    description: "Text analysis, sentiment analysis, and language understanding solutions",
-    features: ["Chatbots", "Sentiment Analysis", "Text Classification", "Language Translation"]
-  },
-  {
-    icon: "📈",
-    title: "Predictive Analytics",
-    description: "Forecast trends and make data-driven predictions for business growth",
-    features: ["Demand Forecasting", "Risk Assessment", "Customer Behavior Analysis", "Market Trends"]
-  },
-  {
-    icon: "⚙️",
-    title: "AI Integration",
-    description: "Seamlessly integrate AI capabilities into existing systems and workflows",
-    features: ["API Development", "System Integration", "Cloud AI Services", "Edge Computing"]
-  },
-  {
-    icon: "🤖",
-    title: "AI Automation",
-    description: "Automate repetitive tasks and processes with intelligent systems",
-    features: ["Process Automation", "Document Processing", "Workflow Optimization", "Intelligent Assistants"]
-  },
-  {
-    icon: "🛡️",
-    title: "AI Security & Compliance",
-    description: "Secure AI implementations with compliance monitoring and threat detection",
-    features: ["Adversarial Defense", "Model Security", "Regulatory Compliance", "Data Privacy"]
-  },
-  {
-    icon: "📊",
-    title: "AI Consulting & Strategy",
-    description: "End-to-end AI strategy development and implementation consulting",
-    features: ["AI Roadmap", "Proof of Concepts", "ROI Analysis", "Change Management"]
-  }
-];
+  // AI Services data from translations
+  const aiServices = [
+    {
+      icon: "🧠",
+      title: t('aiMlPage.services.items.0.title'),
+      description: t('aiMlPage.services.items.0.description'),
+      features: [
+        t('aiMlPage.services.items.0.features.0'),
+        t('aiMlPage.services.items.0.features.1'),
+        t('aiMlPage.services.items.0.features.2'),
+        t('aiMlPage.services.items.0.features.3')
+      ]
+    },
+    {
+      icon: "🔍",
+      title: t('aiMlPage.services.items.1.title'),
+      description: t('aiMlPage.services.items.1.description'),
+      features: [
+        t('aiMlPage.services.items.1.features.0'),
+        t('aiMlPage.services.items.1.features.1'),
+        t('aiMlPage.services.items.1.features.2'),
+        t('aiMlPage.services.items.1.features.3')
+      ]
+    },
+    {
+      icon: "🗣️",
+      title: t('aiMlPage.services.items.2.title'),
+      description: t('aiMlPage.services.items.2.description'),
+      features: [
+        t('aiMlPage.services.items.2.features.0'),
+        t('aiMlPage.services.items.2.features.1'),
+        t('aiMlPage.services.items.2.features.2'),
+        t('aiMlPage.services.items.2.features.3')
+      ]
+    },
+    {
+      icon: "📈",
+      title: t('aiMlPage.services.items.3.title'),
+      description: t('aiMlPage.services.items.3.description'),
+      features: [
+        t('aiMlPage.services.items.3.features.0'),
+        t('aiMlPage.services.items.3.features.1'),
+        t('aiMlPage.services.items.3.features.2'),
+        t('aiMlPage.services.items.3.features.3')
+      ]
+    },
+    {
+      icon: "⚙️",
+      title: t('aiMlPage.services.items.4.title'),
+      description: t('aiMlPage.services.items.4.description'),
+      features: [
+        t('aiMlPage.services.items.4.features.0'),
+        t('aiMlPage.services.items.4.features.1'),
+        t('aiMlPage.services.items.4.features.2'),
+        t('aiMlPage.services.items.4.features.3')
+      ]
+    },
+    {
+      icon: "🤖",
+      title: t('aiMlPage.services.items.5.title'),
+      description: t('aiMlPage.services.items.5.description'),
+      features: [
+        t('aiMlPage.services.items.5.features.0'),
+        t('aiMlPage.services.items.5.features.1'),
+        t('aiMlPage.services.items.5.features.2'),
+        t('aiMlPage.services.items.5.features.3')
+      ]
+    },
+    {
+      icon: "🛡️",
+      title: t('aiMlPage.services.items.6.title'),
+      description: t('aiMlPage.services.items.6.description'),
+      features: [
+        t('aiMlPage.services.items.6.features.0'),
+        t('aiMlPage.services.items.6.features.1'),
+        t('aiMlPage.services.items.6.features.2'),
+        t('aiMlPage.services.items.6.features.3')
+      ]
+    },
+    {
+      icon: "📊",
+      title: t('aiMlPage.services.items.7.title'),
+      description: t('aiMlPage.services.items.7.description'),
+      features: [
+        t('aiMlPage.services.items.7.features.0'),
+        t('aiMlPage.services.items.7.features.1'),
+        t('aiMlPage.services.items.7.features.2'),
+        t('aiMlPage.services.items.7.features.3')
+      ]
+    }
+  ];
 
+  // Tech Stack
   const techStack = {
     frameworks: [
-      { name: "TensorFlow", level: "Advanced" },
-      { name: "PyTorch", level: "Advanced" },
-      { name: "Scikit-learn", level: "Expert" },
-      { name: "Keras", level: "Advanced" },
-      { name: "OpenCV", level: "Advanced" },
-      { name: "Hugging Face", level: "Intermediate" }
+      { name: "TensorFlow", level: t('aiMlPage.techStack.levels.advanced') },
+      { name: "PyTorch", level: t('aiMlPage.techStack.levels.advanced') },
+      { name: "Scikit-learn", level: t('aiMlPage.techStack.levels.expert') },
+      { name: "Keras", level: t('aiMlPage.techStack.levels.advanced') },
+      { name: "OpenCV", level: t('aiMlPage.techStack.levels.advanced') },
+      { name: "Hugging Face", level: t('aiMlPage.techStack.levels.intermediate') }
     ],
     languages: [
-      { name: "Python", level: "Expert" },
-      { name: "R", level: "Advanced" },
-      { name: "Julia", level: "Intermediate" },
-      { name: "SQL", level: "Advanced" },
-      { name: "Java", level: "Intermediate" },
-      { name: "C++", level: "Intermediate" }
+      { name: "Python", level: t('aiMlPage.techStack.levels.expert') },
+      { name: "R", level: t('aiMlPage.techStack.levels.advanced') },
+      { name: "Julia", level: t('aiMlPage.techStack.levels.intermediate') },
+      { name: "SQL", level: t('aiMlPage.techStack.levels.advanced') },
+      { name: "Java", level: t('aiMlPage.techStack.levels.intermediate') },
+      { name: "C++", level: t('aiMlPage.techStack.levels.intermediate') }
     ],
     platforms: [
-      { name: "AWS SageMaker", level: "Advanced" },
-      { name: "Google AI Platform", level: "Advanced" },
-      { name: "Azure ML", level: "Intermediate" },
-      { name: "Databricks", level: "Intermediate" },
-      { name: "Jupyter", level: "Expert" },
-      { name: "Docker", level: "Advanced" }
+      { name: "AWS SageMaker", level: t('aiMlPage.techStack.levels.advanced') },
+      { name: "Google AI Platform", level: t('aiMlPage.techStack.levels.advanced') },
+      { name: "Azure ML", level: t('aiMlPage.techStack.levels.intermediate') },
+      { name: "Databricks", level: t('aiMlPage.techStack.levels.intermediate') },
+      { name: "Jupyter", level: t('aiMlPage.techStack.levels.expert') },
+      { name: "Docker", level: t('aiMlPage.techStack.levels.advanced') }
     ]
   };
 
- const aiProjects = [
-  {
-    id: 1,
-    title: "Predictive Maintenance System",
-    description: "AI-powered system predicting equipment failures in manufacturing plants",
-    category: "Industrial AI",
-    tech: ["TensorFlow", "Python", "IoT Sensors", "Cloud ML"],
-    results: ["30% reduction in downtime", "25% cost savings", "99% prediction accuracy"]
-  },
-  {
-    id: 2,
-    title: "Healthcare Diagnosis Assistant",
-    description: "Deep learning system for early detection of medical conditions from scans",
-    category: "Healthcare AI",
-    tech: ["PyTorch", "Computer Vision", "DICOM", "HIPAA Compliant"],
-    results: ["95% detection accuracy", "40% faster diagnosis", "FDA-approved"]
-  },
-  {
-    id: 3,
-    title: "Customer Sentiment Analyzer",
-    description: "Real-time sentiment analysis platform for customer feedback and reviews",
-    category: "NLP Solution",
-    tech: ["BERT", "Python", "AWS", "Real-time API"],
-    results: ["10M+ reviews processed", "Real-time insights", "85% sentiment accuracy"]
-  },
-  {
-    id: 4,
-    title: "Intelligent Video Surveillance",
-    description: "AI-powered security system for real-time threat detection and behavior analysis",
-    category: "Security AI",
-    tech: ["YOLOv8", "OpenCV", "RTSP", "Edge Computing"],
-    results: ["99.8% threat detection accuracy", "Real-time alerts", "40% reduction in security costs"]
-  },
-  {
-    id: 5,
-    title: "Personalized Learning Platform",
-    description: "Adaptive AI tutor that customizes educational content based on student performance",
-    category: "EdTech AI",
-    tech: ["Transformer Models", "React", "MongoDB", "Azure ML"],
-    results: ["45% improvement in test scores", "Personalized learning paths", "50K+ active students"]
-  },
-  {
-    id: 6,
-    title: "Climate Prediction System",
-    description: "AI model for predicting extreme weather events and climate patterns",
-    category: "Climate AI",
-    tech: ["LSTM Networks", "Python", "Satellite Data", "AWS S3"],
-    results: ["92% prediction accuracy", "7-day advance warnings", "Used by 50+ governments"]
-  },
-  {
-    id: 7,
-    title: "Automated Code Review",
-    description: "AI assistant for detecting bugs, vulnerabilities, and code quality issues",
-    category: "DevOps AI",
-    tech: ["CodeBERT", "GitHub API", "Docker", "FastAPI"],
-    results: ["80% reduction in bugs", "60% faster code reviews", "Integrated with 1000+ repos"]
-  },
-  {
-    id: 8,
-    title: "Intelligent Recruitment Platform",
-    description: "AI-powered talent matching and candidate screening system for HR departments",
-    category: "HR Tech AI",
-    tech: ["Natural Language Processing", "Python", "PostgreSQL", "REST API"],
-    results: ["75% faster hiring process", "90% candidate-job match accuracy", "30% reduction in turnover"]
-  }
-];
+  // AI Projects from translations
+  const aiProjects = [
+    {
+      id: 1,
+      title: t('aiMlPage.projects.items.0.title'),
+      description: t('aiMlPage.projects.items.0.description'),
+      category: t('aiMlPage.projects.items.0.category'),
+      tech: ["TensorFlow", "Python", "IoT Sensors", "Cloud ML"],
+      results: [
+        t('aiMlPage.projects.items.0.results.0'),
+        t('aiMlPage.projects.items.0.results.1'),
+        t('aiMlPage.projects.items.0.results.2')
+      ]
+    },
+    {
+      id: 2,
+      title: t('aiMlPage.projects.items.1.title'),
+      description: t('aiMlPage.projects.items.1.description'),
+      category: t('aiMlPage.projects.items.1.category'),
+      tech: ["PyTorch", "Computer Vision", "DICOM", "HIPAA Compliant"],
+      results: [
+        t('aiMlPage.projects.items.1.results.0'),
+        t('aiMlPage.projects.items.1.results.1'),
+        t('aiMlPage.projects.items.1.results.2')
+      ]
+    },
+    {
+      id: 3,
+      title: t('aiMlPage.projects.items.2.title'),
+      description: t('aiMlPage.projects.items.2.description'),
+      category: t('aiMlPage.projects.items.2.category'),
+      tech: ["BERT", "Python", "AWS", "Real-time API"],
+      results: [
+        t('aiMlPage.projects.items.2.results.0'),
+        t('aiMlPage.projects.items.2.results.1'),
+        t('aiMlPage.projects.items.2.results.2')
+      ]
+    },
+    {
+      id: 4,
+      title: t('aiMlPage.projects.items.3.title'),
+      description: t('aiMlPage.projects.items.3.description'),
+      category: t('aiMlPage.projects.items.3.category'),
+      tech: ["YOLOv8", "OpenCV", "RTSP", "Edge Computing"],
+      results: [
+        t('aiMlPage.projects.items.3.results.0'),
+        t('aiMlPage.projects.items.3.results.1'),
+        t('aiMlPage.projects.items.3.results.2')
+      ]
+    },
+    {
+      id: 5,
+      title: t('aiMlPage.projects.items.4.title'),
+      description: t('aiMlPage.projects.items.4.description'),
+      category: t('aiMlPage.projects.items.4.category'),
+      tech: ["Transformer Models", "React", "MongoDB", "Azure ML"],
+      results: [
+        t('aiMlPage.projects.items.4.results.0'),
+        t('aiMlPage.projects.items.4.results.1'),
+        t('aiMlPage.projects.items.4.results.2')
+      ]
+    },
+    {
+      id: 6,
+      title: t('aiMlPage.projects.items.5.title'),
+      description: t('aiMlPage.projects.items.5.description'),
+      category: t('aiMlPage.projects.items.5.category'),
+      tech: ["LSTM Networks", "Python", "Satellite Data", "AWS S3"],
+      results: [
+        t('aiMlPage.projects.items.5.results.0'),
+        t('aiMlPage.projects.items.5.results.1'),
+        t('aiMlPage.projects.items.5.results.2')
+      ]
+    },
+    {
+      id: 7,
+      title: t('aiMlPage.projects.items.6.title'),
+      description: t('aiMlPage.projects.items.6.description'),
+      category: t('aiMlPage.projects.items.6.category'),
+      tech: ["CodeBERT", "GitHub API", "Docker", "FastAPI"],
+      results: [
+        t('aiMlPage.projects.items.6.results.0'),
+        t('aiMlPage.projects.items.6.results.1'),
+        t('aiMlPage.projects.items.6.results.2')
+      ]
+    },
+    {
+      id: 8,
+      title: t('aiMlPage.projects.items.7.title'),
+      description: t('aiMlPage.projects.items.7.description'),
+      category: t('aiMlPage.projects.items.7.category'),
+      tech: ["Natural Language Processing", "Python", "PostgreSQL", "REST API"],
+      results: [
+        t('aiMlPage.projects.items.7.results.0'),
+        t('aiMlPage.projects.items.7.results.1'),
+        t('aiMlPage.projects.items.7.results.2')
+      ]
+    }
+  ];
 
+  // Process Steps from translations
   const processSteps = [
     {
       step: "01",
-      title: "Problem Definition",
-      description: "Understand business challenges and define clear AI/ML objectives",
+      title: t('aiMlPage.process.steps.0.title'),
+      description: t('aiMlPage.process.steps.0.description'),
       icon: "🎯"
     },
     {
       step: "02",
-      title: "Data Collection & Preparation",
-      description: "Gather, clean, and preprocess data for model training",
+      title: t('aiMlPage.process.steps.1.title'),
+      description: t('aiMlPage.process.steps.1.description'),
       icon: "📊"
     },
     {
       step: "03",
-      title: "Model Development",
-      description: "Design, train, and validate machine learning models",
+      title: t('aiMlPage.process.steps.2.title'),
+      description: t('aiMlPage.process.steps.2.description'),
       icon: "🧪"
     },
     {
       step: "04",
-      title: "Testing & Validation",
-      description: "Rigorous testing and validation against real-world scenarios",
+      title: t('aiMlPage.process.steps.3.title'),
+      description: t('aiMlPage.process.steps.3.description'),
       icon: "🔬"
     },
     {
       step: "05",
-      title: "Deployment & Integration",
-      description: "Deploy models to production and integrate with existing systems",
+      title: t('aiMlPage.process.steps.4.title'),
+      description: t('aiMlPage.process.steps.4.description'),
       icon: "🚀"
     },
     {
       step: "06",
-      title: "Monitoring & Optimization",
-      description: "Continuous monitoring, retraining, and performance optimization",
+      title: t('aiMlPage.process.steps.5.title'),
+      description: t('aiMlPage.process.steps.5.description'),
       icon: "📈"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen bg-white overflow-x-hidden" dir="ltr">
       {/* ===== HERO SECTION ===== */}
       <section className="relative overflow-hidden py-20 md:py-32">
         <motion.div 
@@ -253,7 +330,7 @@ function Ai_ml() {
                 variants={fadeInUp}
               >
                 <span className="text-white">
-                  Artificial Intelligence
+                  {t('aiMlPage.hero.title1')}
                 </span>
                 <br />
                 <motion.span 
@@ -262,7 +339,7 @@ function Ai_ml() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.3, duration: 0.5 }}
                 >
-                  & Machine Learning
+                  {t('aiMlPage.hero.title2')}
                 </motion.span>
               </motion.h1>
 
@@ -271,8 +348,7 @@ function Ai_ml() {
                 variants={fadeInUp}
                 transition={{ delay: 0.2 }}
               >
-                We build intelligent systems that transform data into actionable insights,
-                automate complex processes, and drive innovation with cutting-edge AI solutions.
+                {t('aiMlPage.hero.description')}
               </motion.p>
             </motion.div>
 
@@ -316,7 +392,12 @@ function Ai_ml() {
             animate="visible"
             variants={staggerContainer}
           >
-            {[1, 2, 3, 4].map((item, index) => (
+            {[
+              t('aiMlPage.stats.mlModels'),
+              t('aiMlPage.stats.accuracy'),
+              t('aiMlPage.stats.efficiency'),
+              t('aiMlPage.stats.support')
+            ].map((item, index) => (
               <motion.div 
                 key={index}
                 className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-xl hover:border-red-400 hover:shadow-2xl transition-all hover:scale-105"
@@ -355,7 +436,7 @@ function Ai_ml() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: index * 0.1 + 0.7 }}
                 >
-                  {index === 0 ? "ML Models" : index === 1 ? "Accuracy Rate" : index === 2 ? "Efficiency Gain" : "AI Support"}
+                  {item}
                 </motion.div>
               </motion.div>
             ))}
@@ -390,7 +471,7 @@ function Ai_ml() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-white leading-tight">
-              AI & ML <span className="text-red-400">Services</span>
+              {t('aiMlPage.services.title')}
             </h2>
             <motion.p 
               className="text-white/90 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed"
@@ -399,7 +480,7 @@ function Ai_ml() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              Comprehensive AI solutions that transform your business with intelligent automation and insights
+              {t('aiMlPage.services.subtitle')}
             </motion.p>
           </motion.div>
 
@@ -540,7 +621,7 @@ function Ai_ml() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Advanced AI <span className="text-red-400">Technology Stack</span>
+              {t('aiMlPage.techStack.title')}
             </h2>
             <motion.p 
               className="text-xl text-gray-200 max-w-3xl mx-auto"
@@ -549,7 +630,7 @@ function Ai_ml() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              We leverage cutting-edge technologies to build robust AI solutions
+              {t('aiMlPage.techStack.subtitle')}
             </motion.p>
           </motion.div>
           
@@ -574,8 +655,9 @@ function Ai_ml() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {tab === 'frameworks' ? 'ML Frameworks' : 
-                   tab === 'languages' ? 'Programming' : 'Platforms'}
+                  {tab === 'frameworks' ? t('aiMlPage.techStack.tabs.frameworks') : 
+                   tab === 'languages' ? t('aiMlPage.techStack.tabs.languages') : 
+                   t('aiMlPage.techStack.tabs.platforms')}
                 </motion.button>
               ))}
             </div>
@@ -615,8 +697,8 @@ function Ai_ml() {
                   </motion.div>
                   <motion.div 
                     className={`text-sm font-medium ${
-                      tech.level === 'Expert' ? 'text-green-400' :
-                      tech.level === 'Advanced' ? 'text-red-400' :
+                      tech.level === t('aiMlPage.techStack.levels.expert') ? 'text-green-400' :
+                      tech.level === t('aiMlPage.techStack.levels.advanced') ? 'text-red-400' :
                       'text-amber-400'
                     }`}
                     initial={{ opacity: 0 }}
@@ -658,7 +740,7 @@ function Ai_ml() {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-                Our AI <span className="text-red-600">Development Process</span>
+                {t('aiMlPage.process.title')}
               </h2>
               <motion.p 
                 className="text-xl text-gray-600 max-w-3xl mx-auto"
@@ -667,7 +749,7 @@ function Ai_ml() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.6 }}
               >
-                A structured methodology that ensures successful AI implementation and measurable results
+                {t('aiMlPage.process.subtitle')}
               </motion.p>
             </motion.div>
             
@@ -772,7 +854,7 @@ function Ai_ml() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              AI <span className="text-red-600">Success Stories</span>
+              {t('aiMlPage.projects.title')}
             </h2>
             <motion.p 
               className="text-white max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed"
@@ -781,7 +863,7 @@ function Ai_ml() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6 }}
             >
-              Real-world AI solutions delivering transformative business impact
+              {t('aiMlPage.projects.subtitle')}
             </motion.p>
           </motion.div>
 
@@ -872,7 +954,9 @@ function Ai_ml() {
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.2 }}
                         >
-                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Technologies:</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">
+                            {t('aiMlPage.projects.technologies')}
+                          </h4>
                           <div className="flex flex-wrap gap-1.5">
                             {project.tech.map((tech, idx) => (
                               <motion.span 
@@ -894,7 +978,9 @@ function Ai_ml() {
                           animate={{ opacity: 1 }}
                           transition={{ delay: 0.4 }}
                         >
-                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Results:</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">
+                            {t('aiMlPage.projects.results')}
+                          </h4>
                           <ul className="space-y-2">
                             {project.results.map((result, idx) => (
                               <motion.li 
@@ -956,7 +1042,8 @@ function Ai_ml() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            Technology Is Everywhere. <span className="text-red-400">Ownership Is Rare</span>.
+            {t('aiMlPage.cta.title1')}{" "}
+            <span className="text-red-400">{t('aiMlPage.cta.title2')}</span>
           </motion.h2>
           <motion.p 
             className="text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4"
@@ -965,7 +1052,7 @@ function Ai_ml() {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Partner with a team that stays accountable from start to scale.
+            {t('aiMlPage.cta.description')}
           </motion.p>
           
           <motion.div 
@@ -991,7 +1078,7 @@ function Ai_ml() {
               }}
               whileTap={{ scale: 0.95 }}
             >
-              Let's Talk
+              {t('aiMlPage.cta.button')}
               <motion.svg
                 className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
                            group-hover:opacity-100 group-hover:translate-x-0
@@ -1025,7 +1112,7 @@ function Ai_ml() {
             viewport={{ once: true }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-            No bots. No runaround. Just real conversations with accountable partners.
+            {t('aiMlPage.cta.subtext')}
           </motion.p>
         </div>
       </motion.section>

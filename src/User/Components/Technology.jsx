@@ -1,273 +1,468 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
-function Technology() {
+function TechnologyConsulting() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('strategy');
   const [activeService, setActiveService] = useState(null);
   const [activeStudy, setActiveStudy] = useState(null);
+  const [isVisible, setIsVisible] = useState({});
+  const [stats, setStats] = useState({
+    clients: 0,
+    experience: 0,
+    savings: 0,
+    retention: 0
+  });
+
+  const sectionsRef = useRef([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('data-section-id');
+            setIsVisible(prev => ({ ...prev, [id]: true }));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '-50px' }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Animate stats counter
+  useEffect(() => {
+    if (!isVisible.hero) return;
+
+    const finalStats = {
+      clients: 100,
+      experience: 15,
+      savings: 40,
+      retention: 98
+    };
+
+    const duration = 2000;
+    const steps = 60;
+    const interval = duration / steps;
+
+    const counters = {};
+    Object.keys(finalStats).forEach(key => {
+      counters[key] = setInterval(() => {
+        setStats(prev => {
+          const current = prev[key];
+          const target = finalStats[key];
+          const increment = (target - current) / 10;
+          return {
+            ...prev,
+            [key]: current + increment > target ? target : current + increment
+          };
+        });
+      }, interval);
+    });
+
+    setTimeout(() => {
+      Object.values(counters).forEach(clearInterval);
+      setStats(finalStats);
+    }, duration);
+
+    return () => {
+      Object.values(counters).forEach(clearInterval);
+    };
+  }, [isVisible.hero]);
 
   const consultingServices = [
     {
       icon: "🎯",
-      title: "Digital Transformation",
-      description: "Guide your organization through comprehensive digital transformation initiatives",
-      features: ["Strategy Development", "Change Management", "Technology Roadmap", "ROI Analysis", "Implementation Planning"]
+      title: t('consultingPage.services.items.0.title'),
+      description: t('consultingPage.services.items.0.description'),
+      features: [
+        t('consultingPage.services.items.0.features.0'),
+        t('consultingPage.services.items.0.features.1'),
+        t('consultingPage.services.items.0.features.2'),
+        t('consultingPage.services.items.0.features.3'),
+        t('consultingPage.services.items.0.features.4')
+      ]
     },
     {
       icon: "📊",
-      title: "IT Strategy & Governance",
-      description: "Develop IT strategies aligned with business objectives and governance frameworks",
-      features: ["IT Governance", "Strategic Planning", "Budget Optimization", "Vendor Management", "Performance Metrics"]
+      title: t('consultingPage.services.items.1.title'),
+      description: t('consultingPage.services.items.1.description'),
+      features: [
+        t('consultingPage.services.items.1.features.0'),
+        t('consultingPage.services.items.1.features.1'),
+        t('consultingPage.services.items.1.features.2'),
+        t('consultingPage.services.items.1.features.3'),
+        t('consultingPage.services.items.1.features.4')
+      ]
     },
     {
       icon: "🔍",
-      title: "Technology Assessment",
-      description: "Comprehensive evaluation of your current technology stack and capabilities",
-      features: ["Current State Analysis", "Gap Assessment", "Technology Selection", "Vendor Evaluation", "Best Practices"]
+      title: t('consultingPage.services.items.2.title'),
+      description: t('consultingPage.services.items.2.description'),
+      features: [
+        t('consultingPage.services.items.2.features.0'),
+        t('consultingPage.services.items.2.features.1'),
+        t('consultingPage.services.items.2.features.2'),
+        t('consultingPage.services.items.2.features.3'),
+        t('consultingPage.services.items.2.features.4')
+      ]
     },
     {
       icon: "🚀",
-      title: "Cloud Strategy",
-      description: "Strategic planning for cloud adoption, migration, and optimization",
-      features: ["Cloud Readiness", "Migration Planning", "Multi-cloud Strategy", "Cost Optimization", "Security Framework"]
+      title: t('consultingPage.services.items.3.title'),
+      description: t('consultingPage.services.items.3.description'),
+      features: [
+        t('consultingPage.services.items.3.features.0'),
+        t('consultingPage.services.items.3.features.1'),
+        t('consultingPage.services.items.3.features.2'),
+        t('consultingPage.services.items.3.features.3'),
+        t('consultingPage.services.items.3.features.4')
+      ]
     },
     {
       icon: "📈",
-      title: "Business Process Optimization",
-      description: "Streamline operations and improve efficiency through process redesign",
-      features: ["Process Mapping", "Automation Opportunities", "Workflow Analysis", "KPI Definition", "Continuous Improvement"]
+      title: t('consultingPage.services.items.4.title'),
+      description: t('consultingPage.services.items.4.description'),
+      features: [
+        t('consultingPage.services.items.4.features.0'),
+        t('consultingPage.services.items.4.features.1'),
+        t('consultingPage.services.items.4.features.2'),
+        t('consultingPage.services.items.4.features.3'),
+        t('consultingPage.services.items.4.features.4')
+      ]
     },
     {
       icon: "🛡️",
-      title: "Cybersecurity Advisory",
-      description: "Strategic guidance to strengthen your security posture and compliance",
-      features: ["Risk Assessment", "Security Framework", "Compliance Strategy", "Incident Response", "Security Awareness"]
+      title: t('consultingPage.services.items.5.title'),
+      description: t('consultingPage.services.items.5.description'),
+      features: [
+        t('consultingPage.services.items.5.features.0'),
+        t('consultingPage.services.items.5.features.1'),
+        t('consultingPage.services.items.5.features.2'),
+        t('consultingPage.services.items.5.features.3'),
+        t('consultingPage.services.items.5.features.4')
+      ]
     },
     {
       icon: "🤖",
-      title: "AI & Analytics Strategy",
-      description: "Strategic planning for AI implementation and data-driven decision making",
-      features: ["AI Roadmap", "Data Strategy", "Use Case Identification", "ROI Analysis", "Implementation Guidance"]
+      title: t('consultingPage.services.items.6.title'),
+      description: t('consultingPage.services.items.6.description'),
+      features: [
+        t('consultingPage.services.items.6.features.0'),
+        t('consultingPage.services.items.6.features.1'),
+        t('consultingPage.services.items.6.features.2'),
+        t('consultingPage.services.items.6.features.3'),
+        t('consultingPage.services.items.6.features.4')
+      ]
     },
     {
       icon: "👥",
-      title: "Organizational Change",
-      description: "Manage people and cultural aspects of technology transformations",
-      features: ["Change Management", "Training Programs", "Communication Strategy", "Stakeholder Engagement", "Culture Assessment"]
+      title: t('consultingPage.services.items.7.title'),
+      description: t('consultingPage.services.items.7.description'),
+      features: [
+        t('consultingPage.services.items.7.features.0'),
+        t('consultingPage.services.items.7.features.1'),
+        t('consultingPage.services.items.7.features.2'),
+        t('consultingPage.services.items.7.features.3'),
+        t('consultingPage.services.items.7.features.4')
+      ]
     }
   ];
 
   const expertiseAreas = {
     strategy: [
-      { name: "Digital Strategy", level: "Expert" },
-      { name: "Business Analysis", level: "Advanced" },
-      { name: "IT Governance", level: "Expert" },
-      { name: "Vendor Selection", level: "Advanced" },
-      { name: "Cost Optimization", level: "Expert" },
-      { name: "Risk Management", level: "Advanced" }
+      { name: t('consultingPage.expertise.strategy.items.0.name'), level: t('consultingPage.expertise.levels.expert') },
+      { name: t('consultingPage.expertise.strategy.items.1.name'), level: t('consultingPage.expertise.levels.advanced') },
+      { name: t('consultingPage.expertise.strategy.items.2.name'), level: t('consultingPage.expertise.levels.expert') },
+      { name: t('consultingPage.expertise.strategy.items.3.name'), level: t('consultingPage.expertise.levels.advanced') },
+      { name: t('consultingPage.expertise.strategy.items.4.name'), level: t('consultingPage.expertise.levels.expert') },
+      { name: t('consultingPage.expertise.strategy.items.5.name'), level: t('consultingPage.expertise.levels.advanced') }
     ],
     architecture: [
-      { name: "Enterprise Architecture", level: "Expert" },
-      { name: "Microservices", level: "Advanced" },
-      { name: "API Strategy", level: "Expert" },
-      { name: "System Integration", level: "Advanced" },
-      { name: "Scalability Design", level: "Expert" },
-      { name: "Legacy Modernization", level: "Advanced" }
+      { name: t('consultingPage.expertise.architecture.items.0.name'), level: t('consultingPage.expertise.levels.expert') },
+      { name: t('consultingPage.expertise.architecture.items.1.name'), level: t('consultingPage.expertise.levels.advanced') },
+      { name: t('consultingPage.expertise.architecture.items.2.name'), level: t('consultingPage.expertise.levels.expert') },
+      { name: t('consultingPage.expertise.architecture.items.3.name'), level: t('consultingPage.expertise.levels.advanced') },
+      { name: t('consultingPage.expertise.architecture.items.4.name'), level: t('consultingPage.expertise.levels.expert') },
+      { name: t('consultingPage.expertise.architecture.items.5.name'), level: t('consultingPage.expertise.levels.advanced') }
     ],
     cloud: [
-      { name: "AWS", level: "Expert" },
-      { name: "Azure", level: "Advanced" },
-      { name: "Google Cloud", level: "Intermediate" },
-      { name: "Cloud Migration", level: "Expert" },
-      { name: "Container Strategy", level: "Advanced" },
-      { name: "Serverless Architecture", level: "Advanced" }
+      { name: t('consultingPage.expertise.cloud.items.0.name'), level: t('consultingPage.expertise.levels.expert') },
+      { name: t('consultingPage.expertise.cloud.items.1.name'), level: t('consultingPage.expertise.levels.advanced') },
+      { name: t('consultingPage.expertise.cloud.items.2.name'), level: t('consultingPage.expertise.levels.intermediate') },
+      { name: t('consultingPage.expertise.cloud.items.3.name'), level: t('consultingPage.expertise.levels.expert') },
+      { name: t('consultingPage.expertise.cloud.items.4.name'), level: t('consultingPage.expertise.levels.advanced') },
+      { name: t('consultingPage.expertise.cloud.items.5.name'), level: t('consultingPage.expertise.levels.advanced') }
     ]
   };
 
   const caseStudies = [
     {
       id: 1,
-      title: "Global Retail Digital Transformation",
-      description: "Led digital transformation initiative for Fortune 500 retail chain across 30 countries",
-      category: "Digital Transformation",
+      title: t('consultingPage.caseStudies.items.0.title'),
+      description: t('consultingPage.caseStudies.items.0.description'),
+      category: t('consultingPage.caseStudies.items.0.category'),
       tech: ["Cloud Migration", "Microservices", "AI/ML", "IoT", "Mobile Apps"],
-      results: ["$500M annual cost savings", "Customer satisfaction increased by 40%", "Digital revenue grew by 300%"]
+      results: [
+        t('consultingPage.caseStudies.items.0.results.0'),
+        t('consultingPage.caseStudies.items.0.results.1'),
+        t('consultingPage.caseStudies.items.0.results.2')
+      ]
     },
     {
       id: 2,
-      title: "Healthcare System Modernization",
-      description: "Modernized legacy healthcare system for better patient care and operational efficiency",
-      category: "Healthcare IT",
+      title: t('consultingPage.caseStudies.items.1.title'),
+      description: t('consultingPage.caseStudies.items.1.description'),
+      category: t('consultingPage.caseStudies.items.1.category'),
       tech: ["Electronic Health Records", "Telemedicine", "Data Analytics", "HIPAA Compliance", "Cloud Infrastructure"],
-      results: ["Patient wait times reduced by 60%", "Operational costs decreased by 35%", "Patient outcomes improved by 25%"]
+      results: [
+        t('consultingPage.caseStudies.items.1.results.0'),
+        t('consultingPage.caseStudies.items.1.results.1'),
+        t('consultingPage.caseStudies.items.1.results.2')
+      ]
     },
     {
       id: 3,
-      title: "Financial Services Innovation",
-      description: "Developed innovative fintech solutions for leading banking institution",
-      category: "FinTech",
+      title: t('consultingPage.caseStudies.items.2.title'),
+      description: t('consultingPage.caseStudies.items.2.description'),
+      category: t('consultingPage.caseStudies.items.2.category'),
       tech: ["Blockchain", "Open Banking APIs", "AI Fraud Detection", "Mobile Banking", "Cloud Security"],
-      results: ["Fraud detection accuracy improved to 99.9%", "Customer acquisition increased by 200%", "Operational efficiency improved by 50%"]
+      results: [
+        t('consultingPage.caseStudies.items.2.results.0'),
+        t('consultingPage.caseStudies.items.2.results.1'),
+        t('consultingPage.caseStudies.items.2.results.2')
+      ]
     },
     {
       id: 4,
-      title: "Manufacturing 4.0 Implementation",
-      description: "Implemented Industry 4.0 solutions for smart manufacturing operations",
-      category: "Smart Manufacturing",
+      title: t('consultingPage.caseStudies.items.3.title'),
+      description: t('consultingPage.caseStudies.items.3.description'),
+      category: t('consultingPage.caseStudies.items.3.category'),
       tech: ["IoT Sensors", "Predictive Maintenance", "Robotic Automation", "Data Analytics", "Supply Chain AI"],
-      results: ["Production efficiency increased by 45%", "Equipment downtime reduced by 70%", "Quality defects decreased by 80%"]
+      results: [
+        t('consultingPage.caseStudies.items.3.results.0'),
+        t('consultingPage.caseStudies.items.3.results.1'),
+        t('consultingPage.caseStudies.items.3.results.2')
+      ]
     },
     {
       id: 5,
-      title: "Education Technology Platform",
-      description: "Built comprehensive edtech platform for global education provider",
-      category: "EdTech",
+      title: t('consultingPage.caseStudies.items.4.title'),
+      description: t('consultingPage.caseStudies.items.4.description'),
+      category: t('consultingPage.caseStudies.items.4.category'),
       tech: ["Learning Management System", "AI Tutoring", "Video Streaming", "Assessment Tools", "Mobile Learning"],
-      results: ["Student engagement increased by 300%", "Learning outcomes improved by 40%", "Scaled to 2M+ students globally"]
+      results: [
+        t('consultingPage.caseStudies.items.4.results.0'),
+        t('consultingPage.caseStudies.items.4.results.1'),
+        t('consultingPage.caseStudies.items.4.results.2')
+      ]
     },
     {
       id: 6,
-      title: "Energy Sector Digitalization",
-      description: "Digital transformation for renewable energy company's operations",
-      category: "Energy Tech",
+      title: t('consultingPage.caseStudies.items.5.title'),
+      description: t('consultingPage.caseStudies.items.5.description'),
+      category: t('consultingPage.caseStudies.items.5.category'),
       tech: ["Smart Grid", "Predictive Analytics", "IoT Monitoring", "Cloud Computing", "Data Visualization"],
-      results: ["Energy production optimized by 30%", "Maintenance costs reduced by 50%", "Carbon footprint reduced by 25%"]
+      results: [
+        t('consultingPage.caseStudies.items.5.results.0'),
+        t('consultingPage.caseStudies.items.5.results.1'),
+        t('consultingPage.caseStudies.items.5.results.2')
+      ]
     },
     {
       id: 7,
-      title: "Logistics & Supply Chain Optimization",
-      description: "Optimized global supply chain operations with AI and data analytics",
-      category: "Supply Chain",
+      title: t('consultingPage.caseStudies.items.6.title'),
+      description: t('consultingPage.caseStudies.items.6.description'),
+      category: t('consultingPage.caseStudies.items.6.category'),
       tech: ["Supply Chain AI", "Route Optimization", "Inventory Management", "Blockchain Tracking", "Real-time Analytics"],
-      results: ["Delivery times reduced by 40%", "Supply chain costs decreased by 35%", "Inventory accuracy improved to 99.5%"]
+      results: [
+        t('consultingPage.caseStudies.items.6.results.0'),
+        t('consultingPage.caseStudies.items.6.results.1'),
+        t('consultingPage.caseStudies.items.6.results.2')
+      ]
     },
     {
       id: 8,
-      title: "Media & Entertainment Platform",
-      description: "Built next-generation media platform for content streaming and distribution",
-      category: "Media Tech",
+      title: t('consultingPage.caseStudies.items.7.title'),
+      description: t('consultingPage.caseStudies.items.7.description'),
+      category: t('consultingPage.caseStudies.items.7.category'),
       tech: ["Content Delivery Network", "Video Streaming", "Personalization AI", "Digital Rights Management", "Analytics"],
-      results: ["Viewer engagement increased by 250%", "Content delivery costs reduced by 40%", "Subscriber growth of 300%"]
+      results: [
+        t('consultingPage.caseStudies.items.7.results.0'),
+        t('consultingPage.caseStudies.items.7.results.1'),
+        t('consultingPage.caseStudies.items.7.results.2')
+      ]
     }
   ];
 
   const advisoryProcess = [
     {
       step: "01",
-      title: "Discovery & Assessment",
-      description: "Comprehensive analysis of current technology landscape and business needs",
+      title: t('consultingPage.process.steps.0.title'),
+      description: t('consultingPage.process.steps.0.description'),
       icon: "🔍"
     },
     {
       step: "02",
-      title: "Strategy Development",
-      description: "Creating tailored technology roadmap aligned with business objectives",
+      title: t('consultingPage.process.steps.1.title'),
+      description: t('consultingPage.process.steps.1.description'),
       icon: "🗺️"
     },
     {
       step: "03",
-      title: "Architecture Design",
-      description: "Designing scalable, secure, and future-proof technical solutions",
+      title: t('consultingPage.process.steps.2.title'),
+      description: t('consultingPage.process.steps.2.description'),
       icon: "🏛️"
     },
     {
       step: "04",
-      title: "Implementation Planning",
-      description: "Detailed execution plan with timelines, resources, and milestones",
+      title: t('consultingPage.process.steps.3.title'),
+      description: t('consultingPage.process.steps.3.description'),
       icon: "📅"
     },
     {
       step: "05",
-      title: "Change Management",
-      description: "Guiding teams through technology adoption and process changes",
+      title: t('consultingPage.process.steps.4.title'),
+      description: t('consultingPage.process.steps.4.description'),
       icon: "👥"
     },
     {
       step: "06",
-      title: "Ongoing Advisory",
-      description: "Continuous support, optimization, and strategic guidance",
+      title: t('consultingPage.process.steps.5.title'),
+      description: t('consultingPage.process.steps.5.description'),
       icon: "🔄"
     }
   ];
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 12
-      }
-    }
-  };
-
-  const cardVariants = {
-    initial: { scale: 1 },
-    hover: {
-      scale: 1.02,
-      transition: {
-        type: "spring",
-        stiffness: 300,
-        damping: 15
-      }
-    }
-  };
-
-  const expandCardVariants = {
-    initial: { height: "140px" },
-    expanded: {
-      height: "auto",
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 15
-      }
-    }
-  };
-
-  const fadeInUpVariants = {
-    initial: { y: 30, opacity: 0 },
-    animate: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const slideInVariants = {
-    initial: { x: -50, opacity: 0 },
-    animate: {
-      x: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
+      {/* Custom Animation Styles */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slideInLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+        
+        @keyframes pulse {
+          0%, 100% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.8;
+          }
+        }
+        
+        @keyframes gradient {
+          0% { background-position: 0% center; }
+          100% { background-position: 200% center; }
+        }
+        
+        @keyframes shimmer {
+          0% { background-position: -1000px 0; }
+          100% { background-position: 1000px 0; }
+        }
+        
+        .animate-on-scroll {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-on-scroll.visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .animate-stagger > * {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-stagger.visible > *:nth-child(1) { transition-delay: 0.1s; }
+        .animate-stagger.visible > *:nth-child(2) { transition-delay: 0.2s; }
+        .animate-stagger.visible > *:nth-child(3) { transition-delay: 0.3s; }
+        .animate-stagger.visible > *:nth-child(4) { transition-delay: 0.4s; }
+        .animate-stagger.visible > *:nth-child(5) { transition-delay: 0.5s; }
+        .animate-stagger.visible > *:nth-child(6) { transition-delay: 0.6s; }
+        .animate-stagger.visible > *:nth-child(7) { transition-delay: 0.7s; }
+        .animate-stagger.visible > *:nth-child(8) { transition-delay: 0.8s; }
+        
+        .animate-stagger.visible > * {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
+        }
+        
+        .animate-pulse {
+          animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .animate-gradient {
+          background: linear-gradient(90deg, #dc2626, #4b5563, #dc2626);
+          background-size: 200% auto;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradient 3s linear infinite;
+        }
+        
+        .animate-shimmer {
+          animation: shimmer 2s infinite linear;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+          background-size: 1000px 100%;
+        }
+        
+        .hover-lift {
+          transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+          transform: translateY(-8px);
+        }
+      `}</style>
+
       {/* ===== HERO SECTION ===== */}
-      <section className="relative overflow-hidden py-20 md:py-32">
-        {/* Background Image with Overlay - ONLY for the section */}
+      <section 
+        className="relative overflow-hidden py-20 md:py-32"
+        ref={el => sectionsRef.current[0] = el}
+        data-section-id="hero"
+      >
         <div className="absolute inset-0 z-0">
           <img
             src="/pic1.jpg"
@@ -276,253 +471,192 @@ function Technology() {
           />
         </div>
 
-        <motion.div 
-          className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10"
-          initial="initial"
-          animate="animate"
-          variants={containerVariants}
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-red-500/10 rounded-full animate-float blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500/10 rounded-full animate-float blur-3xl" style={{animationDelay: '2s'}}></div>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+          <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-on-scroll ${isVisible.hero ? 'visible' : ''}`}>
             {/* LEFT CONTENT */}
-            <motion.div 
-              className="text-left"
-              variants={slideInVariants}
-            >
-              <motion.h1 
-                className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight"
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-              >
+            <div className="text-left">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="text-gray-900">
-                  Technology
+                  {t('consultingPage.hero.title1')}
                 </span>
                 <br />
-                <span className="mt-2 inline-block text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-gray-800 to-red-500">
-                  Consulting & Advisory
+                <span className="mt-2 inline-block animate-gradient">
+                  {t('consultingPage.hero.title2')}
                 </span>
-              </motion.h1>
-
-              <motion.p 
-                className="mt-6 text-xl md:text-2xl text-gray-700 max-w-3xl leading-relaxed"
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                IT strategy, architecture, and digital advisory services that transform businesses through technology innovation with clear ownership and strategic vision.
-              </motion.p>
-            </motion.div>
+              </h1>
+              <p className="mt-6 text-xl md:text-2xl text-gray-700 max-w-3xl leading-relaxed">
+                {t('consultingPage.hero.description')}
+              </p>
+            </div>
 
             {/* RIGHT IMAGE */}
-            <motion.div 
-              className="flex justify-center lg:justify-end"
-              initial={{ x: 50, opacity: 0, rotateY: 10 }}
-              animate={{ x: 0, opacity: 1, rotateY: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <img
-                src="/it-consulting.jpeg"
-                alt="Technology Consulting"
-                className="w-full max-w-lg rounded-xl shadow-xl border border-gray-200"
-              />
-            </motion.div>
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative group">
+                <img
+                  src="/it-consulting.jpeg"
+                  alt="Technology Consulting"
+                  className="w-full max-w-lg rounded-xl shadow-xl border border-gray-200 transform transition-all duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-tr from-red-600/20 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              </div>
+            </div>
           </div>
 
-          <motion.div 
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
+          {/* STATS GRID */}
+          <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 animate-stagger ${isVisible.hero ? 'visible' : ''}`}>
             {[
-              { icon: "🏢", value: "100+", label: "Enterprise Clients" },
-              { icon: "💼", value: "15+", label: "Years Experience" },
-              { icon: "📈", value: "40%", label: "Avg. Cost Savings" },
-              { icon: "✅", value: "98%", label: "Client Retention" }
+              { 
+                icon: "🏢", 
+                value: stats.clients.toFixed(0), 
+                label: t('consultingPage.stats.clients'), 
+                suffix: "+" 
+              },
+              { 
+                icon: "💼", 
+                value: stats.experience.toFixed(0), 
+                label: t('consultingPage.stats.experience'), 
+                suffix: "+" 
+              },
+              { 
+                icon: "📈", 
+                value: stats.savings.toFixed(0), 
+                label: t('consultingPage.stats.savings'), 
+                suffix: "%" 
+              },
+              { 
+                icon: "✅", 
+                value: stats.retention.toFixed(0), 
+                label: t('consultingPage.stats.retention'), 
+                suffix: "%" 
+              }
             ].map((stat, index) => (
-              <motion.div
+              <div 
                 key={index}
-                variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.05,
-                  y: -5,
-                  transition: { type: "spring", stiffness: 400, damping: 17 }
-                }}
-                className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all"
+                className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all duration-500 hover-lift group relative overflow-hidden"
               >
-                <div className="text-red-600 mb-3 text-2xl">{stat.icon}</div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{stat.value}</div>
+                <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="text-red-600 mb-3 text-2xl animate-pulse">{stat.icon}</div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">
+                  {stat.value}{stat.suffix}
+                </div>
                 <div className="text-gray-600">{stat.label}</div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* ===== SERVICES SECTION ===== */}
-      <section id="services" className="relative py-12 md:py-16">
-        {/* Background Image with Overlay - ONLY for the section */}
+      <section 
+        id="services" 
+        className="relative py-12 md:py-16"
+        ref={el => sectionsRef.current[1] = el}
+        data-section-id="services"
+      >
         <div className="absolute inset-0 z-0">
           <img
             src="/picc.avif" 
             alt="Consulting Expertise Background"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover opacity-25"
           />
         </div>
 
         <div className="relative z-10">
-          <motion.div 
-            className="text-center mb-8 md:mb-12"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+          <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.services ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Our Consulting <span className="text-red-600">Expertise</span>
+              {t('consultingPage.services.title')}
             </h2>
             <p className="text-gray-900 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              Strategic technology advisory services that drive business growth and digital transformation
+              {t('consultingPage.services.subtitle')}
             </p>
-          </motion.div>
+          </div>
 
           <div className="max-w-7xl mx-auto px-4">
-            <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
+            <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 animate-stagger ${isVisible.services ? 'visible' : ''}`}>
               {consultingServices.map((service, index) => (
-                <motion.div
+                <div
                   key={index}
-                  variants={cardVariants}
-                  initial="initial"
-                  whileHover="hover"
-                  animate={activeService === index ? "expanded" : "initial"}
-                  className={`group relative cursor-pointer flex flex-col ${activeService === index
-                    ? 'rounded-xl border-red-600 shadow-lg bg-white'
-                    : 'rounded-lg border-gray-200 bg-white hover:border-gray-300'
+                  className={`group relative transition-all duration-500 ease-out cursor-pointer flex flex-col ${
+                    activeService === index
+                      ? 'rounded-xl border-red-600 shadow-lg shadow-red-500/10 bg-white/95 backdrop-blur-sm scale-105'
+                      : 'rounded-lg border-gray-200 bg-white/95 backdrop-blur-sm hover:border-gray-300'
                     }`}
                   style={{
                     borderWidth: '1px',
-                    overflow: 'hidden'
+                    height: activeService === index ? 'auto' : '140px',
+                    margin: activeService === index ? '0' : '0 auto',
+                    padding: activeService === index ? '1.5rem' : '1rem',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    width: '100%',
+                    maxWidth: activeService === index ? 'none' : '100%',
                   }}
                   onMouseEnter={() => setActiveService(index)}
                   onMouseLeave={() => setActiveService(null)}
                 >
-                  <motion.div 
-                    className="flex flex-col h-full p-4"
-                    animate={{
-                      height: activeService === index ? 'auto' : '140px',
-                      padding: activeService === index ? '1.5rem' : '1rem',
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 100,
-                      damping: 15
-                    }}
-                  >
+                  {/* Hover Gradient */}
+                  {activeService === index && (
+                    <div
+                      className="absolute inset-0 bg-gradient-to-br from-red-50/30 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    ></div>
+                  )}
+
+                  <div className="relative flex flex-col h-full">
                     {/* Icon and Title Container */}
-                    <motion.div 
-                      className={`flex flex-col items-center justify-center flex-1 ${activeService === index ? '' : 'h-full'}`}
-                      animate={{
-                        scale: activeService === index ? 1.05 : 1
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <div className={`flex flex-col items-center justify-center flex-1 ${activeService === index ? '' : 'h-full'
+                      }`}>
                       {/* Icon */}
-                      <motion.div 
-                        className="text-red-600 mb-3"
-                        animate={{
-                          scale: activeService === index ? 1.2 : 1,
-                          marginBottom: activeService === index ? '0.75rem' : '1rem'
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="text-2xl">{service.icon}</div>
-                      </motion.div>
+                      <div className={`text-red-600 transition-all duration-300 ${activeService === index ? 'scale-110 mb-3 animate-pulse' : 'scale-100 mb-4'
+                        }`}>
+                        {service.icon}
+                      </div>
 
                       {/* Title */}
-                      <motion.h3 
-                        className="text-center font-bold text-gray-900"
-                        animate={{
-                          fontSize: activeService === index ? '17px' : '14px'
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
+                      <h3 className={`text-center font-bold text-gray-900 transition-all duration-300 ${activeService === index
+                        ? 'text-[17px]'
+                        : 'text-[14px]'
+                        }`}>
                         {service.title}
-                      </motion.h3>
-                    </motion.div>
+                      </h3>
+                    </div>
 
-                    {/* Details - Animated with AnimatePresence */}
-                    <AnimatePresence>
-                      {activeService === index && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ 
-                            height: "auto", 
-                            opacity: 1,
-                            transition: {
-                              height: { duration: 0.4 },
-                              opacity: { duration: 0.3, delay: 0.1 }
-                            }
-                          }}
-                          exit={{ 
-                            height: 0, 
-                            opacity: 0,
-                            transition: {
-                              height: { duration: 0.3 },
-                              opacity: { duration: 0.2 }
-                            }
-                          }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pt-4">
-                            {/* Description */}
-                            <motion.p 
-                              className="text-gray-600 mb-4 text-[14px] leading-relaxed text-center"
-                              initial={{ y: -10 }}
-                              animate={{ y: 0 }}
-                              transition={{ delay: 0.2 }}
-                            >
-                              {service.description}
-                            </motion.p>
+                    {/* Details */}
+                    {activeService === index && (
+                      <div className="animate-fadeIn mt-4">
+                        <p className="text-gray-600 mb-4 text-[14px] leading-relaxed text-center">
+                          {service.description}
+                        </p>
 
-                            {/* Features */}
-                            <motion.ul 
-                              className="space-y-2 mb-4"
-                              variants={containerVariants}
-                              initial="hidden"
-                              animate="visible"
+                        <ul className="space-y-2 mb-4">
+                          {service.features.map((feature, i) => (
+                            <li 
+                              key={i} 
+                              className="flex items-start text-[13px] leading-snug opacity-0"
+                              style={{animation: `slideInLeft 0.5s ease-out forwards`, animationDelay: `${i * 0.1}s`}}
                             >
-                              {service.features.map((feature, i) => (
-                                <motion.li 
-                                  key={i} 
-                                  className="flex items-start text-[13px] leading-snug"
-                                  variants={itemVariants}
-                                >
-                                  <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
-                                  <span className="text-gray-700">{feature}</span>
-                                </motion.li>
-                              ))}
-                            </motion.ul>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                </motion.div>
+                              <div className="w-1.5 h-1.5 bg-red-500 rounded-full mr-2 mt-1.5 flex-shrink-0 animate-pulse"></div>
+                              <span className="text-gray-700">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== EXPERTISE AREAS SECTION ===== */}
-      <section className="relative py-20">
-        {/* Background Image with Overlay - ONLY for the section */}
+      {/* ===== EXPERTISE SECTION ===== */}
+      <section 
+        className="relative py-20"
+        ref={el => sectionsRef.current[2] = el}
+        data-section-id="expertise"
+      >
         <div className="absolute inset-0 z-0">
           <img
             src="/pic3.jpg"
@@ -532,83 +666,62 @@ function Technology() {
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className={`text-center mb-16 animate-on-scroll ${isVisible.expertise ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Specialized <span className="text-red-600">Expertise Areas</span>
+              {t('consultingPage.expertise.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Deep knowledge across technology domains to provide comprehensive advisory
+              {t('consultingPage.expertise.subtitle')}
             </p>
-          </motion.div>
+          </div>
 
           <div className="mb-8">
-            <motion.div 
-              className="flex flex-wrap gap-4 justify-center mb-8"
-              initial={{ y: 20, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className={`flex flex-wrap gap-4 justify-center mb-8 animate-stagger ${isVisible.expertise ? 'visible' : ''}`}>
               {['strategy', 'architecture', 'cloud'].map((tab) => (
-                <motion.button
+                <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-6 py-3 rounded-lg font-medium transition ${activeTab === tab
-                    ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border border-gray-300'
+                  className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${
+                    activeTab === tab
+                      ? 'bg-gradient-to-r from-red-600 to-red-700 text-white shadow-lg shadow-red-500/30 animate-pulse'
+                      : 'bg-white text-gray-700 hover:bg-red-50 border border-gray-300 hover:border-red-300'
                     }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
                 >
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                </motion.button>
+                  {tab === 'strategy' ? t('consultingPage.expertise.tabs.strategy') : 
+                   tab === 'architecture' ? t('consultingPage.expertise.tabs.architecture') : 
+                   t('consultingPage.expertise.tabs.cloud')}
+                </button>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div 
-              key={activeTab}
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 animate-stagger ${isVisible.expertise ? 'visible' : ''}`}>
               {expertiseAreas[activeTab].map((expertise, index) => (
-                <motion.div
+                <div
                   key={index}
-                  className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all text-center"
-                  whileHover={{ 
-                    y: -5,
-                    transition: { type: "spring", stiffness: 300, damping: 15 }
-                  }}
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: index * 0.05 }}
+                  className="bg-white border border-gray-200 p-6 rounded-xl hover:border-red-300 hover:shadow-lg transition-all duration-500 text-center group hover-lift"
                 >
-                  <div className="text-lg font-bold text-gray-900 mb-2">
+                  <div className="text-lg font-bold text-gray-900 mb-2 group-hover:text-red-600 transition-colors transform group-hover:scale-110 duration-300">
                     {expertise.name}
                   </div>
-                  <div className={`text-sm font-medium ${expertise.level === 'Expert' ? 'text-green-600' :
-                    expertise.level === 'Advanced' ? 'text-red-600' :
+                  <div className={`text-sm font-medium animate-pulse ${expertise.level === t('consultingPage.expertise.levels.expert') ? 'text-green-600' :
+                    expertise.level === t('consultingPage.expertise.levels.advanced') ? 'text-red-600' :
                       'text-amber-600'
                     }`}>
                     {expertise.level}
                   </div>
-                </motion.div>
+                </div>
               ))}
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ===== ADVISORY PROCESS SECTION ===== */}
-      <section className="relative py-20">
-        {/* Background Image with Overlay - ONLY for the section */}
+      {/* ===== PROCESS SECTION ===== */}
+      <section 
+        className="relative py-20"
+        ref={el => sectionsRef.current[3] = el}
+        data-section-id="process"
+      >
         <div className="absolute inset-0 z-0">
           <img
             src="/imggg1.jpg" 
@@ -618,70 +731,50 @@ function Technology() {
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-          <motion.div 
-            className="text-center mb-16"
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div className={`text-center mb-16 animate-on-scroll ${isVisible.process ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Our Advisory <span className="text-red-600">Process</span>
+              {t('consultingPage.process.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              A structured methodology that ensures technology investments deliver maximum business value
+              {t('consultingPage.process.subtitle')}
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-          >
+          <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-stagger ${isVisible.process ? 'visible' : ''}`}>
             {advisoryProcess.map((step, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={itemVariants}
-                whileHover={{ 
-                  y: -10,
-                  scale: 1.02,
-                  transition: { type: "spring", stiffness: 300, damping: 15 }
-                }}
-                className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300"
+                className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-xl hover:border-red-300 transition-all duration-500 hover-lift group relative overflow-hidden"
               >
-                <div className="flex items-start justify-between mb-6">
-                  <motion.div 
-                    className="text-3xl font-bold text-gray-300"
-                    initial={{ rotate: -10, opacity: 0 }}
-                    whileInView={{ rotate: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    {step.step}
-                  </motion.div>
-                  <motion.div 
-                    className="text-2xl"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ type: "spring", delay: index * 0.1 }}
-                  >
-                    {step.icon}
-                  </motion.div>
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-red-600 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-500"></div>
+                <div className="relative">
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="text-3xl font-bold text-gray-300 group-hover:text-red-500 transition-colors animate-pulse">
+                      {step.step}
+                    </div>
+                    <div className="text-2xl text-red-600 group-hover:scale-110 group-hover:text-red-500 group-hover:rotate-12 transition-all duration-300">
+                      {step.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-600 transition-colors">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 group-hover:text-gray-700 transition-colors">
+                    {step.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
-                <p className="text-gray-600">{step.description}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* ===== CASE STUDIES SECTION ===== */}
-      <section className="relative py-12 md:py-16" id="case-studies">
-        {/* Background Image with Overlay - ONLY for the section */}
+      <section 
+        className="relative py-20"
+        ref={el => sectionsRef.current[4] = el}
+        data-section-id="case-studies"
+      >
         <div className="absolute inset-0 z-0">
           <img
             src="/greyy.avif"
@@ -690,231 +783,82 @@ function Technology() {
           />
         </div>
 
-        <div className="relative z-10">
-          <motion.div 
-            className="text-center mb-8 md:mb-12"
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Success <span className="text-red-600">Stories</span>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+          <div className={`text-center mb-16 animate-on-scroll ${isVisible['case-studies'] ? 'visible' : ''}`}>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
+              {t('consultingPage.caseStudies.title')}
             </h2>
-            <p className="text-gray-700 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              Real-world technology consulting engagements that delivered measurable business impact
+            <p className="text-xl text-gray-900 max-w-3xl mx-auto">
+              {t('consultingPage.caseStudies.subtitle')}
             </p>
-          </motion.div>
+          </div>
 
-          <div className="max-w-7xl mx-auto px-4">
-            <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5"
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-50px" }}
-            >
-              {caseStudies.map((study) => (
-                <motion.div
-                  key={study.id}
-                  variants={cardVariants}
-                  initial="initial"
-                  whileHover="hover"
-                  animate={activeStudy === study.id ? "expanded" : "initial"}
-                  className={`group relative cursor-pointer flex flex-col ${activeStudy === study.id
-                    ? 'rounded-xl border-red-600 shadow-lg bg-white'
-                    : 'rounded-lg border-gray-200 bg-white hover:border-gray-300'
-                    }`}
-                  style={{
-                    borderWidth: '1px',
-                    overflow: 'hidden'
-                  }}
-                  onMouseEnter={() => setActiveStudy(study.id)}
-                  onMouseLeave={() => setActiveStudy(null)}
-                >
-                  <motion.div 
-                    className="flex flex-col h-full p-4"
-                    animate={{
-                      height: activeStudy === study.id ? 'auto' : '140px',
-                      padding: activeStudy === study.id ? '1.5rem' : '1rem',
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 100,
-                      damping: 15
-                    }}
-                  >
-                    {/* Main Content Container */}
-                    <motion.div 
-                      className={`flex flex-col items-center justify-center flex-1 ${activeStudy === study.id ? '' : 'h-full'}`}
-                      animate={{
-                        scale: activeStudy === study.id ? 1.05 : 1
-                      }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      {/* Category Badge */}
-                      <motion.div 
-                        className={`inline-flex items-center gap-1.5 ${activeStudy === study.id ? 'mb-4' : 'mb-3'}`}
-                        animate={{
-                          scale: activeStudy === study.id ? 1.1 : 1
-                        }}
-                        transition={{ duration: 0.3 }}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            {caseStudies.map((study, index) => (
+              <div 
+                key={study.id}
+                className="bg-white/95 backdrop-blur-sm rounded-2xl p-8 border border-gray-200 shadow-lg hover:shadow-xl hover:border-red-300 transition-all duration-500 hover-lift group relative overflow-hidden"
+              >
+                <div className="absolute inset-0 animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative">
+                  <div className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-medium inline-block mb-4 animate-pulse">
+                    {study.category}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-red-600 transition-colors">
+                    {study.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 group-hover:text-gray-700 transition-colors">
+                    {study.description}
+                  </p>
+                  <div className="space-y-3">
+                    {study.results.map((result, idx) => (
+                      <div 
+                        key={idx} 
+                        className="flex items-center text-sm text-gray-700 opacity-0"
+                        style={{animation: `slideInLeft 0.5s ease-out forwards`, animationDelay: `${idx * 0.2}s`}}
                       >
-                        <div className="bg-red-100 text-red-600 px-2.5 py-0.5 rounded-full text-xs font-medium">
-                          {study.category}
-                        </div>
-                      </motion.div>
-
-                      {/* Title */}
-                      <motion.h3 
-                        className="text-center font-bold text-gray-900"
-                        animate={{
-                          fontSize: activeStudy === study.id ? '17px' : '14px'
-                        }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        {study.title}
-                      </motion.h3>
-                    </motion.div>
-
-                    {/* Details - Animated with AnimatePresence */}
-                    <AnimatePresence>
-                      {activeStudy === study.id && (
-                        <motion.div
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ 
-                            height: "auto", 
-                            opacity: 1,
-                            transition: {
-                              height: { duration: 0.4 },
-                              opacity: { duration: 0.3, delay: 0.1 }
-                            }
-                          }}
-                          exit={{ 
-                            height: 0, 
-                            opacity: 0,
-                            transition: {
-                              height: { duration: 0.3 },
-                              opacity: { duration: 0.2 }
-                            }
-                          }}
-                          className="overflow-hidden"
+                        <svg 
+                          className="w-4 h-4 text-green-500 mr-2 flex-shrink-0 animate-pulse" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
                         >
-                          <div className="pt-4">
-                            {/* Description */}
-                            <motion.p 
-                              className="text-gray-600 mb-4 text-[14px] leading-relaxed"
-                              initial={{ y: -10 }}
-                              animate={{ y: 0 }}
-                              transition={{ delay: 0.2 }}
-                            >
-                              {study.description}
-                            </motion.p>
-
-                            {/* Technologies */}
-                            <motion.div 
-                              className="mb-4"
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.3 }}
-                            >
-                              <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Technologies:</h4>
-                              <div className="flex flex-wrap gap-1.5">
-                                {study.tech.map((tech, idx) => (
-                                  <motion.span
-                                    key={idx}
-                                    className="bg-gray-50 px-2 py-0.5 rounded text-xs text-gray-700 border border-gray-200"
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                    transition={{ delay: 0.4 + idx * 0.05 }}
-                                  >
-                                    {tech}
-                                  </motion.span>
-                                ))}
-                              </div>
-                            </motion.div>
-
-                            {/* Business Outcomes */}
-                            <motion.div
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ delay: 0.5 }}
-                            >
-                              <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Business Outcomes:</h4>
-                              <ul className="space-y-2">
-                                {study.results.map((result, idx) => (
-                                  <motion.li 
-                                    key={idx} 
-                                    className="flex items-start text-gray-700 text-[12px] leading-snug"
-                                    initial={{ x: -10, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    transition={{ delay: 0.6 + idx * 0.1 }}
-                                  >
-                                    <motion.svg
-                                      className="w-3 h-3 text-green-500 mr-2 mt-0.5 flex-shrink-0"
-                                      fill="none"
-                                      stroke="currentColor"
-                                      viewBox="0 0 24 24"
-                                      initial={{ scale: 0 }}
-                                      animate={{ scale: 1 }}
-                                      transition={{ delay: 0.7 + idx * 0.1 }}
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="3"
-                                        d="M5 13l4 4L19 7"
-                                      ></path>
-                                    </motion.svg>
-                                    {result}
-                                  </motion.li>
-                                ))}
-                              </ul>
-                            </motion.div>
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </motion.div>
-                </motion.div>
-              ))}
-            </motion.div>
+                          <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth="3" 
+                            d="M5 13l4 4L19 7"
+                          />
+                        </svg>
+                        {result}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ===== FINAL CTA ===== */}
-      <section className="py-12 md:py-20 bg-gradient-to-br from-gray-900 to-black text-white">
-        <motion.div 
-          className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center"
-          initial={{ y: 50, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <motion.h2 
-            className="text-[30px] font-bold mb-4 md:mb-6"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Technology Is Everywhere. <span className="text-red-400">Ownership Is Rare</span>.
-          </motion.h2>
-          <motion.p 
-            className="text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            Partner with a team that stays accountable from start to scale.
-          </motion.p>
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <motion.a
+      <section 
+        className="py-12 md:py-20 bg-gradient-to-br from-gray-900 to-black text-white"
+        ref={el => sectionsRef.current[5] = el}
+        data-section-id="cta"
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 via-transparent to-blue-600/20 animate-gradient bg-[size:200%_100%]"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center relative z-10">
+          <h2 className={`text-[30px] font-bold mb-4 md:mb-6 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            {t('consultingPage.cta.title1')}{" "}
+            <span className="text-red-400 animate-pulse">{t('consultingPage.cta.title2')}</span>
+          </h2>
+          <p className={`text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            {t('consultingPage.cta.description')}
+          </p>
+          
+          <div className={`flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            <a
               href="/contact"
               className="group inline-flex items-center justify-center gap-2
                bg-red-600 text-white
@@ -923,19 +867,18 @@ function Technology() {
                font-semibold text-sm md:text-base
                shadow-sm shadow-red-600/20
                hover:bg-red-700
-               transition-all duration-300"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+               transition-all duration-300
+               transform hover:scale-105
+               animate-pulse"
             >
-              Let's Talk
-              <motion.svg
-                className="w-4 h-4 md:w-5 md:h-5"
+              {t('consultingPage.cta.button')}
+              <svg
+                className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
+                 group-hover:opacity-100 group-hover:translate-x-0
+                 transition-all duration-300"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                initial={{ x: -5, opacity: 0 }}
-                whileHover={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.2 }}
               >
                 <path
                   strokeLinecap="round"
@@ -943,22 +886,17 @@ function Technology() {
                   strokeWidth="2"
                   d="M9 5l7 7-7 7"
                 />
-              </motion.svg>
-            </motion.a>
-          </motion.div>
+              </svg>
+            </a>
+          </div>
 
-          <motion.p 
-            className="mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0"
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-          >
-            No bots. No runaround. Just real conversations with accountable partners.
-          </motion.p>
-        </motion.div>
+          <p className={`mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
+            {t('consultingPage.cta.subtext')}
+          </p>
+        </div>
       </section>
     </div>
   );
 }
 
-export default Technology;
+export default TechnologyConsulting;

@@ -18,6 +18,7 @@ import {
 import { Link } from 'react-router-dom';
 import httpClient from '../../Api/axios';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 // Animation variants
 const fadeInUp = {
@@ -163,6 +164,7 @@ const floatAnimation = {
 };
 
 function AboutUs() {
+  const { t } = useTranslation();
   const [aboutData, setAboutData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -216,50 +218,10 @@ function AboutUs() {
     }
   };
 
-  // Updated team stats with new icons and values
-  const teamStats = [
-    { icon: Users, value: '50+', label: 'Team Members' },
-    { icon: Globe, value: '100+', label: 'Projects Completed' },
-    { icon: TrendingUp, value: '95%', label: 'Success Rate' },
-    { icon: Award, value: '25+', label: 'Awards Won' }
-  ];
-
-  // Updated values with red/blue theme
-  const values = [
-    {
-      icon: Shield,
-      title: 'Integrity',
-      description: 'Transparent and honest communication with accountability at every level.',
-      color: 'from-red-500 to-red-600'
-    },
-    {
-      icon: Zap,
-      title: 'Innovation',
-      description: 'Pushing boundaries with cutting-edge technologies and creative solutions.',
-      color: 'from-blue-500 to-cyan-500'
-    },
-    {
-      icon: Flame,
-      title: 'Passion',
-      description: 'Genuine commitment to excellence and client success.',
-      color: 'from-red-600 to-orange-500'
-    },
-    {
-      icon: Star,
-      title: 'Excellence',
-      description: 'Striving for the highest quality in every project we undertake.',
-      color: 'from-blue-600 to-purple-500'
-    }
-  ];
-
-  const milestones = [
-    { year: '2018', title: 'Company Founded', description: 'Started with passionate technology experts' },
-    { year: '2019', title: 'First Major Client', description: 'Landed our first enterprise client partnership' },
-    { year: '2020', title: 'Team Expansion', description: 'Grew to 50+ dedicated team members' },
-    { year: '2021', title: 'Award Recognition', description: 'Won industry recognition for excellence' },
-    { year: '2022', title: 'Global Expansion', description: 'Established multiple delivery centers' },
-    { year: '2023', title: 'Milestone Projects', description: 'Completed 100+ successful projects' }
-  ];
+  // Get values from translations
+  const teamStats = t('aboutPage.stats.items', { returnObjects: true });
+  const values = t('aboutPage.values.items', { returnObjects: true });
+  const milestones = t('aboutPage.milestones.items', { returnObjects: true });
 
   return (
     <motion.div 
@@ -268,7 +230,7 @@ function AboutUs() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Top Banner Section with Partners Button */}
+      {/* Top Banner Section */}
       <motion.div 
         className="relative"
         initial={{ opacity: 0 }}
@@ -277,7 +239,7 @@ function AboutUs() {
       >
         <motion.img
           src="/copy4.jpg"
-          alt="aboutus"
+          alt={t('aboutPage.banner.alt')}
           className="w-full h-auto object-cover"
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -302,7 +264,7 @@ function AboutUs() {
           <div className="relative h-full w-full">
             <img 
               src="/picc.avif" 
-              alt="Who We Are Background"
+              alt={t('aboutPage.whoWeAre.backgroundAlt')}
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-black/30"></div>
@@ -344,16 +306,11 @@ function AboutUs() {
                 className="text-[26px] md:text-[30px] lg:text-[32px] font-bold mb-4 md:mb-6 text-gray-900"
                 variants={fadeInUp}
               >
-                Who <span className="text-red-600">We Are</span>
+                {t('aboutPage.whoWeAre.title1')} <span className="text-red-600">{t('aboutPage.whoWeAre.title2')}</span>
               </motion.h2>
               
               <motion.div className="space-y-4 md:space-y-6" variants={staggerContainer}>
-                {[
-                  "<b>KANDAX</b> is a human-led technology consulting firm with Canadian accountability and Indian execution excellence—built for businesses that want real ownership, not robotic delivery.",
-                  "At KANDAX, technology is delivered by experts, but accountability stays human. We combine North American leadership with India's best engineering talent to build systems that work—and relationships that last.",
-                  "In a world full of automation and anonymous vendors, KANDAX stands for clarity, ownership, and human-led technology delivery.",
-                  "We're not just service providers; we're accountable partners who take ownership of your digital success from start to scale."
-                ].map((text, index) => (
+                {t('aboutPage.whoWeAre.description', { returnObjects: true }).map((text, index) => (
                   <motion.p 
                     key={index}
                     className="text-gray-700 text-[16px] md:text-[18px] leading-relaxed"
@@ -374,7 +331,7 @@ function AboutUs() {
                              transition-colors duration-300
                              group bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg hover:bg-white"
                 >
-                  <span>View Our Trusted Partners</span>
+                  <span>{t('aboutPage.whoWeAre.partnersLink')}</span>
                   <ChevronRight className="w-4 h-4 md:w-5 md:h-5 
                                            group-hover:translate-x-1
                                            transition-transform duration-300" />
@@ -394,7 +351,7 @@ function AboutUs() {
               >
                 <motion.img
                   src="/aboutt.png"  
-                  alt="Who We Are - KANDAX Team"
+                  alt={t('aboutPage.whoWeAre.imageAlt')}
                   className="w-full h-auto object-cover mix-blend-normal"
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
@@ -453,7 +410,7 @@ function AboutUs() {
               >
                 <motion.img
                   src="/parth sir.jpeg" 
-                  alt="KANDAX CEO - Leadership with Accountability"
+                  alt={t('aboutPage.parthHanda.imageAlt')}
                   className="w-full h-auto object-cover"
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
@@ -471,7 +428,7 @@ function AboutUs() {
                 className="text-2xl md:text-3xl font-bold mb-4 text-red-600"
                 variants={fadeInUp}
               >
-                Mr. Parth Handa
+                {t('aboutPage.parthHanda.title')}
               </motion.h2>
               <motion.div 
                 className="inline-block mb-5"
@@ -479,16 +436,12 @@ function AboutUs() {
               >
                 <span className="inline-flex items-center bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md">
                   <Award className="w-4 h-4 mr-2" />
-                  CEO & Founder, Canada
+                  {t('aboutPage.parthHanda.position')}
                 </span>
               </motion.div>
               
               <motion.div variants={staggerContainer}>
-                {[
-                  "I'm Parth Handa, a Canada-based company driven by vision, integrity, and a commitment to delivering impactful solutions with a global mindset. With a strong focus on leadership, innovation, and growth, I work closely with teams and partners to build meaningful strategies.",
-                  "Inspired by Franklin D. Roosevelt's words, 'The only limit to our realization of tomorrow is our doubts of today,' I believe in continuous evolution, bold thinking, and turning ideas into lasting impact.",
-                  "At Kandax, our mission is to move forward with clarity, professionalism, and a fresh perspective—building value through innovation and purposeful leadership."
-                ].map((text, index) => (
+                {t('aboutPage.parthHanda.description', { returnObjects: true }).map((text, index) => (
                   <motion.p 
                     key={index}
                     className="text-gray-600 text-base mb-5 leading-relaxed"
@@ -504,11 +457,7 @@ function AboutUs() {
                 className="mt-6 space-y-3"
                 variants={staggerContainer}
               >
-                {[
-                  "Canadian Accountability Standards",
-                  "Indian Technical Excellence",
-                  "Human-Led Technology Delivery"
-                ].map((item, index) => (
+                {t('aboutPage.parthHanda.highlights', { returnObjects: true }).map((item, index) => (
                   <motion.div 
                     key={index}
                     className="flex items-center gap-3"
@@ -557,7 +506,7 @@ function AboutUs() {
                 className="text-2xl md:text-3xl font-bold mb-4 text-red-600"
                 variants={fadeInUp}
               >
-                Mr. Gorakh Bhosale
+                {t('aboutPage.gorakhBhosale.title')}
               </motion.h2>
               
               <motion.div 
@@ -566,16 +515,12 @@ function AboutUs() {
               >
                 <span className="inline-flex items-center bg-gradient-to-r from-red-600 to-red-700 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-md">
                   <Award className="w-4 h-4 mr-2" />
-                  Director & Founder, India
+                  {t('aboutPage.gorakhBhosale.position')}
                 </span>
               </motion.div>
               
               <motion.div variants={staggerContainer}>
-                {[
-                  "With a strong background in MCM, DCM, PGDCS, CEH, ITIL, Gorakh holds over 18 years of experience as a Cyber Security Expert at Quick Heal. Beyond his technical expertise, he is passionate about Social Awareness for Cyber Security.",
-                  "Throughout his skillful career, he has taken on various challenging roles while managing fundamental business aspects including IT retails, marketing, sales, and cloud computing solutions.",
-                  "Gorakh plays a crucial role in driving the company's growth through strategic business planning and sales initiatives, while also organizing company conferences, trade shows, and major events."
-                ].map((text, index) => (
+                {t('aboutPage.gorakhBhosale.description', { returnObjects: true }).map((text, index) => (
                   <motion.p 
                     key={index}
                     className="text-gray-600 text-base mb-5 leading-relaxed"
@@ -591,11 +536,7 @@ function AboutUs() {
                 className="mt-6 space-y-3"
                 variants={staggerContainer}
               >
-                {[
-                  "18+ Years Cyber Security Experience",
-                  "Certifications: MCM, DCM, PGDCS, CEH, ITIL",
-                  "Business Strategy & Event Management"
-                ].map((item, index) => (
+                {t('aboutPage.gorakhBhosale.highlights', { returnObjects: true }).map((item, index) => (
                   <motion.div 
                     key={index}
                     className="flex items-center gap-3"
@@ -627,7 +568,7 @@ function AboutUs() {
               >
                 <motion.img
                   src="/gb.jpeg" 
-                  alt="Mr. Gorakh Bhosale - Director & Founder"
+                  alt={t('aboutPage.gorakhBhosale.imageAlt')}
                   className="w-full h-auto object-cover"
                   initial={{ scale: 1.1 }}
                   animate={{ scale: 1 }}
@@ -656,7 +597,7 @@ function AboutUs() {
           <div className="relative h-full w-full">
             <img 
               src="/imgg.jpg" 
-              alt="Mission & Vision Background"
+              alt={t('aboutPage.missionVision.backgroundAlt')}
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-black/40"></div>
@@ -688,13 +629,13 @@ function AboutUs() {
               className="text-[30px] font-bold mb-3 md:mb-4 text-white"
               variants={fadeInUp}
             >
-              Our <span className="text-red-400">Mission & Vision</span>
+              {t('aboutPage.missionVision.title1')} <span className="text-red-400">{t('aboutPage.missionVision.title2')}</span>
             </motion.h2>
             <motion.p 
               className="text-gray-200 max-w-2xl mx-auto text-[22px]"
               variants={fadeInUp}
             >
-              Driving innovation and delivering excellence in every project we undertake
+              {t('aboutPage.missionVision.subtitle')}
             </motion.p>
           </motion.div>
           
@@ -722,13 +663,15 @@ function AboutUs() {
                 >
                   <Target className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
                 </motion.div>
-                <h3 className="text-[22px] md:text-[26px] lg:text-[28px] font-bold text-gray-900">Our Mission</h3>
+                <h3 className="text-[22px] md:text-[26px] lg:text-[28px] font-bold text-gray-900">
+                  {t('aboutPage.missionVision.mission.title')}
+                </h3>
               </motion.div>
               <motion.p 
                 className="text-gray-700 mb-4 md:mb-6 leading-relaxed text-[14px] md:text-[18px]"
                 variants={fadeInUp}
               >
-                Design and deliver world-class software solutions, robust cybersecurity frameworks, and data-driven digital marketing strategies that help enterprises and startups succeed globally. By combining innovation, security-first thinking, agile execution, and customer-centric values, we create measurable impact and long-term digital excellence for our clients.
+                {t('aboutPage.missionVision.mission.description')}
               </motion.p>
             </motion.div>
             
@@ -749,13 +692,15 @@ function AboutUs() {
                 >
                   <Eye className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7 text-white" />
                 </motion.div>
-                <h3 className="text-[22px] md:text-[26px] lg:text-[28px] font-bold text-gray-900">Our Vision</h3>
+                <h3 className="text-[22px] md:text-[26px] lg:text-[28px] font-bold text-gray-900">
+                  {t('aboutPage.missionVision.vision.title')}
+                </h3>
               </motion.div>
               <motion.p 
                 className="text-gray-700 mb-4 md:mb-6 leading-relaxed text-[14px] md:text-[18px]"
                 variants={fadeInUp}
               >
-                To be a globally trusted IT leader that empowers businesses through secure, intelligent, and scalable digital solutions—driving innovation, resilience, and sustainable growth in the connected digital world.
+                {t('aboutPage.missionVision.vision.description')}
               </motion.p>
             </motion.div>
           </motion.div>
@@ -778,7 +723,7 @@ function AboutUs() {
           <div className="relative h-full w-full">
             <img 
               src="/image.avif" 
-              alt="Core Values Background"
+              alt={t('aboutPage.values.backgroundAlt')}
               className="object-cover w-full h-full"
             />
             <div className="absolute inset-0 bg-black/50"></div>
@@ -810,13 +755,13 @@ function AboutUs() {
               className="text-[30px] font-bold mb-3 md:mb-4 text-white"
               variants={fadeInUp}
             >
-              Our <span className="text-red-400">Core Values</span>
+              {t('aboutPage.values.title1')} <span className="text-red-400">{t('aboutPage.values.title2')}</span>
             </motion.h2>
             <motion.p 
               className="text-gray-200 max-w-2xl mx-auto text-[20px]"
               variants={fadeInUp}
             >
-              The principles that guide everything we do
+              {t('aboutPage.values.subtitle')}
             </motion.p>
           </motion.div>
           
@@ -828,7 +773,13 @@ function AboutUs() {
             viewport={{ once: true }}
           >
             {values.map((value, index) => {
-              const Icon = value.icon;
+              const IconComponent = {
+                "Shield": Shield,
+                "Zap": Zap,
+                "Flame": Flame,
+                "Star": Star
+              }[value.icon] || Shield;
+              
               return (
                 <motion.div 
                   key={index}
@@ -842,7 +793,7 @@ function AboutUs() {
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <Icon className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" />
+                    <IconComponent className="w-6 h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 text-white" />
                   </motion.div>
                   <motion.h3 
                     className="text-[20px] md:text-[22px] font-bold text-gray-900 mb-2 md:mb-3"
@@ -882,7 +833,7 @@ function AboutUs() {
                          transition-all duration-300"
             >
               <Handshake className="w-5 h-5 md:w-6 md:h-6" />
-              Explore Our Partnerships
+              {t('aboutPage.values.partnersCta')}
               <ChevronRight className="w-5 h-5 md:w-6 md:h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </motion.div>
@@ -905,7 +856,13 @@ function AboutUs() {
             viewport={{ once: true }}
           >
             {teamStats.map((stat, index) => {
-              const Icon = stat.icon;
+              const IconComponent = {
+                "Users": Users,
+                "Globe": Globe,
+                "TrendingUp": TrendingUp,
+                "Award": Award
+              }[stat.icon] || Users;
+              
               return (
                 <motion.div 
                   key={index}
@@ -919,7 +876,7 @@ function AboutUs() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >
-                    <Icon className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-red-600" />
+                    <IconComponent className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-red-600" />
                   </motion.div>
                   <motion.div 
                     className="text-[24px] md:text-[28px] lg:text-[32px] font-bold text-gray-900 mb-1 md:mb-2"
@@ -956,7 +913,7 @@ function AboutUs() {
           <div className="relative h-full w-full">
             <img 
               src="/build.jpg"
-              alt="Journey Background"
+              alt={t('aboutPage.milestones.backgroundAlt')}
               className="object-cover w-full h-full opacity-60"
             />
           </div>
@@ -971,13 +928,13 @@ function AboutUs() {
               className="text-[30px] font-bold mb-3 md:mb-4 text-gray-900"
               variants={fadeInUp}
             >
-              Our <span className="text-red-600">Journey</span>
+              {t('aboutPage.milestones.title1')} <span className="text-red-600">{t('aboutPage.milestones.title2')}</span>
             </motion.h2>
             <motion.p 
               className="text-gray-600 max-w-2xl mx-auto text-[22px]"
               variants={fadeInUp}
             >
-              Milestones in our journey of innovation and growth
+              {t('aboutPage.milestones.subtitle')}
             </motion.p>
           </motion.div>
           
@@ -1057,13 +1014,13 @@ function AboutUs() {
               className="text-[30px] font-bold mb-4 md:mb-6"
               variants={fadeInUp}
             >
-              Technology Is Everywhere. <span className="text-red-400">Ownership Is Rare</span>.
+              {t('aboutPage.cta.title1')} <span className="text-red-400">{t('aboutPage.cta.title2')}</span>.
             </motion.h2>
             <motion.p 
               className="text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4"
               variants={fadeInUp}
             >
-              Partner with a team that stays accountable from start to scale.
+              {t('aboutPage.cta.description')}
             </motion.p>
             
             <motion.div 
@@ -1083,7 +1040,7 @@ function AboutUs() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Let's Talk
+                {t('aboutPage.cta.button1')}
                 <svg
                   className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
                              group-hover:opacity-100 group-hover:translate-x-0
@@ -1116,7 +1073,7 @@ function AboutUs() {
                              transition-all duration-300"
                 >
                   <Handshake className="w-4 h-4 md:w-5 md:h-5" />
-                  View Our Partners
+                  {t('aboutPage.cta.button2')}
                   <ChevronRight className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
                                            group-hover:opacity-100 group-hover:translate-x-0
                                            transition-all duration-300" />
@@ -1128,7 +1085,7 @@ function AboutUs() {
               className="mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0"
               variants={fadeInUp}
             >
-              No bots. No runaround. Just real conversations with accountable partners.
+              {t('aboutPage.cta.subtext')}
             </motion.p>
           </motion.div>
         </div>

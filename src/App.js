@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import App from "./"
+import '../src/i18n';
+import { useTranslation } from 'react-i18next';
 
 // Admin imports (existing - unchanged)
 import Sidebar from './Admin/Sidebar';
@@ -35,6 +36,9 @@ import ScrollTop from './User/ScrollTop';
 import WhatsAppIcon from './User/WhatsAppIcon';
 import GlobalEnquiryIcon from './User/GlobalEnquiryIcon';
 function App() {
+  const { t, i18n } = useTranslation();
+  console.log('Current language:', i18n.language);
+  console.log('Translations loaded:', i18n.exists('header.home'))
   return (
     <Router>
   <GlobalEnquiryIcon/>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Cloud() {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState('cloud-platforms');
   const [activeService, setActiveService] = useState(null);
   const [activeProject, setActiveProject] = useState(null);
@@ -78,192 +80,292 @@ function Cloud() {
     };
   }, [isVisible.hero]);
 
+  // Cloud Services from translations
   const cloudServices = [
     {
       icon: "☁️",
-      title: "Cloud Migration",
-      description: "Seamless migration of your infrastructure and applications to the cloud",
-      features: ["AWS Migration", "Azure Migration", "Google Cloud Migration", "Hybrid Cloud Setup"]
+      title: t('cloudPage.services.items.0.title'),
+      description: t('cloudPage.services.items.0.description'),
+      features: [
+        t('cloudPage.services.items.0.features.0'),
+        t('cloudPage.services.items.0.features.1'),
+        t('cloudPage.services.items.0.features.2'),
+        t('cloudPage.services.items.0.features.3')
+      ]
     },
     {
       icon: "🏗️",
-      title: "Cloud Architecture",
-      description: "Design and implement scalable, secure cloud infrastructure solutions",
-      features: ["Microservices Architecture", "Serverless Design", "High Availability", "Disaster Recovery"]
+      title: t('cloudPage.services.items.1.title'),
+      description: t('cloudPage.services.items.1.description'),
+      features: [
+        t('cloudPage.services.items.1.features.0'),
+        t('cloudPage.services.items.1.features.1'),
+        t('cloudPage.services.items.1.features.2'),
+        t('cloudPage.services.items.1.features.3')
+      ]
     },
     {
       icon: "🔒",
-      title: "Cloud Security",
-      description: "Comprehensive security solutions to protect your cloud environment",
-      features: ["IAM & Access Control", "Network Security", "Data Encryption", "Compliance Management"]
+      title: t('cloudPage.services.items.2.title'),
+      description: t('cloudPage.services.items.2.description'),
+      features: [
+        t('cloudPage.services.items.2.features.0'),
+        t('cloudPage.services.items.2.features.1'),
+        t('cloudPage.services.items.2.features.2'),
+        t('cloudPage.services.items.2.features.3')
+      ]
     },
     {
       icon: "💰",
-      title: "Cost Optimization",
-      description: "Optimize your cloud spending without compromising performance",
-      features: ["Cost Analysis", "Resource Right-sizing", "Reserved Instances", "Budget Management"]
+      title: t('cloudPage.services.items.3.title'),
+      description: t('cloudPage.services.items.3.description'),
+      features: [
+        t('cloudPage.services.items.3.features.0'),
+        t('cloudPage.services.items.3.features.1'),
+        t('cloudPage.services.items.3.features.2'),
+        t('cloudPage.services.items.3.features.3')
+      ]
     },
     {
       icon: "⚡",
-      title: "DevOps & CI/CD",
-      description: "Automate development and deployment processes in the cloud",
-      features: ["CI/CD Pipeline", "Infrastructure as Code", "Container Orchestration", "Monitoring & Logging"]
+      title: t('cloudPage.services.items.4.title'),
+      description: t('cloudPage.services.items.4.description'),
+      features: [
+        t('cloudPage.services.items.4.features.0'),
+        t('cloudPage.services.items.4.features.1'),
+        t('cloudPage.services.items.4.features.2'),
+        t('cloudPage.services.items.4.features.3')
+      ]
     },
     {
       icon: "📊",
-      title: "Data Management",
-      description: "Store, process, and analyze data efficiently in the cloud",
-      features: ["Data Lakes", "Big Data Processing", "Data Warehousing", "Real-time Analytics"]
+      title: t('cloudPage.services.items.5.title'),
+      description: t('cloudPage.services.items.5.description'),
+      features: [
+        t('cloudPage.services.items.5.features.0'),
+        t('cloudPage.services.items.5.features.1'),
+        t('cloudPage.services.items.5.features.2'),
+        t('cloudPage.services.items.5.features.3')
+      ]
     },
     {
       icon: "🌐",
-      title: "Multi-Cloud Strategy",
-      description: "Leverage multiple cloud providers for maximum flexibility and resilience",
-      features: ["Multi-cloud Architecture", "Vendor Management", "Inter-cloud Networking", "Unified Management"]
+      title: t('cloudPage.services.items.6.title'),
+      description: t('cloudPage.services.items.6.description'),
+      features: [
+        t('cloudPage.services.items.6.features.0'),
+        t('cloudPage.services.items.6.features.1'),
+        t('cloudPage.services.items.6.features.2'),
+        t('cloudPage.services.items.6.features.3')
+      ]
     },
     {
       icon: "🛡️",
-      title: "Backup & Recovery",
-      description: "Ensure business continuity with robust backup and disaster recovery solutions",
-      features: ["Automated Backups", "Disaster Recovery Plans", "Data Retention", "Recovery Testing"]
+      title: t('cloudPage.services.items.7.title'),
+      description: t('cloudPage.services.items.7.description'),
+      features: [
+        t('cloudPage.services.items.7.features.0'),
+        t('cloudPage.services.items.7.features.1'),
+        t('cloudPage.services.items.7.features.2'),
+        t('cloudPage.services.items.7.features.3')
+      ]
     }
   ];
 
+  // Tech Stack
   const techStack = {
     'cloud-platforms': [
-      { name: "AWS", level: "Expert" },
-      { name: "Azure", level: "Advanced" },
-      { name: "Google Cloud", level: "Advanced" },
-      { name: "DigitalOcean", level: "Intermediate" },
-      { name: "IBM Cloud", level: "Intermediate" },
-      { name: "Oracle Cloud", level: "Intermediate" }
+      { name: "AWS", level: t('cloudPage.techStack.levels.expert') },
+      { name: "Azure", level: t('cloudPage.techStack.levels.advanced') },
+      { name: "Google Cloud", level: t('cloudPage.techStack.levels.advanced') },
+      { name: "DigitalOcean", level: t('cloudPage.techStack.levels.intermediate') },
+      { name: "IBM Cloud", level: t('cloudPage.techStack.levels.intermediate') },
+      { name: "Oracle Cloud", level: t('cloudPage.techStack.levels.intermediate') }
     ],
     'infrastructure': [
-      { name: "Kubernetes", level: "Advanced" },
-      { name: "Docker", level: "Expert" },
-      { name: "Terraform", level: "Advanced" },
-      { name: "Ansible", level: "Intermediate" },
-      { name: "Helm", level: "Advanced" },
-      { name: "Prometheus", level: "Intermediate" }
+      { name: "Kubernetes", level: t('cloudPage.techStack.levels.advanced') },
+      { name: "Docker", level: t('cloudPage.techStack.levels.expert') },
+      { name: "Terraform", level: t('cloudPage.techStack.levels.advanced') },
+      { name: "Ansible", level: t('cloudPage.techStack.levels.intermediate') },
+      { name: "Helm", level: t('cloudPage.techStack.levels.advanced') },
+      { name: "Prometheus", level: t('cloudPage.techStack.levels.intermediate') }
     ],
     'serverless': [
-      { name: "AWS Lambda", level: "Expert" },
-      { name: "Azure Functions", level: "Advanced" },
-      { name: "Google Cloud Functions", level: "Advanced" },
-      { name: "Serverless Framework", level: "Expert" },
-      { name: "API Gateway", level: "Advanced" },
-      { name: "Step Functions", level: "Intermediate" }
+      { name: "AWS Lambda", level: t('cloudPage.techStack.levels.expert') },
+      { name: "Azure Functions", level: t('cloudPage.techStack.levels.advanced') },
+      { name: "Google Cloud Functions", level: t('cloudPage.techStack.levels.advanced') },
+      { name: "Serverless Framework", level: t('cloudPage.techStack.levels.expert') },
+      { name: "API Gateway", level: t('cloudPage.techStack.levels.advanced') },
+      { name: "Step Functions", level: t('cloudPage.techStack.levels.intermediate') }
     ]
   };
 
+  // Cloud Projects from translations
   const cloudProjects = [
     {
       id: 1,
-      title: "Enterprise Cloud Migration",
-      description: "Migrated 500+ servers and applications to AWS with zero downtime",
-      category: "Cloud Migration",
+      title: t('cloudPage.projects.items.0.title'),
+      description: t('cloudPage.projects.items.0.description'),
+      category: t('cloudPage.projects.items.0.category'),
       tech: ["AWS EC2", "RDS", "S3", "CloudFormation", "Route 53"],
-      results: ["60% reduction in infrastructure costs", "Zero downtime migration", "99.99% uptime achieved"]
+      results: [
+        t('cloudPage.projects.items.0.results.0'),
+        t('cloudPage.projects.items.0.results.1'),
+        t('cloudPage.projects.items.0.results.2')
+      ]
     },
     {
       id: 2,
-      title: "Healthcare Data Platform",
-      description: "Built a HIPAA-compliant data analytics platform on Azure",
-      category: "Healthcare Cloud",
+      title: t('cloudPage.projects.items.1.title'),
+      description: t('cloudPage.projects.items.1.description'),
+      category: t('cloudPage.projects.items.1.category'),
       tech: ["Azure SQL", "Azure Data Lake", "Power BI", "Azure Security Center", "Azure Functions"],
-      results: ["50% faster data processing", "HIPAA compliance achieved", "Real-time analytics enabled"]
+      results: [
+        t('cloudPage.projects.items.1.results.0'),
+        t('cloudPage.projects.items.1.results.1'),
+        t('cloudPage.projects.items.1.results.2')
+      ]
     },
     {
       id: 3,
-      title: "E-commerce Scalability Solution",
-      description: "Scaled e-commerce platform to handle 10x traffic during peak seasons",
-      category: "Scalability",
+      title: t('cloudPage.projects.items.2.title'),
+      description: t('cloudPage.projects.items.2.description'),
+      category: t('cloudPage.projects.items.2.category'),
       tech: ["AWS Auto Scaling", "Elastic Load Balancing", "CloudFront", "Lambda", "DynamoDB"],
-      results: ["Handled 1M+ concurrent users", "Page load time reduced by 70%", "Zero outages during peak"]
+      results: [
+        t('cloudPage.projects.items.2.results.0'),
+        t('cloudPage.projects.items.2.results.1'),
+        t('cloudPage.projects.items.2.results.2')
+      ]
     },
     {
       id: 4,
-      title: "Multi-Cloud Disaster Recovery",
-      description: "Implemented disaster recovery across AWS and Azure for financial institution",
-      category: "Disaster Recovery",
+      title: t('cloudPage.projects.items.3.title'),
+      description: t('cloudPage.projects.items.3.description'),
+      category: t('cloudPage.projects.items.3.category'),
       tech: ["AWS", "Azure", "Terraform", "Kubernetes", "Velero"],
-      results: ["RTO reduced to 15 minutes", "RPO of 5 minutes", "99.999% availability"]
+      results: [
+        t('cloudPage.projects.items.3.results.0'),
+        t('cloudPage.projects.items.3.results.1'),
+        t('cloudPage.projects.items.3.results.2')
+      ]
     },
     {
       id: 5,
-      title: "IoT Cloud Platform",
-      description: "Built cloud platform for processing 1M+ IoT device data points per second",
-      category: "IoT Cloud",
+      title: t('cloudPage.projects.items.4.title'),
+      description: t('cloudPage.projects.items.4.description'),
+      category: t('cloudPage.projects.items.4.category'),
       tech: ["Google Cloud IoT Core", "BigQuery", "Pub/Sub", "Dataflow", "Cloud Functions"],
-      results: ["Real-time device monitoring", "95% cost optimization", "Scaled to 5M devices"]
+      results: [
+        t('cloudPage.projects.items.4.results.0'),
+        t('cloudPage.projects.items.4.results.1'),
+        t('cloudPage.projects.items.4.results.2')
+      ]
     },
     {
       id: 6,
-      title: "Serverless Application",
-      description: "Developed completely serverless SaaS application with auto-scaling",
-      category: "Serverless",
+      title: t('cloudPage.projects.items.5.title'),
+      description: t('cloudPage.projects.items.5.description'),
+      category: t('cloudPage.projects.items.5.category'),
       tech: ["AWS Lambda", "API Gateway", "DynamoDB", "S3", "Cognito"],
-      results: ["Zero server management", "90% cost reduction", "Automatic global scaling"]
+      results: [
+        t('cloudPage.projects.items.5.results.0'),
+        t('cloudPage.projects.items.5.results.1'),
+        t('cloudPage.projects.items.5.results.2')
+      ]
     },
     {
       id: 7,
-      title: "AI/ML Cloud Infrastructure",
-      description: "Built scalable ML platform for training and deploying AI models",
-      category: "AI Cloud",
+      title: t('cloudPage.projects.items.6.title'),
+      description: t('cloudPage.projects.items.6.description'),
+      category: t('cloudPage.projects.items.6.category'),
       tech: ["AWS SageMaker", "S3", "EC2 GPU", "CloudWatch", "Step Functions"],
-      results: ["10x faster model training", "Automated model deployment", "50% cost savings"]
+      results: [
+        t('cloudPage.projects.items.6.results.0'),
+        t('cloudPage.projects.items.6.results.1'),
+        t('cloudPage.projects.items.6.results.2')
+      ]
     },
     {
       id: 8,
-      title: "Hybrid Cloud Setup",
-      description: "Implemented hybrid cloud connecting on-premise data center with public cloud",
-      category: "Hybrid Cloud",
+      title: t('cloudPage.projects.items.7.title'),
+      description: t('cloudPage.projects.items.7.description'),
+      category: t('cloudPage.projects.items.7.category'),
       tech: ["Azure Stack", "ExpressRoute", "VPN Gateway", "Azure Arc", "Monitoring"],
-      results: ["Seamless data synchronization", "Enhanced security posture", "40% performance improvement"]
+      results: [
+        t('cloudPage.projects.items.7.results.0'),
+        t('cloudPage.projects.items.7.results.1'),
+        t('cloudPage.projects.items.7.results.2')
+      ]
     }
   ];
 
+  // Process Steps from translations
   const processSteps = [
     {
       step: "01",
-      title: "Assessment & Strategy",
-      description: "Analyze current infrastructure and develop cloud migration strategy",
+      title: t('cloudPage.process.steps.0.title'),
+      description: t('cloudPage.process.steps.0.description'),
       icon: "📋"
     },
     {
       step: "02",
-      title: "Architecture Design",
-      description: "Design scalable and secure cloud architecture tailored to your needs",
+      title: t('cloudPage.process.steps.1.title'),
+      description: t('cloudPage.process.steps.1.description'),
       icon: "🏗️"
     },
     {
       step: "03",
-      title: "Migration Planning",
-      description: "Detailed migration plan with risk assessment and rollback strategy",
+      title: t('cloudPage.process.steps.2.title'),
+      description: t('cloudPage.process.steps.2.description'),
       icon: "📅"
     },
     {
       step: "04",
-      title: "Implementation",
-      description: "Execute migration with minimal disruption using proven methodologies",
+      title: t('cloudPage.process.steps.3.title'),
+      description: t('cloudPage.process.steps.3.description'),
       icon: "⚙️"
     },
     {
       step: "05",
-      title: "Optimization",
-      description: "Continuous optimization for performance, security, and cost efficiency",
+      title: t('cloudPage.process.steps.4.title'),
+      description: t('cloudPage.process.steps.4.description'),
       icon: "📊"
     },
     {
       step: "06",
-      title: "Managed Services",
-      description: "24/7 monitoring, support, and maintenance of cloud infrastructure",
+      title: t('cloudPage.process.steps.5.title'),
+      description: t('cloudPage.process.steps.5.description'),
       icon: "🛡️"
     }
   ];
 
+  // Cloud Benefits from translations
+  const cloudBenefits = [
+    {
+      icon: "⚡",
+      title: t('cloudPage.benefits.items.0.title'),
+      description: t('cloudPage.benefits.items.0.description')
+    },
+    {
+      icon: "💰",
+      title: t('cloudPage.benefits.items.1.title'),
+      description: t('cloudPage.benefits.items.1.description')
+    },
+    {
+      icon: "🛡️",
+      title: t('cloudPage.benefits.items.2.title'),
+      description: t('cloudPage.benefits.items.2.description')
+    },
+    {
+      icon: "🌍",
+      title: t('cloudPage.benefits.items.3.title'),
+      description: t('cloudPage.benefits.items.3.description')
+    }
+  ];
+
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden">
+    <div className="min-h-screen bg-white overflow-x-hidden" dir="ltr">
       {/* Custom Animations */}
       <style jsx>{`
         @keyframes fadeIn {
@@ -274,26 +376,6 @@ function Cloud() {
         @keyframes slideUp {
           from { transform: translateY(30px); opacity: 0; }
           to { transform: translateY(0); opacity: 1; }
-        }
-        
-        @keyframes slideDown {
-          from { transform: translateY(-30px); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-        
-        @keyframes slideLeft {
-          from { transform: translateX(-30px); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes slideRight {
-          from { transform: translateX(30px); opacity: 0; }
-          to { transform: translateX(0); opacity: 1; }
-        }
-        
-        @keyframes scaleIn {
-          from { transform: scale(0.9); opacity: 0; }
-          to { transform: scale(1); opacity: 1; }
         }
         
         @keyframes float {
@@ -381,16 +463,15 @@ function Cloud() {
             <div className="text-left">
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight">
                 <span className="text-gray-900 block">
-                  Enterprise Cloud
+                  {t('cloudPage.hero.title1')}
                 </span>
                 <span className="mt-2 inline-block text-red-600">
-                  Solutions & Services
+                  {t('cloudPage.hero.title2')}
                 </span>
               </h1>
 
               <p className="mt-6 text-xl md:text-2xl text-gray-600 max-w-3xl leading-relaxed">
-                We deliver scalable, secure, and cost-effective cloud solutions that transform your business 
-                and drive digital innovation with complete transparency and accountability.
+                {t('cloudPage.hero.description')}
               </p>
             </div>
 
@@ -410,10 +491,30 @@ function Cloud() {
           {/* STATS */}
           <div className={`grid grid-cols-2 md:grid-cols-4 gap-6 mt-20 animate-stagger ${isVisible.hero ? 'visible' : ''}`}>
             {[
-              { icon: "☁️", value: stats.uptime.toFixed(2), label: "Uptime SLA", suffix: "%" },
-              { icon: "💰", value: Math.round(stats.savings), label: "Cost Savings", suffix: "%" },
-              { icon: "🚀", value: Math.round(stats.deployments), label: "Cloud Deployments", suffix: "+" },
-              { icon: "🛡️", value: Math.round(stats.monitoring), label: "Security Monitoring", suffix: "/7" }
+              { 
+                icon: "☁️", 
+                value: stats.uptime.toFixed(2), 
+                label: t('cloudPage.stats.uptime'), 
+                suffix: "%" 
+              },
+              { 
+                icon: "💰", 
+                value: Math.round(stats.savings), 
+                label: t('cloudPage.stats.savings'), 
+                suffix: "%" 
+              },
+              { 
+                icon: "🚀", 
+                value: Math.round(stats.deployments), 
+                label: t('cloudPage.stats.deployments'), 
+                suffix: "+" 
+              },
+              { 
+                icon: "🛡️", 
+                value: Math.round(stats.monitoring), 
+                label: t('cloudPage.stats.monitoring'), 
+                suffix: "/7" 
+              }
             ].map((stat, index) => (
               <div 
                 key={index}
@@ -449,10 +550,10 @@ function Cloud() {
         <div className="relative z-10">
           <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.services ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Our Cloud <span className="text-red-600">Services</span>
+              {t('cloudPage.services.title')}
             </h2>
             <p className="text-gray-600 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              Comprehensive cloud solutions designed to optimize performance, security, and costs
+              {t('cloudPage.services.subtitle')}
             </p>
           </div>
 
@@ -546,15 +647,13 @@ function Cloud() {
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         
-      
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible['tech-stack'] ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Cloud Technology <span className="text-red-600">Stack</span>
+              {t('cloudPage.techStack.title')}
             </h2>
             <p className="text-xl text-grey-900 max-w-3xl mx-auto">
-              We leverage industry-leading cloud technologies and tools
+              {t('cloudPage.techStack.subtitle')}
             </p>
           </div>
           
@@ -570,7 +669,9 @@ function Cloud() {
                       : 'bg-gray-100/80 text-gray-700 hover:bg-gray-200/80 backdrop-blur-sm'
                   }`}
                 >
-                  {tab.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
+                  {tab === 'cloud-platforms' ? t('cloudPage.techStack.tabs.cloudPlatforms') : 
+                   tab === 'infrastructure' ? t('cloudPage.techStack.tabs.infrastructure') : 
+                   t('cloudPage.techStack.tabs.serverless')}
                 </button>
               ))}
             </div>
@@ -585,8 +686,8 @@ function Cloud() {
                     {tech.name}
                   </div>
                   <div className={`text-sm font-medium ${
-                    tech.level === 'Expert' ? 'text-green-600' :
-                    tech.level === 'Advanced' ? 'text-red-600' :
+                    tech.level === t('cloudPage.techStack.levels.expert') ? 'text-green-600' :
+                    tech.level === t('cloudPage.techStack.levels.advanced') ? 'text-red-600' :
                     'text-amber-600'
                   }`}>
                     {tech.level}
@@ -610,15 +711,13 @@ function Cloud() {
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-gray-50/90 via-white/95 to-gray-50/90 z-1"></div> */}
-
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible.process ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Cloud Migration <span className="text-red-600">Process</span>
+              {t('cloudPage.process.title')}
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              A structured approach to ensure successful cloud adoption and transformation
+              {t('cloudPage.process.subtitle')}
             </p>
           </div>
           
@@ -657,15 +756,13 @@ function Cloud() {
           className="absolute inset-0 w-full h-full object-cover z-0 opacity-40"
         />
         
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-white/85 via-white/90 to-white/85 z-1"></div> */}
-
         <div className="relative z-10">
           <div className={`text-center mb-8 md:mb-12 animate-on-scroll ${isVisible.projects ? 'visible' : ''}`}>
             <h2 className="text-[24px] md:text-[26px] lg:text-[28px] font-bold mb-3 text-gray-900 leading-tight">
-              Cloud Success <span className="text-red-600">Stories</span>
+              {t('cloudPage.projects.title')}
             </h2>
             <p className="text-gray-900 max-w-xl mx-auto text-[16px] md:text-[17px] leading-relaxed">
-              Transforming businesses with innovative cloud solutions
+              {t('cloudPage.projects.subtitle')}
             </p>
           </div>
 
@@ -732,7 +829,9 @@ function Cloud() {
                         
                         {/* Technologies */}
                         <div className="mb-4">
-                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Technologies:</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">
+                            {t('cloudPage.projects.technologies')}
+                          </h4>
                           <div className="flex flex-wrap gap-1.5">
                             {project.tech.map((tech, idx) => (
                               <span 
@@ -747,7 +846,9 @@ function Cloud() {
                         
                         {/* Results */}
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">Results:</h4>
+                          <h4 className="font-semibold text-gray-900 mb-2 text-[13px]">
+                            {t('cloudPage.projects.results')}
+                          </h4>
                           <ul className="space-y-2">
                             {project.results.map((result, idx) => (
                               <li key={idx} className="flex items-start text-gray-700 text-[12px] leading-snug">
@@ -796,17 +897,12 @@ function Cloud() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <div className={`text-center mb-16 animate-on-scroll ${isVisible.benefits ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-              Why Choose Our <span className="text-red-600">Cloud Services</span>?
+              {t('cloudPage.benefits.title')}
             </h2>
           </div>
           
           <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 animate-stagger ${isVisible.benefits ? 'visible' : ''}`}>
-            {[
-              { icon: "⚡", title: "Scalability", description: "Elastic resources that grow with your business" },
-              { icon: "💰", title: "Cost Efficiency", description: "Pay only for what you use with optimized spending" },
-              { icon: "🛡️", title: "Security", description: "Enterprise-grade security and compliance" },
-              { icon: "🌍", title: "Global Reach", description: "Deploy applications globally with low latency" }
-            ].map((benefit, index) => (
+            {cloudBenefits.map((benefit, index) => (
               <div 
                 key={index}
                 className="text-center p-8 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-200/80 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
@@ -830,10 +926,11 @@ function Cloud() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
           <h2 className={`text-[30px] font-bold mb-4 md:mb-6 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            Technology Is Everywhere. <span className="text-red-400">Ownership Is Rare</span>.
+            {t('cloudPage.cta.title1')}{" "}
+            <span className="text-red-400">{t('cloudPage.cta.title2')}</span>
           </h2>
           <p className={`text-[22px] text-gray-300 mb-8 md:mb-10 max-w-2xl mx-auto px-4 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            Partner with a team that stays accountable from start to scale.
+            {t('cloudPage.cta.description')}
           </p>
           
           <div className={`flex flex-col sm:flex-row gap-3 justify-center mb-6 md:mb-8 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
@@ -848,7 +945,7 @@ function Cloud() {
                          hover:bg-red-700
                          transition-all duration-300"
             >
-              Let's Talk
+              {t('cloudPage.cta.button')}
               <svg
                 className="w-4 h-4 md:w-5 md:h-5 opacity-0 -translate-x-1
                            group-hover:opacity-100 group-hover:translate-x-0
@@ -868,7 +965,7 @@ function Cloud() {
           </div>
 
           <p className={`mt-8 md:mt-10 text-gray-400 text-base px-4 md:px-0 animate-on-scroll ${isVisible.cta ? 'visible' : ''}`}>
-            No bots. No runaround. Just real conversations with accountable partners.
+            {t('cloudPage.cta.subtext')}
           </p>
         </div>
       </section>
