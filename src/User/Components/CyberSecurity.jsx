@@ -395,7 +395,7 @@ const Cybersecurity = () => {
             <div className="flex justify-center lg:justify-end relative">
               <div className="relative group">
                 <img
-                  src="/cyber.png"
+                  src="/cyber.jpg"
                   alt="Cybersecurity Protection"
                   className="w-full max-w-lg rounded-xl shadow-2xl transform transition-all duration-700 group-hover:scale-105"
                 />

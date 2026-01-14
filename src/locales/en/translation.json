@@ -3078,39 +3078,173 @@
   }
 },
 
-  "about": {
-      "title": "What Makes KANDAX Different",
-      "description": "With over a decade of experience in digital transformation, we've helped hundreds of businesses migrate to modern technology stacks, improving efficiency, security, and scalability.",
-      "features": {
-        "security": {
-          "title": "Enterprise-Grade Security",
-          "description": "Military-grade security protocols for all our solutions"
-        },
-        "monitoring": {
-          "title": "24/7 Monitoring",
-          "description": "Round-the-clock support and system monitoring"
-        },
-        "scalable": {
-          "title": "Scalable Solutions",
-          "description": "Architecture designed to grow with your business"
-        },
-        "team": {
-          "title": "Award-Winning Team",
-          "description": "Industry-recognized experts in their fields"
-        }
+
+  "aboutPage": {
+    "banner": {
+      "alt": "About Us Banner"
+    },
+    "whoWeAre": {
+      "title1": "Who",
+      "title2": "We Are",
+      "description": [
+        "<b>KANDAX</b> is a human-led technology consulting firm with Canadian accountability and Indian execution excellence—built for businesses that want real ownership, not robotic delivery.",
+        "At KANDAX, technology is delivered by experts, but accountability stays human. We combine North American leadership with India's best engineering talent to build systems that work—and relationships that last.",
+        "In a world full of automation and anonymous vendors, KANDAX stands for clarity, ownership, and human-led technology delivery.",
+        "We're not just service providers; we're accountable partners who take ownership of your digital success from start to scale."
+      ],
+      "backgroundAlt": "Who We Are Background",
+      "imageAlt": "Who We Are - KANDAX Team",
+      "partnersLink": "View Our Trusted Partners"
+    },
+    "parthHanda": {
+      "title": "Mr. Parth Handa",
+      "position": "CEO & Founder, Canada",
+      "description": [
+        "I'm Parth Handa, a Canada-based company driven by vision, integrity, and a commitment to delivering impactful solutions with a global mindset. With a strong focus on leadership, innovation, and growth, I work closely with teams and partners to build meaningful strategies.",
+        "Inspired by Franklin D. Roosevelt's words, 'The only limit to our realization of tomorrow is our doubts of today,' I believe in continuous evolution, bold thinking, and turning ideas into lasting impact.",
+        "At Kandax, our mission is to move forward with clarity, professionalism, and a fresh perspective—building value through innovation and purposeful leadership."
+      ],
+      "highlights": [
+        "Canadian Accountability Standards",
+        "Indian Technical Excellence",
+        "Human-Led Technology Delivery"
+      ],
+      "imageAlt": "KANDAX CEO - Leadership with Accountability"
+    },
+    "gorakhBhosale": {
+      "title": "Mr. Gorakh Bhosale",
+      "position": "Director & Founder, India",
+      "description": [
+        "With a strong background in MCM, DCM, PGDCS, CEH, ITIL, Gorakh holds over 18 years of experience as a Cyber Security Expert at Quick Heal. Beyond his technical expertise, he is passionate about Social Awareness for Cyber Security.",
+        "Throughout his skillful career, he has taken on various challenging roles while managing fundamental business aspects including IT retails, marketing, sales, and cloud computing solutions.",
+        "Gorakh plays a crucial role in driving the company's growth through strategic business planning and sales initiatives, while also organizing company conferences, trade shows, and major events."
+      ],
+      "highlights": [
+        "18+ Years Cyber Security Experience",
+        "Certifications: MCM, DCM, PGDCS, CEH, ITIL",
+        "Business Strategy & Event Management"
+      ],
+      "imageAlt": "Mr. Gorakh Bhosale - Director & Founder"
+    },
+    "missionVision": {
+      "title1": "Our",
+      "title2": "Mission & Vision",
+      "subtitle": "Driving innovation and delivering excellence in every project we undertake",
+      "backgroundAlt": "Mission & Vision Background",
+      "mission": {
+        "title": "Our Mission",
+        "description": "Design and deliver world-class software solutions, robust cybersecurity frameworks, and data-driven digital marketing strategies that help enterprises and startups succeed globally. By combining innovation, security-first thinking, agile execution, and customer-centric values, we create measurable impact and long-term digital excellence for our clients."
       },
-      "stats": {
-        "experience": "Years Experience",
-        "experts": "Certified Experts",
-        "support": "Support",
-        "uptime": "Uptime SLA"
-      },
-      "cta": {
-        "title": "Ready to Start?",
-        "description": "Get your free consultation today",
-        "button": "Contact Now"
+      "vision": {
+        "title": "Our Vision",
+        "description": "To be a globally trusted IT leader that empowers businesses through secure, intelligent, and scalable digital solutions—driving innovation, resilience, and sustainable growth in the connected digital world."
       }
     },
+    "values": {
+      "title1": "Our",
+      "title2": "Core Values",
+      "subtitle": "The principles that guide everything we do",
+      "backgroundAlt": "Core Values Background",
+      "partnersCta": "Explore Our Partnerships",
+      "items": [
+        {
+          "icon": "Shield",
+          "title": "Integrity",
+          "description": "Transparent and honest communication with accountability at every level.",
+          "color": "from-red-500 to-red-600"
+        },
+        {
+          "icon": "Zap",
+          "title": "Innovation",
+          "description": "Pushing boundaries with cutting-edge technologies and creative solutions.",
+          "color": "from-blue-500 to-cyan-500"
+        },
+        {
+          "icon": "Flame",
+          "title": "Passion",
+          "description": "Genuine commitment to excellence and client success.",
+          "color": "from-red-600 to-orange-500"
+        },
+        {
+          "icon": "Star",
+          "title": "Excellence",
+          "description": "Striving for the highest quality in every project we undertake.",
+          "color": "from-blue-600 to-purple-500"
+        }
+      ]
+    },
+    "stats": {
+      "items": [
+        {
+          "icon": "Users",
+          "value": "50+",
+          "label": "Team Members"
+        },
+        {
+          "icon": "Globe",
+          "value": "100+",
+          "label": "Projects Completed"
+        },
+        {
+          "icon": "TrendingUp",
+          "value": "95%",
+          "label": "Success Rate"
+        },
+        {
+          "icon": "Award",
+          "value": "25+",
+          "label": "Awards Won"
+        }
+      ]
+    },
+    "milestones": {
+      "title1": "Our",
+      "title2": "Journey",
+      "subtitle": "Milestones in our journey of innovation and growth",
+      "backgroundAlt": "Journey Background",
+      "items": [
+        {
+          "year": "2018",
+          "title": "Company Founded",
+          "description": "Started with passionate technology experts"
+        },
+        {
+          "year": "2019",
+          "title": "First Major Client",
+          "description": "Landed our first enterprise client partnership"
+        },
+        {
+          "year": "2020",
+          "title": "Team Expansion",
+          "description": "Grew to 50+ dedicated team members"
+        },
+        {
+          "year": "2021",
+          "title": "Award Recognition",
+          "description": "Won industry recognition for excellence"
+        },
+        {
+          "year": "2022",
+          "title": "Global Expansion",
+          "description": "Established multiple delivery centers"
+        },
+        {
+          "year": "2023",
+          "title": "Milestone Projects",
+          "description": "Completed 100+ successful projects"
+        }
+      ]
+    },
+    "cta": {
+      "title1": "Technology Is Everywhere.",
+      "title2": "Ownership Is Rare",
+      "description": "Partner with a team that stays accountable from start to scale.",
+      "button1": "Let's Talk",
+      "button2": "View Our Partners",
+      "subtext": "No bots. No runaround. Just real conversations with accountable partners."
+    }
+  },
+
   "portfolio": {
     "hero": {
       "title": "Technology with Purpose",
@@ -3227,7 +3361,26 @@
         "error": "Something went wrong. Please try again."
       }
     }
-  }
+  },
+
+  "whatsApp": {
+  "tooltip": {
+    "title": "Chat with Support",
+    "subtitle": "Choose your region",
+    "instruction": "Click on a number to start chatting"
+  },
+  "options": {
+    "canada": {
+      "title": "Canada Support"
+    },
+    "india": {
+      "title": "India Support"
+    }
+  },
+  "ariaLabel": "Contact us on WhatsApp",
+  "hoverLabel": "Chat with us",
+  "notificationNumber": "2"
+}
 }
   
   

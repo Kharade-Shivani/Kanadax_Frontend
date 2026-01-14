@@ -163,6 +163,18 @@ const floatAnimation = {
   }
 };
 
+// Helper function to safely get arrays from translations
+const getSafeTranslationArray = (t, key) => {
+  const data = t(key, { returnObjects: true });
+  return Array.isArray(data) ? data : [];
+};
+
+// Helper function to safely get objects from translations
+const getSafeTranslationObject = (t, key) => {
+  const data = t(key, { returnObjects: true });
+  return data && typeof data === 'object' ? data : {};
+};
+
 function AboutUs() {
   const { t } = useTranslation();
   const [aboutData, setAboutData] = useState(null);
@@ -218,10 +230,17 @@ function AboutUs() {
     }
   };
 
-  // Get values from translations
-  const teamStats = t('aboutPage.stats.items', { returnObjects: true });
-  const values = t('aboutPage.values.items', { returnObjects: true });
-  const milestones = t('aboutPage.milestones.items', { returnObjects: true });
+  // SAFELY get values from translations
+  const teamStats = getSafeTranslationArray(t, 'aboutPage.stats.items');
+  const values = getSafeTranslationArray(t, 'aboutPage.values.items');
+  const milestones = getSafeTranslationArray(t, 'aboutPage.milestones.items');
+  
+  // Get descriptions safely
+  const whoWeAreDescriptions = getSafeTranslationArray(t, 'aboutPage.whoWeAre.description');
+  const parthHandaDescriptions = getSafeTranslationArray(t, 'aboutPage.parthHanda.description');
+  const parthHandaHighlights = getSafeTranslationArray(t, 'aboutPage.parthHanda.highlights');
+  const gorakhBhosaleDescriptions = getSafeTranslationArray(t, 'aboutPage.gorakhBhosale.description');
+  const gorakhBhosaleHighlights = getSafeTranslationArray(t, 'aboutPage.gorakhBhosale.highlights');
 
   return (
     <motion.div 
@@ -310,7 +329,7 @@ function AboutUs() {
               </motion.h2>
               
               <motion.div className="space-y-4 md:space-y-6" variants={staggerContainer}>
-                {t('aboutPage.whoWeAre.description', { returnObjects: true }).map((text, index) => (
+                {whoWeAreDescriptions.map((text, index) => (
                   <motion.p 
                     key={index}
                     className="text-gray-700 text-[16px] md:text-[18px] leading-relaxed"
@@ -441,7 +460,7 @@ function AboutUs() {
               </motion.div>
               
               <motion.div variants={staggerContainer}>
-                {t('aboutPage.parthHanda.description', { returnObjects: true }).map((text, index) => (
+                {parthHandaDescriptions.map((text, index) => (
                   <motion.p 
                     key={index}
                     className="text-gray-600 text-base mb-5 leading-relaxed"
@@ -457,7 +476,7 @@ function AboutUs() {
                 className="mt-6 space-y-3"
                 variants={staggerContainer}
               >
-                {t('aboutPage.parthHanda.highlights', { returnObjects: true }).map((item, index) => (
+                {parthHandaHighlights.map((item, index) => (
                   <motion.div 
                     key={index}
                     className="flex items-center gap-3"
@@ -520,7 +539,7 @@ function AboutUs() {
               </motion.div>
               
               <motion.div variants={staggerContainer}>
-                {t('aboutPage.gorakhBhosale.description', { returnObjects: true }).map((text, index) => (
+                {gorakhBhosaleDescriptions.map((text, index) => (
                   <motion.p 
                     key={index}
                     className="text-gray-600 text-base mb-5 leading-relaxed"
@@ -536,7 +555,7 @@ function AboutUs() {
                 className="mt-6 space-y-3"
                 variants={staggerContainer}
               >
-                {t('aboutPage.gorakhBhosale.highlights', { returnObjects: true }).map((item, index) => (
+                {gorakhBhosaleHighlights.map((item, index) => (
                   <motion.div 
                     key={index}
                     className="flex items-center gap-3"
@@ -789,7 +808,7 @@ function AboutUs() {
                   className="bg-white/90 backdrop-blur-sm border border-white/20 rounded-xl p-5 md:p-6 hover:border-red-400/50 transition-all duration-300 group shadow-lg hover:shadow-xl hover:shadow-red-500/20"
                 >
                   <motion.div 
-                    className={`w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-br ${value.color} flex items-center justify-center mb-4 md:mb-6 shadow-lg`}
+                    className={`w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-br ${value.color || 'from-red-500 to-red-600'} flex items-center justify-center mb-4 md:mb-6 shadow-lg`}
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.6 }}
                   >

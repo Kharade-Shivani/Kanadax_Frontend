@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function WhatsAppIcon() {
+  const { t, i18n } = useTranslation();
   const [isPulsing, setIsPulsing] = useState(true);
   const [showNumberOptions, setShowNumberOptions] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredOption, setHoveredOption] = useState(null);
   const tooltipRef = useRef(null);
+
+  // Check if current language is RTL (Arabic)
+  const isRTL = i18n.language === 'ar';
 
   useEffect(() => {
     // Pulsing animation every 3 seconds
@@ -35,15 +40,31 @@ function WhatsAppIcon() {
   const handleNumberClick = (isCanada) => {
     if (isCanada) {
       window.open("https://wa.me/14167007091", "_blank"); 
-      
     } else {
       window.open("https://wa.me/919850083751", "_blank");
     }
     setShowNumberOptions(false);
   };
 
+  // Get localized phone numbers (for display only)
+  const getLocalizedPhoneNumber = (isCanada) => {
+    if (isCanada) {
+      return isRTL ? "+1 (416) 700-7091" : "+1 (416) 700-7091";
+    } else {
+      return isRTL ? "+91 98500 83751" : "+91 98500 83751";
+    }
+  };
+
+  // Get localized notification number
+  const getLocalizedNotificationNumber = () => {
+    return isRTL ? "٢" : "2";
+  };
+
   return (
-    <div className="fixed bottom-6 right-24 z-40 flex flex-col items-end gap-4 font-['Segoe_UI',_Arial,_sans-serif]">
+    <div 
+      className="fixed bottom-6 right-24 z-40 flex flex-col items-end gap-4 font-['Segoe_UI',_Arial,_sans-serif]"
+      dir={isRTL ? 'rtl' : 'ltr'}
+    >
       {/* Number Selection Options */}
       {showNumberOptions && (
         <div 
@@ -51,12 +72,13 @@ function WhatsAppIcon() {
           className="absolute bottom-14 right-0 bg-white rounded-xl p-4 min-w-[260px] 
                      shadow-xl border border-gray-200 transition-all duration-300 
                      transform translate-y-0 opacity-100 pointer-events-auto z-50"
+          dir={isRTL ? 'rtl' : 'ltr'}
         >
-          <div className="flex items-center gap-3 mb-4 text-gray-800">
+          <div className={`flex items-center gap-3 mb-4 text-gray-800 ${isRTL ? 'flex-row-reverse' : ''}`}>
             <span className="text-2xl">💬</span>
-            <div>
-              <div className="font-bold text-base">Chat with Support</div>
-              <div className="text-sm text-gray-600">Choose your region</div>
+            <div className={isRTL ? 'text-right' : ''}>
+              <div className="font-bold text-base">{t('whatsApp.tooltip.title')}</div>
+              <div className="text-sm text-gray-600">{t('whatsApp.tooltip.subtitle')}</div>
             </div>
           </div>
 
@@ -69,15 +91,21 @@ function WhatsAppIcon() {
             onClick={() => handleNumberClick(true)}
             onMouseEnter={() => setHoveredOption('canada')}
             onMouseLeave={() => setHoveredOption(null)}
+            dir={isRTL ? 'rtl' : 'ltr'}
           >
+            {!isRTL && (
+              <div className="text-green-600 text-lg">→</div>
+            )}
+            <div className={`flex-1 flex flex-col ${isRTL ? 'items-end text-right' : ''}`}>
+              <div className="font-semibold text-gray-800 text-sm mb-0.5">{t('whatsApp.options.canada.title')}</div>
+              <div className="text-green-600 font-bold text-xs">{getLocalizedPhoneNumber(true)}</div>
+            </div>
             <div className="text-xl w-9 h-9 flex items-center justify-center rounded-full bg-white shadow-md">
               🇨🇦
             </div>
-            <div className="flex-1 flex flex-col">
-              <div className="font-semibold text-gray-800 text-sm mb-0.5">Canada Support</div>
-              <div className="text-green-600 font-bold text-xs">+1 (416) 700-7091</div>
-            </div>
-            <div className="text-green-600 text-lg">→</div>
+            {isRTL && (
+              <div className="text-green-600 text-lg transform rotate-180">←</div>
+            )}
           </div>
 
           {/* India Option */}
@@ -89,19 +117,25 @@ function WhatsAppIcon() {
             onClick={() => handleNumberClick(false)}
             onMouseEnter={() => setHoveredOption('india')}
             onMouseLeave={() => setHoveredOption(null)}
+            dir={isRTL ? 'rtl' : 'ltr'}
           >
+            {!isRTL && (
+              <div className="text-green-600 text-lg">→</div>
+            )}
+            <div className={`flex-1 flex flex-col ${isRTL ? 'items-end text-right' : ''}`}>
+              <div className="font-semibold text-gray-800 text-sm mb-0.5">{t('whatsApp.options.india.title')}</div>
+              <div className="text-green-600 font-bold text-xs">{getLocalizedPhoneNumber(false)}</div>
+            </div>
             <div className="text-xl w-9 h-9 flex items-center justify-center rounded-full bg-white shadow-md">
               🇮🇳
             </div>
-            <div className="flex-1 flex flex-col">
-              <div className="font-semibold text-gray-800 text-sm mb-0.5">India Support</div>
-              <div className="text-green-600 font-bold text-xs">+91 98500 83751</div>
-            </div>
-            <div className="text-green-600 text-lg">→</div>
+            {isRTL && (
+              <div className="text-green-600 text-lg transform rotate-180">←</div>
+            )}
           </div>
 
           <div className="text-center text-xs text-gray-600 mt-3 pt-3 border-t border-dashed border-gray-300">
-            Click on a number to start chatting
+            {t('whatsApp.tooltip.instruction')}
           </div>
           <div className="absolute bottom-[-10px] right-5 w-0 h-0 border-l-[10px] border-r-[10px] border-t-[10px] border-l-transparent border-r-transparent border-t-white"></div>
         </div>
@@ -121,13 +155,14 @@ function WhatsAppIcon() {
         onClick={handleIconClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        aria-label="Contact us on WhatsApp"
+        aria-label={t('whatsApp.ariaLabel')}
+        dir={isRTL ? 'rtl' : 'ltr'}
       >
         {/* Notification badge */}
         <div className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full  
                         w-4 h-4 flex items-center justify-center text-[9px] font-bold
                         shadow-sm">
-          <span>2</span>
+          <span>{getLocalizedNotificationNumber()}</span>
         </div>
 
         {/* WhatsApp SVG Icon */}
@@ -149,13 +184,13 @@ function WhatsAppIcon() {
 
         {/* Floating label */}
         <div className={`
-          absolute top-1/2 -translate-y-1/2 right-14
+          absolute top-1/2 -translate-y-1/2 ${isRTL ? 'left-14' : 'right-14'}
           bg-white text-green-600 px-2.5 py-1 rounded-full
           text-xs font-medium whitespace-nowrap shadow-md
           transition-all duration-300
           ${isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none'}
         `}>
-          Chat with us
+          {t('whatsApp.hoverLabel')}
         </div>
       </div>
     </div>

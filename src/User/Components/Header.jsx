@@ -267,13 +267,13 @@ function Header() {
       }`}>
         <div className="w-full px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 mx-auto">
           <div className="flex items-center justify-between py-3 md:py-4">
-            {/* Logo */}
+            {/* Logo - UPDATED SIZE */}
             <div className="flex items-center space-x-2 md:space-x-3">
               <Link to="/" className="flex items-center space-x-2 md:space-x-3">
                 <img
                   src="/loggo.jpeg"
                   alt="KANDAX Logo"
-                  className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+                  className="h-12 sm:h-14 md:h-16 lg:h-20 w-auto object-contain"
                 />
                 <div className="hidden sm:block">
                   <h1 className="text-xl sm:text-2xl font-bold text-gray-900">
@@ -451,13 +451,13 @@ function Header() {
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}>
           <div className="h-full flex flex-col">
-            {/* Menu Header */}
+            {/* Menu Header - UPDATED LOGO SIZE */}
             <div className="flex items-center justify-between p-4 border-b">
               <div className="flex items-center space-x-3">
                 <img
                   src="/loggo.jpeg"
                   alt="KANDAX Logo"
-                  className="h-10 w-auto"
+                  className="h-12 w-auto"
                 />
                 <div>
                   <h1 className="text-xl font-bold text-gray-900">{t('header.company')}</h1>
